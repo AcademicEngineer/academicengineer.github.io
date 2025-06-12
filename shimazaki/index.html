@@ -1,222 +1,59 @@
-<!doctype html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.80.0">
-    <title>Toshiyuki SHIMAZAKI</title>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ポートフォリオ | あなたの名前</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <h1 class="logo">あなたの名前</h1>
+      <ul class="nav-links">
+        <li><a href="#about">自己紹介</a></li>
+        <li><a href="#projects">プロジェクト</a></li>
+        <li><a href="#contact">連絡先</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
-
-    
-
-    <!-- Bootstrap core CSS -->
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-
-    
-  </head>
-  <body>
-    
-<header>
-  <div class="collapse bg-dark" id="navbarHeader">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white">About</h4>
-          <p class="text-muted">電気通信大学島崎のWebページです.</p>
-        </div>
-        <div class="col-sm-4 offset-md-1 py-4">
-          <h4 class="text-white">Contact</h4>
-          <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Email shimazaki atmark uec.ac.jp</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="navbar navbar-dark bg-dark shadow-sm">
-    <div class="container">
-      <a href="#" class="navbar-brand d-flex align-items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-        <strong>SHIMAZAKI</strong>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    </div>
-  </div>
-</header>
-
-<main>
-
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">ようこそ！</h1>
-        <p class="lead text-muted">電気通信大学島崎のページです.</p>
-        <p>
-          <a href="#profile" class="btn btn-primary my-2">Profile</a>
-          <a href="#research" class="btn btn-secondary my-2">Research</a>
-          <a href="#publication" class="btn btn-success my-2">Publications</a>
-          <a href="#link" class="btn btn-info  my-2">Link</a>
-          <a href="#contact" class="btn btn-light  my-2">Contact</a>
-        </p>
-      </div>
+  <section id="hero">
+    <div class="hero-text">
+      <h2>こんにちは、私は<span>フロントエンド開発者</span></h2>
+      <p>ユーザー体験を重視した洗練されたWebアプリを開発します。</p>
+      <a href="#projects" class="btn">作品を見る</a>
     </div>
   </section>
- 
-  <div class="album py-5 bg-light">
-  <div class="container">
-      
-  <section class="features-intro" id="profile">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-       <h1 class="fw-light">Profile</h1>
-　　　　<p class="lead text-muted">島崎俊介</p>
-        <p>電気通信大学 情報通信工学科 卒業<br> 学士(工学) <br>
-           東京学芸大学 大学院教育学研究科 総合教育開発専攻 情報教育 修士課程 修了<br> 修士(教育学) <br>
-           東京農工大学 大学院工学府 研究マネジメント人材養成 専門職学位課程 修了<br> 技術経営修士(専門職)<br>
-           現在，電気通信大学 教育研究技師部 実験実習支援センター 学術技師．<br>
-           教育DX，スマートキャンパス，オンライン実験実習，計算機・eラーニングシステム・工房管理，FD/SD担当．<br>
-           電気通信大学 大学院情報理工学研究科 情報学専攻 博士後期課程 単位取得済満期退学．<br>
-        <p>
-        <p>大学教育に関する自己研修<br>
-          筑波大学 大学マネジメント人材育成プログラム 修了<br>
-          千葉大学 教育・学習支援専門職人材育成プログラム 修了<br>
-          九州工業大学 情報教育支援士養成プログラム 修了<br>
-          北海道大学 科学技術コミュニケーター養成プログラム 修了<br>
-          帝京大学 FD担当養成プログラム 修了<br>
-          愛媛大学 SDコーディネーター養成講座 修了<br>
-          電気通信大学 データアントレプレナープログラム 修了<br>
-          電気通信大学 ウェブシステムデザインプログラム 修了<br>
-        <p> 
-        <p>所属学会<br>
-          教育システム情報学会，日本教育工学会，人工知能学会，<br>
-          電子情報通信学会，情報処理学会，大学教育学会，日本感性工学会<br>
-        <p>
-      </div>
-    </div>
-  </section>
-  
-  <section class="features-intro" id="research">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-       <h1 class="fw-light">Research</h1>
-       <p class="lead text-muted">学習者とのインタラクティブな講義を実現する学習支援ロボット研究</p>
-        <p>本研究の目的は，学習者と，講師としての学習支援ロボット間でインタラクティブな講義を実現するための講義シナリオ制御モデルのデザインと，インタラクティブ講義ロボットの開発です．<br>
-           研究の成果は，対面/オンラインの混在するハイブリッド講義における学習パートナーとしての活用や，将来的な1人1台学習支援メディアとしての学習支援ロボットの在り方に貢献できると考えています．<br>
-        <p>
-　　　　<p class="lead text-muted">小中高生向けプログラミング学習支援システム研究</p>
-        <p>電気通信大学プログラミング教室と連携して，生徒と学生講師のプログラミング学習を支援する研究を行っております．<br>
-           教室の課題として，オンラインでのプログラミング学習は生徒の学習状況把握や学習支援が困難であり，これらを解決する学習支援システムのデザイン・開発・ケーススタディを研究としています．<br>
-        <p>
-       <p class="lead text-muted">オンライン教育・遠隔実験実習・プログラミング指導者・ICT支援員の育成に関する研究</p>
-        <p>業務で担当したオンラインによる教育実践や実験実習に関する報告です．<br>
-          <p>赤池英夫, 島崎俊介, 成見哲: FPGAを用いた論理回路設計実験の遠隔実践,情報処理学会研究報告コンピュータと教育(CE), 2020-CE-157(11), pp.1-7(2020.11.7).
-　　　　　<p>情報処理学会2021年度（令和3年度）山下記念研究賞　受賞
-          <p>赤池英夫, 島崎俊介, 成見哲:FPGA を用いた論理回路設計実験を遠隔化した結果に関する報告,情報処理学会 情報教育シンポジウム2021, pp. 164 - 169(2021.08.28).
-      </div>
-    </div>
-  </section>
-  
-    <section class="features-intro" id="publication">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-       <h1 class="fw-light">Publications</h1>
 
-      <p class="lead text-muted">論文</p>
-        <p>赤池英夫, 島崎俊介, 成見哲:FPGAを用いた論理回路設計実験のための遠隔実験システムの作成と評価：情報処理学会論文誌 教育とコンピュータ(TCE),8(2),pp.51-63 (2022.06.23)</p>
-        <p>柏原昭博, 島崎俊介:遠隔学習者と対面学習者をつなぐ先進的ハイブリッド教室のデザイン：教育システム情報学会誌,41(4),pp.293-302 (2024.10.01)</p>
-    　
-      <p class="lead text-muted">受賞</p>
-        <p>島崎 俊介（柏原研究室 学習支援ロボットチーム），特別賞(UMUラーニングテクノロジー賞)：【題目】学習者の注意維持をインタラクティブに促すロボット講義と講義改善，ラーニングイノベーショングランプリ2022（LIGP2022）</p>
-        <p>島崎 俊介（電気通信大学），学生奨励賞：【題目】インタラクティブロボット講義における注意維持支援の評価，情報処理学会教育学習支援システム研究会,2023.12.03）</p>
-        <p>赤池英夫, 島崎俊介, 成見哲，情報処理学会2023年度論文賞：【題目】FPGAを用いた論理回路設計実験のための遠隔実験システムの作成と評価,2024.6.05）</p>
-        <p>赤池英夫, 島崎俊介, 成見哲，令和6年度電気通信大学優秀教員賞：【FPGAを用いた論理回路設計実験の遠隔実践グループ,2025.2.07）</p>
-       
-      <p class="lead text-muted">国際会議</p>
-        <p>Shimazaki, T., Sugawara, A., Goto, M., and Kashihara, A. (2022). An Interactive Robot Lecture System Embedding Lecture Behavior Model. In: Zaphiris, P., Ioannou, A. (eds) Learning and Collaboration Technologies. Novel Technological Environments. HCII 2022. Lecture Notes in Computer Science, vol 13329. Springer, Cham. https://doi.org/10.1007/978-3-031-05675-8_17</p>
-        <p>Toshiyuki Shimazaki and Akihiro Kashihara: An Interactive Robot Lecture System for Attention and Understanding Recovery, Proc. of the 31st International Conference on Computers in Education (ICCE2023), Vol.2, pp.1084-1087 (2023.12.8)</p>
-        
-　　　　    <p class="lead text-muted">研究会</p>
-        <p>島崎俊介，柏原昭博：インタラクティブロボット講義における注意維持支援の評価，情報処理学会研究報告コンピュータと教育（CE）,2023-CE-172(23), pp.1-8 (2023.11.25).</p>
-        <p>島崎俊介，柏原昭博：インタラクティブロボット講義におけるケーススタディ分析と講義インタラクションデザイン，教育システム情報学会2023年度第2回研究会，Vol.38，No.2，pp.65-72 (2023.7.15).</p>
-        <p>島崎俊介，柏原昭博：インタラクティブロボット講義における注意・理解リカバリの有効性評価，教育システム情報学会2022年度第6回研究会，Vol.37，No.6，pp.149-156 (2023.3.18).</p>
-        <p>島崎俊介，柏原昭博：インタラクティブロボット講義における注意・理解リカバリとその評価，教育システム情報学会2022年度第4回研究会，Vol.37，No.4，pp.70-77 (2022.11.4).</p>
-        <p>柏原昭博，島崎俊介：ロボット講義におけるインタラクションデザイン，教育システム情報学会2022年度第2回研究会，pp.16-20 (2022.7.16).</p>
-        <p>島崎俊介，菅原歩夢，後藤充裕，柏原昭博：ヒューマノイドロボットを用いたインタラクティブロボット講義システム，電子情報通信学会 教育工学研究会，pp.97-102 (2022.3.12).</p>
-        <p>島崎俊介，柏原昭博：小中高生向けプログラミング教室を対象とした対面授業とオンライン授業のケーススタディ，教育システム情報学会 2020年度第6回研究会，pp.135-140 (2021.3.20).</p>
-        <p>島崎俊介，朝尾直己，宮澤修，安部博文：電気通信大学プログラミング教室におけるオンライン学習システム，教育システム情報学会 2020年度第1回研究会，pp.7-13 (2020.5.9).</p>
-        <p>島崎俊介，宮澤修，安部博文：電気通信大学プログラミング教室における CPU の仕組みを学ぶ夏季集中講座の実践，教育システム情報学会 2019年度第6回研究会，pp.29-36 (2020.3.14).</p>
-        
-       <p class="lead text-muted">全国大会</p>
-        <p>島崎俊介， 柏原昭博:学習者の姿勢・視線センシングデータを用いた状態推定によるインタラクティブロボット講義の評価，教育システム情報学会 第48回全国大会，pp.263-264 (2023.8.31).</p>
-        <p>島崎俊介， 菅原歩夢， 後藤充裕， 柏原昭博:インタラクティブロボット講義における学習者状態推定と注意維持支援，教育システム情報学会 第47回全国大会，pp.155-156 (2022.8.26).</p>
-        <p>島崎俊介，柏原昭博：初等中等教育の教科を題材としたプログラミングコンテストの実践，教育システム情報学会 第46回全国大会，pp.145-146 (2021.9.3).</p>
-        <p>島崎俊介，郭恩孚，宮澤修，安部博文，柏原昭博：生徒のプログラミング学習履歴データを講師間で共有できる小中高生向けプログラミング教室管理システム，教育システム情報学会 第45回全国大会，pp.1-2 (2020.9.2).</p>
-      </div>
-    </div>
+  <section id="about">
+    <h2>自己紹介</h2>
+    <p>あなたの経歴、スキル、興味分野などをここに記載します。</p>
   </section>
-  
-  <section class="features-intro" id="link">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-       <h1 class="fw-light">Link</h1>
-        <p class="lead text-muted">連絡先は右上のメニューバーにあります</p>
-        <p><a href="https://wlgate.inf.uec.ac.jp/">電気通信大学柏原研究室</a></p>
-        <p><a href="https://www.uec-programming.com/">電気通信大学プログラミング教室</a></p>
-        
+
+  <section id="projects">
+    <h2>プロジェクト</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3>プロジェクト名1</h3>
+        <p>概要と使用技術。</p>
+      </div>
+      <div class="project-card">
+        <h3>プロジェクト名2</h3>
+        <p>概要と使用技術。</p>
       </div>
     </div>
   </section>
 
- <section class="features-intro" id="contact">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-       <h1 class="fw-light">Contact</h1>
-        <p class="lead text-muted">電気通信大学 島崎俊介<br>
-         <code>shimazaki (at) uec.ac.jp</code> <br>
-          までご連絡ください．<br>
-          研究室は西３号館302室です．</p>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d676.0836412313779!2d139.5401710517365!3d35.65751743934836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018f011ab2ade29%3A0xdf78b2a20023ed93!2z44CSMTgyLTAwMzMg5p2x5Lqs6YO96Kq_5biD5biC5a-M5aOr6KaL55S677yS5LiB55uuIOilvzPlj7fppKg!5e0!3m2!1sja!2sjp!4v1619768528988!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-      </div>
-    </div>
+  <section id="contact">
+    <h2>連絡先</h2>
+    <p>メールやSNSなどの連絡先情報。</p>
   </section>
 
-  </div>
+  <footer>
+    <p>© 2025 あなたの名前</p>
+  </footer>
 
-</main>
-
-<footer class="text-muted py-5">
-  <div class="container">
-    <p class="float-end mb-1">
-      <a href="#">Back to top</a>
-    </p>
-    <p class="mb-1">&copy; The University of Electro-Communications Toshiyuki SHIMAZAKI </p>
-  </div>
-</footer>
-
-
-    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
-      
-  </body>
+  <script src="script.js"></script>
+</body>
 </html>
