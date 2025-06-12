@@ -1,9 +1,9 @@
 body {
-  font-family: 'Source Serif 4', 'Noto Serif JP', serif;
+  font-family: 'Helvetica Neue', sans-serif;
   margin: 0;
   background: #f4f7f9;
   color: #333;
-  line-height: 1.7;
+  line-height: 1.6;
 }
 
 header {
@@ -23,7 +23,7 @@ nav {
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: bold;
   color: #007acc;
 }
@@ -45,7 +45,7 @@ nav {
 }
 
 section {
-  padding: 3rem 1.5rem;
+  padding: 3rem 2rem;
   max-width: 1000px;
   margin: auto;
 }
@@ -64,7 +64,6 @@ section {
 h2 {
   color: #007acc;
   margin-bottom: 1rem;
-  font-weight: bold;
 }
 
 .project-grid {
@@ -90,37 +89,4 @@ footer {
   text-align: center;
   padding: 2rem;
   font-size: 0.9rem;
-}
-
-.lang-toggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #007acc;
-  color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  z-index: 1001;
-}
-
-@media screen and (max-width: 600px) {
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 1rem;
-  }
-
-  .hello-text h2 {
-    font-size: 1.5rem;
-  }
-
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
 }
