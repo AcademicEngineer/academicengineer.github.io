@@ -30,6 +30,9 @@
     heroSub: '島崎 俊介',
     heroLead: 'Associate Professor and Institute Management Officer and Head of Advanced Technology Integration Office, Center for Innovative Teaching and Learning, Institute of Science Tokyo.<br class="br-pc"> My research and practice focus on learning support robots and educational DX through AI and VR.',
 
+    linkCenter: 'Center for Innovative Teaching and Learning',
+    linkOffice: 'Advanced Technology Integration Office',
+
     aboutTitle: 'Profile',
     careerTitle: 'Career',
     career1: 'Associate Professor and Institute Management Officer and Head of Advanced Technology Integration Office,<br>Center for Innovative Teaching and Learning, Institute of Science Tokyo',
@@ -96,6 +99,11 @@
     ariaEls.forEach((el) => { const v = dict[el.dataset.i18nAria]; if (v != null) el.setAttribute('aria-label', v); });
     document.title = dict.meta.title;
     document.querySelector('meta[name="description"]')?.setAttribute('content', dict.meta.description);
+    // 英語ページがあるリンクは言語に合わせて飛び先を切り替え
+    document.querySelectorAll('[data-href-en]').forEach((a) => {
+      if (!a.dataset.hrefJa) a.dataset.hrefJa = a.getAttribute('href');
+      a.setAttribute('href', lang === 'en' ? a.dataset.hrefEn : a.dataset.hrefJa);
+    });
     root.setAttribute('lang', lang);
     root.setAttribute('data-lang', lang);
     if (toggle) toggle.setAttribute('aria-label', toggle.getAttribute('aria-expanded') === 'true' ? dict.menuClose : dict.menuOpen);
