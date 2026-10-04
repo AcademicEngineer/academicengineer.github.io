@@ -184,6 +184,18 @@ html[data-lang="en"] .hero-name { letter-spacing: .01em; }
 .btn-ghost { background: var(--surface); color: var(--text); border-color: var(--border); }
 .btn-ghost:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
 
+/* 所属組織へのリンク（DBボタンより一段控えめ） */
+.hero-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.btn-sub {
+  padding: 9px 16px; font-size: .88rem; font-weight: 500;
+  color: var(--muted); background: transparent; border-color: var(--border);
+}
+.btn-sub svg { color: var(--accent); }
+.btn-sub .ext { color: currentColor; opacity: .6; }
+.btn-sub:hover svg { transform: none; }
+.btn-sub:hover .ext { transform: translate(2px, -2px); opacity: 1; }
+.btn-sub:hover { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+
 /* ---------- Sections ---------- */
 .section { padding: clamp(64px, 9vw, 104px) 0; }
 .section-alt { background: var(--bg-alt); }
@@ -312,6 +324,7 @@ html[data-lang="en"] .training-list b { font-size: .85rem; }
   .lang-toggle { padding: 0 10px; }
   .training-list li { grid-template-columns: 1fr; gap: 0; }
   .btn { width: 100%; justify-content: center; }
+  .btn-sub { width: auto; flex: 1 1 auto; }
 }
 
 @media print {
