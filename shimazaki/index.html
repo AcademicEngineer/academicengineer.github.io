@@ -1,146 +1,233 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio | Toshiyuki SHIMAZAKI Ph.D.</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>島崎 俊介 | Toshiyuki SHIMAZAKI, Ph.D. @Science Tokyo</title>
+  <meta name="description" content="東京科学大学 教育革新センター マネジメント准教授・先進技術活用室長 島崎俊介のポートフォリオ．学習支援ロボット，教育DX・スマートキャンパスの研究と実践．">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="島崎 俊介 | Toshiyuki SHIMAZAKI, Ph.D.">
+  <meta property="og:description" content="東京科学大学 教育革新センター マネジメント准教授・先進技術活用室長">
+  <meta name="theme-color" content="#1f5f99">
+  <script>
+    // 初回描画前にテーマ・言語・JS有効フラグを確定（ちらつき防止）
+    (function () {
+      var d = document.documentElement, t = null, l = null;
+      d.classList.add('js');
+      try { t = localStorage.getItem('theme'); l = localStorage.getItem('lang'); } catch (e) {}
+      var q = new URLSearchParams(location.search).get('lang');
+      if (q === 'en' || q === 'ja') l = q;
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      d.setAttribute('data-theme', t);
+      d.setAttribute('data-lang', l === 'en' ? 'en' : 'ja');
+    })();
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <header>
-    <nav>
-      <h1 class="logo">Toshiyuki SHIMAZAKI Ph.D. @Science Tokyo</h1>
-      <ul class="nav-links">
-        <li><a href="#about">略歴</a></li>
-        <li><a href="#projects">研究</a></li>
-        <li><a href="#education">教育</a></li>
-        <li><a href="#publications">業績</a></li>
-        <li><a href="#contact">連絡先</a></li>
-      </ul>
-    </nav>
+  <a class="skip-link" href="#main" data-i18n="skip">本文へスキップ</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#top" class="brand">
+        <span class="brand-name">Toshiyuki SHIMAZAKI, Ph.D.</span>
+        <span class="brand-sub">@Science Tokyo</span>
+      </a>
+
+      <nav id="nav-menu" class="nav-menu" aria-label="メインナビゲーション" data-i18n-aria="navLabel">
+        <ul>
+          <li><a href="#about" data-i18n="navAbout">略歴</a></li>
+          <li><a href="#research" data-i18n="navResearch">研究</a></li>
+          <li><a href="#achievements" data-i18n="navAchievements">業績・授業</a></li>
+          <li><a href="#contact" data-i18n="navContact">連絡先</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="lang-toggle" type="button" aria-label="Switch to English" data-i18n-aria="langLabel">
+          <span class="lang-opt" data-lang-opt="ja">JA</span>
+          <span class="lang-sep" aria-hidden="true">/</span>
+          <span class="lang-opt" data-lang-opt="en">EN</span>
+        </button>
+        <button class="icon-btn theme-toggle" type="button" aria-label="表示テーマを切り替え" data-i18n-aria="themeLabel">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M1.5 12H4M20 12h2.5M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></svg>
+        </button>
+        <button class="icon-btn nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="メニューを開く">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
   </header>
 
-  <section id="hello">
-    <div class="hello-text">
-      <h1>ようこそ！島崎俊介のポートフォリオサイトです</h1>
-      <h1><a href="https://researchmap.jp/toshiyukishimazaki" target="_blank" rel="noopener noreferrer">researchmap</a></h1>
-      <h1><a href="https://strdb.s.isct.ac.jp/html/100004678_en.html" target="_blank" rel="noopener noreferrer">Science Tokyo RDB</a></h1>
+  <main id="main">
+    <!-- Hero -->
+    <section id="top" class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow">Institute of Science Tokyo · Center for Innovative Teaching and Learning</p>
+        <h1>
+          <span class="hero-name" data-i18n="heroName">島崎 俊介</span>
+          <span class="hero-en" data-i18n="heroSub">Toshiyuki SHIMAZAKI, Ph.D.</span>
+        </h1>
+        <p class="lead" data-i18n-html="heroLead">
+          東京科学大学 教育革新センター マネジメント准教授・先進技術活用室長．<br class="br-pc">
+          学習支援ロボットと，AI・VRによる教育DXの研究開発と実践に取り組んでいます．
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://researchmap.jp/toshiyukishimazaki" target="_blank" rel="noopener noreferrer">
+            researchmap
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="https://strdb.s.isct.ac.jp/html/100004678_en.html" target="_blank" rel="noopener noreferrer">
+            Science Tokyo RDB（STRDB）
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 略歴 -->
+    <section id="about" class="section">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-label">Profile</p>
+          <h2 data-i18n="aboutTitle">略歴</h2>
+        </header>
+
+        <div class="grid grid-2">
+          <article class="card reveal">
+            <h3 data-i18n="careerTitle">職歴</h3>
+            <ol class="timeline">
+              <li>
+                <span class="tl-date">2026.01 –</span>
+                <span class="tl-body" data-i18n-html="career1">東京科学大学 教育革新センター<br>マネジメント准教授・先進技術活用室長</span>
+              </li>
+              <li>
+                <span class="tl-date">2015.04 – 2025.12</span>
+                <span class="tl-body" data-i18n-html="career2">電気通信大学 学術技師</span>
+              </li>
+            </ol>
+
+            <h3 class="mt" data-i18n="degreeTitle">学歴・学位</h3>
+            <ul class="degree-list">
+              <li data-i18n-html="degree1"><span class="degree">博士（工学）</span>電気通信大学<small>大学院情報理工学研究科 博士単位取得退学</small></li>
+              <li data-i18n-html="degree2"><span class="degree">技術経営修士（専門職）</span>東京農工大学<small>大学院工学府 修了</small></li>
+              <li data-i18n-html="degree3"><span class="degree">修士（教育学）</span>東京学芸大学<small>大学院教育学研究科 修了</small></li>
+              <li data-i18n-html="degree4"><span class="degree">学士（工学）</span>電気通信大学<small>情報通信工学科 卒業</small></li>
+            </ul>
+
+            <h3 class="mt" data-i18n="societyTitle">所属学会</h3>
+            <ul class="chips">
+              <li data-i18n="society1">教育システム情報学会</li>
+              <li data-i18n="society2">日本教育工学会</li>
+              <li data-i18n="society3">人工知能学会</li>
+              <li data-i18n="society4">電子情報通信学会</li>
+              <li data-i18n="society5">情報処理学会</li>
+            </ul>
+          </article>
+
+          <article class="card reveal">
+            <h3 data-i18n="trainingTitle">大学教育に関する自己研修</h3>
+            <p class="card-note" data-i18n="trainingNote">いずれも修了</p>
+            <ul class="training-list">
+              <li data-i18n-html="training1"><b>筑波大学</b>大学マネジメント人材育成プログラム</li>
+              <li data-i18n-html="training2"><b>千葉大学</b>教育・学習支援専門職人材育成プログラム</li>
+              <li data-i18n-html="training3"><b>大阪大学</b>アドミッション・オフィサー養成プログラム</li>
+              <li data-i18n-html="training4"><b>熊本大学</b>インストラクショナルデザイン入門編／応用編</li>
+              <li data-i18n-html="training5"><b>九州工業大学</b>情報教育支援士養成プログラム</li>
+              <li data-i18n-html="training6"><b>北海道大学</b>科学技術コミュニケーター養成プログラム</li>
+              <li data-i18n-html="training7"><b>帝京大学</b>FD担当養成プログラム</li>
+              <li data-i18n-html="training8"><b>愛媛大学</b>FDer養成講座</li>
+              <li data-i18n-html="training9"><b>愛媛大学</b>SDコーディネーター養成講座</li>
+              <li data-i18n-html="training10"><b>電気通信大学</b>データアントレプレナープログラム</li>
+              <li data-i18n-html="training11"><b>電気通信大学</b>ウェブシステムデザインプログラム</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 研究 -->
+    <section id="research" class="section section-alt">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-label">Research</p>
+          <h2 data-i18n="researchTitle">研究テーマ</h2>
+        </header>
+
+        <div class="grid grid-2">
+          <article class="card card-feature reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="5" y="8" width="14" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M2 13v3M22 13v3"/></svg>
+            </div>
+            <h3 data-i18n="research1Title">学習支援ロボット研究</h3>
+            <p data-i18n="research1Body">一人一台の学習パートナーロボット時代の到来を見据えて，ロボットの学び方やインタラクションに関する研究に取り組んでいます．</p>
+          </article>
+
+          <article class="card card-feature reveal">
+            <div class="card-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 10 12 4l9 6"/><path d="M5 10v9h14v-9"/><path d="M9.5 19v-4.5h5V19"/><circle cx="18.5" cy="5" r="1.5"/></svg>
+            </div>
+            <h3 data-i18n="research2Title">教育DX技術・スマートキャンパス</h3>
+            <p data-i18n="research2Body">生成AIを用いたアバタースタッフ，IoTを用いたセンシングと制御によるキャンパスのスマート化，VRキャンパスに取り組んでいます．</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 業績・授業 -->
+    <section id="achievements" class="section">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-label">Achievements &amp; Teaching</p>
+          <h2 data-i18n="achTitle">研究業績・担当授業</h2>
+          <p class="section-desc" data-i18n="achDesc">論文・発表・受賞などの研究業績，および担当授業の情報は，以下のデータベースで最新の内容を公開しています．</p>
+        </header>
+
+        <div class="grid grid-2">
+          <a class="card link-card reveal" href="https://researchmap.jp/toshiyukishimazaki" target="_blank" rel="noopener noreferrer">
+            <span class="link-card-label">researchmap</span>
+            <span class="link-card-desc" data-i18n="rmDesc">研究者総覧データベース．論文・講演・受賞・担当授業などを掲載しています．</span>
+            <span class="link-card-url">researchmap.jp/toshiyukishimazaki</span>
+            <svg class="link-card-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+          <a class="card link-card reveal" href="https://strdb.s.isct.ac.jp/html/100004678_en.html" target="_blank" rel="noopener noreferrer">
+            <span class="link-card-label">Science Tokyo RDB（STRDB）</span>
+            <span class="link-card-desc" data-i18n="strdbDesc">東京科学大学 研究者情報データベース．学内の研究者情報を掲載しています．</span>
+            <span class="link-card-url">strdb.s.isct.ac.jp</span>
+            <svg class="link-card-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 連絡先 -->
+    <section id="contact" class="section section-alt">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="section-label">Contact</p>
+          <h2 data-i18n="contactTitle">連絡先</h2>
+        </header>
+        <div class="card contact-card reveal">
+          <p class="contact-affil" data-i18n="contactAffil">東京科学大学 教育革新センター（CITL）</p>
+          <p class="contact-mail">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <span class="js-email" data-user="shimazaki" data-domain="citl.isct.ac.jp">shimazaki at-mark citl.isct.ac.jp</span>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year">2026</span> Toshiyuki SHIMAZAKI</p>
+      <a href="#top" class="to-top" data-i18n="toTop">ページの先頭へ ↑</a>
     </div>
-  </section>
-
-  <section id="about">
-    <h2>略歴</h2>
-        <div class="project-grid">
-      <div class="project-card">
-        <h3>自己紹介</h3>
-        <p>東京科学大学 教育革新センター マネジメント准教授・先進技術活用室長（2026.01-)</p>
-        <p>前職：電気通信大学 学術技師（2015.04-2025.12)</p>
-        <p>電気通信大学 大学院情報理工学研究科 博士単位取得退学</p>
-        <p>博士（工学）電気通信大学</p>
-        <p>東京農工大学 大学院工学府 修了 技術経営修士（専門職）</p>
-        <p>東京学芸大学 大学院教育学研究科 修了 修士（教育学）</p>
-        <p>電気通信大学 情報通信工学科 卒業 学士（工学）</p>
-        <br>
-        <h3>所属学会</h3>
-          <p>教育システム情報学会，日本教育工学会，人工知能学会，</p>
-          <p>電子情報通信学会，情報処理学会</p>
-      </div>
-      <div class="project-card">
-        <h3>大学教育に関する自己研修</h3>
-        <p>筑波大学 大学マネジメント人材育成プログラム 修了</p>
-        <p>千葉大学 教育・学習支援専門職人材育成プログラム 修了</p>
-        <p>大阪大学 アドミッション・オフィサー養成プログラム 修了</p>
-        <p>熊本大学 インストラクショナルデザイン入門編/応用編 修了</p>
-        <p>九州工業大学 情報教育支援士養成プログラム 修了</p>
-        <p>北海道大学 科学技術コミュニケーター養成プログラム 修了</p>
-        <p>帝京大学 FD担当養成プログラム 修了</p>
-        <p>愛媛大学 FDer養成講座 修了</p>
-        <p>愛媛大学 SDコーディネーター養成講座 修了</p>
-        <p>電気通信大学 データアントレプレナープログラム 修了</p>
-        <p>電気通信大学 ウェブシステムデザインプログラム 修了</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <h2>研究</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <h3>学習支援ロボット研究</h3>
-        <p>一人一台の学習パートナーロボット時代の到来を見据えてロボットの学び方やインタラクションに関する研究に取り組んでいます</p>
-      </div>
-      <div class="project-card">
-        <h3>教育DX技術・スマートキャンパス</h3>
-        <p>生成AIを用いたアバタースタッフ・IoTを用いたセンシングと制御によるキャンパスのスマート化・VRキャンパスに取り組んでいます</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="education">
-    <h2>教育</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <h3>講義(白百合女子大学)</h3>
-        <p>プログラミングA(Python入門)2024-</p>
-        <p>プログラミングB(Python基礎)2024-</p>
-        <p>ICTベーシックB2025-</p>
-      </div>
-      <div class="project-card">
-        <h3>実験実習(電気通信大学)</h3>
-        <p>情報数理工学実験・コンピュータサイエンス実験(FPGA)2016-2025</p>
-        <p>理工学基礎実験(電気電子回路)2016-2021</p>
-        <p>情報工学工房2016-2025</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="publications">
-    <h2>業績</h2>
-    <h3>学術論文</h3>
-        <p>島崎俊介, 柏原昭博:学習者の受講状態センシングに基づくインタラクティブロボット講義システムとその有効性評価, 教育システム情報学会誌,43(1),pp.26-38 (2026.01)</p>
-        <p>赤池英夫, 島崎俊介, 成見哲:FPGAを用いた論理回路設計実験のための遠隔実験システムの作成と評価：情報処理学会論文誌 教育とコンピュータ(TCE),8(2),pp.51-63 (2022.06.23)</p>
-    <br>
-    <h3>解説論文</h3>
-        <p>柏原昭博, 島崎俊介:遠隔学習者と対面学習者をつなぐ先進的ハイブリッド教室のデザイン：教育システム情報学会誌,41(4),pp.293-302 (2024.10.01)</p>
-    　　 <p>島崎俊介, 柏原昭博:ハイブリッド講義・実験実習のための映像・音響設備を用いたテレプレゼンス技術，電気設備学会誌,45 (12), 771-774 (2025.12.11)</p>
-    <br>
-    <h3>受賞</h3>
-        <p>島崎 俊介（柏原研究室 学習支援ロボットチーム），特別賞(UMUラーニングテクノロジー賞)：【題目】学習者の注意維持をインタラクティブに促すロボット講義と講義改善，ラーニングイノベーショングランプリ2022（LIGP2022）</p>
-        <p>島崎 俊介（電気通信大学），学生奨励賞：【題目】インタラクティブロボット講義における注意維持支援の評価，情報処理学会教育学習支援システム研究会,2023.12.03）</p>
-        <p>赤池英夫, 島崎俊介, 成見哲，情報処理学会2023年度論文賞：【題目】FPGAを用いた論理回路設計実験のための遠隔実験システムの作成と評価,2024.6.05）</p>
-        <p>赤池英夫, 島崎俊介, 成見哲，令和6年度電気通信大学優秀教員賞：【FPGAを用いた論理回路設計実験の遠隔実践グループ,2025.2.07）</p>
-    <br> 
-    <h3>国際会議</h3>
-        <p>Shimazaki, T., Sugawara, A., Goto, M., and Kashihara, A. (2022). An Interactive Robot Lecture System Embedding Lecture Behavior Model. In: Zaphiris, P., Ioannou, A. (eds) Learning and Collaboration Technologies. Novel Technological Environments. HCII 2022. Lecture Notes in Computer Science, vol 13329. Springer, Cham. https://doi.org/10.1007/978-3-031-05675-8_17</p>
-        <p>Toshiyuki Shimazaki and Akihiro Kashihara: An Interactive Robot Lecture System for Attention and Understanding Recovery, Proc. of the 31st International Conference on Computers in Education (ICCE2023), Vol.2, pp.1084-1087 (2023.12.8)</p>
-    <br>    
-    <h3>研究会</h3>
-        <p>島崎俊介，柏原昭博：インタラクティブロボット講義における注意維持支援の評価，情報処理学会研究報告コンピュータと教育（CE）,2023-CE-172(23), pp.1-8 (2023.11.25).</p>
-        <p>島崎俊介，柏原昭博：インタラクティブロボット講義におけるケーススタディ分析と講義インタラクションデザイン，教育システム情報学会2023年度第2回研究会，Vol.38，No.2，pp.65-72 (2023.7.15).</p>
-        <p>島崎俊介，柏原昭博：インタラクティブロボット講義における注意・理解リカバリの有効性評価，教育システム情報学会2022年度第6回研究会，Vol.37，No.6，pp.149-156 (2023.3.18).</p>
-        <p>島崎俊介，柏原昭博：インタラクティブロボット講義における注意・理解リカバリとその評価，教育システム情報学会2022年度第4回研究会，Vol.37，No.4，pp.70-77 (2022.11.4).</p>
-        <p>柏原昭博，島崎俊介：ロボット講義におけるインタラクションデザイン，教育システム情報学会2022年度第2回研究会，Vol.37，No.2，pp.16-20 (2022.7.16).</p>
-        <p>島崎俊介，菅原歩夢，後藤充裕，柏原昭博：ヒューマノイドロボットを用いたインタラクティブロボット講義システム，Vol.121, No.406, 電子情報通信学会 教育工学研究会，pp.97-102 (2022.3.12).</p>
-        <p>島崎俊介，柏原昭博：小中高生向けプログラミング教室を対象とした対面授業とオンライン授業のケーススタディ，教育システム情報学会 2020年度第6回研究会，Vol.35，No.7，pp.135-140 (2021.3.20).</p>
-        <p>島崎俊介，朝尾直己，宮澤修，安部博文：電気通信大学プログラミング教室におけるオンライン学習システム，教育システム情報学会 2020年度第1回研究会，Vol.35，No.1，pp.7-13 (2020.5.9).</p>
-        <p>島崎俊介，宮澤修，安部博文：電気通信大学プログラミング教室における CPU の仕組みを学ぶ夏季集中講座の実践，教育システム情報学会 2019年度第6回研究会，Vol.34，No.6，pp.29-36 (2020.3.14).</p>
-    <br>    
-    <h3>全国大会</h3>
-        <p>島崎俊介， 柏原昭博:学習者の姿勢・視線センシングデータを用いた状態推定によるインタラクティブロボット講義の評価，教育システム情報学会 第48回全国大会，pp.263-264 (2023.8.31).</p>
-        <p>島崎俊介， 菅原歩夢， 後藤充裕， 柏原昭博:インタラクティブロボット講義における学習者状態推定と注意維持支援，教育システム情報学会 第47回全国大会，pp.155-156 (2022.8.26).</p>
-        <p>島崎俊介，柏原昭博：初等中等教育の教科を題材としたプログラミングコンテストの実践，教育システム情報学会 第46回全国大会，pp.145-146 (2021.9.3).</p>
-        <p>島崎俊介，郭恩孚，宮澤修，安部博文，柏原昭博：生徒のプログラミング学習履歴データを講師間で共有できる小中高生向けプログラミング教室管理システム，教育システム情報学会 第45回全国大会，pp.1-2 (2020.9.2).</p>
-  </section>
-
- <section id="contact">
-    <h2>連絡先</h2>
-    <p>shimazaki at-mark citl.isct.ac.jp</p>
- </section>
-
-  <footer>
-    <p>© 2026 Toshiyuki SHIMAZAKI</p>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
