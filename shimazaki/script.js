@@ -32,8 +32,8 @@
 
     aboutTitle: 'Profile',
     careerTitle: 'Career',
-    career1: 'Associate Professor (Management) and Director of the Office of Advanced Technology Utilization,<br>Center for Innovative Teaching and Learning, Institute of Science Tokyo',
-    career2: 'Technical Specialist, The University of Electro-Communications',
+    career1: 'Associate Professor and Institute Management Officer and Head of Advanced Technology Integration Office,<br>Center for Innovative Teaching and Learning, Institute of Science Tokyo',
+    career2: 'Academic Engineer, The University of Electro-Communications',
     degreeTitle: 'Education',
     degree1: '<span class="degree">Ph.D. in Engineering</span>The University of Electro-Communications<small>Graduate School of Informatics and Engineering (withdrew from the doctoral program after completing coursework)</small>',
     degree2: '<span class="degree">Master of Management of Technology (Professional)</span>Tokyo University of Agriculture and Technology<small>Graduate School of Engineering</small>',
