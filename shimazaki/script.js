@@ -28,14 +28,14 @@
 
     heroName: 'Toshiyuki SHIMAZAKI, Ph.D.',
     heroSub: '島崎 俊介',
-    heroLead: 'Associate Professor and Institute Management Officer and Head of Advanced Technology Integration Office, Center for Innovative Teaching and Learning, Institute of Science Tokyo.<br class="br-pc"> My research and practice focus on learning support robots and educational DX through AI and VR.',
+    heroLead: 'Associate Professor and Institute Management Officer, Head of Advanced Technology Integration Office, Center for Innovative Teaching and Learning, Institute of Science Tokyo.<br class="br-pc"> My research and practice focus on learning support robots and educational DX through AI and VR.',
 
     linkCenter: 'Center for Innovative Teaching and Learning',
     linkOffice: 'Advanced Technology Integration Office',
 
     aboutTitle: 'Profile',
     careerTitle: 'Career',
-    career1: 'Associate Professor and Institute Management Officer and Head of Advanced Technology Integration Office,<br>Center for Innovative Teaching and Learning, Institute of Science Tokyo',
+    career1: 'Associate Professor and Institute Management Officer, Head of Advanced Technology Integration Office,<br>Center for Innovative Teaching and Learning, Institute of Science Tokyo',
     career2: 'Academic Engineer, The University of Electro-Communications',
     degreeTitle: 'Education',
     degree1: '<span class="degree">Ph.D. in Engineering</span>The University of Electro-Communications<small>Graduate School of Informatics and Engineering (withdrew from the doctoral program after completing coursework)</small>',
