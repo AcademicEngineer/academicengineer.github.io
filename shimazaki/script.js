@@ -75,7 +75,7 @@
     strdbDesc: 'The researcher database of Institute of Science Tokyo.',
 
     contactTitle: 'Contact',
-    contactAffil: 'Center for Innovative Teaching and Learning (CITL), Institute of Science Tokyo',
+    contactAffil: 'Toshiyuki SHIMAZAKI, Institute of Science Tokyo',
     toTop: 'Back to top ↑'
   };
 
