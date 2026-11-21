@@ -292,6 +292,14 @@ details.more summary{cursor:pointer;font-weight:700;font-size:14px}
 .authbar .me b{color:var(--ink)}
 @media (max-width:820px){.authbar{padding:12px 14px 0}}
 
+/* わたしの働き方：目標と期待のギャップ */
+details.gapmore{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+details.gapmore summary{cursor:pointer;font-weight:700;font-size:14px;list-style:none;display:flex;align-items:center;gap:6px}
+details.gapmore summary::-webkit-details-marker{display:none}
+details.gapmore summary::before{content:"▸";transition:transform .2s}
+details.gapmore[open] summary::before{transform:rotate(90deg)}
+.gapsum{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 2px}
+
 /* 面談記録・組織分析 */
 details.rec{border-top:1px solid var(--line);padding:4px 0}
 details.rec:first-of-type{border-top:0}
@@ -748,7 +756,7 @@ const KINDS = ["教育","研究","運営","学外連携","人の支援","その�
 /* ================= ナビゲーション ================= */
 /* 画面に出すのは最低限。ほかの機能は「聞く」から案内する */
 const NAV = {
-  staff:[["聞く","ask"],["わたしの働き方","workstyle"],["わたしの学び","selflearn"],["わたしのキャリアとライフ","lifeplan"],["つながり","campus"],["予定","meetings"],["共有設定","sharing"]],
+  staff:[["聞く","ask"],["わたしの働き方","workstyle"],["わたしの学び","selflearn"],["わたしのキャリアとライフ","lifeplan"],["つながり","campus"],["ありがとう","thanks"],["予定","meetings"],["共有設定","sharing"]],
   manager:[["聞く","ask"],["メンバーを支える","team"],["予定","meetings"]],
   admin:[["聞く","ask"],["組織の状態","org"],["取り組みマップ","clusters"]],
   sysadmin:[["ユーザー管理","users"]],
@@ -1324,10 +1332,36 @@ VIEWS.workstyle = () => {
         <div id="reqout"></div></section>
     </div>
   </div>
+  <section class="card" style="margin-bottom:16px">
+    <div class="between"><h2 style="margin:0">目標と期待のギャップ</h2>
+      <label class="small row" style="gap:6px;flex-wrap:nowrap"><span class="muted">すり合わせた相手</span><select class="f" id="wgp" style="width:auto">${S.partners.filter(p=>p.scores).map(p=>`<option value="${p.id}" ${p.id===selPartner?"selected":""}>${esc(p.name)}（${esc(p.kind)}）</option>`).join("")}</select></label></div>
+    <div id="wgbody"></div>
+  </section>
   <section class="card"><h2>担当している業務</h2><div class="scroll"><table><thead><tr><th>業務</th><th>区分</th><th>エフォート</th><th>進み具合</th><th>期限</th></tr></thead><tbody>
     ${m.tasks.map(t=>`<tr><td><b>${esc(t.name)}</b></td><td><span class="tag ${CATC[t.cat][2]}">${t.cat}</span></td><td>${t.eff}%</td>
     <td>${t.prog===null?`<span class="small muted">継続業務</span>`:`<div class="prog"><div class="t"><i style="width:${t.prog}%;background:var(--ok)"></i></div><span class="small">${t.prog}%</span></div>`}</td><td class="small">${t.due}</td></tr>`).join("")}</tbody></table></div></section>`;
   $("#gcats").onchange = e => { const sel = e.target.closest("[data-gp]"); if (!sel) return; g.plan[sel.dataset.gp] = +sel.value; VIEWS.workstyle(); };
+  /* 目標と期待のギャップ：要点を常に見せ、詳細は開いたときだけ */
+  let gapOpen = false;
+  const drawGap = () => {
+    const done = S.partners.filter(p => p.scores); if (!done.length){ $("#wgbody").innerHTML = `<p class="small muted">まだすり合わせの結果がありません。<a href="#goals">目標と期待</a>から依頼できます。</p>`; return; }
+    const p = done.find(x => x.id===$("#wgp").value) || done[0], items = gapFor(p), big = items.filter(i => Math.abs(i.me - i.them) >= 2).sort((a,b) => Math.abs(b.me-b.them) - Math.abs(a.me-a.them));
+    $("#wgbody").innerHTML = `<p class="small" style="margin:8px 0 0">${esc(p.name)}さんとのすり合わせ（${p.date}）で、<b>${big.length}つの項目</b>にズレがあります。${big.some(i => i.me > i.them) ? `「${big.filter(i => i.me > i.them).map(i => i.label.replace(/（.*）/,"")).join("」「")}」は、思っているほど求められていないようです。配分を見直す手がかりになります。` : big.length ? "相手の期待のほうが大きい項目です。どこまで応えるかを話してみましょう。" : ""}</p>
+      <div class="row small" style="margin:6px 0 0"><span class="tag y">本：あなたの受け止め</span><span class="tag b">相：${esc(p.name)}さんの期待</span></div>
+      ${(big.length ? big.slice(0, 2) : items.slice(0, 1)).map(i => trackHTML(i)).join("")}
+      <details class="gapmore" ${gapOpen ? "open" : ""}><summary>詳細を見る（すべての項目・大切にしたいこと・目標）</summary>
+        ${items.map(i => trackHTML(i)).join("")}
+        <div class="grid g2" style="gap:12px;margin-top:12px"><div class="sticky y" style="font-weight:500"><span class="small">あなたが大切にしたいこと</span><br>${esc(S.gapFree.me)}</div>
+          <div class="sticky b" style="font-weight:500"><span class="small">${esc(p.name)}さんが大切にしてほしいこと</span><br>${esc(p.free)}</div></div>
+        <h3 style="margin-top:16px">目標</h3>
+        <div class="grid g3">${S.goals.map(gl => `<div><span class="tag y">${gl.term}</span><p class="small" style="margin:6px 0">${esc(gl.text)}</p>
+          <div class="bar" style="grid-template-columns:1fr 44px;padding:0"><div class="t"><i style="width:${gl.prog}%;background:var(--ok)"></i></div><span class="small">${gl.prog}%</span></div></div>`).join("")}</div>
+        <p class="small" style="margin:12px 0 0"><a href="#goals">目標と期待の画面で、次に話すきっかけを考える</a></p>
+      </details>`;
+    $("#wgbody details").ontoggle = e => { gapOpen = e.target.open; };
+  };
+  drawGap();
+  $("#wgp").onchange = e => { selPartner = e.target.value; drawGap(); };
   $("#gblock") && ($("#gblock").onclick = () => { g.blocked = true; $("#gbox").innerHTML = `<div class="okmsg">来週の火曜と木曜の午前を「研究の学び」の時間として確保しました（デモ）</div>`; });
   $("#req").onclick = () => {
     const k = newCard({type:"slack", kind:"request", to:S.boss.name, text:`田中先生、佐藤です。いまの担当業務を合わせると${L}%で、${dc}が計画より${Math.abs(dd)}ポイント${dd>0?"多く":"少なく"}なっています。研究の時間を確保できるよう、業務の配分について30分ほどご相談させてください。`});
