@@ -300,6 +300,12 @@ details.gapmore summary::before{content:"▸";transition:transform .2s}
 details.gapmore[open] summary::before{transform:rotate(90deg)}
 .gapsum{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 2px}
 
+/* ポップアップ */
+.popwrap{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:rgba(10,15,25,.4);padding:20px}
+.pop{background:var(--surface);color:var(--ink);border-radius:14px;padding:24px 22px 20px;width:100%;max-width:340px;text-align:center;box-shadow:0 20px 50px -20px rgba(0,0,0,.6)}
+.pop-t{font-size:18px;font-weight:900;margin:0 0 8px}
+.pop .btn{min-width:120px}
+
 /* 面談記録・組織分析 */
 details.rec{border-top:1px solid var(--line);padding:4px 0}
 details.rec:first-of-type{border-top:0}
@@ -2509,7 +2515,18 @@ function renderAuth(){
   const sso = /^https:\/\//.test(REG.settings.ssoUrl||"") ? REG.settings.ssoUrl : DEFAULT_SSO;
   bar.innerHTML = ME
     ? `<span class="me">ログイン中：<b>${esc(ME.name)}</b></span><a class="btn sub sm" href="#profile">プロフィール</a>`
-    : `<a class="btn sub sm" href="#register">新規登録</a><a class="btn sm" href="${esc(sso)}" target="_blank" rel="noopener" title="${esc(REG.settings.univ)}の学内SSOでログインします">ログイン</a>`;
+    : `<a class="btn sub sm" href="#register">新規登録</a><button class="btn sm" id="loginbtn" type="button">ログイン</button>`;
+  const lb = $("#loginbtn"); if (lb) lb.onclick = () => popup("ログイン済みです。", "いまのモックでは、学内SSOへの接続を省略しています。", lb);
+}
+/* 小さなポップアップ（ブラウザの alert は表示されない環境があるため、自前で出す） */
+function popup(title, body, returnTo){
+  const wrap = document.createElement("div"); wrap.className = "popwrap";
+  wrap.innerHTML = `<div class="pop" role="dialog" aria-modal="true" aria-labelledby="pop-t"><p id="pop-t" class="pop-t">${esc(title)}</p>${body ? `<p class="small muted" style="margin:0 0 16px">${esc(body)}</p>` : ""}<button class="btn" type="button">OK</button></div>`;
+  const close = () => { wrap.remove(); document.removeEventListener("keydown", onKey); returnTo && returnTo.focus(); };
+  const onKey = e => { if (e.key==="Escape" || e.key==="Enter"){ e.preventDefault(); close(); } };
+  wrap.addEventListener("click", e => { if (e.target===wrap || e.target.closest("button")) close(); });
+  document.addEventListener("keydown", onKey);
+  document.body.append(wrap); wrap.querySelector("button").focus();
 }
 const fmtDate = iso => { const d = new Date(iso); return isNaN(d) ? "" : `${d.getMonth()+1}月${d.getDate()}日`; };
 
@@ -2597,7 +2614,7 @@ VIEWS.users = () => {
         <label class="small muted" for="s-univ">大学名</label><input type="text" id="s-univ" value="${esc(REG.settings.univ)}">
         <p class="small muted" style="margin:12px 0 4px">承認のしかた</p>
         <div class="rolepick">${[["auto","教職員はすぐに使える（上司・人事の立場だけ承認）"],["all","全員を承認してから使える"]].map(([v,l])=>`<label><input type="radio" name="s-appr" value="${v}" ${REG.settings.approval===v?"checked":""}><span>${l}</span></label>`).join("")}</div>
-        <label class="small muted" for="s-sso" style="display:block;margin-top:12px">学内SSOのログインURL（右上の「ログイン」のリンク先）</label><input type="text" id="s-sso" value="${esc(REG.settings.ssoUrl||DEFAULT_SSO)}" placeholder="https://">
+        <label class="small muted" for="s-sso" style="display:block;margin-top:12px">学内SSOのログインURL（本番で右上の「ログイン」から移る先。いまのモックでは使いません）</label><input type="text" id="s-sso" value="${esc(REG.settings.ssoUrl||DEFAULT_SSO)}" placeholder="https://">
         <label class="small muted" for="s-depts" style="display:block;margin-top:12px">所属の選択肢（1行に1つ）</label><textarea id="s-depts" style="min-height:120px">${esc((REG.settings.depts||[]).join("\n"))}</textarea>
         <label class="small muted" for="s-camp" style="display:block;margin-top:8px">キャンパスの選択肢（1行に1つ）</label><textarea id="s-camp" style="min-height:80px">${esc((REG.settings.campuses||[]).join("\n"))}</textarea>
         <div class="row" style="margin-top:10px"><button class="btn" id="s-save">設定を保存する</button><span class="small muted" id="s-msg"></span></div></section>
