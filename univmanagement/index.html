@@ -284,6 +284,14 @@ details.more summary{cursor:pointer;font-weight:700;font-size:14px}
 .stat.ok{background:var(--ok);color:var(--ok-ink)} .stat.wait{background:var(--me);color:var(--me-ink)} .stat.stop{background:var(--line);color:var(--ink)}
 .livebar{font-size:12px;padding:6px 10px;border-radius:8px;background:#2A3550;color:var(--side-ink);margin:0 4px}
 
+/* 右上の新規登録・ログイン */
+.authbar{max-width:1040px;margin:0 auto;padding:14px 28px 0;display:flex;justify-content:flex-end;align-items:center;gap:8px;flex-wrap:wrap}
+.authbar:empty{display:none}
+.authbar .btn{text-decoration:none;display:inline-flex;align-items:center}
+.authbar .me{font-size:13px;color:var(--muted)}
+.authbar .me b{color:var(--ink)}
+@media (max-width:820px){.authbar{padding:12px 14px 0}}
+
 /* 面談記録・組織分析 */
 details.rec{border-top:1px solid var(--line);padding:4px 0}
 details.rec:first-of-type{border-top:0}
@@ -402,12 +410,13 @@ svg.chart .grid line{stroke:var(--line)}
         <option value="staff">教職員（本人）</option>
         <option value="manager">上司・センター長</option>
         <option value="admin">人事・FD/SD担当</option>
+        <option value="sysadmin" id="opt-sys">管理者</option>
       </select>
     </div>
     <nav class="side" id="nav" aria-label="メニュー"></nav>
     <div class="who" id="who"></div>
   </aside>
-  <main id="main"><div class="wrap" id="app"></div></main>
+  <main id="main"><div class="authbar" id="authbar"></div><div class="wrap" id="app"></div></main>
 </div>
 
 <script>
@@ -742,29 +751,32 @@ const NAV = {
   staff:[["聞く","ask"],["わたしの働き方","workstyle"],["わたしの学び","selflearn"],["わたしのキャリアとライフ","lifeplan"],["つながり","campus"],["予定","meetings"],["共有設定","sharing"]],
   manager:[["聞く","ask"],["メンバーを支える","team"],["予定","meetings"]],
   admin:[["聞く","ask"],["組織の状態","org"],["取り組みマップ","clusters"]],
+  sysadmin:[["ユーザー管理","users"]],
 };
 const FEATURES = {
   staff:[["workstyle","わたしの働き方","時間の使い方と成長の時間を、自分で見直す"],["home","ダッシュボード","今週のプレッシャーと全体の様子"],["goals","目標と期待","目標と、上司や同僚との期待のすり合わせ"],["log","成果ログ","日々の記録と、評価シート向けのまとめ"],["career","キャリアと任期","任期までの道のりと次の一歩"],["lifeplan","わたしのキャリアとライフ","キャリアの希望、家族やライフプラン、業務の悩みを、書きたい範囲だけ"],["campus","つながり","同じような状況の人、経験を相談できる人、共同研究の相手"],["network","強みと学外のつながり","強み・手放したいこと・他大学の人"],["thanks","ありがとう","お礼を送り合う"],["selflearn","わたしの学び","日々の自己研修と、組織のどこを補えそうか"],["learn","学び（FD/SD）","おすすめの研修"],["coach","キャリア相談","AIコーチと専門コンサルタント"],["meetings","予定","打ち合わせと日程調整"],["sharing","共有設定","誰に何を見せるか、誰が見たか、Slack連携"]],
   manager:[["team","メンバーを支える","本人が共有した業務・エフォート・任期"],["prep","面談の準備","佐藤さんとの面談の準備"],["handover","引き継ぎの準備","センター長交代の申し送り"],["selflearn","学びの記録","自分の学びを記録して、チームに見せる"],["learn","学び（FD/SD）","管理職向けの研修"],["meetings","予定","打ち合わせと日程調整"]],
   admin:[["org","組織の状態","プレッシャー・ズレ・風通し"],["records","面談記録","共有に同意された面談記録"],["insights","組織分析と提案","チャートと打ち手、戦略の提案"],["clusters","取り組みマップ","似た取り組みのグループと研修の叩き台"],["transitions","任期と交代","任期付き教員と部局長の交代"],["programs","研修・プログラム","研修と叩き台の一覧"],["learnmap","学びと組織のニーズ","自己研修が組織のどこを補っているか"],["cycle-settings","導入・運用設定","導入範囲・職種・評価サイクル"],["meetings","予定","打ち合わせと日程調整"]],
 };
-const ROLE_HOME = {staff:"ask", manager:"ask", admin:"ask"};
+const ROLE_HOME = {staff:"ask", manager:"ask", admin:"ask", sysadmin:"users"};
+FEATURES.sysadmin = [["users","ユーザー管理","登録の承認・立場・利用の停止・登録の設定"]];
 const VIEW_ROLE = {};
 Object.entries(FEATURES).forEach(([r, items]) => items.forEach(([v]) => { if (!VIEW_ROLE[v]) VIEW_ROLE[v] = r; }));
-const inRole = (r, v) => v==="ask" || FEATURES[r].some(([x]) => x===v) || (r==="manager" && v.startsWith("member-"));
+const inRole = (r, v) => (v==="ask" && r!=="sysadmin") || FEATURES[r].some(([x]) => x===v) || (r==="manager" && v.startsWith("member-"));
 let role = "staff";
 
 function renderNav(view){
-  $("#nav").innerHTML = `<div class="grp">${role==="staff"?"わたし":role==="manager"?"マネジメント":"組織"}</div>` +
-    NAV[role].map(([label, v]) => `<a href="#${v}" ${v===view?'aria-current="page"':""}><span>${label}</span></a>`).join("") +
-    (SYSADMIN ? `<div class="grp">管理</div><a href="#users" ${view==="users"?'aria-current="page"':""}><span>ユーザー管理</span>${pendingCount()?`<span class="dot">${pendingCount()}</span>`:""}</a>` : "");
+  $("#nav").innerHTML = `<div class="grp">${role==="staff"?"わたし":role==="manager"?"マネジメント":role==="admin"?"組織":"管理"}</div>` +
+    NAV[role].map(([label, v]) => `<a href="#${v}" ${v===view?'aria-current="page"':""}><span>${label}</span>${v==="users" && pendingCount() ? `<span class="dot" title="承認待ち">${pendingCount()}</span>` : ""}</a>`).join("");
   document.querySelector(".rolebox").hidden = LOCKED();
+  $("#opt-sys").hidden = $("#opt-sys").disabled = !SYSADMIN;
+  renderAuth();
   document.querySelector(".rolebox label").textContent = LIVE ? "表示する立場（管理者の確認用）" : "表示する立場";
   if (ME){ $("#who").innerHTML = `<b>${esc(ME.name)}</b><span>${esc(ME.dept)}・${esc(ME.title)}</span><br><a href="#profile">プロフィールと登録</a>`; return; }
-  $("#who").innerHTML = role==="staff" ? `<b>${S.me.name}</b><span>${S.me.dept}・${S.me.title}</span><br><a href="#register">登録画面を見る（デモ）</a>` :
+  $("#who").innerHTML = role==="staff" ? `<b>${S.me.name}</b><span>${S.me.dept}・${S.me.title}</span>` : role==="sysadmin" ? `<b>システム管理者</b><span>${esc(REG.settings.univ)}</span>` :
     role==="manager" ? `<b>${S.boss.name}</b><span>教育開発センター・${S.boss.title}</span>` : `<b>人事課 FD/SD担当</b><span>〇〇大学</span>`;
 }
-const SPECIAL = ["register","profile","pending","users"];
+const SPECIAL = ["register","profile","pending"];
 function route(){
   let v = location.hash.replace(/^#/,"") || ROLE_HOME[role];
   if (LIVE && !ME && v!=="register"){ history.replaceState(null, "", "#register"); v = "register"; }
@@ -776,7 +788,7 @@ function route(){
   if (mem && !LOCKED()){ role = "manager"; $("#role").value = role; }
   if (mem && role==="manager"){ renderNav("team"); VIEWS.member(mem); afterRoute(); return; }
   if (v!=="ask" && !VIEW_ROLE[v]) v = ROLE_HOME[role];
-  if (!inRole(role, v)){ role = VIEW_ROLE[v]; $("#role").value = role; }
+  if (!inRole(role, v)){ const r = VIEW_ROLE[v] || (v==="ask" ? "staff" : null); if (r && (r!=="sysadmin" || SYSADMIN)){ role = r; $("#role").value = role; } else v = ROLE_HOME[role]; }
   renderNav(v);
   (VIEWS[v] || VIEWS.home)();
   afterRoute();
@@ -800,7 +812,7 @@ function labelTables(){
 }
 let labelPending = false;
 new MutationObserver(() => { if (labelPending) return; labelPending = true; queueMicrotask(() => { labelPending = false; labelTables(); }); }).observe(app, {childList:true, subtree:true});
-$("#role").onchange = e => { role = e.target.value; if (location.hash === "#ask") route(); else location.hash = "ask"; };
+$("#role").onchange = e => { role = e.target.value; const h = ROLE_HOME[role]; if (location.hash === "#" + h) route(); else location.hash = h; };
 window.addEventListener("hashchange", route);
 
 const head = (title, sub, right="") => `<div class="pagehead"><div><h1>${title}</h1>${sub?`<p class="muted" style="margin:6px 0 0">${sub}</p>`:""}</div>${right}</div>`;
@@ -1109,7 +1121,7 @@ function crossHTML(){
 }
 
 /* --- 聞く：会話から機能を呼び出す --- */
-const chats = {staff:[], manager:[], admin:[]};
+const chats = {staff:[], manager:[], admin:[], sysadmin:[]};
 let agentBusy = false, agentCtl = null, toolsOK = null;
 const SUGG = {
   staff:["工学部キャンパスで学習データを研究している人を探して","農学部や医学部の人と共同研究できるテーマはある？","中村さんと来週30分の打ち合わせを入れて","研究の時間をもっと確保したい","任期付きから無期になった先輩に話を聞きたい","同じような状況の人とつながりたい"],
@@ -2457,6 +2469,14 @@ function demoMembers(){
   add("d7", {name:"松井 晴美", dept:"研究推進室", title:"URA", job:"URA", campus:"本部キャンパス", field:"研究支援", project:"若手研究者の申請支援", themes:["外部資金"], requested:"staff"}, {role:"staff", status:"suspended"});
   REG.audit = [{text:"田中 誠さんを「部局長・センター長など」として承認しました", at:"2026-11-02T10:00:00Z", by:"管理者"},{text:"松井 晴美さんの利用を停止しました（異動のため）", at:"2026-11-10T15:00:00Z", by:"管理者"}];
 }
+const DEFAULT_SSO = "https://sso.example-univ.ac.jp/idp/profile/SAML2/Redirect/SSO";
+function renderAuth(){
+  const bar = $("#authbar"); if (!bar) return;
+  const sso = /^https:\/\//.test(REG.settings.ssoUrl||"") ? REG.settings.ssoUrl : DEFAULT_SSO;
+  bar.innerHTML = ME
+    ? `<span class="me">ログイン中：<b>${esc(ME.name)}</b></span><a class="btn sub sm" href="#profile">プロフィール</a>`
+    : `<a class="btn sub sm" href="#register">新規登録</a><a class="btn sm" href="${esc(sso)}" target="_blank" rel="noopener" title="${esc(REG.settings.univ)}の学内SSOでログインします">ログイン</a>`;
+}
 const fmtDate = iso => { const d = new Date(iso); return isNaN(d) ? "" : `${d.getMonth()+1}月${d.getDate()}日`; };
 
 function profileForm(m, isNew){
@@ -2502,7 +2522,7 @@ function applyIdentity(){
   S.myProfile = {campus: ME.campus, field: ME.field || S.myProfile.field, job: ME.job.startsWith("教員") ? "教員" : ME.job};
 }
 VIEWS.register = () => {
-  if (LIVE && ME){ location.hash = "ask"; return; }
+  if (LIVE && ME){ location.hash = ROLE_HOME[role]; return; }
   app.innerHTML = head(`${esc(REG.settings.univ)}の「ともに」へようこそ`, "はじめに、あなたのことを少しだけ教えてください。あとからいつでも変えられます。") + promiseHTML("staff") + `
     <section class="card">${profileForm({name: REG.prefillName || "", campus:(REG.settings.campuses||[])[0], dept:(REG.settings.depts||[])[0], job:"教員", requested:"staff"}, true)}</section>
     ${!LIVE ? `<p class="small muted" style="margin-top:10px">デモのため、登録した内容はこのページを閉じると消えます。</p>` : ""}`;
@@ -2543,6 +2563,7 @@ VIEWS.users = () => {
         <label class="small muted" for="s-univ">大学名</label><input type="text" id="s-univ" value="${esc(REG.settings.univ)}">
         <p class="small muted" style="margin:12px 0 4px">承認のしかた</p>
         <div class="rolepick">${[["auto","教職員はすぐに使える（上司・人事の立場だけ承認）"],["all","全員を承認してから使える"]].map(([v,l])=>`<label><input type="radio" name="s-appr" value="${v}" ${REG.settings.approval===v?"checked":""}><span>${l}</span></label>`).join("")}</div>
+        <label class="small muted" for="s-sso" style="display:block;margin-top:12px">学内SSOのログインURL（右上の「ログイン」のリンク先）</label><input type="text" id="s-sso" value="${esc(REG.settings.ssoUrl||DEFAULT_SSO)}" placeholder="https://">
         <label class="small muted" for="s-depts" style="display:block;margin-top:12px">所属の選択肢（1行に1つ）</label><textarea id="s-depts" style="min-height:120px">${esc((REG.settings.depts||[]).join("\n"))}</textarea>
         <label class="small muted" for="s-camp" style="display:block;margin-top:8px">キャンパスの選択肢（1行に1つ）</label><textarea id="s-camp" style="min-height:80px">${esc((REG.settings.campuses||[]).join("\n"))}</textarea>
         <div class="row" style="margin-top:10px"><button class="btn" id="s-save">設定を保存する</button><span class="small muted" id="s-msg"></span></div></section>
@@ -2550,7 +2571,8 @@ VIEWS.users = () => {
         <li>このページの共有メニューから、教職員を「投稿者（Contributor）」として招待します。学内向けに、組織内で共有することもできます。</li>
         <li>招待された人がページを開くと、登録画面が表示されます。</li>
         <li>上司や人事の立場を希望した人は、この画面の「承認を待っている人」に出ます。</li>
-        <li>ユーザー管理を任せたい人は、共有メニューで「編集者（Editor）」にしてください。</li></ol>
+        <li>ユーザー管理を任せたい人は、共有メニューで「編集者（Editor）」にしてください。左上の「表示する立場」で「管理者」を選ぶと、この画面が開きます。</li>
+        <li>本番では、右上の「ログイン」から学内SSOで本人確認をしてから使う形を想定しています。</li></ol>
         <h2 style="margin-top:18px">操作の記録</h2><ul class="list small" id="uaud"></ul></section>
     </div></div>`;
   const draw = () => {
@@ -2586,7 +2608,8 @@ VIEWS.users = () => {
   $("#s-save").onclick = async () => { try {
       const appr = app.querySelector("input[name='s-appr']:checked").value;
       if (appr==="all" && REG.settings.approval!=="all") for (const id of Object.keys(REG.members)) if (!(REG.roles[id]||{}).status) await store.setRole(id, {role:"staff", status:"approved"});
-      await store.saveSettings({univ:$("#s-univ").value.trim()||REG.settings.univ, approval:app.querySelector("input[name='s-appr']:checked").value,
+      const sso = $("#s-sso").value.trim(); if (sso && !/^https:\/\//.test(sso)){ $("#s-msg").textContent = "SSOのURLは https:// から始めてください。"; return; }
+      await store.saveSettings({ssoUrl: sso || DEFAULT_SSO, univ:$("#s-univ").value.trim()||REG.settings.univ, approval:app.querySelector("input[name='s-appr']:checked").value,
       depts:$("#s-depts").value.split("\n").map(x=>x.trim()).filter(Boolean), campuses:$("#s-camp").value.split("\n").map(x=>x.trim()).filter(Boolean)});
       await store.audit("登録の設定を変更しました"); $("#s-msg").textContent = "保存しました。"; draw(); } catch(e){ $("#s-msg").textContent = "保存できませんでした。"; } };
 };
