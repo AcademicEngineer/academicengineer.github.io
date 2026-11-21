@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>ともに｜教職員のための成長支援プラットフォーム</title>
+<title>ともに ver1.0｜教職員のための成長支援プラットフォーム</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -306,6 +306,10 @@ details.gapmore[open] summary::before{transform:rotate(90deg)}
 .pop-t{font-size:18px;font-weight:900;margin:0 0 8px}
 .pop .btn{min-width:120px}
 
+.guide{border-left:4px solid var(--them);padding:14px 16px;margin-bottom:16px}
+.guide ol{margin:6px 0 0;padding-left:1.3em}
+.guide li{margin:3px 0}
+
 /* 面談記録・組織分析 */
 details.rec{border-top:1px solid var(--line);padding:4px 0}
 details.rec:first-of-type{border-top:0}
@@ -417,7 +421,7 @@ svg.chart .grid line{stroke:var(--line)}
 <body>
 <div class="shell">
   <aside>
-    <div class="brand"><i></i><i></i><span>ともに<small>教職員の成長支援プラットフォーム</small></span></div>
+    <div class="brand"><i></i><i></i><span>ともに<small>教職員の成長支援プラットフォーム ver1.0</small></span></div>
     <div class="rolebox">
       <label for="role">表示する立場</label>
       <select id="role">
@@ -763,25 +767,26 @@ const KINDS = ["教育","研究","運営","学外連携","人の支援","その�
 /* 画面に出すのは最低限。ほかの機能は「聞く」から案内する */
 const NAV = {
   staff:[["聞く","ask"],["わたしの働き方","workstyle"],["わたしの学び","selflearn"],["わたしのキャリアとライフ","lifeplan"],["つながり","campus"],["ありがとう","thanks"],["予定","meetings"],["共有設定","sharing"]],
-  manager:[["聞く","ask"],["メンバーを支える","team"],["予定","meetings"]],
-  admin:[["聞く","ask"],["組織の状態","org"],["取り組みマップ","clusters"]],
+  manager:[["聞く","ask"],["メンバーを支える","team"],["面談の準備","prep"],["引き継ぎの準備","handover"],["学びの記録","selflearn"],["研修を探す（FD/SD）","learn"],["予定","meetings"]],
+  admin:[["聞く","ask"],["1 状態を見る",null],["組織の状態","org"],["面談記録","records"],["任期と交代","transitions"],["2 原因を探る",null],["組織の分析","insights"],["取り組みマップ","clusters"],["学びと組織のニーズ","learnmap"],["3 打ち手を決める",null],["提案と打ち手","proposals"],["研修・プログラム","programs"],["4 運用する",null],["予定","meetings"],["導入・運用設定","cycle-settings"]],
   sysadmin:[["ユーザー管理","users"]],
 };
 const FEATURES = {
-  staff:[["workstyle","わたしの働き方","時間の使い方と成長の時間を、自分で見直す"],["home","ダッシュボード","今週のプレッシャーと全体の様子"],["goals","目標と期待","目標と、上司や同僚との期待のすり合わせ"],["log","成果ログ","日々の記録と、評価シート向けのまとめ"],["career","キャリアと任期","任期までの道のりと次の一歩"],["lifeplan","わたしのキャリアとライフ","キャリアの希望、家族やライフプラン、業務の悩みを、書きたい範囲だけ"],["campus","つながり","同じような状況の人、経験を相談できる人、共同研究の相手"],["network","強みと学外のつながり","強み・手放したいこと・他大学の人"],["thanks","ありがとう","お礼を送り合う"],["selflearn","わたしの学び","日々の自己研修と、組織のどこを補えそうか"],["learn","学び（FD/SD）","おすすめの研修"],["coach","キャリア相談","AIコーチと専門コンサルタント"],["meetings","予定","打ち合わせと日程調整"],["sharing","共有設定","誰に何を見せるか、誰が見たか、Slack連携"]],
-  manager:[["team","メンバーを支える","本人が共有した業務・エフォート・任期"],["prep","面談の準備","佐藤さんとの面談の準備"],["handover","引き継ぎの準備","センター長交代の申し送り"],["selflearn","学びの記録","自分の学びを記録して、チームに見せる"],["learn","学び（FD/SD）","管理職向けの研修"],["meetings","予定","打ち合わせと日程調整"]],
-  admin:[["org","組織の状態","プレッシャー・ズレ・風通し"],["records","面談記録","共有に同意された面談記録"],["insights","組織分析と提案","チャートと打ち手、戦略の提案"],["clusters","取り組みマップ","似た取り組みのグループと研修の叩き台"],["transitions","任期と交代","任期付き教員と部局長の交代"],["programs","研修・プログラム","研修と叩き台の一覧"],["learnmap","学びと組織のニーズ","自己研修が組織のどこを補っているか"],["cycle-settings","導入・運用設定","導入範囲・職種・評価サイクル"],["meetings","予定","打ち合わせと日程調整"]],
+  staff:[["workstyle","わたしの働き方","時間の使い方と成長の時間を、自分で見直す"],["goals","目標と期待","目標と、上司・同僚・学外メンターとの期待のすり合わせ"],["log","成果ログ","業務の成果を記録して、評価シート向けにまとめる"],["career","任期までの道のり","任期の節目と、次のポストへの準備"],["lifeplan","わたしのキャリアとライフ","キャリアの希望、家族やライフプラン、業務の悩みを、書きたい範囲だけ"],["campus","つながり","同じような状況の人、経験を相談できる人、共同研究の相手"],["network","強みと学外の人","自分の強み・手放したいこと・他大学の人"],["thanks","ありがとう","お礼を送り合う"],["selflearn","わたしの学び","日々の自己研修と、組織のどこを補えそうか"],["learn","研修を探す（FD/SD）","学内で開かれる研修に申し込む"],["coach","専門家に相談","キャリアコンサルタントの予約とAIコーチ"],["meetings","予定","打ち合わせと日程調整"],["sharing","共有設定","誰に何を見せるか、誰が見たか、Slack連携"]],
+  manager:[["team","メンバーを支える","本人が共有した業務・エフォート・任期"],["prep","面談の準備","佐藤さんとの面談の準備"],["handover","引き継ぎの準備","センター長交代の申し送り"],["selflearn","学びの記録","自分の学びを記録して、チームに見せる"],["learn","研修を探す（FD/SD）","管理職向けの研修に申し込む"],["meetings","予定","打ち合わせと日程調整"]],
+  admin:[["org","組織の状態","いまの負荷・ズレ・風通しを部局ごとに見る"],["records","面談記録","共有に同意された面談の中身と約束"],["transitions","任期と交代","任期付き教員と部局長の交代"],["insights","組織の分析","負荷とズレの関係、推移、話題、エフォート、職種"],["clusters","取り組みマップ","部局をこえて似た取り組みのグループ"],["learnmap","学びと組織のニーズ","自己研修が組織のどこを補っているか"],["proposals","提案と打ち手","優先度つきの研修案と、AIによる戦略の提案"],["programs","研修・プログラム","研修と叩き台の一覧"],["meetings","予定","打ち合わせと日程調整"],["cycle-settings","導入・運用設定","導入範囲・職種・評価サイクル"]],
 };
 const ROLE_HOME = {staff:"ask", manager:"ask", admin:"ask", sysadmin:"users"};
 FEATURES.sysadmin = [["users","ユーザー管理","登録の承認・立場・利用の停止・登録の設定"]];
 const VIEW_ROLE = {};
 Object.entries(FEATURES).forEach(([r, items]) => items.forEach(([v]) => { if (!VIEW_ROLE[v]) VIEW_ROLE[v] = r; }));
+const moreFeatures = () => FEATURES[role].filter(([v]) => !NAV[role].some(([,x]) => x===v));
 const inRole = (r, v) => (v==="ask" && r!=="sysadmin") || FEATURES[r].some(([x]) => x===v) || (r==="manager" && v.startsWith("member-"));
 let role = "staff";
 
 function renderNav(view){
-  $("#nav").innerHTML = `<div class="grp">${role==="staff"?"わたし":role==="manager"?"マネジメント":role==="admin"?"組織":"管理"}</div>` +
-    NAV[role].map(([label, v]) => `<a href="#${v}" ${v===view?'aria-current="page"':""}><span>${label}</span>${v==="users" && pendingCount() ? `<span class="dot" title="承認待ち">${pendingCount()}</span>` : ""}</a>`).join("");
+  $("#nav").innerHTML = `<div class="grp">${role==="staff"?"わたし":role==="manager"?"マネジメント":role==="admin"?"人事・FD/SD":"管理"}</div>` +
+    NAV[role].map(([label, v]) => v===null ? `<div class="grp">${label}</div>` : `<a href="#${v}" ${v===view?'aria-current="page"':""}><span>${label}</span>${v==="users" && pendingCount() ? `<span class="dot" title="承認待ち">${pendingCount()}</span>` : ""}</a>`).join("");
   document.querySelector(".rolebox").hidden = LOCKED();
   $("#opt-sys").hidden = $("#opt-sys").disabled = !SYSADMIN;
   renderAuth();
@@ -981,7 +986,7 @@ VIEWS.career = () => {
   const mi = ym => { const [y,m] = ym.split("-").map(Number); return (y-2025)*12 + (m-4); };
   const pos = ym => Math.min(100, Math.max(0, mi(ym)/35*100));
   const stTagC = st => st==="遅れ気味" ? `<span class="tag y">遅れ気味</span>` : st==="期限" ? `<span class="tag p">期限</span>` : `<span class="tag">${st}</span>`;
-  app.innerHTML = head("キャリアと任期", "任期のある働き方を、ひとりで抱えない。次の一歩に向けて、いまから少しずつ準備します。") + `
+  app.innerHTML = head("任期までの道のり", "任期のある働き方を、ひとりで抱えない。次の一歩に向けて、いまから少しずつ準備します。") + `
   <section class="card" style="margin-bottom:16px">
     <div class="between" style="align-items:flex-end">
       <div><span class="small muted">任期満了まで</span><div class="termbig">${n}<span style="font-size:18px">か月</span></div><span class="small muted">${S.term.type}・${S.term.label}（2025年4月着任）</span></div>
@@ -1202,7 +1207,7 @@ function buildTools(msg){
 function localAnswer(text, msg){
   const add = k => msg.cards.push(k.id);
   const p = S.campus.find(c => text.includes(c.name.split(" ")[0])) || [...S.team, {name:"田中 誠"}, {name:"清水 和夫"}].find(m => text.includes(m.name.split(" ")[0]));
-  const fmap = [[/働き方|エフォート|負荷|時間の使い方|成長の時間/,"workstyle"],[/学び|自己研修|勉強|リカレント|読んだ|講座/,"selflearn"],[/学び|自己研修|リカレント|学内講師/,"learnmap"],[/任期|キャリア/,"career"],[/成果|ログ/,"log"],[/ありがとう|お礼/,"thanks"],[/共有|Slack連携|プライバシー/,"sharing"],[/期待|すり合わせ|目標/,"goals"],[/研修|FD|SD/,"learn"],[/相談/,"coach"],[/強み|学外/,"network"],[/面談の準備/,"prep"],[/引き継ぎ/,"handover"],[/チーム/,"team"],[/面談記録/,"records"],[/叩き台|取り組みマップ|グループ/,"clusters"],[/交代/,"transitions"],[/分析|提案/,"insights"],[/導入|設定/,"cycle-settings"]];
+  const fmap = [[/働き方|エフォート|負荷|時間の使い方|成長の時間/,"workstyle"],[/学び|自己研修|勉強|リカレント|読んだ|講座/,"selflearn"],[/学び|自己研修|リカレント|学内講師/,"learnmap"],[/任期|キャリア/,"career"],[/成果|ログ/,"log"],[/ありがとう|お礼/,"thanks"],[/共有|Slack連携|プライバシー/,"sharing"],[/期待|すり合わせ|目標/,"goals"],[/研修|FD|SD/,"learn"],[/相談/,"coach"],[/強み|学外/,"network"],[/面談の準備/,"prep"],[/引き継ぎ/,"handover"],[/チーム/,"team"],[/面談記録/,"records"],[/叩き台|取り組みマップ|グループ/,"clusters"],[/交代/,"transitions"],[/提案|打ち手|戦略/,"proposals"],[/分析/,"insights"],[/導入|設定/,"cycle-settings"]];
   if (/日程|打ち合わせ|ミーティング|会議|予定を入れ|調整/.test(text) && p){ add(slotCard([p.name], /60|1時間/.test(text)?60:30)); msg.content = `${p.name}さんとの空き時間を探しました。都合のよい時間を選んでください。`; return; }
   const mins = text.match(/(\d+)\s*(分|時間)/);
   if (role!=="admin" && mins && /学|読|受講|講座|勉強|研修|研究会/.test(text)){
@@ -1272,19 +1277,30 @@ function todayHTML(){
       <a class="sticky p" href="#transitions"><span class="small">任期付き教員の支援</span><b>未対応 4人</b><span class="small">任期終了が近い人から</span></a>
       <a class="sticky y" href="#clusters"><span class="small">取り組みマップ</span><b>つなぐと良いグループ ${clusterList().length}件</b><span class="small">研修の叩き台にできます</span></a></div>`;
 }
+const GUIDE_KEY = "tomoni-guide-done-v1";
+const guideDone = () => { try { return localStorage.getItem(GUIDE_KEY)==="1"; } catch(e){ return false; } };
+function guideHTML(){
+  if (role!=="staff" || guideDone()) return "";
+  return `<section class="card guide" id="guide"><div class="between"><h2 style="margin:0">はじめての方へ：3つだけ</h2><button class="btn sub sm" id="gclose">わかった</button></div><ol class="small">
+    <li><a href="#workstyle">わたしの働き方</a>で、いまの配分と「成長のための時間」を確かめる</li>
+    <li><a href="#selflearn">わたしの学び</a>に、今日の学びをひとつ記録する（ここに書いても記録できます）</li>
+    <li><a href="#campus">つながり</a>で、相談できる人や同じような状況の人を見てみる</li></ol>
+    <p class="small muted" style="margin:6px 0 0">誰に何を見せるかは<a href="#sharing">共有設定</a>で決められます。</p></section>`;
+}
 VIEWS.ask = () => {
   const hi = role==="staff" ? `こんにちは、${esc((ME ? ME.name : S.me.name).split(" ").pop())}さん` : role==="manager" ? `こんにちは、${S.boss.name.split(" ")[0]}センター長` : "こんにちは";
-  app.innerHTML = head(hi, "やりたいことを書いてください。人探し、共同研究の相手、日程調整、Slackでの連絡まで、ともにが代わりに進めます。") + (role==="staff" ? `<p class="small muted" style="margin:-4px 0 14px">あなたの記録はあなたのものです。評価には使わず、誰が見たかはいつでも<a href="#sharing">確認できます</a>。</p>` : "") + (LIVE ? `<p class="small muted" style="margin:-6px 0 14px">登録情報と、つながりに出るほかの登録者は実際のデータです。それ以外の画面は、いまはサンプルで表示しています。</p>` : "") + todayHTML() + `
+  app.innerHTML = head(hi, "やりたいことを書いてください。人探し、共同研究の相手、日程調整、Slackでの連絡まで、ともにが代わりに進めます。") + (role==="staff" ? `<p class="small muted" style="margin:-4px 0 14px">あなたの記録はあなたのものです。評価には使わず、誰が見たかはいつでも<a href="#sharing">確認できます</a>。</p>` : "") + guideHTML() + (LIVE ? `<p class="small muted" style="margin:-6px 0 14px">登録情報と、つながりに出るほかの登録者は実際のデータです。それ以外の画面は、いまはサンプルで表示しています。</p>` : "") + todayHTML() + `
   <section class="card">
     <div class="chat2" id="chat2" aria-live="polite"></div>
     <div class="askbar"><textarea id="q" rows="2" placeholder="${esc(SUGG[role][0])}" aria-label="ともにへのお願い"></textarea><button class="btn" id="send">送る</button></div>
     <div class="chips sugg" id="sugg">${SUGG[role].map(t=>`<button class="chip" data-s="${esc(t)}">${esc(t)}</button>`).join("")}</div>
-    <details class="more"><summary>ほかにできること</summary><div class="featgrid">${FEATURES[role].map(([v,l,d])=>`<a class="feat" href="#${v}" style="text-decoration:none"><b>${l}</b>${d}</a>`).join("")}</div></details>
+    ${!moreFeatures().length ? "" : `<details class="more"><summary>ほかにできること</summary><div class="featgrid">${moreFeatures().map(([v,l,d])=>`<a class="feat" href="#${v}" style="text-decoration:none"><b>${l}</b>${d}</a>`).join("")}</div></details>`}
   </section>`;
   drawChat();
   const send = () => { if (agentBusy){ agentCtl?.abort(); return; } const q = $("#q"); const t = q.value; q.value = ""; askAgent(t); };
   $("#send").onclick = send;
   $("#q").onkeydown = e => { if (e.key==="Enter" && (e.metaKey || e.ctrlKey)){ e.preventDefault(); send(); } };
+  $("#gclose") && ($("#gclose").onclick = () => { try { localStorage.setItem(GUIDE_KEY, "1"); } catch(e){} $("#guide").remove(); });
   $("#sugg").onclick = e => { const b = e.target.closest("[data-s]"); if (b) askAgent(b.dataset.s); };
   app.querySelector(".pulsemini")?.addEventListener("click", e => { const b = e.target.closest("[data-p]"); if (!b) return; S.pulse.value = +b.dataset.p; app.querySelectorAll(".pulsemini [data-p]").forEach(x => x.setAttribute("aria-pressed", x===b)); });
 };
@@ -1932,7 +1948,7 @@ ${S.logs.map(l=>`- ${l.date}［${l.kind}］${l.text}`).join("\n")}
 
 /* --- 本人：強みとつながり --- */
 VIEWS.network = () => {
-  app.innerHTML = head("強みとつながり", "得意なことを差し出し、手放したいことを誰かに頼る。学内外の人と、補い合える関係をつくります。") + `
+  app.innerHTML = head("強みと学外の人", "得意なことを差し出し、手放したいことを誰かに頼る。学内外の人と、補い合える関係をつくります。") + `
   <div class="grid g2" style="margin-bottom:16px">
     <section class="card"><h2>あなたの強み</h2><div class="grid g3" style="gap:10px">${S.strengths.map(s=>`<div class="sticky y">${s}</div>`).join("")}</div>
       <p class="small muted" style="margin-top:12px">成果ログと周りからのフィードバックをもとに更新されます。</p></section>
@@ -1973,7 +1989,7 @@ VIEWS.network = () => {
 /* --- 学び --- */
 VIEWS.learn = () => {
   const list = S.programs.filter(p => role==="manager" ? true : !p.mgr);
-  app.innerHTML = head("学び（FD/SD）", role==="staff" ? "あなたの目標やいまの悩みに合わせて、研修をおすすめしています。" : "チームの状況に合わせた研修です。") + `
+  app.innerHTML = head("研修を探す（FD/SD）", role==="staff" ? "あなたの目標やいまの悩みに合わせて、研修をおすすめしています。" : "チームの状況に合わせた研修です。") + `
   <section class="card"><ul class="list" id="pl"></ul></section>`;
   const draw = () => $("#pl").innerHTML = list.map(p=>`<li class="between"><div><span class="tag ${p.type==="FD"?"y":"b"}">${p.type}</span> <b>${p.title}</b><br><span class="small muted">${p.when}・${p.why}</span></div>
     <button class="btn ${p.st?"sub":""} sm" data-t="${esc(p.title)}" ${p.st?"disabled":""}>${p.st||"申し込む"}</button></li>`).join("");
@@ -1984,7 +2000,7 @@ VIEWS.learn = () => {
 /* --- キャリア相談 --- */
 const chat = [];
 VIEWS.coach = () => {
-  app.innerHTML = head("キャリア相談", "まずはAIコーチに気軽に。じっくり話したいときは専門のキャリアコンサルタントにつなぎます。") + `
+  app.innerHTML = head("専門家に相談", "まずはAIコーチに気軽に。じっくり話したいときは専門のキャリアコンサルタントにつなぎます。") + `
   <div class="grid g21">
     <section class="card"><h2>AIコーチ</h2>
       <div class="chat" id="chat"></div>
@@ -2234,10 +2250,7 @@ VIEWS.org = () => {
   <section class="card" style="margin-bottom:16px">${crossHTML()}
     <div class="row" style="gap:6px;margin-top:10px"><span class="small muted">キャンパスをまたぐ話題：</span>${S.org.cross.topics.map(([t,v])=>`<span class="tag b">${t} ${v}</span>`).join("")}</div>
     <p class="small muted" style="margin-top:8px">Slackの公開チャンネルの投稿数だけを集計しています。個人の発言内容は集計に使っていません。</p></section>
-  <div class="grid g2">
-    <section class="card"><h2>部局ごとのプレッシャー（平均・5段階）</h2>
-      ${o.depts.map(d=>`<div class="bar"><span>${d.name}</span><div class="t"><i style="width:${d.pulse/5*100}%;background:${color(d.pulse)}"></i></div><b>${d.pulse.toFixed(1)}</b></div>`).join("")}
-      <p class="small muted" style="margin-top:8px">附属病院は回答率47%のため参考値です。</p></section>
+  <div class="grid">
     <section class="card"><h2>期待のズレが大きい項目（全学平均）</h2>
       ${o.gapByItem.map(([l,v])=>`<div class="bar"><span>${l}</span><div class="t"><i style="width:${v/4*100}%;background:var(--gap)"></i></div><b>${v.toFixed(1)}</b></div>`).join("")}
       <p class="small muted" style="margin-top:8px">「研究の成果」と「時間軸」で、本人が上司の期待より重く受け止める傾向があります。</p></section>
@@ -2249,19 +2262,9 @@ VIEWS.org = () => {
     <section class="card"><h2>プレッシャーの出どころ</h2>
       ${o.causes.map(([l,v])=>`<div class="bar" style="grid-template-columns:100px 1fr 40px"><span>${l}</span><div class="t"><i style="width:${v}%;background:var(--them)"></i></div><b>${v}%</b></div>`).join("")}</section>
   </div>
-  <section class="card" style="margin-top:16px"><h2>組織への提言を作る</h2>
-    <p class="small muted">集計データから、FD/SD計画や部局長会議で使える提言の下書きをAIが作ります。運営会社のコンサルタントがレビューすることもできます。</p>
-    <button class="btn" id="ai">提言の下書きを作る</button><div id="aiOut"></div></section>`;
-  $("#ai").onclick = () => askAI(`あなたは大学の人材育成（FD/SD）に詳しい組織コンサルタントです。教職員向け成長支援プラットフォームの匿名集計データです。
-部局別（プレッシャー平均5段階 / すり合わせ回答率 / 本人と上司の期待のズレ平均）：
-${o.depts.map(d=>`- ${d.name}：${d.pulse} / ${d.resp}% / ${d.gap}`).join("\n")}
-ズレの大きい項目（全学平均）：${o.gapByItem.map(([l,v])=>l+" "+v).join("、")}（本人が上司の期待より重く受け止める傾向）
-プレッシャーの出どころ（複数回答）：${o.causes.map(([l,v])=>l+" "+v+"%").join("、")}
-国立大学で予算は限られています。部局長会議で使える提言を作ってください。
-次のJSONだけを返してください：{"headline":"一文の要旨","findings":["気づき（3つ）"],"actions":[{"who":"誰が","what":"何をする","when":"いつまでに"}]}（actionsは3件）`,
-    $("#aiOut"), $("#ai"), r => { $("#aiOut").innerHTML = `<div style="margin-top:14px"><div class="sticky y" style="margin-bottom:12px">${esc(r.headline)}</div><h3>気づき</h3><ul>${(r.findings||[]).map(f=>`<li>${esc(f)}</li>`).join("")}</ul>
-      <h3>打ち手</h3><div class="scroll"><table><thead><tr><th>誰が</th><th>何をする</th><th>いつまでに</th></tr></thead><tbody>${(r.actions||[]).map(a=>`<tr><td>${esc(a.who)}</td><td>${esc(a.what)}</td><td>${esc(a.when)}</td></tr>`).join("")}</tbody></table></div></div>`; });
+  <section class="card" style="margin-top:16px"><p class="small" style="margin:0">原因の分析は「<a href="#insights">組織の分析</a>」、打ち手と提案は「<a href="#proposals">提案と打ち手</a>」にまとめています。</p></section>`;
 };
+
 
 /* --- 人事：面談記録 --- */
 const DEPTS = () => Object.keys(S.org.trend);
@@ -2356,9 +2359,9 @@ VIEWS.insights = () => {
   const o = S.org, cats = ["教育","研究","社会貢献","管理運営","臨床"];
   const maxT = o.themes[0][1];
   const heat = v => v===null ? `<td class="cell muted">—</td>` : `<td class="cell" style="background:color-mix(in srgb, var(${v>0?"--gap":"--them"}) ${Math.min(100,Math.abs(v)*6)}%, transparent)">${v>0?"+":""}${v}</td>`;
-  app.innerHTML = head("組織分析と提案", `面談記録${o.recTotal}件、プレッシャーの回答、エフォートの計画と現状をあわせて、組織の状態と打ち手を整理します。`, `<span class="tag">2026年11月時点</span>`) + `
+  app.innerHTML = head("組織の分析", `面談記録${o.recTotal}件、プレッシャーの回答、エフォートの計画と現状、Slackの動きを重ねて、なぜそうなっているのかを探ります。`, `<span class="tag">2026年11月時点</span>`) + `
   <section class="card" style="margin-bottom:16px">
-    <h2>組織の状態マップ</h2>
+    <h2>負荷とズレの関係マップ</h2>
     <p class="small muted">円の大きさは教職員数です。右上ほど、負荷が高く上司との期待もずれている部局です。</p>
     <div class="chartbox">${scatterSVG()}</div>
   </section>
@@ -2379,16 +2382,32 @@ VIEWS.insights = () => {
   <section class="card" style="margin-bottom:16px"><h2>職種・雇用形態ごとのプレッシャー</h2>
     <p class="small muted">任期付き教員が最も高く、面談でも「キャリアの見通し」が主な理由に挙がっています。</p>
     ${o.byJob.map(([l,v])=>`<div class="bar" style="grid-template-columns:minmax(120px,210px) 1fr 44px"><span>${l}</span><div class="t"><i style="width:${v/5*100}%;background:${v>=4?"var(--gap)":v>=3.5?"var(--me)":"var(--ok)"}"></i></div><b>${v.toFixed(1)}</b></div>`).join("")}</section>
+  <section class="card"><p class="small" style="margin:0">この分析から導いた打ち手は「<a href="#proposals">提案と打ち手</a>」にまとめています。</p></section>`;
+};
+
+VIEWS.proposals = () => {
+  const o = S.org;
+  const hot = [...o.depts].sort((a,b)=>b.pulse-a.pulse)[0], gapTop = o.gapByItem[0], lowFollow = DEPTS().map(d=>[d,o.follow[d][1]]).sort((a,b)=>a[1]-b[1])[0];
+  const lack = Object.values(S.orgNeeds).filter(n => n.level>=3 && n.hours<20).map(n => n.need);
+  app.innerHTML = head("提案と打ち手", "「状態を見る」「原因を探る」で見えたことを、優先度つきの打ち手にします。研修の企画は運営会社に依頼でき、決まったものは研修・プログラムに並びます。") + promiseHTML("admin") + `
+  <section class="card" style="margin-bottom:16px"><h2>分析からわかったこと</h2>
+    <div class="grid g4" style="gap:12px">
+      <a class="sticky p" href="#org" style="text-decoration:none;font-weight:500"><span class="small">いちばん負荷が高い部局</span><br><b>${hot.name}（${hot.pulse.toFixed(1)}）</b></a>
+      <a class="sticky y" href="#insights" style="text-decoration:none;font-weight:500"><span class="small">期待のズレが大きい項目</span><br><b>${gapTop[0]}（${gapTop[1]}）</b></a>
+      <a class="sticky b" href="#records" style="text-decoration:none;font-weight:500"><span class="small">約束が実行されにくい部局</span><br><b>${lowFollow[0]}（${lowFollow[1]}%）</b></a>
+      <a class="sticky g" href="#learnmap" style="text-decoration:none;font-weight:500"><span class="small">学びが足りないニーズ</span><br><b>${lack.length ? lack.slice(0,2).join("、") : "なし"}</b></a>
+    </div></section>
   <section class="card" style="margin-bottom:16px">
     <h2>今必要な研修と打ち手</h2>
-    <p class="small muted">上のデータから優先度の高い順に並べています。運営会社に企画を依頼できます。</p>
+    <p class="small muted">分析の結果から、優先度の高い順に並べています。運営会社に企画を依頼できます。</p>
     <div id="pr"></div>
   </section>
-  <section class="card">
+  <section class="card" style="margin-bottom:16px">
     <h2>マネジメント戦略の提案</h2>
     <p class="small muted">すべてのデータと面談記録の要約をもとに、AIが部局ごとの状態と、半年間のマネジメント戦略・研修計画の下書きを作ります。部局長会議や役員会の資料のたたき台に使えます。</p>
     <button class="btn" id="ai">戦略の提案を作る</button><div id="aiOut"></div>
-  </section>`;
+  </section>
+  <section class="card"><p class="small" style="margin:0">依頼した研修や、取り組みマップ・学びと組織のニーズで作った叩き台は「<a href="#programs">研修・プログラム</a>」に並びます。</p></section>`;
   const drawP = () => $("#pr").innerHTML = PRIOS.map((p,i)=>`<div class="prio"><span class="tag ${p.c}">優先度：${p.lv}</span>
     <div><b>${p.title}</b><div class="small">対象：${p.target}／形式：${p.form}</div><div class="ev">根拠：${p.ev}</div></div>
     <button class="btn ${p.st?"sub":""} sm" data-i="${i}" ${p.st?"disabled":""}>${p.st||"企画を依頼する"}</button></div>`).join("");
@@ -2424,6 +2443,7 @@ deptsは全5部局、strategiesは3件（各actionsは2〜3件）、planは12月
       $("#ai").textContent = "別の提案を作る";
     });
 };
+
 
 VIEWS.programs = () => {
   app.innerHTML = head("研修・プログラム", "プラットフォーム上の声から、必要とされている研修を見つけて届けます。") + `
