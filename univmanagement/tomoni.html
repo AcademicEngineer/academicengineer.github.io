@@ -310,6 +310,14 @@ details.gapmore[open] summary::before{transform:rotate(90deg)}
 .guide ol{margin:6px 0 0;padding-left:1.3em}
 .guide li{margin:3px 0}
 
+/* ボタンが折れ返して崩れないように */
+a.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center}
+td .btn{white-space:nowrap}
+.av{flex:none}
+.teamtbl{min-width:880px}
+.teamtbl td:first-child{min-width:190px}
+.teamtbl td:last-child,.teamtbl td:nth-child(6){white-space:nowrap}
+
 /* 面談記録・組織分析 */
 details.rec{border-top:1px solid var(--line);padding:4px 0}
 details.rec:first-of-type{border-top:0}
@@ -406,7 +414,7 @@ svg.chart .grid line{stroke:var(--line)}
   .sticky{rotate:0deg !important}
   /* 表はカードとして縦に並べる */
   table.rtable thead{display:none}
-  table.rtable,table.rtable tbody,table.rtable tr,table.rtable td{display:block;width:100%}
+  table.rtable,table.rtable tbody,table.rtable tr,table.rtable td{display:block;width:100%;min-width:0 !important}
   table.rtable tr{border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin-bottom:10px;background:var(--surface)}
   table.rtable td{border:0;padding:6px 0;display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:right}
   table.rtable td::before{content:attr(data-label);flex:none;max-width:48%;font-size:12px;font-weight:700;color:var(--muted);text-align:left}
@@ -2041,7 +2049,7 @@ VIEWS.team = () => {
     S.requests.map(r => `<section class="card reqbox"><div class="between"><h2 style="margin:0">本人からの相談：${r.from}さん</h2><span class="small muted">${r.date}</span></div>
       <p class="small" style="margin:8px 0">${esc(r.text)}</p><button class="btn sm" data-x="schedn|${r.from}|${r.from}さんとの配分の相談">日程を調整する</button><div class="reqout"></div></section>`).join("") + `
   <div class="grid g4" style="margin-bottom:16px">${kpi("すり合わせ完了",doneN,` / ${T.length}人`)}${kpi("ズレの大きいメンバー",bigN,"人")}${kpi("任期終了まで18か月以内",termN,"人")}${kpi("面談未設定",unsetN,"人")}</div>
-  <section class="card"><div class="scroll"><table><thead><tr><th>メンバー</th><th>任期</th><th>業務負荷</th><th>エフォートの乖離</th><th>すり合わせ</th><th>次の面談</th><th></th></tr></thead><tbody>
+  <section class="card"><div class="scroll"><table class="teamtbl"><thead><tr><th>メンバー</th><th>任期</th><th>業務負荷</th><th>エフォートの乖離</th><th>すり合わせ</th><th>次の面談</th><th></th></tr></thead><tbody>
   ${T.map(m=>{ const hide = m.id==="sato" && !bossSees("effort");
     return `<tr><td><div class="row" style="flex-wrap:nowrap"><div class="av ${m.av}" style="width:32px;height:32px;font-size:13px">${m.name[0]}</div><div><a class="memberlink" href="#member-${m.id}">${m.name}</a><br><span class="small muted">${m.title}・${m.job}</span></div></div></td>
     <td>${termTag(m.termUntil)}</td>
