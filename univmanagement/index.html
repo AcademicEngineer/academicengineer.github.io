@@ -318,6 +318,28 @@ td .btn{white-space:nowrap}
 .teamtbl td:first-child{min-width:190px}
 .teamtbl td:last-child,.teamtbl td:nth-child(6){white-space:nowrap}
 
+/* ホームへのリンク・ログイン */
+a.brand{color:inherit;text-decoration:none;border-radius:8px}
+a.brand:hover span{opacity:.85}
+.side-logout{display:none}
+body.locked aside,body.locked #authbar{display:none}
+body.locked .shell{display:block}
+.loginwrap{min-height:calc(100vh - 80px);display:grid;place-items:center;padding:20px 0}
+.logincard{width:100%;max-width:400px}
+.logincard .brand{color:var(--ink);justify-content:center;font-size:26px;margin-bottom:6px}
+.logincard .brand small{color:var(--muted)}
+.logincard label{display:block;font-size:13px;color:var(--muted);margin:14px 0 4px}
+.logincard .btn{width:100%;margin-top:18px;min-height:44px}
+.pwrow{position:relative}
+.pwrow input{padding-right:64px}
+.pwrow button{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:transparent;color:var(--muted);font-size:12px;cursor:pointer;padding:6px}
+@media (max-width:820px){
+  .btn.side-logout{display:inline-flex;align-items:center;flex:none;min-height:32px;padding:4px 10px;font-size:13px;background:transparent;color:var(--side-ink);border:1px solid #4A5672}
+  aside .rolebox select{max-width:126px;padding:5px 6px;font-size:13px}
+  aside .brand{font-size:17px}
+  .authbar .logout{display:none}
+}
+
 /* 面談記録・組織分析 */
 details.rec{border-top:1px solid var(--line);padding:4px 0}
 details.rec:first-of-type{border-top:0}
@@ -429,7 +451,7 @@ svg.chart .grid line{stroke:var(--line)}
 <body>
 <div class="shell">
   <aside>
-    <div class="brand"><i></i><i></i><span>ともに<small>教職員の成長支援プラットフォーム ver1.0</small></span></div>
+    <a class="brand" href="#" id="brandlink" aria-label="ともに（ホームに戻る）"><i></i><i></i><span>ともに<small>教職員の成長支援プラットフォーム ver1.0</small></span></a>
     <div class="rolebox">
       <label for="role">表示する立場</label>
       <select id="role">
@@ -439,6 +461,7 @@ svg.chart .grid line{stroke:var(--line)}
         <option value="sysadmin" id="opt-sys">管理者</option>
       </select>
     </div>
+    <button class="btn sub sm side-logout" id="sideLogout" type="button">ログアウト</button>
     <nav class="side" id="nav" aria-label="メニュー"></nav>
     <div class="who" id="who"></div>
   </aside>
@@ -805,7 +828,13 @@ function renderNav(view){
 }
 const SPECIAL = ["register","profile","pending"];
 function route(){
-  let v = location.hash.replace(/^#/,"") || ROLE_HOME[role];
+  if (!RESTORED){ RESTORED = true; const L = readLast();
+    if (AUTHED && !location.hash && L && L.hash){ if (L.role && !LOCKED()){ role = L.role; $("#role").value = role; } history.replaceState(null, "", "#" + L.hash); } }
+  const raw = location.hash.replace(/^#/,"");
+  if (!AUTHED && raw && !["login","register"].includes(raw)) PENDING_HASH = raw;
+  let v = raw || ROLE_HOME[role];
+  document.body.classList.toggle("locked", !AUTHED);
+  if (!AUTHED){ if (v!=="register") v = "login"; renderAuth(); VIEWS[v](); $("#main").scrollTop = 0; window.scrollTo(0,0); return; }
   if (LIVE && !ME && v!=="register"){ history.replaceState(null, "", "#register"); v = "register"; }
   if (ME && v!=="profile" && v!=="register" && !(v==="users" && SYSADMIN) && myStatus()!=="approved"){ v = "pending"; }
   if (v==="users" && !SYSADMIN) v = ROLE_HOME[role];
@@ -822,6 +851,7 @@ function route(){
 }
 /* 画面を切り替えたあと：先頭へ戻し、スマホでは選んだメニューが見える位置まで横に動かす */
 function afterRoute(){
+  if (AUTHED) saveLast();
   $("#main").scrollTop = 0; window.scrollTo(0, 0);
   labelTables();
   const a = $("#nav [aria-current]"), nav = $("#nav");
@@ -839,6 +869,8 @@ function labelTables(){
 }
 let labelPending = false;
 new MutationObserver(() => { if (labelPending) return; labelPending = true; queueMicrotask(() => { labelPending = false; labelTables(); }); }).observe(app, {childList:true, subtree:true});
+$("#brandlink").onclick = e => { e.preventDefault(); const h = ROLE_HOME[role]; if (location.hash==="#"+h) route(); else location.hash = h; };
+$("#sideLogout").onclick = () => logout();
 $("#role").onchange = e => { role = e.target.value; const h = ROLE_HOME[role]; if (location.hash === "#" + h) route(); else location.hash = h; };
 window.addEventListener("hashchange", route);
 
@@ -2540,12 +2572,47 @@ function demoMembers(){
 const DEFAULT_SSO = "https://sso.example-univ.ac.jp/idp/profile/SAML2/Redirect/SSO";
 function renderAuth(){
   const bar = $("#authbar"); if (!bar) return;
-  const sso = /^https:\/\//.test(REG.settings.ssoUrl||"") ? REG.settings.ssoUrl : DEFAULT_SSO;
-  bar.innerHTML = ME
-    ? `<span class="me">ログイン中：<b>${esc(ME.name)}</b></span><a class="btn sub sm" href="#profile">プロフィール</a>`
-    : `<a class="btn sub sm" href="#register">新規登録</a><button class="btn sm" id="loginbtn" type="button">ログイン</button>`;
-  const lb = $("#loginbtn"); if (lb) lb.onclick = () => popup("ログイン済みです。", "いまのモックでは、学内SSOへの接続を省略しています。", lb);
+  bar.innerHTML = AUTHED
+    ? `<span class="me">ログイン中：<b>${esc(ME ? ME.name : MOCK_ID)}</b></span>${ME ? `<a class="btn sub sm" href="#profile">プロフィール</a>` : ""}<button class="btn sm logout" type="button">ログアウト</button>`
+    : "";
+  bar.querySelector(".logout")?.addEventListener("click", logout);
 }
+/* モックのログイン（本番では学内SSOに置き換える） */
+const MOCK_ID = "MEDC", MOCK_PW = "raicho2026", AUTH_KEY = "tomoni-auth-v1";
+const store2 = (() => { try { localStorage.setItem("tomoni-t","1"); localStorage.removeItem("tomoni-t"); return localStorage; } catch(e){ try { return sessionStorage; } catch(e2){ return null; } } })();
+let AUTHED = (() => { try { return store2 && store2.getItem(AUTH_KEY)==="1"; } catch(e){ return false; } })();
+/* 最後に見ていた画面を覚えておき、トップのURLを開いたときやログイン直後にそこへ戻す */
+const LAST_KEY = "tomoni-last-v1";
+let PENDING_HASH = "", RESTORED = false;
+const readLast = () => { try { return JSON.parse(store2 && store2.getItem(LAST_KEY) || "null"); } catch(e){ return null; } };
+function saveLast(){ const h = location.hash.slice(1); if (!h || ["login","register","pending"].includes(h)) return; try { store2 && store2.setItem(LAST_KEY, JSON.stringify({hash:h, role})); } catch(e){} }
+function setAuthed(v){ AUTHED = v; try { v ? store2.setItem(AUTH_KEY, "1") : store2.removeItem(AUTH_KEY); } catch(e){} }
+function logout(){ setAuthed(false); history.replaceState(null, "", "#login"); route(); }
+VIEWS.login = () => {
+  app.innerHTML = `<div class="loginwrap"><section class="card logincard">
+    <div class="brand"><i></i><i></i><span>ともに<small>教職員の成長支援プラットフォーム ver1.0</small></span></div>
+    <h1 style="font-size:20px;text-align:center;margin:10px 0 2px">ログイン</h1>
+    <p class="small muted" style="text-align:center;margin:0 auto">${esc(REG.settings.univ)}の教職員の方はこちらから</p>
+    <form id="lf" novalidate>
+      <label for="lid">ID</label><input type="text" id="lid" autocomplete="username" autocapitalize="off" spellcheck="false" required>
+      <label for="lpw">パスワード</label><div class="pwrow"><input type="password" id="lpw" autocomplete="current-password" required><button type="button" id="pwshow" aria-label="パスワードを表示する">表示</button></div>
+      <div id="lerr" class="err" role="alert" hidden></div>
+      <button class="btn" type="submit">ログイン</button>
+    </form>
+    <p class="small" style="text-align:center;margin:16px 0 0">はじめての方は <a href="#register">新規登録</a></p>
+    <p class="small muted" style="text-align:center;margin:10px 0 0">いまはモック用のログインです。一度ログインすると、このブラウザではログアウトするまで、最後に見ていた画面から始まります。本番では学内SSOに置き換えます。</p>
+  </section></div>`;
+  $("#lid").focus();
+  $("#pwshow").onclick = e => { const pw = $("#lpw"), show = pw.type==="password"; pw.type = show ? "text" : "password"; e.target.textContent = show ? "隠す" : "表示"; e.target.setAttribute("aria-label", show ? "パスワードを隠す" : "パスワードを表示する"); };
+  $("#lf").onsubmit = e => { e.preventDefault();
+    const id = $("#lid").value.trim(), pw = $("#lpw").value;
+    if (id===MOCK_ID && pw===MOCK_PW){ setAuthed(true);
+      const L = readLast(), target = PENDING_HASH || (L && L.hash) || ROLE_HOME[role];
+      if (!PENDING_HASH && L && L.role && !LOCKED()){ role = L.role; $("#role").value = role; }
+      PENDING_HASH = "";
+      if (location.hash==="#"+target) route(); else location.hash = target; return; }
+    const er = $("#lerr"); er.hidden = false; er.textContent = !id || !pw ? "IDとパスワードを入力してください。" : "IDまたはパスワードが違います。"; $("#lpw").select(); };
+};
 /* 小さなポップアップ（ブラウザの alert は表示されない環境があるため、自前で出す） */
 function popup(title, body, returnTo){
   const wrap = document.createElement("div"); wrap.className = "popwrap";
@@ -2586,7 +2653,7 @@ function bindProfileForm(onSaved, isNew){
     const data = {name, dept:$("#r-dept").value, title:$("#r-title").value.trim(), job:$("#r-job").value, campus:$("#r-campus").value, field:$("#r-field").value.trim(),
       project:$("#r-project").value.trim(), themes:[...themes], requested:app.querySelector("input[name='r-role']:checked").value, consent:true, createdAt:(ME && ME.createdAt) || nowISO(), updatedAt:nowISO()};
     $("#r-save").disabled = true;
-    try { const id = uid || "me-demo"; await store.saveMember(id, data); if (!uid) uid = id; ME = REG.members[id];
+    try { const id = uid || "me-demo"; await store.saveMember(id, data); if (isNew) setAuthed(true); if (!uid) uid = id; ME = REG.members[id];
       if (isNew) await store.audit(`${name}さんが登録しました${data.requested!=="staff" ? `（希望：${ROLEL[data.requested]}）` : ""}`);
       if (isNew && !LIVE){ SYSADMIN = true; }
       applyIdentity(); onSaved(); }
@@ -2602,7 +2669,7 @@ function applyIdentity(){
 }
 VIEWS.register = () => {
   if (LIVE && ME){ location.hash = ROLE_HOME[role]; return; }
-  app.innerHTML = head(`${esc(REG.settings.univ)}の「ともに」へようこそ`, "はじめに、あなたのことを少しだけ教えてください。あとからいつでも変えられます。") + promiseHTML("staff") + `
+  app.innerHTML = (!AUTHED ? `<p class="small" style="margin:0 0 8px"><a href="#login">ログイン画面に戻る</a></p>` : "") + head(`${esc(REG.settings.univ)}の「ともに」へようこそ`, "はじめに、あなたのことを少しだけ教えてください。あとからいつでも変えられます。") + promiseHTML("staff") + `
     <section class="card">${profileForm({name: REG.prefillName || "", campus:(REG.settings.campuses||[])[0], dept:(REG.settings.depts||[])[0], job:"教員", requested:"staff"}, true)}</section>
     ${!LIVE ? `<p class="small muted" style="margin-top:10px">デモのため、登録した内容はこのページを閉じると消えます。</p>` : ""}`;
   bindProfileForm(() => { location.hash = statusOf(uid)==="approved" ? "ask" : "pending"; route(); }, true);
