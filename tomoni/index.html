@@ -819,10 +819,10 @@ const KINDS = ["教育","研究","運営","学外連携","人の支援","その�
 /* ================= ナビゲーション ================= */
 /* 画面に出すのは最低限。ほかの機能は「聞く」から案内する */
 const NAV = {
-  staff:[["聞く","ask"],["わたしの働き方","workstyle"],["わたしの学び","selflearn"],["わたしのキャリアとライフ","lifeplan"],["つながり","campus"],["ありがとう","thanks"],["予定","meetings"],["共有設定","sharing"]],
+  staff:[["聞く","ask"],["わたしの働き方","workstyle"],["わたしの学び","selflearn"],["わたしのキャリアとライフ","lifeplan"],["つながり","campus"],["ありがとう","thanks"],["予定","meetings"],["共有設定","sharing"],["ともにについて","about"]],
   manager:[["聞く","ask"],["メンバーを支える","team"],["面談の準備","prep"],["引き継ぎの準備","handover"],["学びの記録","selflearn"],["研修を探す（FD/SD）","learn"],["予定","meetings"],["ともにについて","about"]],
   admin:[["聞く","ask"],["1 状態を見る",null],["組織の状態","org"],["面談記録","records"],["任期と交代","transitions"],["2 原因を探る",null],["組織の分析","insights"],["取り組みマップ","clusters"],["学びと組織のニーズ","learnmap"],["3 打ち手を決める",null],["提案と打ち手","proposals"],["研修・プログラム","programs"],["4 運用する",null],["予定","meetings"],["導入・運用設定","cycle-settings"],["ともにについて","about"]],
-  sysadmin:[["ユーザー管理","users"]],
+  sysadmin:[["ユーザー管理","users"],["ともにについて","about"]],
 };
 const FEATURES = {
   staff:[["workstyle","わたしの働き方","時間の使い方と成長の時間を、自分で見直す"],["goals","目標と期待","目標と、上司・同僚・学外メンターとの期待のすり合わせ"],["log","成果ログ","業務の成果を記録して、評価シート向けにまとめる"],["career","任期までの道のり","任期の節目と、次のポストへの準備"],["lifeplan","わたしのキャリアとライフ","キャリアの希望、家族やライフプラン、業務の悩みを、書きたい範囲だけ"],["campus","つながり","同じような状況の人、経験を相談できる人、共同研究の相手"],["network","強みと学外の人","自分の強み・手放したいこと・他大学の人"],["thanks","ありがとう","お礼を送り合う"],["selflearn","わたしの学び","日々の自己研修と、組織のどこを補えそうか"],["learn","研修を探す（FD/SD）","学内で開かれる研修に申し込む"],["coach","専門家に相談","キャリアコンサルタントの予約とAIコーチ"],["meetings","予定","打ち合わせと日程調整"],["sharing","共有設定","誰に何を見せるか、誰が見たか、Slack連携"],["about","ともにについて","コンセプト、見える化するもの、使い方の約束"]],
@@ -834,7 +834,7 @@ FEATURES.sysadmin = [["users","ユーザー管理","登録の承認・立場・�
 const VIEW_ROLE = {};
 Object.entries(FEATURES).forEach(([r, items]) => items.forEach(([v]) => { if (!VIEW_ROLE[v]) VIEW_ROLE[v] = r; }));
 const moreFeatures = () => FEATURES[role].filter(([v]) => !NAV[role].some(([,x]) => x===v));
-const inRole = (r, v) => (v==="ask" && r!=="sysadmin") || FEATURES[r].some(([x]) => x===v) || (r==="manager" && v.startsWith("member-"));
+const inRole = (r, v) => v==="about" || (v==="ask" && r!=="sysadmin") || FEATURES[r].some(([x]) => x===v) || (r==="manager" && v.startsWith("member-"));
 let role = "staff";
 
 function renderNav(view){
@@ -1608,6 +1608,14 @@ VIEWS.about = () => {
       <tr><td><b>データの持ち主</b></td><td>組織</td><td>本人（誰に見せるかを本人が決める）</td></tr>
       <tr><td><b>評価との関係</b></td><td>評価や処遇に直結する</td><td>評価や処遇には直接使わない</td></tr>
     </tbody></table></div></section>
+  <section class="card" style="margin-bottom:16px"><h2>立場ごとの使い方</h2>
+    <p class="small muted">同じ流れのなかで、立場ごとに役割があります。${AUTHED ? "いまの立場に印を付けています。" : ""}</p>
+    <div class="grid g2" style="gap:12px">${[
+      ["staff","教職員・医療者（本人）","y","学びを記録し、自分の働き方を見直し、職種や学部をこえて相談相手や共同研究の仲間を見つける。誰に何を見せるかは自分で決める。",["わたしの学び","わたしの働き方","つながり","共有設定"]],
+      ["manager","上司（センター長・診療科長など）","b","メンバーが共有した情報から支えが必要なところを見つけ、人をつなぎ、学びを活かす場をつくる。自分も学ぶ姿を見せる。",["メンバーを支える","面談の準備","学びの記録"]],
+      ["admin","人事・FD/SD担当","g","個人ではなく集団の傾向から、状態を見て、原因を探り、勤務設計や研修などの打ち手を決める。",["組織の状態","組織の分析","提案と打ち手"]],
+      ["sysadmin","管理者","p","登録の承認、立場の設定、利用の停止だけを行う。本人の学びや面談の中身は見ない。",["ユーザー管理"]],
+    ].map(([k,l,c,d,sc]) => `<div class="sticky ${c}" style="font-weight:500${AUTHED && k===role ? ";outline:3px solid var(--ink);outline-offset:2px" : ""}"><b>${l}</b>${AUTHED && k===role ? ` <span class="tag">いまの立場</span>` : ""}<br><span class="small">${d}</span><div class="row" style="gap:4px;margin-top:6px">${sc.map(x=>`<span class="tag">${x}</span>`).join("")}</div></div>`).join("")}</div></section>
   ${promiseHTML("staff")}`;
 };
 
