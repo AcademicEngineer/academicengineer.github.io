@@ -104,6 +104,7 @@ th{font-size:12px;color:var(--muted);border-top:0;font-weight:700;white-space:no
 .sticky.b{background:var(--them);color:var(--them-ink);rotate:1deg}
 .sticky.p{background:var(--gap);color:var(--gap-ink);rotate:-.6deg}
 .sticky.g{background:var(--ok);color:var(--ok-ink);rotate:.8deg}
+.sticky.c{background:var(--clin);color:var(--clin-ink);rotate:-.4deg}
 
 /* ヒーロー：今週の温度 */
 .pulse{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:center}
@@ -279,7 +280,9 @@ details.more summary{cursor:pointer;font-weight:700;font-size:14px}
 .rolepick label:has(input:checked){border-color:var(--ink);background:var(--bg)}
 .consent{display:flex;gap:10px;align-items:flex-start;font-size:14px;margin-top:12px}
 .who a{color:var(--side-muted);font-size:12px}
-.utable select{width:auto;padding:4px 8px;font-size:13px}
+.utable select{width:auto;max-width:200px;padding:4px 8px;font-size:13px}
+#ur{max-width:100%}
+#uq{max-width:100%}
 .stat{font-size:12px;font-weight:700;padding:1px 9px;border-radius:999px}
 .stat.ok{background:var(--ok);color:var(--ok-ink)} .stat.wait{background:var(--me);color:var(--me-ink)} .stat.stop{background:var(--line);color:var(--ink)}
 .livebar{font-size:12px;padding:6px 10px;border-radius:8px;background:#2A3550;color:var(--side-ink);margin:0 4px}
@@ -348,6 +351,18 @@ body.locked .shell{display:block}
 .cycle4 .step .num{font-size:12px;font-weight:900;opacity:.8}
 .cycle4 .step:not(:last-child)::after{content:"→";position:absolute;right:-20px;top:42%;font-weight:900;font-size:18px;color:var(--muted);rotate:0deg}
 @media (max-width:820px){.cycle4{grid-template-columns:1fr;gap:26px}.cycle4 .step:not(:last-child)::after{content:"↓";right:auto;left:50%;top:auto;bottom:-24px}}
+
+/* やめる・減らす提案 */
+.stopbox{border-left:4px solid var(--gap)}
+.stopbox.ok{border-left-color:var(--ok)}
+.sugg2{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
+.sugg2:first-of-type{border-top:0}
+.sugg2 .act{font-size:12px;font-weight:900;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.act.stop{background:var(--gap);color:var(--gap-ink)} .act.less{background:var(--me);color:var(--me-ink)} .act.hand{background:var(--them);color:var(--them-ink)} .act.later{background:var(--line);color:var(--ink)} .act.rest{background:var(--ok);color:var(--ok-ink)}
+.capbar{position:relative;height:14px;border-radius:7px;background:var(--bg);overflow:hidden;margin:8px 0 4px}
+.capbar i{position:absolute;left:0;top:0;bottom:0;border-radius:7px}
+.capbar .lim{position:absolute;top:-2px;bottom:-2px;border-left:2px dashed var(--ink)}
+@media (max-width:640px){.sugg2{grid-template-columns:1fr}}
 
 /* 面談記録・組織分析 */
 details.rec{border-top:1px solid var(--line);padding:4px 0}
@@ -465,6 +480,7 @@ svg.chart .grid line{stroke:var(--line)}
       <label for="role">表示する立場</label>
       <select id="role">
         <option value="staff">教職員（本人）</option>
+        <option value="clinician">医療者（本人）</option>
         <option value="manager">上司・センター長</option>
         <option value="admin">人事・FD/SD担当</option>
         <option value="sysadmin" id="opt-sys">管理者</option>
@@ -580,6 +596,9 @@ const S = {
     {from:"高橋 さやか", to:"佐藤 みのり", cat:"支え", text:"OSCE評価者研修の集計方法を教えてくださって助かりました", date:"11月19日"},
     {from:"田中 誠", to:"佐藤 みのり", cat:"教育", text:"指導医の先生方から、評価表の説明会の評判がとても良いです", date:"11月16日"},
     {from:"中村 亮", to:"佐藤 みのり", cat:"研究", text:"看護学科との共同研究の相談、刺激になりました", date:"11月11日"},
+    {from:"小池 由美", to:"森田 あかり", cat:"支え", text:"新人さん向けの機器研修に、看護の目線でアドバイスをくださって助かりました", date:"11月18日"},
+    {from:"高木 亮介", to:"森田 あかり", cat:"教育", text:"シミュレーションでの看護の声かけ、研修医にも良い学びになりました", date:"11月9日"},
+    {from:"藤井 涼", to:"森田 あかり", cat:"教育", text:"学生さんから、実習で一番話を聞いてくれたと聞きました", date:"11月6日"},
     {from:"佐藤 みのり", to:"山本 千夏（医学部事務部）", cat:"運営", text:"分野別評価の書類を一緒に整理していただき本当に助かりました", date:"11月9日"},
   ],
   termList:[
@@ -605,6 +624,10 @@ const S = {
     {dept:"リハビリテーション部", st:"未導入", since:"—", use:null},
   ],
   myProfile:{campus:"医学部キャンパス", field:"医学教育", job:"教員"},
+  thanksTo:["田中 誠（センター長）","高橋 さやか（事務職員）","鈴木 健太（助教）","伊藤 大輔（特任准教授）","西田 恵（技術職員）","山本 千夏（医学部事務部）","中村 亮（看護学科）"],
+  coachNote:"期待のすり合わせでは、本人は研究成果を強く求められていると感じていたが、上司はまず臨床実習の評価表の改訂を優先してほしいと考えていることが分かっています。",
+  consultTopic:"臨床実習の評価づくり",
+  todayHint:{text:"工学部の宮本さんが、手技シミュレーターを実習で試せる医療側の教員を探しています", ask:"工学部の宮本さんの共同研究について教えて"},
   campus:[
     {id:"c1", name:"渡辺 浩", dept:"看護学科", title:"准教授", campus:"医学部キャンパス", field:"看護教育", job:"教員", project:"看護技術のシミュレーション演習", tags:["シミュレーション教育","評価・アセスメント","臨床教育"], keys:["看護技術","演習","ルーブリック"], offer:"看護技術のルーブリック評価", slack:"#シミュレーション教育で、看護技術のルーブリックを共有していた"},
     {id:"c2", name:"岡田 翔", dept:"附属病院 臨床研修センター", title:"助教", campus:"附属病院", field:"卒後臨床研修", job:"教員（臨床）", project:"研修医の指導医講習会の運営", tags:["卒後研修","新任者支援","臨床教育"], keys:["指導医","研修医","講習会"], offer:"短時間に分けた指導医講習の運営ノウハウ", slack:"#臨床研修で、講習を短く分ける工夫を話題にしていた"},
@@ -649,11 +672,18 @@ const S = {
      notes:"アンケートの自由記述が多く、集計が大変だった。来年度は臨床研修センターの指導医講習と合同で開くことを検討。松本さんが過去のアンケート項目を共有してくれる。佐藤は12月中に合同研修の案を作る。"},
     {id:"m4", owner:"manager", title:"佐藤さんとの中間面談", with:["佐藤 みのり"], label:"12月3日（木）15:00〜15:30", where:"医学教育センター 会議室", st:"確定", agenda:["期待のすり合わせ結果","評価表の改訂の進め方","分野別評価の書類の分担"]},
     {id:"m5", owner:"manager", title:"伊藤さんの当直の調整（救急科）", with:["清水 和夫"], label:"日程調整中", where:"附属病院", st:"調整中", agenda:[]},
+    {id:"m7", owner:"clinician", title:"実習指導のふり返り（看護学科と）", with:["中村 亮"], label:"11月26日（木）17:30〜18:00", where:"オンライン（Teams）", st:"確定", agenda:["学生のふり返り面談のやり方","評価表の現場での使いにくさ","看護研究の相談"]},
+    {id:"m8", owner:"clinician", title:"救急シミュレーションの打ち合わせ", with:["高木 亮介"], label:"12月2日（水）13:00〜13:30", where:"シミュレーションセンター", st:"確定", agenda:[]},
+    {id:"m9", owner:"clinician", past:true, title:"新人看護師のプリセプター会議", with:["藤井 涼"], label:"11月10日（火）16:00〜16:30", where:"看護部 会議室", st:"終了",
+     notes:"新人2名とも点滴管理は自立に近い。夜勤の独り立ちは1月を目標にする。森田はプリセプターの負担が大きいため、12月から副プリセプターをつける。藤井師長が勤務表を調整する。"},
     {id:"m6", owner:"admin", title:"取り組みマップの報告（医学部 教育委員会）", with:["教育委員会"], label:"12月10日（水）10:00〜10:30", where:"医学部キャンパス 大会議室", st:"確定", agenda:["職種・キャンパスをまたぐ協働の状況","合同FD/SDの叩き台"]},
   ],
   myExtra:[],
   growth:{plan:{教育:2, 研究:3, 臨床:1, 社会貢献:1, 管理運営:1}, blocked:false},
   learnings:[
+    {id:"n1", who:"森田 あかり", date:"11月20日", type:"学会・勉強会", title:"救急看護の症例検討会", minutes:60, note:"急変の予兆に気づく観察の視点", share:"学内に公開", offer:false, cat:"臨床"},
+    {id:"n2", who:"森田 あかり", date:"11月18日", type:"オンライン講座", title:"臨地実習指導者のためのフィードバックの技法", minutes:45, note:"学生が自分で気づける問いかけ方", share:"学内に公開", offer:false, cat:"教育"},
+    {id:"n3", who:"森田 あかり", date:"11月12日", type:"本・論文", title:"看護研究の進め方（書籍）", minutes:30, note:"研究計画書の書き方", share:"自分だけ", offer:false, cat:"研究"},
     {id:"l9", who:"佐藤 みのり", date:"11月19日", type:"本・論文", title:"シミュレーション教育の効果に関する先行研究を読む", minutes:90, note:"論文の背景の章に使えそう", share:"自分だけ", offer:false, cat:"研究"},
     {id:"l1", who:"佐藤 みのり", date:"11月20日", type:"オンライン講座", title:"医学教育研究のための統計分析入門（第2回）", minutes:60, cat:"研究", note:"評価表のデータに回帰分析を使う考え方を学んだ", share:"学内に公開", offer:false},
     {id:"l2", who:"佐藤 みのり", date:"11月17日", type:"本・論文", title:"ファシリテーションの技法（書籍）", minutes:45, cat:"教育", note:"指導医説明会の対話パートの組み立て方", share:"自分だけ", offer:false},
@@ -721,11 +751,11 @@ const S = {
     {id:"sato", name:"佐藤 みのり", title:"講師", dept:"医学教育センター", job:"教員（任期付き）", termUntil:"2028-03", support:"キャリア面談済み", gaps:3, pulse:4, next:"12月3日", st:"結果あり", av:"y",
      plan:{教育:40, 研究:30, 社会貢献:10, 管理運営:20, 臨床:0},
      tasks:[
-      {name:"臨床実習（クリニカル・クラークシップ）の評価表の改訂", cat:"教育", eff:25, prog:60, due:"2027年2月", st:"順調"},
+      {name:"臨床実習（クリニカル・クラークシップ）の評価表の改訂", core:true, cat:"教育", eff:25, prog:60, due:"2027年2月", st:"順調"},
       {name:"OSCE（共用試験）の評価者の養成", cat:"教育", eff:10, prog:null, due:"通年", st:"継続業務"},
       {name:"医学生の個別面談（プロフェッショナリズム）", cat:"教育", eff:10, prog:null, due:"通年", st:"継続業務"},
-      {name:"シミュレーション教育の効果に関する論文の執筆", cat:"研究", eff:10, prog:20, due:"2027年3月", st:"遅れ気味"},
-      {name:"地域の協力病院との教育ネットワークの準備", cat:"社会貢献", eff:10, prog:15, due:"2027年9月", st:"順調"},
+      {name:"シミュレーション教育の効果に関する論文の執筆", core:true, cat:"研究", eff:10, prog:20, due:"2027年3月", st:"遅れ気味"},
+      {name:"地域の協力病院との教育ネットワークの準備", core:true, cat:"社会貢献", eff:10, prog:15, due:"2027年9月", st:"順調"},
       {name:"分野別評価（JACME）の自己点検報告書の作成", cat:"管理運営", eff:25, prog:70, due:"2027年1月", st:"順調"},
       {name:"教務委員会", cat:"管理運営", eff:15, prog:null, due:"通年", st:"継続業務"},
      ]},
@@ -830,6 +860,9 @@ const FEATURES = {
   admin:[["org","組織の状態","いまの負荷・ズレ・風通しを部局ごとに見る"],["records","面談記録","共有に同意された面談の中身と約束"],["transitions","任期と交代","任期付き教員と部局長の交代"],["insights","組織の分析","負荷とズレの関係、推移、話題、エフォート、職種"],["clusters","取り組みマップ","診療科・職種をこえて似た取り組みのグループ"],["learnmap","学びと組織のニーズ","自己研修が組織のどこを補っているか"],["proposals","提案と打ち手","優先度つきの研修案と、AIによる戦略の提案"],["programs","研修・プログラム","研修と叩き台の一覧"],["meetings","予定","打ち合わせと日程調整"],["cycle-settings","導入・運用設定","導入範囲・職種・評価サイクル"],["about","ともにについて","コンセプト、見える化するもの、使い方の約束"]],
 };
 const ROLE_HOME = {staff:"ask", manager:"ask", admin:"ask", sysadmin:"users"};
+FEATURES.clinician = FEATURES.staff.map(f => f[0]==="career" ? ["career","キャリアの道のり","資格や役割の節目と、次の一歩"] : f);
+NAV.clinician = NAV.staff.slice();
+ROLE_HOME.clinician = "ask";
 FEATURES.sysadmin = [["users","ユーザー管理","登録の承認・立場・利用の停止・登録の設定"]];
 const VIEW_ROLE = {};
 Object.entries(FEATURES).forEach(([r, items]) => items.forEach(([v]) => { if (!VIEW_ROLE[v]) VIEW_ROLE[v] = r; }));
@@ -838,18 +871,19 @@ const inRole = (r, v) => v==="about" || (v==="ask" && r!=="sysadmin") || FEATURE
 let role = "staff";
 
 function renderNav(view){
-  $("#nav").innerHTML = `<div class="grp">${role==="staff"?"わたし":role==="manager"?"マネジメント":role==="admin"?"人事・FD/SD":"管理"}</div>` +
+  $("#nav").innerHTML = `<div class="grp">${isSelf()?"わたし":role==="manager"?"マネジメント":role==="admin"?"人事・FD/SD":"管理"}</div>` +
     NAV[role].map(([label, v]) => v===null ? `<div class="grp">${label}</div>` : `<a href="#${v}" ${v===view?'aria-current="page"':""}><span>${label}</span>${v==="users" && pendingCount() ? `<span class="dot" title="承認待ち">${pendingCount()}</span>` : ""}</a>`).join("");
   document.querySelector(".rolebox").hidden = LOCKED();
   $("#opt-sys").hidden = $("#opt-sys").disabled = !SYSADMIN;
   renderAuth();
   document.querySelector(".rolebox label").textContent = LIVE ? "表示する立場（管理者の確認用）" : "表示する立場";
   if (ME){ $("#who").innerHTML = `<b>${esc(ME.name)}</b><span>${esc(ME.dept)}・${esc(ME.title)}</span><br><a href="#profile">プロフィールと登録</a>`; return; }
-  $("#who").innerHTML = role==="staff" ? `<b>${S.me.name}</b><span>${S.me.dept}・${S.me.title}</span>` : role==="sysadmin" ? `<b>システム管理者</b><span>${esc(REG.settings.univ)}</span>` :
+  $("#who").innerHTML = isSelf() ? `<b>${S.me.name}</b><span>${S.me.dept}・${S.me.title}</span>` : role==="sysadmin" ? `<b>システム管理者</b><span>${esc(REG.settings.univ)}</span>` :
     role==="manager" ? `<b>${S.boss.name}</b><span>医学教育センター・${S.boss.title}</span>` : `<b>人事課 FD/SD担当</b><span>〇〇大学</span>`;
 }
 const SPECIAL = ["register","profile","pending"];
 function route(){
+  applyPersona(role==="clinician" ? "clinician" : "faculty");
   if (!RESTORED){ RESTORED = true; const L = readLast();
     if (AUTHED && !location.hash && L && L.hash){ if (L.role && !LOCKED()){ role = L.role; $("#role").value = role; } history.replaceState(null, "", "#" + L.hash); } }
   const raw = location.hash.replace(/^#/,"");
@@ -914,6 +948,118 @@ const termTag = ym => { const n = monthsLeft(ym); if (n===null) return `<span cl
 const shareOf = id => S.share.find(x => x.id===id) || {};
 const bossSees = id => { const x = shareOf(id); return !!(x.boss || x.lock==="boss"); };
 const gapFor = p => S.gapItems.map(it => ({...it, them: p.scores[it.id]}));
+const isSelf = () => role==="staff" || role==="clinician";
+const meMember = () => S.selfMember || S.team.find(t => t.id==="sato");
+/* 医療者（本人）の画面例：本人まわりのデータだけを差し替えて、同じ画面で見せる */
+const PERSONA_KEYS = ["me","boss","term","partners","gapItems","gapFree","goals","logs","strengths","letgo","matches","programs","career","life","growth","myProfile","intros","share","accessLog","pulse","requests","selfMember","thanksTo","coachNote","consultTopic","todayHint","myExtra","stopLog"];
+const PERSONAS = {faculty:null, clinician:{
+  me:{name:"森田 あかり", dept:"附属病院 看護部（救急外来）", title:"看護師（実習指導者）", init:"森"},
+  boss:{name:"藤井 涼", title:"看護師長"},
+  term:{type:"常勤", until:null, label:"任期なし", review:"2027年度 認定看護師（救急看護）教育課程への出願"},
+  partners:[
+    {id:"fujii", name:"藤井 涼", rel:"看護師長（上司）", kind:"上司", date:"11月13日", scores:{research:2,teaching:4,admin:2,outreach:5,pace:3,solo:2}, free:"夜勤の負担を見ながら、実習指導とプリセプターを無理なく続けてほしい。看護研究は来年度でいい。"},
+    {id:"takagi", name:"高木 亮介", rel:"多職種の協働相手（シミュレーションセンター 講師）", kind:"協働相手", date:"11月16日", scores:{research:3,teaching:5,admin:2,outreach:4,pace:3,solo:1}, free:"救急シミュレーションに看護の視点を入れてほしい。一緒に指導する仲間として頼りにしている。"},
+    {id:"komatsu", name:"小松 誠", rel:"学内の他職種（理学療法士）", kind:"他職種の同僚", date:"", scores:null, free:""},
+  ],
+  gapItems:[
+    {id:"research", label:"看護研究・学会発表", lo:"求めない", hi:"強く求める", me:4, them:2},
+    {id:"teaching", label:"教育（学生・新人の指導）", lo:"求めない", hi:"強く求める", me:3, them:4},
+    {id:"admin", label:"委員会・病棟の運営", lo:"求めない", hi:"強く求める", me:3, them:2},
+    {id:"outreach", label:"臨床（患者さんのケア）", lo:"求めない", hi:"強く求める", me:5, them:5},
+    {id:"pace", label:"成果を出すまでの時間軸", lo:"数年かけて", hi:"今年度中に", me:4, them:3},
+    {id:"solo", label:"仕事の進め方", lo:"周りと分担", hi:"ひとりで完結", me:4, them:2},
+  ],
+  gapFree:{me:"実習指導とプリセプターを両立しながら、看護研究も形にしたい。", them:"夜勤の負担を見ながら、実習指導とプリセプターを無理なく続けてほしい。看護研究は来年度でいい。"},
+  goals:[
+    {term:"短期（今期）", text:"看護学生の実習で、ふり返りの面談を全員に1回ずつ行う", prog:50},
+    {term:"中期（3年）", text:"認定看護師（救急看護）の資格を取る", prog:20},
+    {term:"長期（5年〜）", text:"救急看護の教育者として、多職種シミュレーションを院内に広げる", prog:10},
+  ],
+  logs:[
+    {date:"2026-11-19", kind:"教育", text:"看護学生2名の臨地実習で、夜間の救急対応をふり返る面談をした"},
+    {date:"2026-11-14", kind:"人の支援", text:"新人看護師のプリセプターとして、点滴管理の手技を一緒に確認した"},
+    {date:"2026-11-08", kind:"教育", text:"多職種シミュレーション（心停止対応）に看護の指導者として参加した"},
+    {date:"2026-10-30", kind:"研究", text:"看護研究の計画書を看護部の教育委員会に提出した"},
+    {date:"2026-10-22", kind:"運営", text:"病棟の急変時マニュアルを見直した"},
+  ],
+  strengths:["急変時の対応","学生や新人の話を聴くこと","チームでの声かけ"],
+  letgo:["委員会の書類作業","統計分析"],
+  matches:[
+    {name:"中村 亮", where:"学内・看護学科 准教授", av:"b", why:"臨地実習の評価研究が専門。現場の実習指導者と共同研究したいと登録", tags:["共同研究","看護研究の相談"], st:""},
+    {name:"高木 亮介", where:"学内・シミュレーションセンター 講師", av:"p", why:"多職種の救急シミュレーションで、看護の指導者を探している", tags:["多職種の協働"], st:""},
+    {name:"藤田 彩", where:"他大学病院・臨床研修センター 講師", av:"y", why:"救急の現場と教育を両立。研修医と看護師の合同研修を運営", tags:["ロールモデル","30分の1on1"], st:""},
+  ],
+  programs:[
+    {title:"臨地実習指導者のためのフィードバック研修", type:"FD/SD", when:"12月12日（院内・対面）", why:"あなたの短期目標とつながります", st:""},
+    {title:"多職種救急シミュレーションの指導者養成", type:"FD/SD", when:"1月20日（シミュレーションセンター）", why:"高木先生と一緒に指導する前に", st:""},
+    {title:"看護研究の始め方（臨床看護師向け）", type:"SD", when:"1月28日（オンライン）", why:"「研究」でプレッシャーを感じているあなたに", st:""},
+    {title:"1on1の始め方（診療科長・管理職向け）", type:"SD", when:"12月3日（オンライン）", why:"上司向けの講座です", st:"", mgr:true},
+  ],
+  career:{
+    choice:0, spanStart:"2025年4月 救急外来に配属", spanEnd:"2028年3月 認定審査（目標）",
+    assetsTitle:"次の役割に向けて積み上げたい経験", assetsNote:"看護研究が目安に届いていません。研究の相談相手は<a href=\"#campus\">つながり</a>から。",
+    milestones:[
+      {ym:"2027-02", when:"2027年2月", what:"多職種シミュレーション研修で指導者を務める", st:"予定"},
+      {ym:"2027-03", when:"2027年3月", what:"院内の看護研究発表会で発表する", st:"遅れ気味"},
+      {ym:"2027-04", when:"2027年4月", what:"認定看護師（救急看護）教育課程に出願する", st:"予定"},
+      {ym:"2027-10", when:"2027年10月", what:"実習指導者講習会を修了する", st:"予定"},
+      {ym:"2028-03", when:"2028年3月", what:"認定看護師の認定審査", st:"目標"},
+    ],
+    assets:[["臨床実践（救急看護）",80],["教育・指導の経験（学生・新人）",60],["看護研究・学会発表",15],["認定・専門の資格",10]],
+    paths:[
+      {title:"認定看護師（救急看護）をめざす", note:"教育課程は約半年。病院の支援制度が使える"},
+      {title:"実習指導者・教育担当として、学生と新人の教育を担う", note:"実習指導者講習会の修了が目安"},
+      {title:"大学院（看護学）で教育や研究を学ぶ", note:"働きながら通える社会人コースがある"},
+    ],
+    seniors:[
+      {name:"藤井 涼", where:"附属病院 看護部 看護師長", path:"救急外来の看護師から、新人教育の担当を経て看護師長に", st:""},
+      {name:"藤田 彩", where:"D大学病院 臨床研修センター 講師", path:"救急の臨床と教育を両立し、大学で指導者養成を担当", st:""},
+    ],
+  },
+  life:{
+    career:{items:["教育の専門性を深めたい","臨床と教育を両立したい"], note:"救急看護の教育者になりたい", scope:"公開"},
+    life:{items:["当直・オンコールがある","介護中の家族がいる"], note:"", scope:"自分"},
+    worry:{items:["研究時間が取れない","臨床と教育の両立が難しい","評価のされ方が分からない"], note:"夜勤明けに実習指導が入ると、学生とゆっくり話せない", scope:"公開"},
+    plan:{note:"2027年に認定看護師の教育課程へ。親の介護の状況を見ながら決めたい。", scope:"自分"},
+  },
+  growth:{plan:{臨床:2, 教育:2, 研究:1, 社会貢献:0, 管理運営:0}, blocked:false},
+  myProfile:{campus:"附属病院", field:"救急看護", job:"看護師"},
+  intros:[{from:"看護部 教育担当", to:"森田 あかり", cid:"c5", msg:"臨地実習の評価研究をしている看護学科の中村先生と、実習指導の現場の声を共有してみませんか。看護研究の相談にも乗ってもらえそうです。", date:"11月17日"}],
+  share:[
+    {id:"pulse", label:"今週のプレッシャー", boss:false, hr:false, mentor:false, agg:true},
+    {id:"logs", label:"成果ログ", boss:true, hr:false, mentor:true, agg:true},
+    {id:"gap", label:"期待のすり合わせ結果", boss:true, hr:false, mentor:true, agg:true},
+    {id:"effort", label:"エフォート配分と担当業務", boss:true, hr:false, mentor:false, agg:true},
+    {id:"records", label:"面談記録", boss:true, hr:false, mentor:false, agg:true, lock:"boss"},
+    {id:"career", label:"キャリア・資格の希望", boss:true, hr:false, mentor:true, agg:true},
+  ],
+  accessLog:[{who:"藤井 涼（看護師長）", what:"エフォート配分と担当業務、期待のすり合わせ結果", when:"11月18日"}],
+  pulse:{value:null, causes:[], history:[4,4,5,4,4]},
+  requests:[],
+  selfMember:{id:"morita", name:"森田 あかり", title:"看護師", dept:"附属病院 看護部（救急外来）", job:"看護師", termUntil:null,
+    plan:{教育:20, 研究:5, 社会貢献:0, 管理運営:5, 臨床:70},
+    tasks:[
+      {name:"救急外来での看護（日勤・夜勤）", essential:true, cat:"臨床", eff:65, prog:null, due:"通年", st:"継続業務"},
+      {name:"看護学生の臨地実習の指導（実習指導者）", core:true, cat:"教育", eff:15, prog:null, due:"通年", st:"継続業務"},
+      {name:"新人看護師のプリセプター", cat:"教育", eff:10, prog:null, due:"2027年3月", st:"継続業務"},
+      {name:"多職種シミュレーション研修（救急）の準備", core:true, cat:"教育", eff:5, prog:40, due:"2027年2月", st:"順調"},
+      {name:"看護研究（院内発表）", cat:"研究", eff:5, prog:20, due:"2027年3月", st:"遅れ気味"},
+      {name:"病棟の委員会（教育委員）", cat:"管理運営", eff:5, prog:null, due:"通年", st:"継続業務"},
+    ]},
+  thanksTo:["藤井 涼（看護師長）","高木 亮介（シミュレーションセンター）","小池 由美（臨床工学技士）","中村 亮（看護学科）","小松 誠（理学療法士）","新人看護師のみなさん"],
+  coachNote:"期待のすり合わせでは、本人は看護研究を強く求められていると感じていたが、師長はまず実習指導とプリセプターを無理なく続けてほしいと考えていることが分かっています。夜勤があり、家族の介護もある。",
+  consultTopic:"臨地実習での学生への声かけ",
+  todayHint:{text:"シミュレーションセンターの高木さんが、救急シミュレーションで看護の指導者を探しています", ask:"高木さんとの協働について教えて"},
+  myExtra:[],
+}};
+let curPersona = "faculty";
+function applyPersona(p){
+  if (p===curPersona) return;
+  const pick = () => Object.fromEntries(PERSONA_KEYS.map(k => [k, S[k]]));
+  PERSONAS[curPersona] = pick();
+  PERSONA_KEYS.forEach(k => { S[k] = PERSONAS[p][k]; });
+  curPersona = p; selPartner = (S.partners.find(x => x.scores) || S.partners[0]).id;
+}
 const cycleHTML = () => `<div class="cycle">${S.cycle.map(c=>`<div class="${c.st}"><b>${c.name}</b><span class="muted">${c.when}${c.st==="now"?"・いまここ":""}</span></div>`).join("")}</div>`;
 
 /* AI 共通 */
@@ -1044,26 +1190,26 @@ ${rows}
 
 /* --- 本人：キャリアと任期 --- */
 VIEWS.career = () => {
-  const c = S.career, n = monthsLeft(S.term.until);
+  const c = S.career, n = monthsLeft(S.term.until), nextMs = c.milestones.find(x => monthsLeft(x.ym) > 0);
   const mi = ym => { const [y,m] = ym.split("-").map(Number); return (y-2025)*12 + (m-4); };
   const pos = ym => Math.min(100, Math.max(0, mi(ym)/35*100));
   const stTagC = st => st==="遅れ気味" ? `<span class="tag y">遅れ気味</span>` : st==="期限" ? `<span class="tag p">期限</span>` : `<span class="tag">${st}</span>`;
-  app.innerHTML = head("任期までの道のり", "任期のある働き方を、ひとりで抱えない。次の一歩に向けて、いまから少しずつ準備します。") + `
+  app.innerHTML = head(S.term.until ? "任期までの道のり" : "キャリアの道のり", S.term.until ? "任期のある働き方を、ひとりで抱えない。次の一歩に向けて、いまから少しずつ準備します。" : "資格や役割の節目に向けて、学びと経験を少しずつ積み上げます。") + `
   <section class="card" style="margin-bottom:16px">
     <div class="between" style="align-items:flex-end">
-      <div><span class="small muted">任期満了まで</span><div class="termbig">${n}<span style="font-size:18px">か月</span></div><span class="small muted">${S.term.type}・${S.term.label}（2025年4月着任）</span></div>
+      <div><span class="small muted">${n!==null ? "任期満了まで" : "次の節目まで"}</span><div class="termbig">${n!==null ? n : (nextMs ? monthsLeft(nextMs.ym) : "—")}<span style="font-size:18px">か月</span></div><span class="small muted">${n!==null ? `${S.term.type}・${S.term.label}（2025年4月着任）` : (nextMs ? `${nextMs.when}　${nextMs.what}` : S.term.label)}</span></div>
       <div class="sticky b" style="max-width:340px;font-weight:500"><span class="small">次の大きな節目</span><br>${S.term.review}</div>
     </div>
     <div class="tline" aria-hidden="true"><div class="rail"></div><div class="done" style="width:${pos("2026-11")}%"></div>
       ${c.milestones.map(x=>`<div class="ms ${x.st==="期限"?"end":""}" style="left:${pos(x.ym)}%" title="${x.when} ${x.what}"></div>`).join("")}
       <div class="now" style="left:${pos("2026-11")}%">今日</div></div>
-    <div class="tends"><span>2025年4月 着任</span><span>2028年3月 任期満了</span></div>
+    <div class="tends"><span>${c.spanStart || "2025年4月 着任"}</span><span>${c.spanEnd || "2028年3月 任期満了"}</span></div>
     <ul class="list" style="margin-top:14px">${c.milestones.map(x=>`<li class="between"><span><b>${x.when}</b>　${x.what}</span>${stTagC(x.st)}</li>`).join("")}</ul>
   </section>
   <div class="grid g2" style="margin-bottom:16px">
-    <section class="card"><h2>次のポストに向けて積み上げたい実績</h2><p class="small muted">成果ログとエフォートの記録から、目安に対する進み具合を出しています。</p>
+    <section class="card"><h2>${c.assetsTitle || "次のポストに向けて積み上げたい実績"}</h2><p class="small muted">成果ログとエフォートの記録から、目安に対する進み具合を出しています。</p>
       ${c.assets.map(([l,v])=>`<div class="bar" style="grid-template-columns:190px 1fr 44px"><span>${l}</span><div class="t"><i style="width:${v}%;background:${v<30?"var(--gap)":v<60?"var(--me)":"var(--ok)"}"></i></div><b>${v}%</b></div>`).join("")}
-      <p class="small" style="margin-top:10px">研究業績が目安に届いていません。論文の共著者探しは<a href="#network">強みとつながり</a>から。</p></section>
+      <p class="small" style="margin-top:10px">${c.assetsNote || `研究業績が目安に届いていません。論文の共著者探しは<a href="#network">強みと学外の人</a>から。`}</p></section>
     <section class="card"><h2>考えられる道</h2>
       <p class="small muted">第一希望を選ぶと、おすすめの人や研修が変わります。この希望は${bossSees("career")?"上司にも共有されています":"上司には共有されていません"}（<a href="#sharing">共有設定</a>）。</p>
       <div id="paths">${c.paths.map((p,i)=>`<label class="pathopt"><input type="radio" name="path" value="${i}" ${c.choice===i?"checked":""}><span><b>${p.title}</b><br><span class="small muted">${p.note}</span></span></label>`).join("")}</div></section>
@@ -1083,7 +1229,7 @@ VIEWS.career = () => {
 実績の進み具合（目安に対する%）：${c.assets.map(([l,v])=>l+" "+v+"%").join("、")}
 第一希望の道：${c.paths[c.choice].title}（${c.paths[c.choice].note}）
 強み：${S.strengths.join("、")}。手放したいこと：${S.letgo.join("、")}。
-エフォートの現状は管理運営が計画より多く、研究が不足している。
+エフォートの現状：${(() => { const d = maxDev(meMember()); return d.c ? d.c + "が計画より" + Math.abs(d.d) + "ポイント" + (d.d>0 ? "多い" : "少ない") : "おおむね計画どおり"; })()}。
 これから1年間の計画を、無理のない範囲で四半期ごとに作ってください。ひとりで抱え込まず、上司・同僚・学外の人に頼ることも含めてください。
 次のJSONだけを返してください：{"summary":"計画の考え方2文以内","quarters":[{"when":"時期","focus":"重点","actions":["具体的な行動"]}],"asks":["誰に何を頼むとよいか"]}（quartersは4件、actionsは2件ずつ、asksは2〜3件）`,
     $("#aiOut"), $("#ai"), r => { $("#aiOut").innerHTML = `<div style="margin-top:14px"><p>${esc(r.summary)}</p><div class="grid g2" style="gap:12px">${(r.quarters||[]).map((q,i)=>`<div class="sticky ${["y","b","g","p"][i%4]}" style="font-weight:500"><b>${esc(q.when)}：${esc(q.focus)}</b><ul class="small" style="padding-left:1.2em;margin:6px 0 0">${(q.actions||[]).map(a=>`<li>${esc(a)}</li>`).join("")}</ul></div>`).join("")}</div>
@@ -1094,7 +1240,7 @@ VIEWS.career = () => {
 const DAYS = ["日","月","火","水","木","金","土"];
 const hashS = t => [...t].reduce((a,c) => (a*31 + c.charCodeAt(0)) >>> 0, 7);
 const fmtH = h => `${Math.floor(h)}:${h%1 ? "30" : "00"}`;
-const senderName = () => role==="staff" ? S.me.name : role==="manager" ? S.boss.name : "人事課 FD/SD担当";
+const senderName = () => isSelf() ? S.me.name : role==="manager" ? S.boss.name : "人事課 FD/SD担当";
 const findPerson = name => S.campus.find(c => c.name===name || c.name.replace(" ","")===String(name).replace(/\s/g,"") || (String(name).length>=2 && c.name.startsWith(String(name))));
 function slotsFor(names, minutes=30){
   const out = [], others = names.filter(n => n !== senderName());
@@ -1130,7 +1276,7 @@ function personHTML(c, key, why){
   const sub = SUBS[key + ":" + c.id];
   return `<div class="pcard"><div class="person" style="grid-template-columns:44px 1fr"><div class="av ${avFor(c.name)}">${c.name[0]}</div>
     <div><b>${c.name}</b> <span class="small muted">${c.dept}・${c.title}</span>${c.real ? ` <span class="tag g">ともに登録者</span>` : ""}
-      <div class="row" style="gap:4px;margin:3px 0">${[["campus",c.campus],["field",c.field],["job",c.job]].map(([k,v]) => `<span class="tag ${role==="staff"&&diffs.includes(k)?"diff":""}" title="${role==="staff"&&diffs.includes(k)?DIFFL[k]:""}">${v}</span>`).join("")}</div>
+      <div class="row" style="gap:4px;margin:3px 0">${[["campus",c.campus],["field",c.field],["job",c.job]].map(([k,v]) => `<span class="tag ${isSelf()&&diffs.includes(k)?"diff":""}" title="${isSelf()&&diffs.includes(k)?DIFFL[k]:""}">${v}</span>`).join("")}</div>
       <span class="small">取り組み：<b>${c.project}</b></span>
       ${c.seeking ? `<br><span class="small">探していること：${c.seeking}</span>` : ""}
       ${S.slackOptIn && c.slack ? `<br><span class="small muted">Slack：${c.slack}</span>` : ""}
@@ -1150,7 +1296,7 @@ function renderCard(k){
     ${k.sent ? `<p class="small" style="margin:0 0 6px">${esc(k.text)}</p><div class="okmsg">送信しました（デモ）</div>`
       : `<textarea data-cardtext="${k.id}" aria-label="送る文面">${esc(k.text)}</textarea><div class="row"><button class="btn sm" data-x="send|${k.id}">Slackで送る</button><span class="small muted">送る前に自由に直せます</span></div>`}</div>`;
   if (k.type==="open") return `<div class="xcard" data-card="${k.id}"><div class="between"><span><b>${esc(k.label)}</b><br><span class="small muted">${esc(k.desc)}</span></span><a class="btn sm" href="#${k.view}" style="text-decoration:none">開く</a></div></div>`;
-  if (k.type==="learning"){ const e = S.learnings.find(x=>x.id===k.lid); return `<div class="xcard" data-card="${k.id}"><h3>${role==="staff" ? "わたしの学び" : "学びの記録"}に追加しました（${e.share}）</h3>${learnHTML(e, true, true)}<a class="small" href="#selflearn">${role==="staff" ? "わたしの学び" : "学びの記録"}を開く</a></div>`; }
+  if (k.type==="learning"){ const e = S.learnings.find(x=>x.id===k.lid); return `<div class="xcard" data-card="${k.id}"><h3>${isSelf() ? "わたしの学び" : "学びの記録"}に追加しました（${e.share}）</h3>${learnHTML(e, true, true)}<a class="small" href="#selflearn">${isSelf() ? "わたしの学び" : "学びの記録"}を開く</a></div>`; }
   if (k.type==="peers") return `<div class="xcard" data-card="${k.id}"><h3>同じような状況の人</h3>${peersSection(k.id)}<p class="small muted" style="margin:8px 0 0">お互いに学内に公開している項目だけで探しています。</p></div>`;
   if (k.type==="rm") return `<div class="xcard" data-card="${k.id}"><h3>経験を相談できる人</h3>${k.ids.length ? k.ids.map(id => rmHTML(getRM(id), k.id)).join("") : `<p class="small muted" style="margin:0">近い経験の人が見つかりませんでした。「つながり」から登録者の一覧を見られます。</p>`}<p class="small muted" style="margin:8px 0 0">相談したことは、上司や人事には共有されません。</p></div>`;
   if (k.type==="signals") return `<div class="xcard" data-card="${k.id}">${crossHTML()}</div>`;
@@ -1164,10 +1310,10 @@ function slotCard(names, minutes=30, title, inPerson){
   return newCard({type:"slots", names, minutes, title: title || `${names.join("、")}さんとの打ち合わせ`, where, slots: slotsFor(names, minutes)});
 }
 function dmCard(c){
-  const mine = projectsOf(S.team.find(m=>m.id==="sato"));
+  const mine = projectsOf(meMember());
   const link = mine.find(p => p.tags.some(t => c.tags.includes(t)));
-  const text = role==="staff"
-    ? `${c.name}さん、はじめまして。医学教育センターの${S.me.name}です。${c.project}の取り組みを拝見しました。私も「${link ? link.name : "臨床教育"}」に取り組んでいて、重なるところがありそうです。30分ほどオンラインでお話を伺えませんか。`
+  const text = isSelf()
+    ? `${c.name}さん、はじめまして。${S.me.dept}の${S.me.name}です。${c.project}の取り組みを拝見しました。私も「${link ? link.name : "臨床教育"}」に取り組んでいて、重なるところがありそうです。30分ほどオンラインでお話を伺えませんか。`
     : role==="manager" ? `${c.name}さん、医学教育センター長の${S.boss.name}です。${c.project}について、センターのメンバーとつないでいただけないかと思いご連絡しました。少しお時間をいただけますか。`
     : `${c.name}さん、人事課FD/SD担当です。${c.project}の取り組みを、来年度の合同FD/SD研修で紹介していただけないかと考えています。一度ご相談させてください。`;
   return newCard({type:"slack", to:c.name, text});
@@ -1187,7 +1333,7 @@ document.addEventListener("click", e => {
   }
   if (act==="slot"){ const k = CARDS[a]; if (k && k.booked===undefined) book(k, +b); }
   if (act==="send"){ const k = CARDS[a]; if (k){ k.sent = true; refreshCard(a);
-    if (k.kind==="request" && !S.requests.some(r => r.from===S.me.name)){ S.requests.push({from:S.me.name, text:k.text, date:"今日"}); const rb = $("#req"); if (rb){ rb.textContent = "センター長に相談を送りました"; rb.disabled = true; } } } }
+    if (k.kind==="request" && !S.requests.some(r => r.from===S.me.name)){ S.requests.push({from:S.me.name, text:k.text, date:"今日"}); const rb = $("#req"); if (rb){ rb.textContent = `${S.boss.title}に相談を送りました`; rb.disabled = true; } } } }
   if (act==="schedn"){ const k = slotCard([a], 30, b || undefined); const el = t.closest(".reqbox")?.querySelector(".reqout"); if (el) el.innerHTML = renderCard(k); }
   if (act==="ask"){ if (location.hash!=="#ask") location.hash = "ask"; setTimeout(() => askAgent(a), 60); }
 });
@@ -1202,26 +1348,27 @@ function crossHTML(){
 }
 
 /* --- 聞く：会話から機能を呼び出す --- */
-const chats = {staff:[], manager:[], admin:[], sysadmin:[]};
+const chats = {staff:[], clinician:[], manager:[], admin:[], sysadmin:[]};
 let agentBusy = false, agentCtl = null, toolsOK = null;
 const SUGG = {
   staff:["工学部の人と一緒にシミュレーション教材をつくりたい","附属病院で臨床教育のデータを研究している人を探して","看護や薬学の人と共同研究できるテーマはある？","中村さんと来週30分の打ち合わせを入れて","研究の時間をもっと確保したい","任期付きから無期になった先輩に話を聞きたい","同じような状況の人とつながりたい"],
+  clinician:["実習指導で悩んでいる看護師同士でつながりたい","看護研究を一緒に考えてくれる人を探して","高木さんと来週30分の打ち合わせを入れて","夜勤があっても学びの時間を確保したい","認定看護師になった先輩に話を聞きたい","同じような状況の人とつながりたい"],
   manager:["伊藤さんにつなぐと良い学内の人は？","佐藤さんとの面談の準備をしたい","引き継ぎで後任に伝えることを整理したい","清水先生との打ち合わせを調整して"],
   admin:["職種やキャンパスをまたぐ協働の状況を見せて","工学部と医療系をつなぐなら誰？","来年度の合同FD/SDの叩き台を作りたい","任期付き教員の支援が遅れている人は？"],
 };
 function contextPrompt(){
-  const me = S.team.find(m=>m.id==="sato");
+  const me = meMember();
   const myMeet = S.meetings.filter(m => m.owner===role && !m.past).map(m => `${m.title}（${m.label}・${m.with.join("、")}）`).join("／") || "なし";
   const feats = FEATURES[role].map(([v,l,d]) => `${v}=${l}（${d}）`).join("、");
-  const who = role==="staff" ? `${S.me.name}（${S.me.dept}・${S.me.title}、${S.term.type}・${S.term.label}、${S.myProfile.campus}、分野：${S.myProfile.field}）。取り組み：${projectsOf(me).map(p=>p.name).join("、")}。届いた紹介：${S.intros.filter(x=>x.to===S.me.name).map(x=>S.campus.find(c=>c.id===x.cid).name+"（"+x.from+"）").join("、")||"なし"}`
+  const who = isSelf() ? `${S.me.name}（${S.me.dept}・${S.me.title}、${S.term.type}・${S.term.label}、${S.myProfile.campus}、分野：${S.myProfile.field}）。取り組み：${projectsOf(me).map(p=>p.name).join("、")}。届いた紹介：${S.intros.filter(x=>x.to===S.me.name).map(x=>S.campus.find(c=>c.id===x.cid).name+"（"+x.from+"）").join("、")||"なし"}`
     : role==="manager" ? `${S.boss.name}（医学教育センター長）。メンバー：${S.team.map(m=>`${m.name}（${m.title}・${m.job}、${m.termUntil?ymLabel(m.termUntil)+"まで":"無期"}、業務負荷${totalLoad(m)}%）`).join("、")}。センター長は${HANDOVER.when}に交代予定。`
     : `人事課 FD/SD担当。全学のプレッシャー平均が高いのは附属病院と医学教育センター。キャンパスをまたぐ会話の割合は${S.org.cross.ratio.at(-1)}%。任期終了まで18か月以内の教員が37人。`;
   return `あなたは大学の教職員向けプラットフォーム「ともに」の案内役です。対象は医療者教育（医学・看護学・薬学・リハビリテーションなどの卒前・卒後教育、臨床実習、臨床研修、多職種連携教育）に関わる教職員と医療者です。工学部などの医療以外の教員や、附属病院の医療技術職（臨床工学・放射線・検査・栄養など）もユーザーとして協働します（医工連携を含む）。目的は、キャリアアップのための自己の学びを起点に、診療科・職種・キャンパスをこえた横のつながりをつくり、業績以外の貢献を見える化して組織を良くすることです。ともには教職員一人ひとりの自己成長のための基盤で、業務やエフォートを把握するのも、本人の成長の時間を守るためです。教職員を評価・監視するような言い方は決してしない。上司や人事に対しても、本人が共有していない情報は推測しない。画面の機能は最低限にしてあり、それ以外は会話から案内します。打ち合わせの日程調整や連絡の下書きも代わりに進めます。
 利用者：${who}
 この人の予定：${myMeet}
-${role==="staff" ? `本人が記入したキャリアとライフ（本人へのおすすめにだけ使う。家族やライフイベントには、本人が話題にしない限りこちらから触れない）：${lifeSummary(false)||"記入なし"}
+${isSelf() ? `本人が記入したキャリアとライフ（本人へのおすすめにだけ使う。家族やライフイベントには、本人が話題にしない限りこちらから触れない）：${lifeSummary(false)||"記入なし"}
 ` : ""}経験を相談できるロールモデル：キャリア・ライフイベント・業務・研究で壁を乗り越えた教職員が、相談相手として登録している。ライフイベント（育児・介護・病気など）は、利用者が自分から話題にしたときだけ扱う。
-学内の共同研究支援：${S.funds.map(f=>`${f.name}（締切${f.deadline}、${f.amount}、${f.cond}）`).join("")}
+${isSelf() && totalLoad(meMember())>100 ? `本人の業務は計画を超えている（${totalLoad(meMember())}%）。新しい協働や学びを勧めるときは、やめる・減らす・人に任せることも一緒に提案し、「わたしの働き方」の提案を案内する。\n` : ""}学内の共同研究支援：${S.funds.map(f=>`${f.name}（締切${f.deadline}、${f.amount}、${f.cond}）`).join("")}
 Slack連携：${S.slackOptIn ? "公開チャンネルの話題の要約を推薦に使ってよい。DMや非公開チャンネルは使わない" : "使わない"}
 開ける画面：${feats}
 ルール：
@@ -1252,7 +1399,7 @@ function buildTools(msg){
        if (!f && !mm) throw new Error("その画面はありません");
        add(newCard({type:"open", view:v, label: f ? f[1] : `${mm.name}さんの詳細`, desc: inp.reason ? String(inp.reason) : (f ? f[2] : "担当業務・エフォート・つなぐと良い人")})); return "ボタンを表示しました"; }},
   ];
-  if (role==="staff") T.push({name:"find_peers", description:"利用者と相手の両方が学内に公開した、キャリアの希望・家族とライフプラン・業務の悩みが重なる学内の人を探し、カードで示す。返り値は氏名・所属・共通の項目だけ。",
+  if (isSelf()) T.push({name:"find_peers", description:"利用者と相手の両方が学内に公開した、キャリアの希望・家族とライフプラン・業務の悩みが重なる学内の人を探し、カードで示す。返り値は氏名・所属・共通の項目だけ。",
     execute: () => { add(newCard({type:"peers"})); return peersFor().slice(0,6).map(x => ({name:x.c.name, dept:x.c.dept, common:Object.values(x.common).flat()})); }});
   T.push({name:"find_role_models", description:"キャリア・ライフイベント・業務・研究で壁を乗り越えた経験をもち、相談相手として登録している学内の教職員を探し、カードで示す。ライフイベントは利用者が自分から話題にしたときだけ category に指定する。返り値は氏名・所属・経験。",
     inputSchema:{type:"object", properties:{category:{type:"string", enum:["すべて","キャリア","ライフイベント","業務","研究"]}, topic:{type:"string", description:"経験のキーワード（例：任期、育児、介護、両立、復帰、転職）"}}},
@@ -1274,9 +1421,9 @@ function localAnswer(text, msg){
   const mins = text.match(/(\d+)\s*(分|時間)/);
   if (role!=="admin" && mins && /学|読|受講|講座|勉強|研修|研究会|検討会|参加|カンファレンス|セミナー|ウェビナー/.test(text)){
     const e = addLearning({title:text.replace(/^(今日|きょう)は?、?/,"").replace(/^\d+\s*(分|時間)、?/,"").replace(/(を)?(受けた|読んだ|学んだ|勉強した|参加した|に参加した)。?$/,"").slice(0,40), type:/読/.test(text)?"本・論文":/講座|受講/.test(text)?"オンライン講座":/勉強会|研究会|学会|検討会|カンファレンス|セミナー/.test(text)?"学会・勉強会":"その他", minutes: mins[2]==="時間" ? +mins[1]*60 : +mins[1], note:"", share:"自分だけ"});
-    add(newCard({type:"learning", lid:e.id})); msg.content = `${role==="staff" ? "わたしの学び" : "学びの記録"}に追加しました。共有範囲は「自分だけ」にしてあります。`; return; }
+    add(newCard({type:"learning", lid:e.id})); msg.content = `${isSelf() ? "わたしの学び" : "学びの記録"}に追加しました。共有範囲は「自分だけ」にしてあります。`; return; }
   if (role==="admin" && /風通し|キャンパスをまたぐ|協働の状況/.test(text)){ add(newCard({type:"signals"})); msg.content = "Slackの公開チャンネルから見た、キャンパス間のやりとりです。"; return; }
-  if (role==="staff" && /同じ(ような)?状況|似た状況|同じ悩み|似た悩み|子育て中の|共働きの|単身赴任の|遠距離通勤の|介護中の/.test(text)){
+  if (isSelf() && /同じ(ような)?状況|似た状況|同じ悩み|似た悩み|子育て中の|共働きの|単身赴任の|遠距離通勤の|介護中の/.test(text)){
     add(newCard({type:"peers"})); msg.content = "お互いに学内に公開している項目が重なる人です。上司や人事には表示されません。"; return; }
   if (/ロールモデル|乗り越え|両立|育児|育休|介護|出産|復帰|療養|先輩|経験を聞|経験した人/.test(text)){
     const cat = /育児|育休|介護|出産|復帰|療養|病気|家族|不妊/.test(text) ? "ライフイベント" : /任期|無期|キャリア|転職|公募/.test(text) ? "キャリア" : /研究/.test(text) ? "研究" : /業務|仕事|臨床/.test(text) ? "業務" : "すべて";
@@ -1322,12 +1469,12 @@ function drawChat(streaming){
   if (!streaming) box.lastElementChild?.scrollIntoView({block:"nearest", behavior:"smooth"});
 }
 function todayHTML(){
-  if (role==="staff"){
-    const next = S.meetings.find(m => m.owner==="staff" && !m.past), intros = S.intros.filter(x=>x.to===S.me.name).length;
+  if (isSelf()){
+    const next = S.meetings.find(m => m.owner===role && !m.past), intros = S.intros.filter(x=>x.to===S.me.name).length;
     return `<div class="today">
       <a class="sticky y" href="#meetings"><span class="small">次の予定</span><b>${next?esc(next.title):"なし"}</b><span class="small">${next?next.label:""}</span></a>
-      <a class="sticky b" href="#workstyle"><span class="small">わたしの働き方</span><b>いまは${totalLoad(S.team.find(m=>m.id==="sato"))}%・成長の時間 ${growthWeek()}/${growthTarget()}時間</b><span class="small">自分で見直せます</span></a>
-      <button class="sticky g" data-x="ask|工学部の宮本さんの共同研究について教えて" style="border:0;text-align:left;cursor:pointer;font:inherit"><span class="small">Slackで見つけた話題</span><b>工学部の宮本さんが、手技シミュレーターを実習で試せる医療側の教員を探しています</b></button></div>
+      <a class="sticky b" href="#workstyle"><span class="small">わたしの働き方</span><b>いまは${totalLoad(meMember())}%・成長の時間 ${growthWeek()}/${growthTarget()}時間</b><span class="small">自分で見直せます</span></a>
+      <button class="sticky g" data-x="ask|${esc(S.todayHint.ask)}" style="border:0;text-align:left;cursor:pointer;font:inherit"><span class="small">Slackで見つけた話題</span><b>${esc(S.todayHint.text)}</b></button></div>
       <div class="pulsemini"><span class="muted">今週のプレッシャー</span>${[1,2,3,4,5].map(n=>`<button data-p="${n}" aria-pressed="${S.pulse.value===n}" aria-label="${n}">${n}</button>`).join("")}<span class="small muted">（${bossSees("pulse")?"上司にも共有":"上司には見えません"}）</span></div>`;
   }
   if (role==="manager") return `<div class="today">
@@ -1342,7 +1489,7 @@ function todayHTML(){
 const GUIDE_KEY = "tomoni-guide-done-v1";
 const guideDone = () => { try { return localStorage.getItem(GUIDE_KEY)==="1"; } catch(e){ return false; } };
 function guideHTML(){
-  if (role!=="staff" || guideDone()) return "";
+  if (!isSelf() || guideDone()) return "";
   return `<section class="card guide" id="guide"><div class="between"><h2 style="margin:0">はじめての方へ：3つだけ</h2><button class="btn sub sm" id="gclose">わかった</button></div><ol class="small">
     <li><a href="#workstyle">わたしの働き方</a>で、いまの配分と「成長のための時間」を確かめる</li>
     <li><a href="#selflearn">わたしの学び</a>に、今日の学びをひとつ記録する（ここに書いても記録できます）</li>
@@ -1350,8 +1497,8 @@ function guideHTML(){
     <p class="small muted" style="margin:6px 0 0">誰に何を見せるかは<a href="#sharing">共有設定</a>で決められます。</p></section>`;
 }
 VIEWS.ask = () => {
-  const hi = role==="staff" ? `こんにちは、${esc((ME ? ME.name : S.me.name).split(" ").pop())}さん` : role==="manager" ? `こんにちは、${S.boss.name.split(" ")[0]}センター長` : "こんにちは";
-  app.innerHTML = head(hi, "やりたいことを書いてください。人探し、共同研究の相手、日程調整、Slackでの連絡まで、ともにが代わりに進めます。") + (role==="staff" ? `<p class="small muted" style="margin:-4px 0 14px">あなたの記録はあなたのものです。評価には使わず、誰が見たかはいつでも<a href="#sharing">確認できます</a>。</p>` : "") + guideHTML() + (LIVE ? `<p class="small muted" style="margin:-6px 0 14px">登録情報と、つながりに出るほかの登録者は実際のデータです。それ以外の画面は、いまはサンプルで表示しています。</p>` : "") + todayHTML() + `
+  const hi = isSelf() ? `こんにちは、${esc((ME ? ME.name : S.me.name).split(" ").pop())}さん` : role==="manager" ? `こんにちは、${S.boss.name.split(" ")[0]}センター長` : "こんにちは";
+  app.innerHTML = head(hi, "やりたいことを書いてください。人探し、共同研究の相手、日程調整、Slackでの連絡まで、ともにが代わりに進めます。") + (isSelf() ? `<p class="small muted" style="margin:-4px 0 14px">あなたの記録はあなたのものです。評価には使わず、誰が見たかはいつでも<a href="#sharing">確認できます</a>。</p>` : "") + guideHTML() + (LIVE ? `<p class="small muted" style="margin:-6px 0 14px">登録情報と、つながりに出るほかの登録者は実際のデータです。それ以外の画面は、いまはサンプルで表示しています。</p>` : "") + todayHTML() + `
   <section class="card">
     <div class="chat2" id="chat2" aria-live="polite"></div>
     <div class="askbar"><textarea id="q" rows="2" placeholder="${esc(SUGG[role][0])}" aria-label="ともにへのお願い"></textarea><button class="btn" id="send">送る</button></div>
@@ -1378,7 +1525,49 @@ function promiseHTML(kind){
   return `<div class="card promise small">この画面は、支援策を考えるための集計です。個人を評価したり順位をつけたりする機能はなく、5人未満の集団は表示しません。</div>`;
 }
 
-/* --- わたしの働き方（労務の把握を、本人の成長のために使う） --- */
+/* --- やめる・減らす提案：つながりで増えた仕事や学びを、エフォートの範囲に戻す --- */
+const HELPER_JOBS = /事務職員|技術職員|URA/;
+function stopSuggestions(m){
+  const act = actualEff(m), L = totalLoad(m);
+  const devOf = c => act[c] - (m.plan[c]||0);
+  const out = [];
+  m.tasks.forEach(t => {
+    if (t.core || t.essential || t.done || !t.eff) return;
+    const dev = devOf(t.cat); if (dev < 5 && L <= 100) return;
+    const tags = tagsFor(t.name);
+    const helper = S.campus.find(c => HELPER_JOBS.test(c.job) && c.tags.some(x => tags.includes(x)));
+    let a, cut, why;
+    if (helper && t.eff >= 10){ a = "hand"; cut = Math.max(5, Math.round(t.eff/2/5)*5); why = `${helper.name}さん（${helper.dept}・${helper.project}）と分担できそうです。`; }
+    else if (t.st==="遅れ気味"){ a = "later"; cut = t.eff; why = "期限を延ばし、今期はいったん手を止めます。"; }
+    else if (t.eff <= 5){ a = "stop"; cut = t.eff; why = "小さな業務ですが、毎週の切り替えの負担になっています。"; }
+    else if (t.st==="継続業務"){ a = "less"; cut = 5; why = "いまの目標に直接つながっていない継続業務です。回数や担当の範囲を見直せそうです。"; }
+    else return;
+    out.push({kind:"task", id:t.name, t, a, cut, why, helper, score:(dev>0?dev:0) + cut});
+  });
+  const gw = growthByCat();
+  Object.entries(gw).forEach(([c,h]) => { const tgt = S.growth.plan[c]||0; if (h <= tgt + 0.01) return;
+    S.learnings.filter(e => e.who===S.me.name && inWeek(e) && !e.paused && catOf(e)===c && !needsFor(e).length)
+      .forEach(e => out.push({kind:"learn", id:e.id, e, a:"rest", cut:e.minutes, why:`今週の${c}の学びが目標（${tgt}時間）を超えています。目標や組織のニーズとの結びつきが弱い学びです。`, score:1})); });
+  return out.sort((a,b) => b.score - a.score).slice(0, 6);
+}
+const ACTL = {stop:["やめる","stop"], less:["減らす","less"], hand:["人に任せる","hand"], later:["先送りする","later"], rest:["いったん休む","rest"]};
+function stopHTML(m){
+  const L = totalLoad(m), sug = stopSuggestions(m), done = (S.stopLog||[]);
+  const meetN = S.meetings.filter(x => x.owner===role && !x.past).length, newN = S.meetings.filter(x => x.owner===role && !x.past && /^m\d{6,}/.test(x.id)).length;
+  const over = Math.max(0, L-100);
+  return `<section class="card stopbox ${over||sug.length?"":"ok"}" style="margin-bottom:16px">
+    <div class="between"><h2 style="margin:0">やめる・減らすことの提案</h2><span class="small muted">つながりで増えた仕事や学びも、エフォートの範囲に収めるために</span></div>
+    <div class="capbar" role="img" aria-label="業務の合計 ${L}%"><i style="width:${Math.min(L,130)/130*100}%;background:${L>100?"var(--gap)":"var(--ok)"}"></i><span class="lim" style="left:${100/130*100}%"></span></div>
+    <p class="small" style="margin:0 0 6px">${over ? `いまは<b>${L}%</b>です。あと<b>${over}ポイント</b>減らすと、計画した働き方の範囲に戻ります。` : `いまは<b>${L}%</b>で、計画の範囲に収まっています。`}今週の打ち合わせは${meetN}件${newN ? `（つながりから新しく${newN}件）` : ""}です。新しく始めるときは、やめることも一緒に決めると続けやすくなります。</p>
+    ${sug.length ? sug.map(x => `<div class="sugg2"><span class="act ${ACTL[x.a][1]}">${ACTL[x.a][0]}</span>
+      <div><b>${esc(x.kind==="task" ? x.t.name : x.e.title)}</b> <span class="small muted">${x.kind==="task" ? `${x.t.cat}・いま${x.t.eff}%` : `学び・${x.e.minutes}分`}</span><br><span class="small">${esc(x.why)}</span><br>
+        <span class="small muted">効果：${x.kind==="task" ? `${x.t.cat} −${x.cut}ポイント` : `今週の学び −${x.cut}分`}</span></div>
+      <div class="row" style="gap:6px;flex-wrap:nowrap"><button class="btn sm" data-adopt="${esc(x.id)}">この案を採用</button><button class="btn sub sm" data-skip="${esc(x.id)}">見送る</button></div></div>`).join("")
+      : `<p class="small muted" style="margin:6px 0 0">いまはやめる・減らす候補はありません。</p>`}
+    ${done.length ? `<h3 style="margin-top:14px">決めたこと</h3><ul class="list small">${done.map((d,i) => `<li class="between"><span>${esc(d.text)}</span><button class="btn sub sm" data-undo="${i}">元に戻す</button></li>`).join("")}</ul>
+      <div id="stopout"></div>` : ""}
+  </section>`;
+}
 function effortBlock(m, learn){
   const act = actualEff(m), L = totalLoad(m), scale = Math.max(100, L);
   const used = CATS.filter(c => (m.plan[c]||0) > 0 || act[c] > 0);
@@ -1393,9 +1582,13 @@ function effortBlock(m, learn){
     ${learn ? `<p class="small muted" style="margin:8px 0 0">「うち学び」は、わたしの学びで今週記録した時間を、週40時間として換算した目安です。</p>` : ""}`;
 }
 VIEWS.workstyle = () => {
-  const m = S.team.find(x => x.id==="sato"), L = totalLoad(m), {c:dc, d:dd} = maxDev(m), g = S.growth, gw = growthByCat();
+  const m = meMember(), L = totalLoad(m), {c:dc, d:dd} = maxDev(m), g = S.growth, gw = growthByCat();
   const sent = S.requests.some(r => r.from===S.me.name);
-  app.innerHTML = head("わたしの働き方", "自分の時間の使い方を、自分で見直すための画面です。上司や人事には、共有設定で許可した範囲だけが見えます。") + `
+  const kpi = (l,v,u,n) => `<div class="card"><span class="small muted">${l}</span><p style="font-size:26px;font-weight:900;margin:0">${v}<span class="small muted" style="font-weight:400">${u}</span></p>${n?`<span class="small muted">${n}</span>`:""}</div>`;
+  const meetN = S.meetings.filter(x => x.owner===role && !x.past).length;
+  app.innerHTML = head("わたしの働き方", "働き方と学び方を一つの画面で見て、自分で見直すためのダッシュボードです。上司や人事には、共有設定で許可した範囲だけが見えます。") + `
+  <div class="grid g4" style="margin-bottom:16px">${kpi("業務の合計", L, "%", L>100 ? `計画より${L-100}ポイント多い` : "計画の範囲")}${kpi("今週の学び", growthWeek(), "時間", `目標 ${growthTarget()}時間`)}${kpi("今週の打ち合わせ", meetN, "件", "つながりから増えた分も含む")}${kpi("いちばんの乖離", dc ? (dd>0?"+":"")+dd : "—", dc ? "pt" : "", dc || "")}</div>
+  <div id="stopwrap">${stopHTML(m)}</div>
   <div class="grid g21" style="margin-bottom:16px">
     <section class="card"><h2>いまの配分</h2>
       <p class="small">${L>100 ? `担当業務を合わせると<b>${L}%</b>で、計画した働き方を少し超えています。` : "計画の範囲で進んでいます。"}${Math.abs(dd)>=10 ? `とくに<b>${dc}</b>が計画より${Math.abs(dd)}ポイント${dd>0?"多く":"少なく"}なっています。` : ""}</p>
@@ -1411,7 +1604,7 @@ VIEWS.workstyle = () => {
         <p class="small" style="margin:8px 0 0">${(() => { const short = LCATS.filter(c => (g.plan[c]||0) > 0 && gw[c] < (g.plan[c]||0)/2); return short.length ? `今週は<b>${short.join("・")}</b>の学びが目標の半分に届いていません。` : "今週は、決めた配分どおりに学べています。"; })()}</p>
         <div id="gbox" style="margin-top:10px">${g.blocked ? `<div class="okmsg">来週の火曜と木曜の午前を「研究の学び」の時間として確保しました（デモ）</div>` : `<button class="btn sub sm" id="gblock">足りない区分の時間を来週のカレンダーに確保する</button>`}</div></section>
       <section class="card"><h2>見直しを相談する</h2><p class="small muted">相談するかどうか、何を伝えるかはあなたが決めます。</p>
-        <button class="btn" id="req" ${sent?"disabled":""}>${sent?"センター長に相談を送りました":"センター長に配分の見直しを相談する"}</button>
+        <button class="btn" id="req" ${sent?"disabled":""}>${sent?`${S.boss.title}に相談を送りました`:`${S.boss.title}に配分の見直しを相談する`}</button>
         <p style="margin:10px 0 0"><a class="small" href="#campus">手放したい業務を手伝ってくれる人を探す</a></p>
         <div id="reqout"></div></section>
     </div>
@@ -1445,11 +1638,25 @@ VIEWS.workstyle = () => {
     $("#wgbody details").ontoggle = e => { gapOpen = e.target.open; };
   };
   drawGap();
+  $("#stopwrap").addEventListener("click", e => {
+    const ad = e.target.closest("[data-adopt]"), sk = e.target.closest("[data-skip]"), un = e.target.closest("[data-undo]");
+    S.stopLog ||= []; S.stopSkip ||= [];
+    if (ad){ const x = stopSuggestions(m).find(y => y.id===ad.dataset.adopt); if (!x) return;
+      if (x.kind==="task"){ const before = x.t.eff; x.t.eff = Math.max(0, x.t.eff - x.cut); if (!x.t.eff) x.t.done = true;
+        S.stopLog.push({kind:"task", ref:x.t, before, text:`${ACTL[x.a][0]}：${x.t.name}（${x.t.cat} ${before}% → ${x.t.eff}%）${x.helper ? `／${x.helper.name}さんに相談` : ""}`, helper:x.helper}); }
+      else { x.e.paused = true; S.stopLog.push({kind:"learn", ref:x.e, text:`いったん休む：${x.e.title}（${x.e.minutes}分）`}); }
+      VIEWS.workstyle();
+      const last = S.stopLog.at(-1);
+      if (last.helper){ const k = newCard({type:"slack", to:last.helper.name, text:`${last.helper.name}さん、${S.me.dept}の${S.me.name}です。「${last.ref.name}」の一部をお願いできないかご相談させてください。${last.helper.project}のご経験を借りられるとありがたいです。`}); const o = $("#stopout"); if (o) o.innerHTML = renderCard(k); }
+      return; }
+    if (sk){ const x = stopSuggestions(m).find(y => y.id===sk.dataset.skip); if (x){ if (x.kind==="task") x.t.core = true; else x.e.paused = false; } VIEWS.workstyle(); return; }
+    if (un){ const d = S.stopLog.splice(+un.dataset.undo, 1)[0]; if (d.kind==="task"){ d.ref.eff = d.before; d.ref.done = false; } else d.ref.paused = false; VIEWS.workstyle(); }
+  });
   $("#wgp").onchange = e => { selPartner = e.target.value; drawGap(); };
   $("#gblock") && ($("#gblock").onclick = () => { g.blocked = true; $("#gbox").innerHTML = `<div class="okmsg">来週の火曜と木曜の午前を「研究の学び」の時間として確保しました（デモ）</div>`; });
   $("#req").onclick = () => {
-    const k = newCard({type:"slack", kind:"request", to:S.boss.name, text:`田中先生、佐藤です。いまの担当業務を合わせると${L}%で、${dc}が計画より${Math.abs(dd)}ポイント${dd>0?"多く":"少なく"}なっています。研究の時間を確保できるよう、業務の配分について30分ほどご相談させてください。`});
-    $("#reqout").innerHTML = `<p class="small muted" style="margin:10px 0 6px">文面は自由に直せます。送ると、センター長の画面に「本人からの相談」として届きます。</p>` + renderCard(k);
+    const k = newCard({type:"slack", kind:"request", to:S.boss.name, text:`${S.boss.name.split(" ")[0]}${S.boss.title.includes("師長") ? "師長" : "先生"}、${S.me.name.split(" ")[0]}です。いまの担当業務を合わせると${L}%で、${dc}が計画より${Math.abs(dd)}ポイント${dd>0?"多く":"少なく"}なっています。研究の時間を確保できるよう、業務の配分について30分ほどご相談させてください。`});
+    $("#reqout").innerHTML = `<p class="small muted" style="margin:10px 0 6px">文面は自由に直せます。送ると、${S.boss.title}の画面に「本人からの相談」として届きます。</p>` + renderCard(k);
   };
 };
 
@@ -1465,7 +1672,7 @@ const LCATS = ["教育","研究","臨床","社会貢献","管理運営"];
 const NEED2CAT = {医工連携:"研究", "評価・アセスメント":"教育", 臨床教育:"教育", 多職種連携教育:"教育", 新任者支援:"教育", 外部資金:"研究", マネジメント:"管理運営", 業務改善:"管理運営", 心身の支え:"管理運営"};
 function guessCat(title, note=""){
   const t = title + " " + note;
-  if (/診療|外来|手技|症例|臨床推論|当直|救急対応/.test(t)) return "臨床";
+  if (/診療|外来|手技|症例|臨床推論|当直|救急対応|救急看護|看護ケア|急変/.test(t)) return "臨床";
   if (/論文|研究|学会発表|科研|研究費|先行研究/.test(t)) return "研究";
   if (/地域|公開講座|社会|高校|自治体|市民/.test(t)) return "社会貢献";
   const n = needsFor({title, note}); if (n.length) return NEED2CAT[n[0]] || "教育";
@@ -1474,7 +1681,7 @@ function guessCat(title, note=""){
 const weekStart = (() => { const d = new Date(TODAY); d.setDate(d.getDate() - ((d.getDay()+6)%7)); d.setHours(0,0,0,0); return d; })();
 const inWeek = e => { if (e.date==="今日") return true; const m = String(e.date).match(/(\d+)月(\d+)日/); return !!m && new Date(TODAY.getFullYear(), +m[1]-1, +m[2]) >= weekStart; };
 const catOf = e => e.cat || guessCat(e.title, e.note);
-function growthByCat(){ const o = {}; LCATS.forEach(c => o[c] = 0); S.learnings.filter(e => e.who===S.me.name && inWeek(e)).forEach(e => { o[catOf(e)] = (o[catOf(e)]||0) + e.minutes/60; }); return o; }
+function growthByCat(){ const o = {}; LCATS.forEach(c => o[c] = 0); S.learnings.filter(e => e.who===S.me.name && inWeek(e) && !e.paused).forEach(e => { o[catOf(e)] = (o[catOf(e)]||0) + e.minutes/60; }); return o; }
 const growthWeek = () => Math.round(Object.values(growthByCat()).reduce((a,b)=>a+b,0)*10)/10;
 const growthTarget = () => Object.values(S.growth.plan).reduce((a,b)=>a+b,0);
 function addLearning(o){
@@ -1499,7 +1706,7 @@ VIEWS.selflearn = () => {
   const who = learner(), mine = S.learnings.filter(e => e.who===who), feed = S.learnings.filter(e => e.who!==who && e.share==="学内に公開");
   const mins = mine.reduce((a,e)=>a+e.minutes,0), contrib = mine.filter(e => needsFor(e).length).length;
   const kpi = (l,v,u,n) => `<div class="card"><span class="small muted">${l}</span><p style="font-size:28px;font-weight:900;margin:0">${v}<span class="small muted" style="font-weight:400">${u}</span></p>${n?`<span class="small muted">${n}</span>`:""}</div>`;
-  app.innerHTML = head(role==="staff" ? "わたしの学び" : "学びの記録", "日々の自己研修を記録します。あなたの学びが組織のどこを補えそうかも一緒に見えるので、学びを活かす場が見つかります。評価には使いません。") + `
+  app.innerHTML = head(isSelf() ? "わたしの学び" : "学びの記録", "日々の自己研修を記録します。あなたの学びが組織のどこを補えそうかも一緒に見えるので、学びを活かす場が見つかります。評価には使いません。") + `
   <div id="slv">
   <div class="grid g3" style="margin-bottom:16px">${kpi("今月の学び", Math.round(mins/6)/10, "時間", who===S.me.name ? `今週は${growthWeek()}時間（<a href="#workstyle">わたしの働き方</a>に反映）` : "")}${kpi("記録", mine.length, "件")}${kpi("組織に活かせそうな学び", contrib, "件", "下の緑の欄を見てください")}</div>
   <section class="card" style="margin-bottom:16px"><h2>今日の学びを記録する</h2>
@@ -1578,14 +1785,14 @@ VIEWS.about = () => {
   const steps = [
     {c:"y", n:"1", t:"自己の学び（キャリアアップ）", d:"日々の自己研修や、キャリアとライフの希望を本人が記録する。その学びが組織のどのニーズを補えそうかも一緒に見える。", sc:["わたしの学び","わたしのキャリアとライフ"]},
     {c:"b", n:"2", t:"横のつながり", d:"似た取り組み、同じような状況、乗り越えた経験をもつ人を、診療科・職種・キャンパスをこえて推薦する。連絡や日程調整は、ともにが代わりに進める。", sc:["つながり","聞く"]},
-    {c:"g", n:"3", t:"業績以外の見える化", d:"臨床実習や研修医の指導、OSCEの評価、学生の支援、多職種での協働、学び、ありがとう。数字に表れない貢献と負荷を、本人が同意した範囲で集める。", sc:["わたしの働き方","ありがとう","学びと組織のニーズ"]},
+    {c:"g", n:"3", t:"業績以外の見える化", d:"臨床実習や研修医の指導、OSCEの評価、学生の支援、多職種での協働、学び、ありがとう。数字に表れない貢献と負荷を、本人が同意した範囲で集める。エフォートを超えたら、やめること・減らすことも提案する。", sc:["わたしの働き方","ありがとう","学びと組織のニーズ"]},
     {c:"p", n:"4", t:"組織改善", d:"集まった声から、勤務設計の見直し、教職協働、学内講師による研修などの打ち手を決める。生まれた研修が、次の学びの入口になる。", sc:["取り組みマップ","提案と打ち手","研修・プログラム"]},
   ];
   const seen = ["臨床実習・臨地実習の指導","研修医・新人の指導","OSCE・評価者としての貢献","学生・研修医の面談","多職種での協働","シミュレーション教育の準備","自己研修・学会での学び","同僚への支え（ありがとう）","ロールモデルとしての相談","医工連携での教材づくり"];
   app.innerHTML = (!AUTHED ? `<p class="small" style="margin:0 0 8px"><a href="#login">ログイン画面に戻る</a></p>` : "") +
     head("ともにについて", "医療者教育を軸に、医学・看護・薬学・リハビリ、附属病院のさまざまな職種、そして工学部などの教員も、ユーザーとして協働する大学版タレントマネジメントです。") + `
-  <section class="card" style="margin-bottom:16px"><p class="concept-lead">学びを起点に、職種と診療科をこえてつながり、<br>業績に表れない貢献を見える化して、組織を良くする。</p>
-    <p class="small muted" style="margin:0">一般的なタレントマネジメントは、組織が人を評価し、配置するための仕組みです。ともにはその逆で、一人ひとりのキャリアアップのための学びから始まり、学びが人をつなぎ、つながりと見える化が組織を変えていく流れをつくります。</p></section>
+  <section class="card" style="margin-bottom:16px"><p class="concept-lead" style="margin-bottom:4px;font-size:clamp(15px,1.8vw,18px);color:var(--muted)">自己成長や成果へのプレッシャーを、ひとりで抱えず、ともに乗り越える。</p><p class="concept-lead">学びを起点に、職種と診療科をこえてつながり、<br>業績に表れない貢献を見える化して、組織を良くする。</p>
+    <p class="small muted" style="margin:0">医療者教育の現場には、臨床・教育・研究のすべてで成果を求められ、自己成長への焦りを一人で抱えている人が少なくありません。ともには、そのプレッシャーを、学び・つながり・見える化で一緒に乗り越えるための仕組みです。一般的なタレントマネジメントは、組織が人を評価し、配置するための仕組みですが、ともにはその逆で、一人ひとりのキャリアアップのための学びから始まり、学びが人をつなぎ、つながりと見える化が組織を変えていく流れをつくります。</p></section>
   <section class="card" style="margin-bottom:16px"><h2>ともにが生み出す流れ</h2>
     <div class="cycle4">${steps.map(st => `<div class="sticky ${st.c} step"><span class="num">STEP ${st.n}</span><b>${st.t}</b><span class="small">${st.d}</span><span class="row" style="gap:4px">${st.sc.map(x=>`<span class="tag">${x}</span>`).join("")}</span></div>`).join("")}</div>
     <p class="small muted" style="margin:18px 0 0">4の組織改善で生まれた研修や仕組みが、1の新しい学びにつながり、流れが続いていきます。</p></section>
@@ -1611,7 +1818,8 @@ VIEWS.about = () => {
   <section class="card" style="margin-bottom:16px"><h2>立場ごとの使い方</h2>
     <p class="small muted">同じ流れのなかで、立場ごとに役割があります。${AUTHED ? "いまの立場に印を付けています。" : ""}</p>
     <div class="grid g2" style="gap:12px">${[
-      ["staff","教職員・医療者（本人）","y","学びを記録し、自分の働き方を見直し、職種や学部をこえて相談相手や共同研究の仲間を見つける。誰に何を見せるかは自分で決める。",["わたしの学び","わたしの働き方","つながり","共有設定"]],
+      ["staff","教職員（本人）","y","学びを記録し、自分の働き方を見直し、職種や学部をこえて相談相手や共同研究の仲間を見つける。誰に何を見せるかは自分で決める。",["わたしの学び","わたしの働き方","つながり","共有設定"]],
+      ["clinician","医療者（看護師・薬剤師・療法士・医師など）","c","現場での指導や学びを記録し、資格や役割の節目に向けて準備する。教員や工学部の人とも、職種をこえて協働する。",["わたしの学び","キャリアの道のり","つながり"]],
       ["manager","上司（センター長・診療科長など）","b","メンバーが共有した情報から支えが必要なところを見つけ、人をつなぎ、学びを活かす場をつくる。自分も学ぶ姿を見せる。",["メンバーを支える","面談の準備","学びの記録"]],
       ["admin","人事・FD/SD担当","g","個人ではなく集団の傾向から、状態を見て、原因を探り、勤務設計や研修などの打ち手を決める。",["組織の状態","組織の分析","提案と打ち手"]],
       ["sysadmin","管理者","p","登録の承認、立場の設定、利用の停止だけを行う。本人の学びや面談の中身は見ない。",["ユーザー管理"]],
@@ -1622,7 +1830,7 @@ VIEWS.about = () => {
 /* --- 予定：日程調整と準備の代行 --- */
 VIEWS.meetings = () => {
   const mine = S.meetings.filter(m => m.owner===role), up = mine.filter(m => !m.past), past = mine.filter(m => m.past);
-  const known = role==="staff" ? S.campus.map(c=>c.name) : role==="manager" ? [...S.team.map(m=>m.name), "清水 和夫", ...S.campus.map(c=>c.name)] : S.campus.map(c=>c.name);
+  const known = isSelf() ? S.campus.map(c=>c.name) : role==="manager" ? [...S.team.map(m=>m.name), "清水 和夫", ...S.campus.map(c=>c.name)] : S.campus.map(c=>c.name);
   app.innerHTML = head("予定", "打ち合わせの日程調整、議題づくり、終わったあとの共有まで、ともにが代わりに進めます。") + `
   <section class="card" style="margin-bottom:16px"><h2>新しく調整する</h2>
     <div class="grid g3" style="gap:10px">
@@ -1644,7 +1852,7 @@ VIEWS.meetings = () => {
   app.querySelectorAll("[data-mres]").forEach(b => b.onclick = () => { const m = S.meetings.find(x=>x.id===b.dataset.mres); const k = slotCard(m.with, 30, m.title, true);
     const i = S.meetings.indexOf(m); S.meetings.splice(i,1); up.splice(up.indexOf(m),1); b.closest(".mtg").querySelector(".mout").innerHTML = renderCard(k); b.remove(); });
   app.querySelectorAll("[data-mag]").forEach(b => b.onclick = () => { const m = S.meetings.find(x=>x.id===b.dataset.mag), out = b.closest(".mtg").querySelector(".mout");
-    askAI(`大学の教職員の打ち合わせの議題を作ってください。主催：${senderName()}。打ち合わせ：${m.title}（${m.with.join("、")}、${m.label}、${m.where}）。${role==="staff"?"主催者の取り組み："+projectsOf(S.team.find(x=>x.id==="sato")).map(p=>p.name).join("、"):""}
+    askAI(`大学の教職員の打ち合わせの議題を作ってください。主催：${senderName()}。打ち合わせ：${m.title}（${m.with.join("、")}、${m.label}、${m.where}）。${isSelf()?"主催者の取り組み："+projectsOf(meMember()).map(p=>p.name).join("、"):""}
 相手の取り組み：${m.with.map(n=>{const c=findPerson(n); return c?`${c.name}：${c.project}`:n;}).join("、")}
 時間内に終わる現実的な議題を3〜4個。次のJSONだけを返してください：{"agenda":["議題（20字程度）"],"prep":"事前に相手へ送るとよい一言"}`,
       out, b, r => { m.agenda = (r.agenda||[]).map(String); const k = newCard({type:"slack", to:m.with[0], text:`${m.title}の議題案です。\n${m.agenda.map((a,i)=>`${i+1}. ${a}`).join("\n")}\n${r.prep||""}`}); drawUp(); const o = app.querySelector(`[data-m="${m.id}"] .mout`); if (o) o.innerHTML = renderCard(k); }); });
@@ -1659,7 +1867,7 @@ VIEWS.meetings = () => {
 const RMCAT = {キャリア:"b", ライフイベント:"p", 業務:"y", 研究:"g"};
 const getRM = id => { const m = S.mentors.find(x => x.cid===id) || (S.myRM && S.myRM.cid===id ? S.myRM : null); const c = S.campus.find(x => x.id===id) || {}; return m ? {...c, ...m, id} : null; };
 function rmFit(r){
-  if (role!=="staff") return [];
+  if (!isSelf()) return [];
   const t = r.exps.map(e => e.text).join(" "), why = [];
   if (S.term.type==="任期付き" && /任期|無期|公募/.test(t)) why.push("任期付きからの道のり");
   if (/センター/.test(t)) why.push("センター教員の経験");
@@ -1765,7 +1973,7 @@ document.addEventListener("click", e => {
   if (act==="rmc"){ SUBS[key + ":rm:" + id] = 1; const el = pc.querySelector(`[data-sub="${key}:rm:${id}"]`); if (el) el.innerHTML = consultHTML(r, key); }
   if (act==="rmrec"){ (S.rmSt[id] ||= {}).rec = true; pc.outerHTML = rmHTML(r, key); }
   if (act==="rms" && out) out.innerHTML = renderCard(slotCard([r.name], 30, `${r.name}さんに経験を聞く`));
-  if (act==="rmm" && out) out.innerHTML = renderCard(newCard({type:"slack", to:r.name, text:`${r.name}さん、はじめまして。${role==="staff" ? S.me.dept+"の"+S.me.name : senderName()}です。「${r.exps[0].text}」のご経験について、少しお話を伺えたらうれしいです。ご都合のよいときに30分ほどいただけませんか。`}));
+  if (act==="rmm" && out) out.innerHTML = renderCard(newCard({type:"slack", to:r.name, text:`${r.name}さん、はじめまして。${isSelf() ? S.me.dept+"の"+S.me.name : senderName()}です。「${r.exps[0].text}」のご経験について、少しお話を伺えたらうれしいです。ご都合のよいときに30分ほどいただけませんか。`}));
   if (act==="rma" && out) out.innerHTML = `<label class="small muted" for="anon-${id}" style="display:block;margin-top:8px">質問（あなたの名前は伝わりません）</label><textarea id="anon-${id}" placeholder="例：育休のあと、研究の勘はどうやって取り戻しましたか"></textarea><button class="btn sm" style="margin-top:6px" data-x="rmas|${key}|${id}">名前を伏せて送る</button>`;
   if (act==="rmas" && out){ const ta = out.querySelector("textarea"); if (!ta.value.trim()){ ta.focus(); return; } out.innerHTML = `<div class="okmsg" style="margin-top:8px">名前を伏せて届けました。返事はこの画面と「聞く」に届きます（デモ）</div>`; }
 });
@@ -1780,7 +1988,7 @@ const TAGDICT = [["臨床実習","臨床教育"],["臨地実習","臨床教育"]
   ["VR","医工連携"],["AI","医工連携"],["センサー","医工連携"],["ウェアラブル","医工連携"],["3D","医工連携"],["医療機器","医工連携"],["工学","医工連携"],["開発","医工連携"]];
 const tagsFor = text => [...new Set(TAGDICT.filter(([k]) => text.includes(k)).map(([,t]) => t))];
 const ALLTAGS = ["臨床教育","シミュレーション教育","評価・アセスメント","多職種連携教育","卒後研修","新任者支援","教育の質保証","研究発信","外部資金","学生支援","地域医療","教職協働","医工連携"];
-const projectsOf = m => [...m.tasks.map(t => ({name:t.name, tags:tagsFor(t.name)})), ...(m.id==="sato" ? S.myExtra : [])].filter(p => p.tags.length);
+const projectsOf = m => [...m.tasks.map(t => ({name:t.name, tags:tagsFor(t.name)})), ...(m===meMember() ? S.myExtra : [])].filter(p => p.tags.length);
 function matchesFor(m){
   const ps = projectsOf(m);
   return S.campus.filter(c => c.name !== m.name).map(c => {
@@ -1805,11 +2013,12 @@ function campusMapSVG(projs, ms){
 }
 
 VIEWS.campus = () => {
-  const me = S.team.find(m => m.id==="sato");
+  const me = meMember();
   const prefer = new Set(["campus","field"]);
   let focus = null;
   const f = S.funds[0];
   app.innerHTML = head("つながり", `キャンパス・分野・職種をこえて、同じような状況の人、経験を相談できる人、似た取り組みの人、共同研究の相手を見つけます。${S.slackOptIn ? "Slackの公開チャンネルの話題もふまえて推薦しています。" : "Slackの話題は使っていません。"}（<a href="#sharing">共有設定</a>）`) + `
+  ${totalLoad(meMember()) > 100 ? `<section class="card stopbox" style="margin-bottom:16px;padding:12px 16px"><p class="small" style="margin:0">いまは働き方が<b>${totalLoad(meMember())}%</b>です。新しくつながって仕事や学びが増える前に、<a href="#workstyle">やめる・減らすことを1つ決めておく</a>と続けやすくなります。</p></section>` : ""}
   <div id="intros"></div>
   <section class="card" style="margin-bottom:16px">
     <div class="between"><h2>同じような状況の人</h2><a class="small" href="#lifeplan">わたしのキャリアとライフを編集</a></div>
@@ -1980,7 +2189,7 @@ VIEWS.thanks = () => {
     <section class="card"><h2>届いたありがとう</h2><div class="grid g2" style="gap:14px" id="tw"></div></section>
     <section class="card" style="align-self:start"><h2>ありがとうを送る</h2>
       <label class="small muted" for="tto">送る相手</label>
-      <select class="f" id="tto">${["田中 誠（センター長）","高橋 さやか（事務職員）","鈴木 健太（助教）","伊藤 大輔（特任准教授）","西田 恵（技術職員）","山本 千夏（医学部事務部）","中村 亮（看護学科）"].map(x=>`<option>${x}</option>`).join("")}</select>
+      <select class="f" id="tto">${S.thanksTo.map(x=>`<option>${x}</option>`).join("")}</select>
       <div class="chips" id="tcat" style="margin:10px 0">${Object.keys(THX_C).map((c,i)=>`<button class="chip" aria-pressed="${i===3}" data-c="${c}">${c}</button>`).join("")}</div>
       <textarea id="ttx" maxlength="140" placeholder="例：急な資料の修正を引き受けてくださって助かりました"></textarea>
       <button class="btn" id="tsend" style="margin-top:10px">送る</button>
@@ -2001,7 +2210,7 @@ VIEWS.thanks = () => {
 
 /* --- 本人：共有設定 --- */
 VIEWS.sharing = () => {
-  const cols = [["boss","上司（田中センター長）"],["hr","人事・FD/SD担当"],["mentor","学外メンター（森 教授）"],["agg","組織の匿名集計"]];
+  const cols = [["boss",`上司（${S.boss.name} ${S.boss.title}）`],["hr","人事・FD/SD担当"],["mentor","メンター・協働相手"],["agg","組織の匿名集計"]];
   app.innerHTML = head("共有設定", "何を、誰に見せるかはあなたが決めます。共有をやめると、その時点から相手の画面に表示されなくなります。") + promiseHTML("staff") + `
   <section class="card" style="margin-bottom:16px"><div class="scroll"><table class="sharetbl" id="sh"><thead><tr><th>情報</th>${cols.map(c=>`<th>${c[1]}</th>`).join("")}</tr></thead><tbody></tbody></table></div>
     <p class="small muted" style="margin-top:10px">組織の匿名集計は5人以上の集団でだけ表示され、個人は特定されません。共有した情報が、人事評価や処遇の判断に直接使われることはありません。</p></section>
@@ -2011,7 +2220,7 @@ VIEWS.sharing = () => {
     <section class="card"><h2>学外ネットワークへの公開</h2>
       <p class="small">分野・強み・相談に乗れることを、他大学の教職員が検索できるようにします。所属部署の評価情報やエフォートは公開されません。</p>
       <label class="row" style="flex-wrap:nowrap"><input type="checkbox" id="ext" ${S.extProfile?"checked":""}><span>学外の検索に表示する</span></label>
-      <div class="sticky y" style="margin-top:12px;font-weight:500"><span class="small">公開される内容</span><br>医学教育／${S.strengths.join("、")}／「臨床実習の評価づくり」の相談に乗れます</div></section>
+      <div class="sticky y" style="margin-top:12px;font-weight:500"><span class="small">公開される内容</span><br>${S.myProfile.field}／${S.strengths.join("、")}／「${S.consultTopic}」の相談に乗れます</div></section>
   </div>
   <section class="card" style="margin-top:16px"><h2>あなたの情報を見た人（直近30日）</h2>
     <ul class="list small">${S.accessLog.map(x=>`<li class="between"><span><b>${esc(x.who)}</b><br><span class="muted">${esc(x.what)}</span></span><span class="muted">${x.when}</span></li>`).join("")}</ul>
@@ -2104,7 +2313,7 @@ VIEWS.network = () => {
 /* --- 学び --- */
 VIEWS.learn = () => {
   const list = S.programs.filter(p => role==="manager" ? true : !p.mgr);
-  app.innerHTML = head("研修を探す（FD/SD）", role==="staff" ? "あなたの目標やいまの悩みに合わせて、研修をおすすめしています。" : "チームの状況に合わせた研修です。") + `
+  app.innerHTML = head("研修を探す（FD/SD）", isSelf() ? "あなたの目標やいまの悩みに合わせて、研修をおすすめしています。" : "チームの状況に合わせた研修です。") + `
   <section class="card"><ul class="list" id="pl"></ul></section>`;
   const draw = () => $("#pl").innerHTML = list.map(p=>`<li class="between"><div><span class="tag ${p.type==="FD"?"y":"b"}">${p.type}</span> <b>${p.title}</b><br><span class="small muted">${p.when}・${p.why}</span></div>
     <button class="btn ${p.st?"sub":""} sm" data-t="${esc(p.title)}" ${p.st?"disabled":""}>${p.st||"申し込む"}</button></li>`).join("");
@@ -2136,7 +2345,7 @@ VIEWS.coach = () => {
     chat.push({role:"user", content:text}); $("#ci").value=""; drawChat();
     const bubble = document.createElement("div"); bubble.className="msg a"; bubble.textContent="…"; $("#chat").append(bubble);
     $("#cs").disabled = true; $("#cErr").innerHTML = "";
-    const sys = `あなたは大学教職員専門のキャリアコーチです。相談者は${S.me.dept}の${S.me.title}で、成果へのプレッシャーを感じています。期待のすり合わせでは、本人は研究成果を強く求められていると感じていたが、上司はまず臨床実習の評価表の改訂を優先してほしいと考えていることが分かっています。本人は${S.term.type}（${S.term.label}）で、${S.term.review}がある。強み：${S.strengths.join("、")}。手放したいこと：${S.letgo.join("、")}。
+    const sys = `あなたは大学教職員専門のキャリアコーチです。相談者は${S.me.dept}の${S.me.title}で、成果へのプレッシャーを感じています。${S.coachNote}本人は${S.term.type}（${S.term.label}）で、${S.term.review}がある。強み：${S.strengths.join("、")}。手放したいこと：${S.letgo.join("、")}。
 傾聴を大切にし、決めつけず、質問を1つ添えて、200字程度の日本語で答えてください。必要なら学内外の人に頼る具体策や、専門コンサルタントへの相談も提案してください。`;
     try {
       const r = await sample([{role:"user", content:sys + "\n\n---\n相談を始めます。"}, {role:"assistant", content:"はい、お話を聞かせてください。"}, ...chat], {cache:false, onText:({text}) => { bubble.textContent = text; $("#chat").scrollTop = 1e9; }});
@@ -2610,12 +2819,12 @@ VIEWS["cycle-settings"] = () => {
 let db = null, user = null, uid = null, LIVE = false, SYSADMIN = false, ME = null;
 const REG = {members:{}, roles:{}, audit:[], settings:{univ:"〇〇大学", approval:"auto", depts:["医学教育センター","医学部 医学科","医学部 看護学科","薬学部","附属病院 臨床研修センター","附属病院 看護部","シミュレーションセンター","リハビリテーション部","地域医療教育センター","医学部事務部","研究推進室","学生支援センター","工学部 機械工学科","工学部 情報工学科","工学部 電気電子工学科","附属病院 臨床工学部","附属病院 医療技術部（放射線・検査・栄養）"], campuses:["医学部キャンパス","附属病院","薬学部キャンパス","地域医療教育拠点","本部キャンパス","工学部キャンパス"]}};
 const JOBS = ["教員","教員（任期付き）","教員（臨床）","医師（指導医・研修医）","看護師","薬剤師","リハビリ職","医療技術職（臨床工学・放射線・検査・栄養など）","事務職員","技術職員","URA"];
-const ROLEL = {staff:"教職員", manager:"部局長・センター長など", admin:"人事・FD/SD担当"};
+const ROLEL = {staff:"教職員", clinician:"医療者", manager:"部局長・センター長など", admin:"人事・FD/SD担当"};
 const LOCKED = () => LIVE && !SYSADMIN;
 const roleOf = id => { const r = REG.roles[id]; return r && r.role ? r.role : "staff"; };
 function statusOf(id){ const r = REG.roles[id]; if (r && r.status) return r.status; return REG.settings.approval==="auto" ? "approved" : "pending"; }
 const myStatus = () => ME ? statusOf(uid) : "approved";
-const pendingCount = () => Object.entries(REG.members).filter(([id,m]) => statusOf(id)==="pending" || (m.requested && m.requested!=="staff" && roleOf(id)!==m.requested && !(REG.roles[id]||{}).declined)).length;
+const pendingCount = () => Object.entries(REG.members).filter(([id,m]) => statusOf(id)==="pending" || (m.requested && !["staff","clinician"].includes(m.requested) && roleOf(id)!==m.requested && !(REG.roles[id]||{}).declined)).length;
 const nowISO = () => new Date().toISOString();
 const store = {
   async saveMember(id, data){ REG.members[id] = {...data, uid:id}; if (LIVE) await db.doc("members/"+id).set(REG.members[id]); },
@@ -2667,6 +2876,7 @@ function logout(){ setAuthed(false); history.replaceState(null, "", "#login"); r
 VIEWS.login = () => {
   app.innerHTML = `<div class="loginwrap"><section class="card logincard">
     <div class="brand"><i></i><i></i><span>ともに<small>医療者教育のための成長支援プラットフォーム ver2.0</small></span></div>
+    <p class="small" style="text-align:center;margin:6px 0 0;font-weight:700">自己成長や成果へのプレッシャーを、ともに乗り越える。</p>
     <h1 style="font-size:20px;text-align:center;margin:10px 0 2px">ログイン</h1>
     <p class="small muted" style="text-align:center;margin:0 auto">${esc(REG.settings.univ)}で医療者教育に関わる教職員・医療者の方へ</p>
     <form id="lf" novalidate>
@@ -2716,7 +2926,7 @@ function profileForm(m, isNew){
   <p class="small muted" style="margin:10px 0 4px">近いテーマ</p>
   <div class="chips" id="r-themes">${ALLTAGS.map(t=>`<button type="button" class="chip" aria-pressed="${(m.themes||[]).includes(t)}" data-t="${t}">${t}</button>`).join("")}</div>
   <p class="small muted" style="margin:14px 0 0">使い方</p>
-  <div class="rolepick">${Object.entries(ROLEL).map(([k,l])=>`<label><input type="radio" name="r-role" value="${k}" ${ (m.requested||"staff")===k?"checked":""}><span><b>${l}</b><br><span class="small muted">${k==="staff"?"すぐに使えます。":"部下の支援や組織の集計を見る画面が加わります。管理者の承認が必要です。"}</span></span></label>`).join("")}</div>
+  <div class="rolepick">${Object.entries(ROLEL).map(([k,l])=>`<label><input type="radio" name="r-role" value="${k}" ${ (m.requested||"staff")===k?"checked":""}><span><b>${l}</b><br><span class="small muted">${k==="clinician"?"看護師・薬剤師・療法士・医師などの方。すぐに使えます。":k==="staff"?"すぐに使えます。":"部下の支援や組織の集計を見る画面が加わります。管理者の承認が必要です。"}</span></span></label>`).join("")}</div>
   ${isNew ? `<label class="consent"><input type="checkbox" id="r-ok"><span>「ともにの約束」を読みました。表示名・所属・職種・キャンパス・専門分野・取り組みは、学内の登録者に公開されることに同意します。家族やライフプランなどは、登録後に自分で選んだ範囲だけが使われます。</span></label>` : ""}
   <div class="row" style="margin-top:14px"><button class="btn" id="r-save">${isNew ? "登録して始める" : "保存する"}</button><span class="small muted" id="r-msg"></span></div>`;
 }
@@ -2730,7 +2940,7 @@ function bindProfileForm(onSaved, isNew){
       project:$("#r-project").value.trim(), themes:[...themes], requested:app.querySelector("input[name='r-role']:checked").value, consent:true, createdAt:(ME && ME.createdAt) || nowISO(), updatedAt:nowISO()};
     $("#r-save").disabled = true;
     try { const id = uid || "me-demo"; await store.saveMember(id, data); if (isNew) setAuthed(true); if (!uid) uid = id; ME = REG.members[id];
-      if (isNew) await store.audit(`${name}さんが登録しました${data.requested!=="staff" ? `（希望：${ROLEL[data.requested]}）` : ""}`);
+      if (isNew) await store.audit(`${name}さんが登録しました${!["staff","clinician"].includes(data.requested) ? `（希望：${ROLEL[data.requested]}）` : ""}`);
       if (isNew && !LIVE){ SYSADMIN = true; }
       applyIdentity(); onSaved(); }
     catch(e){ $("#r-msg").textContent = "保存できませんでした。この画面への参加権限（投稿者以上）があるか、管理者に確認してください。"; $("#r-save").disabled = false; }
@@ -2800,10 +3010,10 @@ VIEWS.users = () => {
   const draw = () => {
     const R = rows(), active = R.filter(r=>r.st==="approved");
     $("#ukpi").innerHTML = kpi("登録している人", R.length, "人") + kpi("承認待ち", pendingCount(), "人") + kpi("上司などの立場", active.filter(r=>r.role==="manager").length, "人") + kpi("人事・FD/SD担当", active.filter(r=>r.role==="admin").length, "人");
-    const pend = R.filter(r => r.st==="pending" || (r.m.requested && r.m.requested!=="staff" && r.role!==r.m.requested && r.st!=="suspended" && !(REG.roles[r.id]||{}).declined));
+    const pend = R.filter(r => r.st==="pending" || (r.m.requested && !["staff","clinician"].includes(r.m.requested) && r.role!==r.m.requested && r.st!=="suspended" && !(REG.roles[r.id]||{}).declined));
     $("#upend").innerHTML = pend.length ? pend.map(r => `<div class="pcard"><div class="between"><span><b>${esc(r.m.name)}</b> <span class="small muted">${esc(r.m.dept)}・${esc(r.m.title)}・${esc(r.m.job)}</span><br>
       <span class="small">希望：<b>${ROLEL[r.m.requested||"staff"]}</b>${r.st==="pending" ? "（利用の承認待ち）" : "（教職員として利用中）"}　登録日：${fmtDate(r.m.createdAt)}</span></span>
-      <span class="row" style="gap:6px"><button class="btn sm" data-ap="${r.id}">希望どおり承認</button>${r.m.requested!=="staff" ? `<button class="btn sub sm" data-as="${r.id}">教職員として承認</button>` : ""}${r.st==="pending" ? `<button class="btn sub sm" data-rj="${r.id}">利用を認めない</button>` : ""}</span></div></div>`).join("") : `<p class="small muted">いまはありません。</p>`;
+      <span class="row" style="gap:6px"><button class="btn sm" data-ap="${r.id}">希望どおり承認</button>${!["staff","clinician"].includes(r.m.requested) ? `<button class="btn sub sm" data-as="${r.id}">教職員として承認</button>` : ""}${r.st==="pending" ? `<button class="btn sub sm" data-rj="${r.id}">利用を認めない</button>` : ""}</span></div></div>`).join("") : `<p class="small muted">いまはありません。</p>`;
     const list = R.filter(r => (!q || (r.m.name+r.m.dept+r.m.title).includes(q)) && (rf==="すべて" || (rf==="停止中" ? r.st==="suspended" : ROLEL[r.role]===rf && r.st!=="suspended"))).sort((a,b)=>String(b.m.createdAt).localeCompare(String(a.m.createdAt)));
     $("#ul").innerHTML = list.map(r => `<tr><td><b>${esc(r.m.name)}</b>${r.id===uid?` <span class="tag">あなた</span>`:""}</td><td class="small">${esc(r.m.dept)}<br>${esc(r.m.title)}</td><td class="small">${esc(r.m.job)}</td><td class="small">${esc(r.m.campus)}</td>
       <td><select class="f" data-role="${r.id}" aria-label="${esc(r.m.name)}の使い方" ${r.id===uid?"disabled":""}>${Object.entries(ROLEL).map(([k,l])=>`<option value="${k}" ${k===r.role?"selected":""}>${l}</option>`).join("")}</select></td>
