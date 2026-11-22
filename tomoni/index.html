@@ -105,6 +105,8 @@ th{font-size:12px;color:var(--muted);border-top:0;font-weight:700;white-space:no
 .sticky.p{background:var(--gap);color:var(--gap-ink);rotate:-.6deg}
 .sticky.g{background:var(--ok);color:var(--ok-ink);rotate:.8deg}
 .sticky.c{background:var(--clin);color:var(--clin-ink);rotate:-.4deg}
+/* 付箋の中のタグ：暗い表示でも、付箋の文字色のまま読めるように明るい下地にする */
+.sticky .tag:not(.y):not(.b):not(.p):not(.g):not(.c){background:rgba(255,255,255,.62);color:inherit;border-color:rgba(0,0,0,.12)}
 
 /* ヒーロー：今週の温度 */
 .pulse{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:center}
