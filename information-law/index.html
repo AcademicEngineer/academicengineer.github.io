@@ -9,35 +9,46 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap">
 <style>
+/* 配色 ── 一橋大学のスクールカラー（茜色）を基調とし、校旗の金を差し色に用いる。
+   変数名の navy は配色変更前からのもので、意味は「地の色／濃色」である。 */
 :root{
-  --navy:#16233F; --navy-2:#243659; --gold:#C9A227; --gold-d:#7A5F0A;
-  --cream:#FAF9F5; --paper:#FFFFFF; --line:#E2DED1; --line-2:#EFEDE6;
-  --ink:#1F2733; --body:#3C4555; --muted:#6E7585;
+  --navy:#8E2433; --navy-2:#A32B35; --gold:#C9A227; --gold-d:#7A5F0A;
+  --cream:#FBF8F6; --paper:#FFFFFF; --line:#E7DCD7; --line-2:#F3ECE8;
+  --ink:#241D1E; --body:#4A3F40; --muted:#7B6C6D;
   --warn-bg:#FDF0E7; --warn-fg:#8F3310; --warn-line:#D97757;
   --part-bg:#F8E8B8; --part-fg:#56400A;
+  --abs-bg:#F4F1EE; --abs-fg:#6B5F60; --abs-line:#B8ABA8;
   --radius:6px;
   --maxw:1340px;
-  --on-navy:#FAF9F5;   /* 濃紺の上に乗る文字色 */
-  --text-bg:#FAF9F5;   /* 条文ブロックの背景 */
-  --header-bg:#243659;
+  --on-navy:#FBF8F6;   /* 茜色の上に乗る文字色 */
+  --text-bg:#FBF8F6;   /* 条文ブロックの背景 */
+  --header-bg:#A32B35;
+  --hdr-fg:#FBF5F4; --hdr-sub:#E6BDC0; --hdr-tab:#EFD3D5;
+  --hdr-ph:#CC9EA2; --on-gold:#1B1403;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --navy:#AEC2E8; --navy-2:#1B2742; --gold:#D8B64A; --gold-d:#D8B64A;
-    --cream:#11151D; --paper:#171C26; --line:#2B3342; --line-2:#1E242F;
-    --ink:#E8EAEE; --body:#C3C9D4; --muted:#8A93A3;
+    --navy:#B33A45; --navy-2:#2A1317; --gold:#D8B64A; --gold-d:#D8B64A;
+    --cream:#140F10; --paper:#1D1719; --line:#3B2D30; --line-2:#251D1F;
+    --ink:#EFE8E8; --body:#D2C7C8; --muted:#9A8B8D;
     --warn-bg:#2E1A12; --warn-fg:#F0A37F; --warn-line:#B0553A;
     --part-bg:#3A2F10; --part-fg:#E8CE86;
-    --on-navy:#11151D; --text-bg:#10141C; --header-bg:#1B2742;
+    --abs-bg:#201A1B; --abs-fg:#9A8B8D; --abs-line:#5A4A4C;
+    --on-navy:#FBF5F4; --text-bg:#130F10; --header-bg:#2A1317;
+    --hdr-fg:#F5EAEA; --hdr-sub:#C49296; --hdr-tab:#DCB8BB;
+    --hdr-ph:#9E7579; --on-gold:#1B1403;
   }
 }
 :root[data-theme="dark"]{
-  --navy:#AEC2E8; --navy-2:#1B2742; --gold:#D8B64A; --gold-d:#D8B64A;
-  --cream:#11151D; --paper:#171C26; --line:#2B3342; --line-2:#1E242F;
-  --ink:#E8EAEE; --body:#C3C9D4; --muted:#8A93A3;
+  --navy:#B33A45; --navy-2:#2A1317; --gold:#D8B64A; --gold-d:#D8B64A;
+  --cream:#140F10; --paper:#1D1719; --line:#3B2D30; --line-2:#251D1F;
+  --ink:#EFE8E8; --body:#D2C7C8; --muted:#9A8B8D;
   --warn-bg:#2E1A12; --warn-fg:#F0A37F; --warn-line:#B0553A;
   --part-bg:#3A2F10; --part-fg:#E8CE86;
-  --on-navy:#11151D; --text-bg:#10141C; --header-bg:#1B2742;
+  --abs-bg:#201A1B; --abs-fg:#9A8B8D; --abs-line:#5A4A4C;
+  --on-navy:#FBF5F4; --text-bg:#130F10; --header-bg:#2A1317;
+  --hdr-fg:#F5EAEA; --hdr-sub:#C49296; --hdr-tab:#DCB8BB;
+  --hdr-ph:#9E7579; --on-gold:#1B1403;
 }
 
 *{box-sizing:border-box}
@@ -54,42 +65,42 @@ button{font-family:inherit;font-size:inherit;cursor:pointer}
 /* ---------- header ---------- */
 header{
   position:sticky; top:0; z-index:40;
-  background:var(--header-bg); color:#F3F1EA;
+  background:var(--header-bg); color:var(--hdr-fg);
   border-bottom:3px solid var(--gold);
 }
 .hwrap{max-width:var(--maxw);margin:0 auto;padding:14px 16px 12px}
 .brand{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
-.brand h1{font-size:21px;color:#FAF9F5;font-weight:600;letter-spacing:.02em}
+.brand h1{font-size:21px;color:var(--hdr-fg);font-weight:600;letter-spacing:.02em}
 .brand h1 .home{
   font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;
   cursor:pointer;border-bottom:1px solid transparent;
 }
 .brand h1 .home:hover{border-bottom-color:currentColor}
-.brand h1 .home:focus-visible{outline:2px solid #C8A96A;outline-offset:3px}
-.brand .sub{font-size:12px;color:#A9B6CE;line-height:1.5}
+.brand h1 .home:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.brand .sub{font-size:12px;color:var(--hdr-sub);line-height:1.5}
 .toolbar{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center}
 .tabs{display:flex;gap:4px;background:rgba(255,255,255,.08);padding:3px;border-radius:999px}
 .tab{
-  border:0;background:transparent;color:#C6D1E4;padding:7px 15px;border-radius:999px;
+  border:0;background:transparent;color:var(--hdr-tab);padding:7px 15px;border-radius:999px;
   font-size:13px;font-weight:500;white-space:nowrap;
 }
-.tab[aria-selected="true"]{background:var(--gold);color:#1B1403;font-weight:700}
+.tab[aria-selected="true"]{background:var(--gold);color:var(--on-gold);font-weight:700}
 .search{
   flex:1 1 180px;min-width:150px;display:flex;align-items:center;gap:7px;
   background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);
   border-radius:999px;padding:6px 13px;
 }
 .search input{
-  flex:1;border:0;background:transparent;color:#FAF9F5;font-size:13px;outline:none;min-width:0;
+  flex:1;border:0;background:transparent;color:var(--hdr-fg);font-size:13px;outline:none;min-width:0;
   font-family:inherit;
 }
-.search input::placeholder{color:#8E9CB6}
+.search input::placeholder{color:var(--hdr-ph)}
 .search svg{flex:none;opacity:.6}
 .iconbtn{
-  border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#D7E0EF;
+  border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:var(--hdr-tab);
   border-radius:999px;padding:6px 12px;font-size:12px;white-space:nowrap;
 }
-.iconbtn[aria-pressed="true"]{background:var(--gold);color:#1B1403;border-color:var(--gold);font-weight:700}
+.iconbtn[aria-pressed="true"]{background:var(--gold);color:var(--on-gold);border-color:var(--gold);font-weight:700}
 
 /* ---------- layout ---------- */
 main{max-width:var(--maxw);margin:0 auto;padding:20px 16px 72px}
@@ -111,7 +122,7 @@ main{max-width:var(--maxw);margin:0 auto;padding:20px 16px 72px}
 }
 .st-explicit{background:var(--navy);color:var(--on-navy);border-color:var(--navy)}
 .st-partial{background:var(--part-bg);color:var(--part-fg);border-color:var(--gold)}
-.st-absent{background:var(--warn-bg);color:var(--warn-fg);border:1.5px dashed var(--warn-line)}
+.st-absent{background:var(--abs-bg);color:var(--abs-fg);border:1.5px dashed var(--abs-line)}
 .st-na{background:var(--line-2);color:var(--muted);border-color:var(--line)}
 .st-todo{background:transparent;color:var(--muted);border:1.5px dotted var(--line)}
 
@@ -236,6 +247,45 @@ table.mx tbody th button:hover{text-decoration-color:var(--gold)}
 .prov .nofull{
   font-size:11.5px;color:var(--gold-d);margin:0;
 }
+/* ---------- 用語集 ---------- */
+.termhead{margin:0 0 18px}
+.termhead h2{font-size:19px;color:var(--ink);margin:0 0 8px;font-weight:700}
+.termhead .tcount{font-size:12px;color:var(--muted);margin:8px 0 0}
+.tcat{
+  font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--gold-d);
+  margin:26px 0 10px;display:flex;align-items:center;gap:9px;
+}
+.tcat span{
+  font-size:11px;font-weight:700;color:var(--muted);background:var(--line-2);
+  border-radius:999px;padding:2px 8px;letter-spacing:0;
+}
+.tlist{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:12px}
+.term{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px 16px;
+}
+.term h4{
+  font-size:15px;font-weight:700;color:var(--ink);margin:0 0 7px;
+  display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;line-height:1.5;
+}
+.term h4 .rd{font-size:11px;font-weight:400;color:var(--muted)}
+.term h4 .en{font-size:11.5px;font-weight:400;color:var(--gold-d);font-style:italic}
+.tdef{
+  font-family:'Noto Serif JP',Georgia,serif;font-size:13.5px;line-height:1.95;
+  color:var(--body);margin:0;
+}
+.tlinks{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+.tlink{
+  font-size:11px;font-weight:700;padding:4px 9px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--line);background:var(--line-2);color:var(--body);
+}
+.tlink:hover{border-color:var(--navy);color:var(--navy)}
+.tlink.ax{background:transparent;border-style:dashed;color:var(--gold-d);border-color:var(--gold)}
+.tlink.ax:hover{background:var(--part-bg);color:var(--part-fg)}
+@keyframes flashbg{0%{background:var(--part-bg)}100%{background:var(--paper)}}
+.prov.flash{animation:flashbg 1.6s ease-out}
+@media(max-width:560px){ .tlist{grid-template-columns:1fr} }
+
 /* 論点が未選択のときの案内 */
 .pickhint{
   font-size:13px;color:var(--muted);text-align:center;
@@ -329,7 +379,7 @@ footer{
   border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);line-height:1.8;
 }
 .skip{position:absolute;left:-9999px}
-.skip:focus{left:8px;top:8px;background:var(--gold);color:#1B1403;padding:8px 12px;z-index:99;border-radius:4px}
+.skip:focus{left:8px;top:8px;background:var(--gold);color:var(--on-gold);padding:8px 12px;z-index:99;border-radius:4px}
 </style>
 </head>
 <body>
@@ -345,6 +395,7 @@ footer{
       <div class="tabs" role="tablist" aria-label="表示モード">
         <button class="tab" role="tab" id="tab-axis"  aria-selected="true"  onclick="App.setMode('axis')">論点で比較</button>
         <button class="tab" role="tab" id="tab-inst"  aria-selected="false" onclick="App.setMode('inst')">法令別で読む</button>
+        <button class="tab" role="tab" id="tab-term" aria-selected="false" onclick="App.setMode('term')">用語集</button>
       </div>
       <label class="search">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></svg>
@@ -459,7 +510,7 @@ function renderFull(p){
 function renderProvision(p, opts){
   opts = opts||{};
   var it = inst(p.inst) || {name:'?',jur:'',full:'',src:''};
-  var h = '<article class="prov">';
+  var h = '<article class="prov" id="p-'+esc(p.id)+'">';
   h += '<div class="ptop">';
   h += '<span class="inst">'+esc(it.name)+'</span>';
   h += '<span class="cite">'+esc(p.cite)+'</span>';
@@ -576,6 +627,65 @@ function renderAxisView(hlJur){
   return h;
 }
 
+// ───────── 用語集
+var CATLAB = { jp:'日本法', eu:'EU法', uk:'英国法', us:'米国法', kr:'韓国法', gen:'共通・分析の用語' };
+var CATORD = ['jp','eu','uk','us','kr','gen'];
+
+function renderTermView(){
+  var gl = DB.glossary || [];
+  var hits = [];
+  for(var i=0;i<gl.length;i++){
+    var g = gl[i];
+    if(S.q && !matchText(g,[g.term,g.reading||'',g.en||'',g.def])) continue;
+    hits.push(g);
+  }
+  var h = '<section class="termhead">';
+  h += '<h2>用語集</h2>';
+  h += '<p class="q">本データベースに出てくる用語を、収録した条文に即して説明する。'
+     + '見出し語の下の帯から、その用語の根拠となる条文と関連する論点に移動できる。</p>';
+  h += '<p class="tcount">'+hits.length+' 件'+(S.q?('／全 '+gl.length+' 件中'):'')+'</p>';
+  h += '</section>';
+
+  if(!hits.length) return h + '<div class="mxbox"><p class="empty">一致する用語がありません。</p></div>';
+
+  for(var c=0;c<CATORD.length;c++){
+    var cat = CATORD[c];
+    var rows = hits.filter(function(g){ return g.cat===cat; });
+    if(!rows.length) continue;
+    h += '<h3 class="tcat">'+esc(CATLAB[cat])+'<span>'+rows.length+'</span></h3>';
+    h += '<div class="tlist">';
+    for(var r=0;r<rows.length;r++) h += renderTerm(rows[r]);
+    h += '</div>';
+  }
+  return h;
+}
+
+function renderTerm(g){
+  var h = '<article class="term" id="'+esc(g.id)+'">';
+  h += '<h4>'+esc(g.term);
+  if(g.reading) h += '<span class="rd">'+esc(g.reading)+'</span>';
+  if(g.en) h += '<span class="en">'+esc(g.en)+'</span>';
+  h += '</h4>';
+  h += '<p class="tdef">'+esc(g.def)+'</p>';
+
+  var bits = '';
+  for(var i=0;i<(g.refs||[]).length;i++){
+    var p = DB.provisions.filter(function(x){ return x.id===g.refs[i]; })[0];
+    if(!p) continue;
+    var it = inst(p.inst) || {name:'?'};
+    bits += '<button class="tlink" onclick="App.goProv(\''+esc(p.id)+'\')">'
+          + esc(it.name)+' '+esc(p.cite)+'</button>';
+  }
+  for(var a=0;a<(g.axes||[]).length;a++){
+    var ax = axis(g.axes[a]);
+    if(!ax) continue;
+    bits += '<button class="tlink ax" onclick="App.goAxis(\''+esc(ax.id)+'\')">'
+          + esc(ax.label)+'</button>';
+  }
+  if(bits) h += '<div class="tlinks">'+bits+'</div>';
+  return h + '</article>';
+}
+
 function renderInstView(){
   var h = '<div class="ipick">';
   for(var j=0;j<DB.jurisdictions.length;j++){
@@ -631,8 +741,15 @@ var hlJur = null;
 function render(){
   document.getElementById('tab-axis').setAttribute('aria-selected', S.mode==='axis');
   document.getElementById('tab-inst').setAttribute('aria-selected', S.mode==='inst');
+  document.getElementById('tab-term').setAttribute('aria-selected', S.mode==='term');
+  // 凡例と案内は行列の説明なので、用語集では隠す
+  var lg = document.querySelector('.legend'), hn = document.getElementById('hint');
+  if(lg) lg.style.display = S.mode==='term' ? 'none' : '';
+  if(hn) hn.style.display = S.mode==='term' ? 'none' : '';
   document.getElementById('view').innerHTML =
-    S.mode==='axis' ? renderAxisView(hlJur) : renderInstView();
+    S.mode==='axis' ? renderAxisView(hlJur)
+    : S.mode==='term' ? renderTermView()
+    : renderInstView();
   hlJur = null;
 }
 
@@ -641,10 +758,12 @@ function writeHash(){
     if(location.hash) history.replaceState(null,'',location.pathname+location.search);
     return;
   }
-  var h = S.mode==='axis' ? ('#axis='+S.axis) : ('#inst='+S.inst);
+  var h = S.mode==='term' ? '#terms'
+        : S.mode==='axis' ? ('#axis='+S.axis) : ('#inst='+S.inst);
   if(location.hash !== h) history.replaceState(null,'',h);
 }
 function readHash(){
+  if((location.hash||'')==='#terms'){ S.mode='term'; return; }
   var m = /^#(axis|inst)=(.+)$/.exec(location.hash||'');
   if(!m) return;
   if(m[1]==='axis' && axis(m[2])){ S.mode='axis'; S.axis=m[2]; }
@@ -666,6 +785,17 @@ var App = {
     if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
   },
   goInst:function(id){ S.mode='inst'; S.inst=id; writeHash(); render(); },
+  // 用語集から条文へ。その条文を含む法令を開き、該当カードまで送る。
+  goProv:function(pid){
+    var p = DB.provisions.filter(function(x){ return x.id===pid; })[0];
+    if(!p) return;
+    S.mode='inst'; S.inst=p.inst; S.q='';
+    var q=document.getElementById('q'); if(q) q.value='';
+    writeHash(); render();
+    var el=document.getElementById('p-'+pid);
+    if(el){ el.scrollIntoView({behavior:'smooth',block:'center'}); el.classList.add('flash'); }
+    else window.scrollTo(0,0);
+  },
   toggleVerified:function(){
     S.vonly=!S.vonly;
     document.getElementById('vonly').setAttribute('aria-pressed',S.vonly);
