@@ -1,16 +1,14 @@
 /* ------------------------------------------------------------------
    教育データ情報法データベース ── データ本体（公開版）
 
-   これは作業用のフル版から、論文の検討メモ（memo / thesis）を
-   自動で除いて生成したファイルです。手で編集せず、フル版を直して
-   生成し直してください。
+   tools/build-public.js がフル版から自動生成したファイルです。
+   直接編集しないでください。フル版を直してから生成し直してください。
    ------------------------------------------------------------------ */
 
 window.DB = {
  "meta": {
   "title": "教育データ情報法データベース",
   "subtitle": "大学の教育データのAI利活用における情報法的考察 ── 比較法データベース",
-  "owner": "島崎俊介（一橋大学大学院法学研究科ビジネスロー専攻）",
   "updated": "2026-11-27",
   "note": "条文はすべて抜粋。引用に用いる際は必ず一次資料で確認すること。「要検証」タグの付いた項目は未確認。作成途中の資料であり、内容の正確性は保証しない。"
  },
@@ -47,35 +45,40 @@ window.DB = {
    "jur": "jp",
    "kind": "法律",
    "name": "個人情報保護法",
-   "full": "個人情報の保護に関する法律（平成15年法律第57号／令和8年法律第56号による改正後）"
+   "full": "個人情報の保護に関する法律（平成15年法律第57号／令和8年法律第56号による改正後）",
+   "src": "https://laws.e-gov.go.jp/law/415AC0000000057"
   },
   {
    "id": "jp-rule",
    "jur": "jp",
    "kind": "規則",
    "name": "個情法施行規則",
-   "full": "個人情報の保護に関する法律施行規則"
+   "full": "個人情報の保護に関する法律施行規則",
+   "src": "https://www.ppc.go.jp/personalinfo/legal/"
   },
   {
    "id": "jp-ai",
    "jur": "jp",
    "kind": "法律",
    "name": "AI推進法",
-   "full": "人工知能関連技術の研究開発及び活用の推進に関する法律（令和7年法律第53号・全28条）"
+   "full": "人工知能関連技術の研究開発及び活用の推進に関する法律（令和7年法律第53号・全28条）",
+   "src": "https://laws.e-gov.go.jp/law/507AC0000000053"
   },
   {
    "id": "jp-mirai",
    "jur": "jp",
    "kind": "法律",
    "name": "次世代医療基盤法",
-   "full": "医療分野の研究開発に資するための匿名加工医療情報及び仮名加工医療情報に関する法律（平成29年法律第28号）"
+   "full": "医療分野の研究開発に資するための匿名加工医療情報及び仮名加工医療情報に関する法律（平成29年法律第28号）",
+   "src": "https://laws.e-gov.go.jp/law/429AC0000000028"
   },
   {
    "id": "jp-policy",
    "jur": "jp",
    "kind": "政策文書",
    "name": "教育DXロードマップ",
-   "full": "教育DXロードマップ（令和7年6月13日・デジタル庁／総務省／文部科学省／経済産業省）"
+   "full": "教育DXロードマップ（令和7年6月13日・デジタル庁／総務省／文部科学省／経済産業省）",
+   "src": "https://www.digital.go.jp/assets/contents/node/information/field_ref_resources/511df327-5ba3-456e-a5cd-2ebeddd8c960/29c4e154/20250613_edu-dx-full.pdf"
   },
   {
    "id": "jp-std",
@@ -89,84 +92,96 @@ window.DB = {
    "jur": "eu",
    "kind": "規則",
    "name": "GDPR",
-   "full": "一般データ保護規則（規則(EU)2016/679）"
+   "full": "一般データ保護規則（規則(EU)2016/679）",
+   "src": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
   },
   {
    "id": "eu-aiact",
    "jur": "eu",
    "kind": "規則",
    "name": "EU AI法",
-   "full": "人工知能に関する調和された規則（規則(EU)2024/1689）"
+   "full": "人工知能に関する調和された規則（規則(EU)2024/1689）",
+   "src": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
   },
   {
    "id": "eu-ehds",
    "jur": "eu",
    "kind": "規則",
    "name": "EHDS",
-   "full": "欧州ヘルスデータスペース規則（規則(EU)2025/327）"
+   "full": "欧州ヘルスデータスペース規則（規則(EU)2025/327）",
+   "src": "https://eur-lex.europa.eu/eli/reg/2025/327/oj"
   },
   {
    "id": "eu-dga",
    "jur": "eu",
    "kind": "規則",
    "name": "データガバナンス法",
-   "full": "欧州データガバナンス法（規則(EU)2022/868）※デジタル・オムニバスにより廃止・統合が提案中"
+   "full": "欧州データガバナンス法（規則(EU)2022/868）※デジタル・オムニバスにより廃止・統合が提案中",
+   "src": "https://eur-lex.europa.eu/eli/reg/2022/868/oj"
   },
   {
    "id": "eu-dataact",
    "jur": "eu",
    "kind": "規則",
    "name": "データ法",
-   "full": "データ法（規則(EU)2023/2854）"
+   "full": "データ法（規則(EU)2023/2854）",
+   "src": "https://eur-lex.europa.eu/eli/reg/2023/2854/oj"
   },
   {
    "id": "uk-gdpr",
    "jur": "uk",
    "kind": "規則",
    "name": "UK GDPR",
-   "full": "UK General Data Protection Regulation"
+   "full": "UK General Data Protection Regulation",
+   "src": "https://www.legislation.gov.uk/eur/2016/679/contents"
   },
   {
    "id": "uk-dpa",
    "jur": "uk",
    "kind": "法律",
    "name": "DPA 2018",
-   "full": "Data Protection Act 2018"
+   "full": "Data Protection Act 2018（2018 c. 12）",
+   "src": "https://www.legislation.gov.uk/ukpga/2018/12"
   },
   {
    "id": "uk-duaa",
    "jur": "uk",
    "kind": "法律",
    "name": "DUAA 2025",
-   "full": "Data (Use and Access) Act 2025"
+   "full": "Data (Use and Access) Act 2025（2025 c. 18）",
+   "src": "https://www.legislation.gov.uk/ukpga/2025/18"
   },
   {
    "id": "us-ferpa",
    "jur": "us",
    "kind": "法律",
    "name": "FERPA",
-   "full": "Family Educational Rights and Privacy Act（20 U.S.C. §1232g／34 C.F.R. Part 99）"
+   "full": "Family Educational Rights and Privacy Act（20 U.S.C. §1232g／34 C.F.R. Part 99）",
+   "src": "https://www.law.cornell.edu/uscode/text/20/1232g"
   },
   {
    "id": "us-coppa",
    "jur": "us",
    "kind": "法律",
    "name": "COPPA",
-   "full": "Children’s Online Privacy Protection Act（15 U.S.C. §§6501-6506）"
+   "full": "Children’s Online Privacy Protection Act（15 U.S.C. §§6501-6506）",
+   "src": "https://www.law.cornell.edu/uscode/text/15/6502"
   },
   {
    "id": "kr-pipa",
    "jur": "kr",
    "kind": "法律",
    "name": "韓国個人情報保護法",
-   "full": "개인정보 보호법（個人情報保護法）"
+   "full": "개인정보 보호법（個人情報保護法・法律第19234号／2023年3月14日改正）",
+   "src": "https://elaw.klri.re.kr/eng_service/lawViewContent.do?hseq=62389"
   },
   {
    "id": "kr-ai",
    "jur": "kr",
    "kind": "法律",
    "name": "韓国AI基本法",
-   "full": "인공지능 발전과 신뢰 기반 조성 등에 관한 기본법（AI基本法・2026年1月施行予定）"
+   "full": "인공지능 발전과 신뢰 기반 조성 등에 관한 기본법（AI基本法・法律第20676号／2025年1月21日公布・2026年1月22日施行）",
+   "src": "https://www.law.go.kr/lsInfoP.do?lsiSeq=291229"
   }
  ],
  "axes": [
@@ -271,8 +286,7 @@ window.DB = {
    "refs": [
     "kr-pipa-1"
    ],
-   "summary": "1条は「個人の自由と権利を保護し、さらに個人の尊厳と価値を具現する」ことを目的とし、有用性への配慮を目的規定に書かない。",
-   "verified": false
+   "summary": "1条は「個人の自由と権利を保護し、さらに個人の尊厳と価値を具現する」ことを目的とし、有用性への配慮を目的規定に書かない。"
   },
   {
    "axis": "stat",
@@ -321,8 +335,7 @@ window.DB = {
    "refs": [
     "kr-pipa-28-2"
    ],
-   "summary": "28条の2第1項が「統計作成、科学的研究、公益的記録保存等」のために本人同意なしの仮名情報処理を認める。",
-   "verified": false
+   "summary": "28条の2第1項が「統計作成、科学的研究、公益的記録保存等」のために本人同意なしの仮名情報処理を認める。"
   },
   {
    "axis": "exit",
@@ -368,8 +381,7 @@ window.DB = {
    "refs": [
     "kr-pipa-28-5"
    ],
-   "summary": "28条の5第1項は「特定の個人を識別する目的」での仮名情報処理を禁じるが、識別せずに個別決定に用いる場合は捉えない。",
-   "verified": false
+   "summary": "28条の5第1項は「特定の個人を識別する目的」での仮名情報処理を禁じるが、識別せずに個別決定に用いる場合は捉えない。"
   },
   {
    "axis": "auto",
@@ -414,8 +426,7 @@ window.DB = {
     "kr-pipa-37-2",
     "kr-ai-high"
    ],
-   "summary": "2023年改正PIPA 37条の2が自動化決定に対する拒否・説明要求権を創設。AI基本法は教育分野を高影響AIに含める。",
-   "verified": false
+   "summary": "PIPA 4条6号・37条の2が自動化された決定の拒否・説明要求権を定める。AI基本法2条4号の高影響AIは、教育については幼児・初等・中等の学生評価に限られ、高等教育を含まない。"
   },
   {
    "axis": "deleg",
@@ -550,10 +561,10 @@ window.DB = {
    "jur": "kr",
    "status": "explicit",
    "refs": [
-    "kr-pipa-28-5"
+    "kr-pipa-28-5",
+    "kr-pipa-28-4"
    ],
-   "summary": "28条の5第1項が「何人も」特定個人を識別する目的で仮名情報を処理してはならないとし、第2項が識別情報発生時の処理中止・回収・破棄を義務づける。",
-   "verified": false
+   "summary": "28条の5が識別目的の処理を禁じ、識別しうる情報が生成された場合の処理中止・回収・破棄を義務づける。28条の4が追加情報の分離保管と記録の3年保存を求める。"
   },
   {
    "axis": "erase",
@@ -597,8 +608,7 @@ window.DB = {
    "refs": [
     "kr-pipa-28-7"
    ],
-   "summary": "28条の7が仮名情報について閲覧・訂正・削除・処理停止等の権利規定の適用を除外する。",
-   "verified": false
+   "summary": "28条の7が、仮名情報には20条・20条の2・27条・34条1項・35条・35条の2・36条・37条を適用しないと定め、閲覧・訂正・削除・処理停止等の権利をまとめて外す。"
   },
   {
    "axis": "enforce",
@@ -644,7 +654,7 @@ window.DB = {
    "refs": [
     "kr-pipa-fine"
    ],
-   "summary": "2023年改正により課徴金の算定基礎が全体売上高（上限3%）に拡大された。",
+   "summary": "64条の2（2023年新設）が全体売上高の3%を上限とする課徴金を定める。売上高がない又は算定が困難な場合は20億ウォン。",
    "verified": false
   },
   {
@@ -694,8 +704,7 @@ window.DB = {
    "refs": [
     "kr-pipa-28-3"
    ],
-   "summary": "28条の3が異なる管理者間の仮名情報の結合を、保護委員会等の指定する結合専門機関に限定する。",
-   "verified": false
+   "summary": "28条の3が異なる管理者間の仮名情報の結合を指定の結合専門機関に限定し、結合結果の搬出に専門機関の長の承認を要求する。"
   },
   {
    "axis": "minor",
@@ -735,8 +744,10 @@ window.DB = {
    "axis": "minor",
    "jur": "kr",
    "status": "explicit",
-   "refs": [],
-   "summary": "PIPAが14歳未満について法定代理人の同意を要求する。",
+   "refs": [
+    "kr-pipa-child"
+   ],
+   "summary": "22条の2第1項が、満14歳未満の児童の個人情報の処理に法定代理人の同意を要求する。",
    "verified": false
   }
  ],
@@ -1194,6 +1205,7 @@ window.DB = {
    ],
    "status": "explicit",
    "verified": false,
+   "src": "https://www.legislation.gov.uk/ukpga/2018/12/section/171",
    "text": "匿名化された個人データを、データ管理者の同意なく再識別することは犯罪である。"
   },
   {
@@ -1207,6 +1219,7 @@ window.DB = {
    ],
    "status": "explicit",
    "verified": true,
+   "src": "https://www.legislation.gov.uk/ukpga/2025/18/section/86",
    "text": "UK GDPRに84A〜84C条を挿入し、DPA 2018 s.19を削除する。"
   },
   {
@@ -1246,6 +1259,7 @@ window.DB = {
    ],
    "status": "partial",
    "verified": false,
+   "src": "https://www.ecfr.gov/current/title-34/section-99.31",
    "text": "教育機関のため又はその代わりに、予測テストの開発・検証・実施、学生援助プログラムの運営、又は指導の改善を目的とする研究を行う組織に対し、同意なく開示できる。研究終了後の情報破棄等が条件。"
   },
   {
@@ -1258,6 +1272,7 @@ window.DB = {
    ],
    "status": "partial",
    "verified": false,
+   "src": "https://www.ecfr.gov/current/title-34/section-99.35",
    "text": "教育プログラムの監査・評価、又は連邦・州の法令遵守の執行のために、権限ある代表者へ開示できる。"
   },
   {
@@ -1270,6 +1285,7 @@ window.DB = {
    ],
    "status": "partial",
    "verified": false,
+   "src": "https://www.ecfr.gov/current/title-34/section-99.31",
    "text": "学生の身元が合理的に判明しないよう、すべての個人識別情報を除去した記録は、同意なく開示できる。"
   },
   {
@@ -1306,7 +1322,7 @@ window.DB = {
     "purpose"
    ],
    "status": "explicit",
-   "verified": false,
+   "verified": true,
    "text": "この法律は、個人情報の処理及び保護に関する事項を定めることにより、個人の自由と権利を保護し、さらに個人の尊厳と価値を具現することを目的とする。"
   },
   {
@@ -1318,8 +1334,8 @@ window.DB = {
     "stat"
    ],
    "status": "explicit",
-   "verified": false,
-   "text": "1項 個人情報処理者は、統計作成、科学的研究、公益的記録保存等のために、本人の同意なく仮名情報を処理することができる。／2項 第三者に提供する場合、特定の個人を識別するために用いられうる情報を含めてはならない。"
+   "verified": true,
+   "text": "1項 個人情報処理者は、統計作成、科学的研究、公益的記録保存等のために、本人の同意なく仮名情報を処理することができる。／2項 第三者に提供する場合、特定の個人を識別しうる情報を含めてはならない。"
   },
   {
    "id": "kr-pipa-28-3",
@@ -1330,8 +1346,21 @@ window.DB = {
     "infra"
    ],
    "status": "explicit",
-   "verified": false,
-   "text": "異なる個人情報処理者間の仮名情報の結合は、保護委員会又は関係中央行政機関の長が指定する専門機関が行う。"
+   "verified": true,
+   "text": "異なる個人情報処理者が処理した仮名情報の結合は、保護委員会又は関係中央行政機関の長が指定する専門機関が行う。結合された情報を当該機関の外に搬出するには、専門機関の長の承認を要する。"
+  },
+  {
+   "id": "kr-pipa-28-4",
+   "inst": "kr-pipa",
+   "cite": "28条の4",
+   "title": "仮名情報の安全措置義務等",
+   "axes": [
+    "reident",
+    "erase"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "text": "原状に復元するために必要な追加情報を分離して保管・管理するなど、安全性確保のための措置を講じなければならない。処理に関する記録を作成・保管し、仮名情報を破棄した場合も記録を破棄日から3年以上保管しなければならない。"
   },
   {
    "id": "kr-pipa-28-5",
@@ -1343,8 +1372,8 @@ window.DB = {
     "exit"
    ],
    "status": "explicit",
-   "verified": false,
-   "text": "1項 何人も、特定の個人を識別する目的で仮名情報を処理してはならない。／2項 処理の過程で特定の個人を識別できる情報が生成された場合、直ちに処理を中止し、回収・破棄しなければならない。"
+   "verified": true,
+   "text": "1項 特定の個人を識別する目的で仮名情報を処理してはならない。／2項 処理の過程で特定の個人を識別しうる情報が生成された場合、直ちに処理を中止し、遅滞なく回収・破棄しなければならない。"
   },
   {
    "id": "kr-pipa-28-7",
@@ -1355,44 +1384,56 @@ window.DB = {
     "erase"
    ],
    "status": "explicit",
-   "verified": false,
-   "text": "仮名情報には、閲覧・訂正・削除・処理停止等の権利に関する規定を適用しない。"
+   "verified": true,
+   "text": "28条の2又は28条の3により処理される仮名情報には、20条、20条の2、27条、34条1項、35条、35条の2、36条及び37条を適用しない。"
   },
   {
    "id": "kr-pipa-37-2",
    "inst": "kr-pipa",
-   "cite": "37条の2",
+   "cite": "4条6号・37条の2",
    "title": "自動化された決定に対する権利",
    "axes": [
     "auto"
    ],
    "status": "explicit",
-   "verified": false,
-   "text": "（2023年改正）本人は、専ら自動化されたシステムによる決定が自己の権利義務に重大な影響を及ぼす場合、当該決定を拒否し、又は説明を求めることができる。"
+   "verified": true,
+   "text": "4条6号 本人は、完全に自動化された処理による決定を受け入れないことを求め、又はその説明を求める権利を有する。／37条の2（自動化された決定に対する情報主体の権利）がこれを具体化する。"
   },
   {
    "id": "kr-pipa-fine",
    "inst": "kr-pipa",
-   "cite": "（課徴金）",
-   "title": "課徴金の算定基礎",
+   "cite": "64条の2",
+   "title": "課徴金の賦課",
    "axes": [
     "enforce"
    ],
    "status": "explicit",
    "verified": false,
-   "text": "2023年改正により、算定基礎が関連売上高から全体売上高（上限3%）に拡大された。"
+   "text": "全体売上高の100分の3を超えない範囲で課徴金を賦課できる。売上高がない又は算定が困難な場合は20億ウォンを超えない範囲。2023年3月14日新設。"
+  },
+  {
+   "id": "kr-pipa-child",
+   "inst": "kr-pipa",
+   "cite": "22条の2第1項",
+   "title": "児童の個人情報",
+   "axes": [
+    "minor"
+   ],
+   "status": "explicit",
+   "verified": false,
+   "text": "満14歳未満の児童の個人情報を処理するには、法定代理人の同意を得なければならない。"
   },
   {
    "id": "kr-ai-high",
    "inst": "kr-ai",
-   "cite": "（高影響AI）",
-   "title": "高影響AIの範囲",
+   "cite": "2条4号",
+   "title": "高影響AIの定義と教育分野の射程",
    "axes": [
     "auto"
    ],
    "status": "explicit",
    "verified": false,
-   "text": "教育分野を含む領域で用いられ、人の生命・身体の安全及び基本的権利に重大な影響を及ぼすおそれのあるAIを「高影響AI」とし、事業者に義務を課す。"
+   "text": "人の生命・身体の安全及び基本的権利に重大な影響を及ぼし、又はそのおそれのあるAIであって、同号に列挙された分野で用いられるものをいう。教育については「幼児教育・初等教育・中等教育における学生評価」が列挙される。末尾の号で大統領令による分野の追加が可能。"
   }
  ]
 };

@@ -358,7 +358,7 @@ function vbadge(o){
 
 function renderProvision(p, opts){
   opts = opts||{};
-  var it = inst(p.inst) || {name:'?',jur:'',full:''};
+  var it = inst(p.inst) || {name:'?',jur:'',full:'',src:''};
   var h = '<article class="prov">';
   h += '<div class="ptop">';
   h += '<span class="inst">'+esc(it.name)+'</span>';
@@ -389,7 +389,12 @@ function renderProvision(p, opts){
     }
     h += '</div>';
   }
-  if(p.src) h += '<a class="srcl" href="'+esc(p.src)+'" target="_blank" rel="noopener">出典を開く</a>';
+  // 条文ごとの出典。無ければその法令の出典にフォールバックする。
+  var srcUrl = p.src || it.src;
+  if(srcUrl){
+    var slab = p.src ? 'この条文の出典を開く' : '出典（'+esc(it.name)+'）を開く';
+    h += '<a class="srcl" href="'+esc(srcUrl)+'" target="_blank" rel="noopener">'+slab+'</a>';
+  }
   h += '</article>';
   return h;
 }
@@ -562,10 +567,13 @@ document.getElementById('subtitle').textContent = DB.meta.subtitle;
 document.getElementById('hint').textContent =
   '論点を選ぶと5法域の規律を横に並べて比べられます。色は規律の強さ（明文／部分的／規定なし）を表します。'+
   '法令別の表示では、条文ごとに他法域の状況を小さな帯で示します。';
+var nUnver = 0;
+for(var vi=0; vi<DB.provisions.length; vi++){ if(DB.provisions[vi].verified===false) nUnver++; }
 document.getElementById('foot').innerHTML =
-  esc(DB.meta.owner)+'　／　最終更新 '+esc(DB.meta.updated)+
+  '最終更新 '+esc(DB.meta.updated)+
   '<br>'+esc(DB.meta.note)+
-  '<br>論点 '+DB.axes.length+' ・ 法令等 '+DB.instruments.length+' ・ 条文 '+DB.provisions.length+' 件';
+  '<br>論点 '+DB.axes.length+' ・ 法令等 '+DB.instruments.length+
+  ' ・ 条文 '+DB.provisions.length+' 件（うち要検証 '+nUnver+' 件）';
 
 var qi = document.getElementById('q');
 var t=null;
