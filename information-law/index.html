@@ -60,6 +60,12 @@ header{
 .hwrap{max-width:var(--maxw);margin:0 auto;padding:14px 16px 12px}
 .brand{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
 .brand h1{font-size:21px;color:#FAF9F5;font-weight:600;letter-spacing:.02em}
+.brand h1 .home{
+  font:inherit;color:inherit;background:none;border:0;padding:0;margin:0;
+  cursor:pointer;border-bottom:1px solid transparent;
+}
+.brand h1 .home:hover{border-bottom-color:currentColor}
+.brand h1 .home:focus-visible{outline:2px solid #C8A96A;outline-offset:3px}
 .brand .sub{font-size:12px;color:#A9B6CE;line-height:1.5}
 .toolbar{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center}
 .tabs{display:flex;gap:4px;background:rgba(255,255,255,.08);padding:3px;border-radius:999px}
@@ -230,6 +236,11 @@ table.mx tbody th button:hover{text-decoration-color:var(--gold)}
 .prov .nofull{
   font-size:11.5px;color:var(--gold-d);margin:0;
 }
+/* 論点が未選択のときの案内 */
+.pickhint{
+  font-size:13px;color:var(--muted);text-align:center;
+  margin:18px auto 4px;max-width:46em;line-height:1.9;
+}
 .chips{display:flex;gap:5px;flex-wrap:wrap}
 .chip{
   border:1px solid var(--line);background:transparent;color:var(--muted);
@@ -327,7 +338,7 @@ footer{
 <header>
   <div class="hwrap">
     <div class="brand">
-      <h1>教育データ情報法データベース</h1>
+      <h1><button type="button" class="home" onclick="App.goHome()" title="最初の画面に戻る">教育データ情報法データベース</button></h1>
       <span class="sub" id="subtitle"></span>
     </div>
     <div class="toolbar">
@@ -405,7 +416,8 @@ function stClass(s){ return 'st st-'+(ST[s]?s:'todo'); }
 function isVerified(o){ return o.verified !== false; }
 
 /* ---------- state ---------- */
-var S = { mode:'axis', axis:DB.axes[0].id, inst:DB.instruments[0].id, q:'', vonly:false };
+// axis は初期状態では未選択。表の論点をクリックするまで下に何も出さない。
+var S = { mode:'axis', axis:null, inst:DB.instruments[0].id, q:'', vonly:false };
 
 function matchText(o, parts){
   var hay = parts.join(' ').toLowerCase();
@@ -523,8 +535,14 @@ function renderMatrix(){
 }
 
 function renderAxisView(hlJur){
-  var ax = axis(S.axis) || DB.axes[0];
+  var ax = axis(S.axis);
   var h = renderMatrix();
+  if(!ax){
+    // 論点が未選択のときは表だけを出す
+    h += '<p class="pickhint">表の論点名またはマスをクリックすると、その論点について'
+       + '日本と海外の比較と各法域の詳細が表示されます。</p>';
+    return h;
+  }
 
   h += '<section class="axhead">';
   h += '<h2>'+esc(ax.label)+'</h2>';
@@ -619,6 +637,10 @@ function render(){
 }
 
 function writeHash(){
+  if(S.mode==='axis' && !S.axis){
+    if(location.hash) history.replaceState(null,'',location.pathname+location.search);
+    return;
+  }
   var h = S.mode==='axis' ? ('#axis='+S.axis) : ('#inst='+S.inst);
   if(location.hash !== h) history.replaceState(null,'',h);
 }
@@ -630,6 +652,13 @@ function readHash(){
 }
 
 var App = {
+  // タイトルをクリックしたときに最初の画面へ戻す
+  goHome:function(){
+    S.mode='axis'; S.axis=null; S.q=''; S.vonly=false; hlJur=null;
+    var q=document.getElementById('q'); if(q) q.value='';
+    var v=document.getElementById('vonly'); if(v) v.setAttribute('aria-pressed','false');
+    writeHash(); render(); window.scrollTo(0,0);
+  },
   setMode:function(m){ S.mode=m; writeHash(); render(); window.scrollTo(0,0); },
   goAxis:function(id,j){
     S.mode='axis'; S.axis=id; hlJur=j||null; writeHash(); render();
