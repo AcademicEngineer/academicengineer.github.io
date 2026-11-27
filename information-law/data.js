@@ -203,7 +203,7 @@ window.DB = {
    "jur": "eu",
    "kind": "規則",
    "name": "EU AI法",
-   "full": "人工知能に関する調和された規則（規則(EU)2024/1689）",
+   "full": "人工知能に関する整合的な規則を定める規則（規則(EU)2024/1689）。Regulation (EU) 2026/1744（Digital Omnibus on AI、2026年7月8日）により改正され、附属書IIIの高リスクAIに対する第III章第1節から第3節の適用は2027年12月2日からとされた",
    "src": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
   },
   {
@@ -251,7 +251,7 @@ window.DB = {
    "jur": "eu",
    "kind": "法案",
    "name": "デジタル・オムニバス",
-   "full": "デジタル・オムニバス規則案（COM(2025) 837 final、手続番号2025/0360(COD)、2025年11月19日提案）※第一読会に係属中。AIに関する部分は別提案COM(2025) 836",
+   "full": "デジタル・オムニバスは二本立てである。AIに関する部分は Regulation (EU) 2026/1744（Digital Omnibus on AI、2026年7月8日）として成立し、規則(EU)2024/1689等を改正した。データ・個人情報に関する部分（COM(2025) 837 final、手続番号2025/0360(COD)）は第一読会に係属中",
    "src": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52025PC0837"
   },
   {
@@ -1879,7 +1879,7 @@ window.DB = {
    "verified": true,
    "full": "ANNEX III\nHigh-risk AI systems referred to in Article 6(2)\nHigh-risk AI systems pursuant to Article 6(2) are the AI systems listed in any of the following areas:\n[...]\n3.\nEducation and vocational training:\n(a) AI systems intended to be used to determine access or admission or to assign natural persons to educational and vocational training institutions at all levels;\n(b) AI systems intended to be used to evaluate learning outcomes, including when those outcomes are used to steer the learning process of natural persons in educational and vocational training institutions at all levels;\n(c) AI systems intended to be used for the purpose of assessing the appropriate level of education that an individual will receive or will be able to access, in the context of or within educational and vocational training institutions at all levels;\n(d) AI systems intended to be used for monitoring and detecting prohibited behaviour of students during tests in the context of or within educational and vocational training institutions at all levels.",
    "src": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/annex-3",
-   "text": "あらゆる段階（at all levels）の教育・職業訓練機関において用いられる次のAIシステム。(a) 入学・受験の決定又は機関への振り分け、(b) 学習成果の評価（当該成果が学習過程の誘導に用いられる場合を含む）、(c) 個人が受け又は受けられる教育水準の適切さの評価、(d) 試験中の学生の禁止された行動の監視・検知。"
+   "text": "あらゆる段階（at all levels）の教育・職業訓練機関において用いられる次のAIシステム。(a) 入学・受験の決定又は機関への振り分け、(b) 学習成果の評価（当該成果が学習過程の誘導に用いられる場合を含む）、(c) 個人が受け又は受けられる教育水準の適切さの評価、(d) 試験中の学生の禁止された行動の監視・検知。 なお113条(c)はRegulation (EU) 2026/1744 1条40号(b)により差し替えられ、6条2項及び附属書IIIにより高リスクに分類されるAIシステムについては2027年12月2日からの適用とされた。同規則は附属書III第3項の内容を改めていない。"
   },
   {
    "id": "eu-aiact-5-1f",
@@ -1894,7 +1894,7 @@ window.DB = {
    "verified": true,
    "full": "Article 5\nProhibited AI practices\n1.   The following AI practices shall be prohibited:\n(f) the placing on the market, the putting into service for this specific purpose, or the use of AI systems to infer emotions of a natural person in the areas of workplace and education institutions, except where the use of the AI system is intended to be put in place or into the market for medical or safety reasons;",
    "src": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-5",
-   "text": "職場及び教育機関の領域において自然人の感情を推認するAIシステムの上市、当該目的での提供又は使用を禁止する。ただし、医療上又は安全上の理由のために導入され又は上市されることが意図されている場合を除く。（原文「to infer emotions of a natural person in the areas of workplace and education institutions, except where the use of the AI system is intended to be put in place or into the market for medical or safety reasons」）"
+   "text": "職場及び教育機関の領域において自然人の感情を推認するAIシステムの上市、当該目的での提供又は使用を禁止する。ただし、医療上又は安全上の理由のために導入され又は上市されることが意図されている場合を除く。（原文「to infer emotions of a natural person in the areas of workplace and education institutions, except where the use of the AI system is intended to be put in place or into the market for medical or safety reasons」） Regulation (EU) 2026/1744は5条1項に(ba)（同意によらない性的画像の生成等）及び(bb)を加えるが、(f)の内容は改めていない。"
   },
   {
    "id": "eu-aiact-50",
