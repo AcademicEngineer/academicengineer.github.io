@@ -12,6 +12,74 @@ window.DB = {
   "updated": "2026-11-27",
   "note": "条文はすべて抜粋。引用に用いる際は必ず一次資料で確認すること。「要検証」タグの付いた項目は未確認。作成途中の資料であり、内容の正確性は保証しない。"
  },
+ "sources": [
+  {
+   "jur": "jp",
+   "name": "e-Gov法令検索",
+   "url": "https://laws.e-gov.go.jp/",
+   "note": "日本の法令の公式本文"
+  },
+  {
+   "jur": "jp",
+   "name": "日本法令外国語訳DB",
+   "url": "https://www.japaneselawtranslation.go.jp/",
+   "note": "法務省。和英対訳"
+  },
+  {
+   "jur": "jp",
+   "name": "個人情報保護委員会",
+   "url": "https://www.ppc.go.jp/",
+   "note": "規則・ガイドライン・QA"
+  },
+  {
+   "jur": "eu",
+   "name": "EUR-Lex",
+   "url": "https://eur-lex.europa.eu/",
+   "note": "EU法の公式官報"
+  },
+  {
+   "jur": "eu",
+   "name": "AI法サービスデスク",
+   "url": "https://ai-act-service-desk.ec.europa.eu/",
+   "note": "欧州委員会。AI法の条文と解説"
+  },
+  {
+   "jur": "uk",
+   "name": "legislation.gov.uk",
+   "url": "https://www.legislation.gov.uk/",
+   "note": "英国法。UK GDPRの条文も"
+  },
+  {
+   "jur": "us",
+   "name": "Cornell LII（U.S. Code）",
+   "url": "https://www.law.cornell.edu/uscode/text",
+   "note": "連邦制定法"
+  },
+  {
+   "jur": "us",
+   "name": "eCFR",
+   "url": "https://www.ecfr.gov/",
+   "note": "連邦規則集の現行版"
+  },
+  {
+   "jur": "us",
+   "name": "Student Privacy（ED）",
+   "url": "https://studentprivacy.ed.gov/",
+   "note": "FERPAの所管省庁の解説"
+  },
+  {
+   "jur": "kr",
+   "name": "국가법령정보센터",
+   "url": "https://www.law.go.kr/",
+   "note": "韓国法令の公式本文"
+  },
+  {
+   "jur": "kr",
+   "name": "KLRI 英訳",
+   "url": "https://elaw.klri.re.kr/eng_service/main.do",
+   "note": "韓国法制研究院の英訳"
+  }
+ ],
  "jurisdictions": [
   {
    "id": "jp",
@@ -239,6 +307,31 @@ window.DB = {
    "id": "minor",
    "label": "未成年・在学関係",
    "q": "未成年の学習者や在学関係に固有の規律があるか。"
+  },
+  {
+   "id": "vendor",
+   "label": "委託・第三者提供（AIベンダーへの提供）",
+   "q": "大学が外部のAI事業者にデータを渡すとき、どの枠組みで処理されるか。委託と第三者提供はどう分かれるか。"
+  },
+  {
+   "id": "transfer",
+   "label": "越境移転",
+   "q": "国外の事業者にデータが渡る場合の規律。クラウドAIは海外事業者が多い。"
+  },
+  {
+   "id": "consent",
+   "label": "同意の任意性（在学関係の力の不均衡）",
+   "q": "学生と大学の間には評価する／されるの関係がある。その下での同意は自由な意思によるものといえるか。"
+  },
+  {
+   "id": "academic",
+   "label": "学術研究目的の例外",
+   "q": "学術研究目的の例外はどう作られているか。教育改善目的はそこに入るか。"
+  },
+  {
+   "id": "proctor",
+   "label": "試験監視・生体データ・要配慮情報",
+   "q": "オンライン試験の監視や生体データの利用に固有の規律があるか。"
   }
  ],
  "cells": [
@@ -294,7 +387,8 @@ window.DB = {
    "status": "explicit",
    "refs": [
     "jp-appi-2-13",
-    "jp-appi-18-3"
+    "jp-appi-18-3",
+    "jp-mirai-57"
    ],
    "summary": "令和8年改正が2条13項に「統計作成等」を定義し、同意なしの取得・提供を可能にした。要件は委員会規則に委ねられている。"
   },
@@ -388,7 +482,10 @@ window.DB = {
    "jur": "jp",
    "status": "absent",
    "refs": [
-    "jp-appi-19"
+    "jp-appi-19",
+    "jp-ai-3",
+    "jp-ai-13",
+    "jp-ai-16"
    ],
    "summary": "GDPR22条に相当する一般規定がない。令和8年改正でも導入されていない。AI推進法にも本人の権利規定はない。"
   },
@@ -470,9 +567,12 @@ window.DB = {
   {
    "axis": "deleg",
    "jur": "kr",
-   "status": "todo",
-   "refs": [],
-   "summary": ""
+   "status": "partial",
+   "refs": [
+    "kr-pipa-28-3"
+   ],
+   "summary": "PIPAは大統領令と個人情報保護委員会の告示に広く委任する。仮名情報の結合手続や結合専門機関の指定基準も下位規範に置かれている。",
+   "verified": false
   },
   {
    "axis": "eddata",
@@ -749,6 +849,222 @@ window.DB = {
    ],
    "summary": "22条の2第1項が、満14歳未満の児童の個人情報の処理に法定代理人の同意を要求する。",
    "verified": false
+  },
+  {
+   "axis": "vendor",
+   "jur": "jp",
+   "status": "explicit",
+   "refs": [],
+   "summary": "27条が第三者提供に本人同意を原則とし、27条5項1号により委託に伴う提供は第三者提供にあたらないとされる。25条が委託先の監督を求める。",
+   "verified": false
+  },
+  {
+   "axis": "vendor",
+   "jur": "eu",
+   "status": "explicit",
+   "refs": [],
+   "summary": "28条が処理者（processor）との契約に必須記載事項を定め、26条が共同管理者を規律する。委託という独立の概念はなく、管理者／処理者の区別で処理される。",
+   "verified": false
+  },
+  {
+   "axis": "vendor",
+   "jur": "uk",
+   "status": "explicit",
+   "refs": [],
+   "summary": "UK GDPR 28条を継承する。",
+   "verified": false
+  },
+  {
+   "axis": "vendor",
+   "jur": "us",
+   "status": "partial",
+   "refs": [
+    "us-ferpa-studies"
+   ],
+   "summary": "FERPAに「委託」概念はない。外部事業者は34 C.F.R. §99.31(a)(1)の school official に含める運用（outsourcing）で処理される。",
+   "verified": false
+  },
+  {
+   "axis": "vendor",
+   "jur": "kr",
+   "status": "explicit",
+   "refs": [],
+   "summary": "PIPA 26条が業務委託を規律し、委託者の管理・監督義務と委託事実の公開を求める。",
+   "verified": false
+  },
+  {
+   "axis": "transfer",
+   "jur": "jp",
+   "status": "explicit",
+   "refs": [],
+   "summary": "28条が外国にある第三者への提供を制限し、本人の同意、基準適合体制の整備、又は規則で定める国のいずれかを要求する。",
+   "verified": false
+  },
+  {
+   "axis": "transfer",
+   "jur": "eu",
+   "status": "explicit",
+   "refs": [],
+   "summary": "44条〜49条が十分性認定、適切な保護措置（標準契約条項等）、個別の適用除外という三層で規律する。日本は十分性認定国。",
+   "verified": false
+  },
+  {
+   "axis": "transfer",
+   "jur": "uk",
+   "status": "explicit",
+   "refs": [],
+   "summary": "UK GDPR 44条以下を継承し、英国独自の adequacy regulations と国際データ移転協定（IDTA）による。",
+   "verified": false
+  },
+  {
+   "axis": "transfer",
+   "jur": "us",
+   "status": "absent",
+   "refs": [],
+   "summary": "連邦法に一般的な越境移転規制はない。FERPAにも規定がない。",
+   "verified": false
+  },
+  {
+   "axis": "transfer",
+   "jur": "kr",
+   "status": "explicit",
+   "refs": [],
+   "summary": "PIPA 28条の8以下が国外移転を規律し、同意・法律の定め・認証等の根拠を要求する。移転の中止命令の制度もある。",
+   "verified": false
+  },
+  {
+   "axis": "consent",
+   "jur": "jp",
+   "status": "absent",
+   "refs": [],
+   "summary": "同意の有効性に関する一般規定がない。在学関係に固有の規律もなく、ガイドラインとQ&Aで処理される。",
+   "verified": false
+  },
+  {
+   "axis": "consent",
+   "jur": "eu",
+   "status": "explicit",
+   "refs": [],
+   "summary": "4条(11)が同意を「自由に与えられた」ものと定義し、7条4項が条件性を戒める。前文43は公的機関との関係など明らかな不均衡がある場合、同意は有効な法的根拠にならないとする。",
+   "verified": false
+  },
+  {
+   "axis": "consent",
+   "jur": "uk",
+   "status": "explicit",
+   "refs": [],
+   "summary": "UK GDPR 4条(11)・7条を継承する。",
+   "verified": false
+  },
+  {
+   "axis": "consent",
+   "jur": "us",
+   "status": "partial",
+   "refs": [],
+   "summary": "34 C.F.R. §99.30が署名入りの書面による同意を要求するが、任意性そのものを審査する枠組みはない。",
+   "verified": false
+  },
+  {
+   "axis": "consent",
+   "jur": "kr",
+   "status": "partial",
+   "refs": [],
+   "summary": "PIPA 22条が同意の受領方法を定め、必須同意と選択同意を区分することを求める。",
+   "verified": false
+  },
+  {
+   "axis": "academic",
+   "jur": "jp",
+   "status": "explicit",
+   "refs": [
+    "jp-appi-18-3",
+    "jp-appi-59"
+   ],
+   "summary": "18条3項5号6号・20条2項5号6号・27条1項5〜7号が学術研究目的の例外を置き、57条が一定の主体を適用除外とし、59条が責務を定める。いずれも「学術研究目的」に限られる。",
+   "verified": false
+  },
+  {
+   "axis": "academic",
+   "jur": "eu",
+   "status": "explicit",
+   "refs": [
+    "eu-gdpr-5-1b",
+    "eu-gdpr-89"
+   ],
+   "summary": "5条1項(b)が研究目的の追加処理を目的外としないとし、89条が保障措置を要求、9条2項(j)が特別カテゴリの例外を置く。",
+   "verified": false
+  },
+  {
+   "axis": "academic",
+   "jur": "uk",
+   "status": "explicit",
+   "refs": [
+    "uk-gdpr-84c"
+   ],
+   "summary": "DUAA 2025が挿入したUK GDPR 84A〜84C条が、研究・記録保存・統計目的の定義と保障措置を整理する。",
+   "verified": false
+  },
+  {
+   "axis": "academic",
+   "jur": "us",
+   "status": "partial",
+   "refs": [
+    "us-ferpa-studies"
+   ],
+   "summary": "20 U.S.C. §1232g(b)(1)(F)と34 C.F.R. §99.31(a)(6)の studies exception のみ。教育機関のため又はその代わりに行う研究に限られ、研究者の自由な研究は対象外。",
+   "verified": false
+  },
+  {
+   "axis": "academic",
+   "jur": "kr",
+   "status": "explicit",
+   "refs": [
+    "kr-pipa-28-2"
+   ],
+   "summary": "28条の2が「科学的研究」を仮名情報処理の目的の一つとして掲げる。PIPA 2条に科学的研究の定義が置かれている。",
+   "verified": false
+  },
+  {
+   "axis": "proctor",
+   "jur": "jp",
+   "status": "partial",
+   "refs": [],
+   "summary": "試験監視に固有の規律はない。生体データは要配慮個人情報（2条3項）ではなく個人識別符号（2条2項）として扱われる。",
+   "verified": false
+  },
+  {
+   "axis": "proctor",
+   "jur": "eu",
+   "status": "explicit",
+   "refs": [
+    "eu-aiact-annex3"
+   ],
+   "summary": "GDPR 9条が生体データを特別カテゴリとし、AI法附属書III 3(d)が試験中の禁止行為の監視・検知を高リスクに、同1が生体認証を高リスクに分類する。",
+   "verified": false
+  },
+  {
+   "axis": "proctor",
+   "jur": "uk",
+   "status": "explicit",
+   "refs": [],
+   "summary": "UK GDPR 9条とDPA 2018 Schedule 1が特別カテゴリを規律する。AI法に相当する横断法はない。",
+   "verified": false
+  },
+  {
+   "axis": "proctor",
+   "jur": "us",
+   "status": "partial",
+   "refs": [],
+   "summary": "連邦法に特別カテゴリの概念はない。生体情報は州法（イリノイ州BIPA等）が個別に規律する。",
+   "verified": false
+  },
+  {
+   "axis": "proctor",
+   "jur": "kr",
+   "status": "explicit",
+   "refs": [],
+   "summary": "PIPA 23条の민감정보（センシティブ情報）に生体認識情報が含まれる。",
+   "verified": false
   }
  ],
  "provisions": [
@@ -780,26 +1096,29 @@ window.DB = {
    "id": "jp-appi-2-13",
    "inst": "jp-appi",
    "cite": "2条13項",
-   "title": "統計作成等",
+   "title": "統計作成等（令和8年改正による新設）",
    "axes": [
     "stat",
     "deleg"
    ],
    "status": "explicit",
    "verified": false,
+   "src": "https://laws.e-gov.go.jp/law/415AC0000000057",
    "text": "（令和8年改正により新設）…個人の権利利益を害するおそれが少ないものとして個人情報保護委員会規則で定めるもの"
   },
   {
    "id": "jp-appi-18-3",
    "inst": "jp-appi",
    "cite": "18条3項5号・6号",
-   "title": "利用目的による制限の例外",
+   "title": "利用目的による制限の適用除外（学術研究）",
    "axes": [
-    "stat"
+    "stat",
+    "academic"
    ],
    "status": "explicit",
-   "verified": false,
-   "text": "（学術研究機関等が学術研究目的で取り扱う必要がある場合等。「個人の権利利益を不当に侵害するおそれがある場合を除く」）"
+   "verified": true,
+   "src": "https://www.japaneselawtranslation.go.jp/en/laws/view/4241/ja",
+   "text": "5号 学術研究機関等である個人情報取扱事業者が、学術研究目的で個人情報を取り扱う必要があるとき（個人の権利利益を不当に侵害するおそれがある場合を除く）。／6号 個人データを学術研究機関等に提供する場合で、提供先が学術研究目的で取り扱う必要があるとき（同じ除外あり）。"
   },
   {
    "id": "jp-appi-19",
@@ -835,20 +1154,22 @@ window.DB = {
     "erase"
    ],
    "status": "partial",
-   "verified": false,
-   "text": "本人は、個人情報取扱事業者に対し、当該本人が識別される保有個人データの利用の停止又は消去を請求することができる（一定の要件の下）。"
+   "verified": true,
+   "src": "https://www.japaneselawtranslation.go.jp/en/laws/view/4241/ja",
+   "text": "1項 本人は、保有個人データが18条若しくは19条に違反して取り扱われているとき、又は20条に違反して取得されたものであるときは、当該保有個人データの利用の停止又は消去を請求することができる。"
   },
   {
    "id": "jp-appi-41-7",
    "inst": "jp-appi",
    "cite": "41条7項",
-   "title": "仮名加工情報の識別行為の禁止",
+   "title": "仮名加工情報の取扱いに係る義務（識別のための照合の禁止）",
    "axes": [
     "reident"
    ],
    "status": "explicit",
-   "verified": false,
-   "text": "個人情報取扱事業者は、仮名加工情報を取り扱うに当たっては、…削除情報等を取得し、又は当該個人情報を他の情報と照合してはならない。"
+   "verified": true,
+   "src": "https://www.japaneselawtranslation.go.jp/en/laws/view/4241/ja",
+   "text": "仮名加工情報取扱事業者は、仮名加工情報を取り扱うに当たっては、当該仮名加工情報の作成に用いられた個人情報に係る本人を識別するために、当該仮名加工情報を他の情報と照合してはならない。"
   },
   {
    "id": "jp-appi-59",
@@ -856,11 +1177,13 @@ window.DB = {
    "cite": "59条",
    "title": "学術研究機関等の責務",
    "axes": [
-    "enforce"
+    "enforce",
+    "academic"
    ],
    "status": "partial",
    "verified": true,
-   "text": "個人情報取扱事業者である学術研究機関等は、学術研究目的で行う個人情報の取扱いについて、…必要な措置を自ら講じ、かつ、当該措置の内容を公表するよう努めなければならない。"
+   "src": "https://www.japaneselawtranslation.go.jp/en/laws/view/4241/ja",
+   "text": "個人情報取扱事業者である学術研究機関等は、学術研究目的で行う個人情報の取扱いについて、この法律の規定を遵守するとともに、その適正を確保するために必要な措置を自ら講じ、かつ、当該措置の内容を公表するよう努めなければならない。"
   },
   {
    "id": "jp-appi-146",
@@ -890,13 +1213,14 @@ window.DB = {
    "id": "jp-appi-149",
    "inst": "jp-appi",
    "cite": "149条1項",
-   "title": "適用上の配慮",
+   "title": "委員会の権限の行使の制限",
    "axes": [
     "enforce"
    ],
    "status": "explicit",
    "verified": true,
-   "text": "個人情報保護委員会は、前三条の規定の適用に当たっては、表現の自由、学問の自由、信教の自由及び政治活動の自由を妨げてはならない。"
+   "src": "https://laws.e-gov.go.jp/law/415AC0000000057",
+   "text": "委員会は、前三条の規定により個人情報取扱事業者等に対し報告若しくは資料の提出の要求、立入検査、指導、助言、勧告又は命令を行うに当たっては、表現の自由、学問の自由、信教の自由及び政治活動の自由を妨げてはならない。"
   },
   {
    "id": "jp-rule-7",
@@ -1005,7 +1329,8 @@ window.DB = {
    "cite": "5.0版",
    "title": "教育データ標準",
    "axes": [
-    "eddata"
+    "eddata",
+    "infra"
    ],
    "status": "partial",
    "verified": true,
@@ -1015,159 +1340,175 @@ window.DB = {
    "id": "eu-gdpr-1",
    "inst": "eu-gdpr",
    "cite": "1条",
-   "title": "対象事項及び目的",
+   "title": "Subject-matter and objectives（対象事項及び目的）",
    "axes": [
     "purpose"
    ],
    "status": "explicit",
-   "verified": false,
+   "verified": true,
+   "src": "https://www.legislation.gov.uk/eur/2016/679/article/1/adopted",
    "text": "2項 本規則は、自然人の基本的な権利及び自由、特に個人データの保護についての権利を保護する。／3項 個人データの自由な流通は、制限されてはならない。"
   },
   {
    "id": "eu-gdpr-5-1b",
    "inst": "eu-gdpr",
    "cite": "5条1項(b)",
-   "title": "目的の限定",
+   "title": "Principles relating to processing of personal data（取扱いの原則）── 目的の限定",
    "axes": [
-    "stat"
+    "stat",
+    "academic"
    ],
    "status": "explicit",
-   "verified": false,
+   "verified": true,
+   "src": "https://www.legislation.gov.uk/eur/2016/679/article/5/adopted",
    "text": "個人データは、特定され、明示的で、正当な目的のために収集されなければならず、…公共の利益における記録保存目的、科学的研究目的若しくは歴史的研究目的又は統計目的のための追加的な処理は、89条1項に従う限り、当初の目的と相容れないものとはみなされない。"
   },
   {
    "id": "eu-gdpr-8",
    "inst": "eu-gdpr",
    "cite": "8条",
-   "title": "子どもの同意に適用される条件",
+   "title": "Conditions applicable to child's consent in relation to information society services",
    "axes": [
     "minor"
    ],
    "status": "explicit",
-   "verified": false,
+   "verified": true,
+   "src": "https://www.legislation.gov.uk/eur/2016/679/article/8/adopted",
    "text": "情報社会サービスの提供に関し、子どもが16歳未満の場合、親権者等による承諾がある場合に限り適法である。加盟国は13歳まで引下げ可。"
   },
   {
    "id": "eu-gdpr-11",
    "inst": "eu-gdpr",
    "cite": "11条",
-   "title": "本人の識別を要しない処理",
+   "title": "Processing which does not require identification（識別を要しない取扱い）",
    "axes": [
     "reident"
    ],
    "status": "partial",
-   "verified": false,
+   "verified": true,
+   "src": "https://www.legislation.gov.uk/eur/2016/679/article/11/adopted",
    "text": "管理者が本人を識別できない場合、15条から20条までは適用されない。"
   },
   {
    "id": "eu-gdpr-17",
    "inst": "eu-gdpr",
    "cite": "17条",
-   "title": "消去権",
+   "title": "Right to erasure（'right to be forgotten'／消去権）",
    "axes": [
     "erase"
    ],
    "status": "partial",
-   "verified": false,
+   "verified": true,
+   "src": "https://www.legislation.gov.uk/eur/2016/679/article/17/adopted",
    "text": "本人は、自己に関する個人データの消去を求める権利を有する（一定の事由がある場合）。"
   },
   {
    "id": "eu-gdpr-22",
    "inst": "eu-gdpr",
    "cite": "22条1項",
-   "title": "自動化された個別の意思決定",
+   "title": "Automated individual decision-making, including profiling",
    "axes": [
     "auto"
    ],
    "status": "explicit",
-   "verified": false,
+   "verified": true,
+   "src": "https://www.legislation.gov.uk/eur/2016/679/article/22/adopted",
    "text": "本人は、プロファイリングを含む専ら自動化された処理に基づき、自己に対する法的効果を生じさせる、又は自己に重大な影響を及ぼす決定に服しない権利を有する。"
   },
   {
    "id": "eu-gdpr-83",
    "inst": "eu-gdpr",
    "cite": "83条5項",
-   "title": "行政制裁金",
+   "title": "General conditions for imposing administrative fines（制裁金の一般的条件）",
    "axes": [
     "enforce"
    ],
    "status": "explicit",
-   "verified": false,
+   "verified": true,
+   "src": "https://www.legislation.gov.uk/eur/2016/679/article/83/adopted",
    "text": "2000万ユーロ以下、又は、企業の場合は前会計年度の全世界年間売上高の4%以下のいずれか高い額。"
   },
   {
    "id": "eu-gdpr-89",
    "inst": "eu-gdpr",
    "cite": "89条1項",
-   "title": "研究・統計目的の処理に関する保障措置",
+   "title": "Safeguards and derogations relating to processing for archiving purposes in the public interest, scientific or historical research purposes or statistical purposes",
    "axes": [
     "stat",
-    "reident"
+    "reident",
+    "academic"
    ],
    "status": "explicit",
-   "verified": false,
+   "verified": true,
+   "src": "https://www.legislation.gov.uk/eur/2016/679/article/89/adopted",
    "text": "…処理は、本人の権利及び自由のための適切な保障措置に服さなければならない。当該措置は、データ最小化原則の尊重を確保するものでなければならず、仮名化を含む。"
   },
   {
    "id": "eu-gdpr-r162",
    "inst": "eu-gdpr",
    "cite": "前文162",
-   "title": "統計目的の意味",
+   "title": "Recital 162 — Processing for statistical purposes",
    "axes": [
     "exit"
    ],
    "status": "partial",
-   "verified": false,
+   "verified": true,
+   "src": "https://gdpr-info.eu/recitals/no-162/",
    "text": "統計目的とは、処理の結果が個人データではなく集計データであること、及び、この結果又は個人データが特定の自然人に関する措置又は決定を支持するために用いられないことを意味する。"
   },
   {
    "id": "eu-aiact-annex3",
    "inst": "eu-aiact",
    "cite": "附属書III 3項",
-   "title": "教育及び職業訓練（高リスク）",
+   "title": "Annex III(3) Education and vocational training",
    "axes": [
     "auto",
-    "eddata"
+    "eddata",
+    "proctor"
    ],
    "status": "explicit",
-   "verified": false,
-   "text": "(a) 入学の許可又は配置、(b) 学習成果の評価、(c) 適切な教育水準の判定、(d) 試験中の禁止された行動の監視・検知。"
+   "verified": true,
+   "src": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/annex-3",
+   "text": "あらゆる段階（at all levels）の教育・職業訓練機関において用いられる次のAIシステム。(a) 入学・受験の決定又は機関への振り分け、(b) 学習成果の評価（当該成果が学習過程の誘導に用いられる場合を含む）、(c) 個人が受け又は受けられる教育水準の適切さの評価、(d) 試験中の学生の禁止された行動の監視・検知。"
   },
   {
    "id": "eu-ehds-53",
    "inst": "eu-ehds",
    "cite": "53条",
-   "title": "二次利用の許容目的",
+   "title": "Article 53 — Purposes for which electronic health data may be processed for secondary use",
    "axes": [
     "stat",
     "infra"
    ],
    "status": "explicit",
    "verified": true,
+   "src": "https://eur-lex.europa.eu/eli/reg/2025/327/oj",
    "text": "1項 (a) 公衆衛生・労働衛生の公益、(b) 公的機関等による政策立案・規制業務、(c) 健康・ケアに関する統計、(d) 保健医療分野の職業教育・高等教育、(e) 科学的研究（アルゴリズム・AIシステムの学習を含む）、(f) 他人の健康データに基づくケアの提供・治療の最適化。／2項 (a)(b)(c)は公的機関等に限る。"
   },
   {
    "id": "eu-ehds-54",
    "inst": "eu-ehds",
    "cite": "54条",
-   "title": "禁止される二次利用",
+   "title": "Article 54 — Prohibited secondary use of electronic health data",
    "axes": [
     "exit"
    ],
    "status": "explicit",
    "verified": true,
+   "src": "https://eur-lex.europa.eu/eli/reg/2025/327/oj",
    "text": "(a) 健康データに基づき個人・集団に不利益な決定を行うこと（法的・社会的・経済的効果その他重大な影響を伴うもの）、(b) 求人の提供、より不利な財・サービス・保険・与信の条件の提示、その他の差別、(c) 広告又はマーケティング、(d) 個人・公衆衛生・社会に害を及ぼしうる製品・サービスの開発、(e) 国内法の倫理規定に反する活動。"
   },
   {
    "id": "eu-dga-12",
    "inst": "eu-dga",
    "cite": "12条",
-   "title": "データ仲介サービスの提供条件",
+   "title": "Article 12 — Conditions for providing data intermediation services",
    "axes": [
     "infra"
    ],
    "status": "explicit",
    "verified": true,
+   "src": "https://eur-lex.europa.eu/eli/reg/2022/868/oj",
    "text": "(a) 仲介により取得したデータを自己の目的のために用いてはならず、仲介サービスは別法人により提供しなければならない。(b) 料金その他の商業的条件は、提供者・利用者が自己の他のサービスを利用するか否か及びその程度に左右されてはならない。(c) 取得した活動データはサービスの改善（不正防止・セキュリティを含む）にのみ用いる。"
   },
   {
@@ -1186,25 +1527,27 @@ window.DB = {
    "id": "uk-gdpr-84c",
    "inst": "uk-gdpr",
    "cite": "84C条",
-   "title": "研究・記録保存・統計目的の保障措置",
+   "title": "UK GDPR Article 84C — Safeguards for processing for research etc purposes",
    "axes": [
     "stat",
-    "exit"
+    "exit",
+    "academic"
    ],
    "status": "explicit",
    "verified": true,
+   "src": "https://www.legislation.gov.uk/ukpga/2025/18/section/86",
    "text": "3項 承認された医学研究を除き、特定のデータ主体に関する措置又は決定を目的とする処理は、本条の保障措置に適合しない。"
   },
   {
    "id": "uk-dpa-171",
    "inst": "uk-dpa",
    "cite": "s.171",
-   "title": "再識別の罪",
+   "title": "Re-identification of de-identified personal data",
    "axes": [
     "reident"
    ],
    "status": "explicit",
-   "verified": false,
+   "verified": true,
    "src": "https://www.legislation.gov.uk/ukpga/2018/12/section/171",
    "text": "匿名化された個人データを、データ管理者の同意なく再識別することは犯罪である。"
   },
@@ -1226,39 +1569,44 @@ window.DB = {
    "id": "us-ferpa-def",
    "inst": "us-ferpa",
    "cite": "20 U.S.C. §1232g(a)(4)(A)",
-   "title": "education records の定義",
+   "title": "Family educational and privacy rights ── (a)(4)(A) education records の定義",
    "axes": [
     "eddata",
     "deleg",
-    "minor"
+    "minor",
+    "purpose"
    ],
    "status": "explicit",
-   "verified": false,
+   "verified": true,
+   "src": "https://www.law.cornell.edu/uscode/text/20/1232g",
    "text": "\"education records\" とは、(i) 学生に直接関係する情報を含み、かつ (ii) 教育機関又はそのために行為する者が保持する記録、ファイル、文書その他の資料をいう。"
   },
   {
    "id": "us-ferpa-dir",
    "inst": "us-ferpa",
    "cite": "20 U.S.C. §1232g(a)(5)",
-   "title": "directory information",
+   "title": "(a)(5)(A) directory information の定義",
    "axes": [
     "eddata"
    ],
    "status": "explicit",
-   "verified": false,
+   "verified": true,
+   "src": "https://www.law.cornell.edu/uscode/text/20/1232g",
    "text": "氏名、住所、電話番号、生年月日、在籍課程等は、事前の通知とオプトアウトの機会を与えれば開示できる。"
   },
   {
    "id": "us-ferpa-studies",
    "inst": "us-ferpa",
    "cite": "34 C.F.R. §99.31(a)(6)",
-   "title": "studies exception",
+   "title": "Under what conditions is prior consent not required to disclose information? ── (a)(6) studies exception",
    "axes": [
     "stat",
-    "exit"
+    "exit",
+    "vendor",
+    "academic"
    ],
    "status": "partial",
-   "verified": false,
+   "verified": true,
    "src": "https://www.ecfr.gov/current/title-34/section-99.31",
    "text": "教育機関のため又はその代わりに、予測テストの開発・検証・実施、学生援助プログラムの運営、又は指導の改善を目的とする研究を行う組織に対し、同意なく開示できる。研究終了後の情報破棄等が条件。"
   },
@@ -1266,12 +1614,12 @@ window.DB = {
    "id": "us-ferpa-audit",
    "inst": "us-ferpa",
    "cite": "34 C.F.R. §99.35",
-   "title": "audit / evaluation exception",
+   "title": "What conditions apply to disclosure of information for Federal or State program purposes?",
    "axes": [
     "stat"
    ],
    "status": "partial",
-   "verified": false,
+   "verified": true,
    "src": "https://www.ecfr.gov/current/title-34/section-99.35",
    "text": "教育プログラムの監査・評価、又は連邦・州の法令遵守の執行のために、権限ある代表者へ開示できる。"
   },
@@ -1279,12 +1627,12 @@ window.DB = {
    "id": "us-ferpa-deid",
    "inst": "us-ferpa",
    "cite": "34 C.F.R. §99.31(b)",
-   "title": "非識別化記録の開示",
+   "title": "(b) 非識別化された記録・情報の開示",
    "axes": [
     "reident"
    ],
    "status": "partial",
-   "verified": false,
+   "verified": true,
    "src": "https://www.ecfr.gov/current/title-34/section-99.31",
    "text": "学生の身元が合理的に判明しないよう、すべての個人識別情報を除去した記録は、同意なく開示できる。"
   },
@@ -1292,25 +1640,27 @@ window.DB = {
    "id": "us-ferpa-enf",
    "inst": "us-ferpa",
    "cite": "20 U.S.C. §1232g(f)",
-   "title": "執行",
+   "title": "(f) Enforcement（執行）",
    "axes": [
     "enforce",
     "purpose"
    ],
    "status": "partial",
-   "verified": false,
+   "verified": true,
+   "src": "https://www.law.cornell.edu/uscode/text/20/1232g",
    "text": "長官は本条の遵守を確保するため適切な措置をとる（連邦資金の停止を含む）。"
   },
   {
    "id": "us-coppa-consent",
    "inst": "us-coppa",
    "cite": "15 U.S.C. §6502",
-   "title": "検証可能な親の同意",
+   "title": "Regulation of unfair and deceptive acts and practices in connection with collection and use of personal information from and about children on the Internet",
    "axes": [
     "minor"
    ],
    "status": "explicit",
-   "verified": false,
+   "verified": true,
+   "src": "https://www.law.cornell.edu/uscode/text/15/6502",
    "text": "13歳未満の子どもから個人情報を収集する運営者は、検証可能な親の同意を得なければならない。"
   },
   {
@@ -1331,7 +1681,8 @@ window.DB = {
    "cite": "28条の2",
    "title": "仮名情報の処理等",
    "axes": [
-    "stat"
+    "stat",
+    "academic"
    ],
    "status": "explicit",
    "verified": true,
@@ -1343,7 +1694,8 @@ window.DB = {
    "cite": "28条の3",
    "title": "仮名情報の結合制限",
    "axes": [
-    "infra"
+    "infra",
+    "deleg"
    ],
    "status": "explicit",
    "verified": true,

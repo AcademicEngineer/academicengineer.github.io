@@ -250,6 +250,30 @@ table.mx tbody th button:hover{text-decoration-color:var(--gold)}
   .jcard{padding:14px}
 }
 
+/* ---------- 原典サイトのリンク集 ---------- */
+.srcbox{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:11px 13px;margin-bottom:18px;
+}
+.srcbox > summary{
+  cursor:pointer;font-size:12.5px;font-weight:700;color:var(--ink);
+  list-style:none;display:flex;align-items:center;gap:7px;
+}
+.srcbox > summary::-webkit-details-marker{display:none}
+.srcbox > summary::before{content:'▸';color:var(--gold-d);font-size:11px}
+.srcbox[open] > summary::before{content:'▾'}
+.srcbox > summary span{font-weight:400;color:var(--muted)}
+.srcgrid{display:flex;flex-wrap:wrap;gap:7px;margin-top:11px}
+.srclink{
+  display:inline-flex;flex-direction:column;gap:1px;
+  border:1px solid var(--line);border-radius:4px;padding:6px 10px;
+  text-decoration:none;background:transparent;max-width:100%;
+}
+.srclink:hover{border-color:var(--gold);background:var(--line-2)}
+.srclink b{font-size:12.5px;color:var(--ink);font-weight:600}
+.srclink i{font-size:10.5px;color:var(--muted);font-style:normal}
+.srclink em{font-size:10px;color:var(--gold-d);font-style:normal;font-weight:700;letter-spacing:.05em}
+
 .empty{padding:30px 16px;text-align:center;color:var(--muted);font-size:13.5px}
 footer{
   max-width:var(--maxw);margin:0 auto;padding:22px 16px 40px;
@@ -295,6 +319,11 @@ footer{
     <span class="st st-todo">未記入</span>
     <span class="vflag">要検証</span>
   </div>
+
+  <details class="srcbox" id="srcbox" open>
+    <summary>原典サイト　<span>条文を直接あたるときはここから</span></summary>
+    <div class="srcgrid" id="srcgrid"></div>
+  </details>
 
   <div id="view"></div>
 </main>
@@ -561,6 +590,25 @@ var App = {
   }
 };
 window.App = App;
+
+/* 原典サイトのリンク集 */
+(function(){
+  var box = document.getElementById('srcbox'), grid = document.getElementById('srcgrid');
+  var list = DB.sources || [];
+  if(!list.length){ if(box) box.style.display='none'; return; }
+  var h = '';
+  for(var i=0;i<list.length;i++){
+    var s = list[i], j = jur(s.jur);
+    h += '<a class="srclink" href="'+esc(s.url)+'" target="_blank" rel="noopener">'
+       +   '<em>'+esc(j ? j.label : s.jur)+'</em>'
+       +   '<b>'+esc(s.name)+'</b>'
+       +   (s.note ? '<i>'+esc(s.note)+'</i>' : '')
+       + '</a>';
+  }
+  grid.innerHTML = h;
+  // 狭い画面では畳んでおく
+  if(window.matchMedia && window.matchMedia('(max-width:700px)').matches) box.removeAttribute('open');
+})();
 
 /* init */
 document.getElementById('subtitle').textContent = DB.meta.subtitle;
