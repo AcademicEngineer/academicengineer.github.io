@@ -78,6 +78,24 @@ window.DB = {
    "name": "KLRI 英訳",
    "url": "https://elaw.klri.re.kr/eng_service/main.do",
    "note": "韓国法制研究院の英訳"
+  },
+  {
+   "jur": "jp",
+   "name": "データ利活用制度・システム検討会",
+   "url": "https://www.cas.go.jp/jp/seisaku/digital_gyozaikaikaku/",
+   "note": "内閣官房。データ利活用法制の検討"
+  },
+  {
+   "jur": "jp",
+   "name": "公益デジタルPF認定制度",
+   "url": "https://www.ipa.go.jp/digital/dx/dpf-nintei.html",
+   "note": "IPA。日本版データ仲介者の認定"
+  },
+  {
+   "jur": "jp",
+   "name": "文部科学省 教育データ標準",
+   "url": "https://www.mext.go.jp/a_menu/other/data_00001.htm",
+   "note": "教育データの標準仕様"
   }
  ],
  "jurisdictions": [
@@ -153,7 +171,24 @@ window.DB = {
    "jur": "jp",
    "kind": "行政文書",
    "name": "教育データ標準",
-   "full": "文部科学省「教育データ標準」5.0版・相互運用標準モデル Ver.5.00"
+   "full": "文部科学省「教育データ標準」5.0版・相互運用標準モデル Ver.5.00",
+   "src": "https://www.mext.go.jp/a_menu/other/data_00001.htm"
+  },
+  {
+   "id": "jp-datautil",
+   "jur": "jp",
+   "kind": "政策文書",
+   "name": "データ利活用基本方針",
+   "full": "データ利活用制度の在り方に関する基本方針（令和7年6月13日・デジタル行財政改革会議決定）",
+   "src": "https://www.cas.go.jp/jp/seisaku/digital_gyozaikaikaku/pdf/data_houshin_honbun.pdf"
+  },
+  {
+   "id": "jp-dpf",
+   "jur": "jp",
+   "kind": "認定制度",
+   "name": "公益デジタルPF認定制度",
+   "full": "公益デジタルプラットフォーム運営事業者認定制度（経済産業省・IPA）",
+   "src": "https://www.ipa.go.jp/digital/dx/dpf-nintei.html"
   },
   {
    "id": "eu-gdpr",
@@ -194,6 +229,30 @@ window.DB = {
    "name": "データ法",
    "full": "データ法（規則(EU)2023/2854）",
    "src": "https://eur-lex.europa.eu/eli/reg/2023/2854/oj"
+  },
+  {
+   "id": "eu-dsa",
+   "jur": "eu",
+   "kind": "規則",
+   "name": "デジタルサービス法",
+   "full": "デジタルサービス法（規則(EU)2022/2065）",
+   "src": "https://eur-lex.europa.eu/eli/reg/2022/2065/oj"
+  },
+  {
+   "id": "eu-opendata",
+   "jur": "eu",
+   "kind": "指令",
+   "name": "オープンデータ指令",
+   "full": "オープンデータ及び公共セクター情報の再利用に関する指令（指令(EU)2019/1024）",
+   "src": "https://eur-lex.europa.eu/eli/dir/2019/1024/oj"
+  },
+  {
+   "id": "eu-omnibus",
+   "jur": "eu",
+   "kind": "法案",
+   "name": "デジタル・オムニバス",
+   "full": "デジタル・オムニバス規則案（欧州委員会2025年11月19日提案）※成立前",
+   "src": "https://eur-lex.europa.eu/"
   },
   {
    "id": "uk-gdpr",
@@ -403,7 +462,8 @@ window.DB = {
    "refs": [
     "eu-gdpr-5-1b",
     "eu-gdpr-89",
-    "eu-ehds-53"
+    "eu-ehds-53",
+    "eu-omnibus-gdpr"
    ],
    "summary": "5条1項(b)が統計・研究目的の追加処理を目的外としないとし、89条1項が保障措置を要求。EHDS 53条は医療分野の許容目的を列挙。"
   },
@@ -499,7 +559,9 @@ window.DB = {
    "status": "explicit",
    "refs": [
     "eu-gdpr-22",
-    "eu-aiact-annex3"
+    "eu-aiact-annex3",
+    "eu-aiact-5-1f",
+    "eu-aiact-50"
    ],
    "summary": "GDPR22条1項が専ら自動処理に基づく決定に服しない権利を定め、AI法附属書III第3項が教育・職業訓練の用途を高リスクに分類する。"
   },
@@ -588,7 +650,8 @@ window.DB = {
    "refs": [
     "jp-std",
     "jp-policy-1",
-    "jp-appi-2-3"
+    "jp-appi-2-3",
+    "jp-datautil-edu"
    ],
    "summary": "個情法に教育データの定義はない。文部科学省「教育データ標準」5.0版は行政文書であり法的定義ではない。"
   },
@@ -775,9 +838,12 @@ window.DB = {
    "refs": [
     "jp-policy-1",
     "jp-policy-2",
-    "jp-std"
+    "jp-std",
+    "jp-datautil-edu",
+    "jp-datautil-mid",
+    "jp-dpf-cert"
    ],
-   "summary": "教育データの共用基盤を規律する法律がない。教育DXロードマップは技術的相互運用性までで止まり、「国は個人の教育データを一元的に管理せず」と明記する。"
+   "summary": "共用基盤を規律する法律はまだない。教育DXロードマップは技術的相互運用性までで止まり「国は個人の教育データを一元的に管理せず」とするが、データ利活用制度の在り方に関する基本方針（2025年6月13日）は、教育データの認証基盤整備と文部科学省による制度検討（2026年度中をめど）を明記し、官民データ活用推進基本法の抜本改正や新法の検討を掲げる。"
   },
   {
    "axis": "infra",
@@ -786,7 +852,10 @@ window.DB = {
    "refs": [
     "eu-dga-12",
     "eu-dataact",
-    "eu-ehds-53"
+    "eu-ehds-53",
+    "eu-dga-ch4",
+    "eu-opendata-research",
+    "eu-dataact-21"
    ],
    "summary": "基盤法（データガバナンス法・データ法）と分野別データスペース法（EHDS、金融、モビリティ）の二層構造をとるが、教育・スキル分野には法律がない。"
   },
@@ -829,7 +898,8 @@ window.DB = {
    "jur": "eu",
    "status": "explicit",
    "refs": [
-    "eu-gdpr-8"
+    "eu-gdpr-8",
+    "eu-dsa-28"
    ],
    "summary": "8条が情報社会サービスについて16歳未満（加盟国は13歳まで引下げ可）の子どもの同意に親権者の承諾を要求する。"
   },
@@ -870,7 +940,9 @@ window.DB = {
    "refs": [
     "jp-appi-25",
     "jp-appi-27",
-    "jp-appi-30-2"
+    "jp-appi-30-2",
+    "jp-datautil-mid",
+    "jp-dpf-cert"
    ],
    "summary": "27条が第三者提供に本人同意を原則とし、27条5項1号により委託に伴う提供は第三者提供にあたらないとされる。25条が委託先の監督を求める。"
   },
@@ -971,7 +1043,8 @@ window.DB = {
    "status": "explicit",
    "refs": [
     "eu-gdpr-4-11",
-    "eu-gdpr-7-4"
+    "eu-gdpr-7-4",
+    "eu-dga-ch4"
    ],
    "summary": "4条(11)が同意を「自由に与えられた」ものと定義し、7条4項が条件性を戒める。前文43は公的機関との関係など明らかな不均衡がある場合、同意は有効な法的根拠にならないとする。"
   },
@@ -1007,7 +1080,8 @@ window.DB = {
    "status": "explicit",
    "refs": [
     "jp-appi-18-3",
-    "jp-appi-59"
+    "jp-appi-59",
+    "jp-appi-57"
    ],
    "summary": "18条3項5号6号・20条2項5号6号・27条1項5〜7号が学術研究目的の例外を置き、57条が一定の主体を適用除外とし、59条が責務を定める。いずれも「学術研究目的」に限られる。",
    "verified": false
@@ -1019,7 +1093,10 @@ window.DB = {
    "refs": [
     "eu-gdpr-5-1b",
     "eu-gdpr-89",
-    "eu-gdpr-9"
+    "eu-gdpr-9",
+    "eu-opendata-research",
+    "eu-dataact-21",
+    "eu-omnibus-gdpr"
    ],
    "summary": "5条1項(b)が研究目的の追加処理を目的外としないとし、89条が保障措置を要求、9条2項(j)が特別カテゴリの例外を置く。"
   },
@@ -1061,7 +1138,7 @@ window.DB = {
     "jp-appi-2-2",
     "jp-appi-2-3"
    ],
-   "summary": "試験監視に固有の規律はない。生体データは要配慮個人情報（2条3項）ではなく個人識別符号（2条2項）として扱われる。"
+   "summary": "試験監視に固有の規律はない。生体データは要配慮個人情報（2条3項）ではなく個人識別符号（2条2項）として扱われる。教育機関での感情推認を禁じる規定もない。"
   },
   {
    "axis": "proctor",
@@ -1069,9 +1146,11 @@ window.DB = {
    "status": "explicit",
    "refs": [
     "eu-aiact-annex3",
-    "eu-gdpr-9"
+    "eu-gdpr-9",
+    "eu-aiact-5-1f",
+    "eu-aiact-50"
    ],
-   "summary": "GDPR 9条が生体データを特別カテゴリとし、AI法附属書III 3(d)が試験中の禁止行為の監視・検知を高リスクに、同1が生体認証を高リスクに分類する。"
+   "summary": "AI法5条1項(f)が職場及び教育機関における感情推認を原則禁止する（医療・安全目的の例外のみ）。加えてGDPR 9条が生体データを特別カテゴリとし、AI法附属書III 3(d)が試験中の禁止行為の監視・検知を、同1が生体認証を高リスクとする。"
   },
   {
    "axis": "proctor",
@@ -1467,6 +1546,61 @@ window.DB = {
    "text": "「教育データの利活用に係る留意事項」の策定・改訂、教育情報セキュリティポリシーの全自治体作成（令和7年度中）。公教育データ・プラットフォームは研究目的の匿名化データ利用の枠組みとして位置づけられる。"
   },
   {
+   "id": "jp-datautil-edu",
+   "inst": "jp-datautil",
+   "cite": "（教育分野）",
+   "title": "教育データの認証基盤整備と文部科学省の制度検討",
+   "axes": [
+    "infra",
+    "eddata"
+   ],
+   "status": "partial",
+   "verified": true,
+   "src": "https://www.cas.go.jp/jp/seisaku/digital_gyozaikaikaku/pdf/data_houshin_honbun.pdf",
+   "text": "教育データを本人の意思を踏まえて安全にオンラインでやり取りするため、GビズIDやJPKI（公的個人認証サービス）等の既存基盤の活用を前提に電子的な認証基盤の整備を進める。デジタル庁が2025年度に調査研究、2026年度に技術実証を行い、文部科学省は2025年度中に制度面の検討に着手し、2026年度中をめどに必要な対応を行う。"
+  },
+  {
+   "id": "jp-datautil-mid",
+   "inst": "jp-datautil",
+   "cite": "（データ仲介者・連携基盤）",
+   "title": "データ仲介者の定義と連携基盤の法的規律の検討",
+   "axes": [
+    "infra",
+    "vendor"
+   ],
+   "status": "partial",
+   "verified": true,
+   "src": "https://www.cas.go.jp/jp/seisaku/digital_gyozaikaikaku/pdf/data_houshin_honbun.pdf",
+   "text": "「データ仲介者」を、多数のデータ保有者からデータを受け、集積・加工して他者に提供する主体として定義する。信頼できるデータ連携プラットフォームの機能整備に向け、法的規律の整備を含めて2025年度に検討するとし、2026年夏までにトラスト基盤のフレームワークを整備する方針を示す。第8章「当面の対応」では、官民データ活用推進基本法の抜本的な改正や新法を含む必要な検討を行い、次期通常国会への法案提出を目指すとする。"
+  },
+  {
+   "id": "jp-dpf-cert",
+   "inst": "jp-dpf",
+   "cite": "（認定制度）",
+   "title": "公益デジタルプラットフォーム運営事業者認定制度",
+   "axes": [
+    "infra",
+    "vendor"
+   ],
+   "status": "partial",
+   "verified": false,
+   "src": "https://www.ipa.go.jp/digital/dx/dpf-nintei.html",
+   "text": "経済産業省・IPAによる認定制度。2024年9月に一般社団法人自動車・蓄電池トレーサビリティ推進センターが初の認定を受けた。"
+  },
+  {
+   "id": "jp-appi-57",
+   "inst": "jp-appi",
+   "cite": "57条",
+   "title": "適用除外",
+   "axes": [
+    "academic"
+   ],
+   "status": "explicit",
+   "verified": false,
+   "src": "https://www.japaneselawtranslation.go.jp/en/laws/view/4241/ja",
+   "text": "学術研究機関等が学術研究目的で個人情報等を取り扱う場合等について、第4章第2節から第4節までの規定を適用しないことを定める。"
+  },
+  {
    "id": "jp-std",
    "inst": "jp-std",
    "cite": "5.0版",
@@ -1679,6 +1813,104 @@ window.DB = {
    "verified": true,
    "src": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/annex-3",
    "text": "あらゆる段階（at all levels）の教育・職業訓練機関において用いられる次のAIシステム。(a) 入学・受験の決定又は機関への振り分け、(b) 学習成果の評価（当該成果が学習過程の誘導に用いられる場合を含む）、(c) 個人が受け又は受けられる教育水準の適切さの評価、(d) 試験中の学生の禁止された行動の監視・検知。"
+  },
+  {
+   "id": "eu-aiact-5-1f",
+   "inst": "eu-aiact",
+   "cite": "5条1項(f)",
+   "title": "Prohibited AI practices ── 職場及び教育機関における感情推認の禁止",
+   "axes": [
+    "proctor",
+    "auto"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "src": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-5",
+   "text": "職場及び教育機関の領域において自然人の感情を推認するAIシステムの上市、当該目的での提供又は使用を禁止する。ただし、医療上又は安全上の理由のために導入され又は上市されることが意図されている場合を除く。（原文「to infer emotions of a natural person in the areas of workplace and education institutions, except where the use of the AI system is intended to be put in place or into the market for medical or safety reasons」）"
+  },
+  {
+   "id": "eu-aiact-50",
+   "inst": "eu-aiact",
+   "cite": "50条",
+   "title": "Transparency obligations（透明性義務）",
+   "axes": [
+    "auto",
+    "proctor"
+   ],
+   "status": "explicit",
+   "verified": false,
+   "src": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/",
+   "text": "自然人と直接対話するAIシステムの提供者に開示義務を課し、感情識別・生体識別システムの配備者に本人への通知義務を課す。ディープフェイクの開示義務、生成物の機械可読なマーキング義務も置く。"
+  },
+  {
+   "id": "eu-dsa-28",
+   "inst": "eu-dsa",
+   "cite": "28条",
+   "title": "Online protection of minors（未成年者の保護）",
+   "axes": [
+    "minor"
+   ],
+   "status": "explicit",
+   "verified": false,
+   "src": "https://eur-lex.europa.eu/eli/reg/2022/2065/oj",
+   "text": "1項 未成年者がアクセスできるオンラインプラットフォームは、未成年者のプライバシー・安全・セキュリティの高い水準を確保する措置を講じなければならない。／2項 未成年者であると相当の確実性をもって認識できる場合、プロファイリングに基づくターゲティング広告を表示してはならない。"
+  },
+  {
+   "id": "eu-opendata-research",
+   "inst": "eu-opendata",
+   "cite": "（研究データ）",
+   "title": "公的支援を受けた研究データのオープンアクセス",
+   "axes": [
+    "academic",
+    "infra"
+   ],
+   "status": "explicit",
+   "verified": false,
+   "src": "https://eur-lex.europa.eu/eli/dir/2019/1024/oj",
+   "text": "公的支援を受けた研究データのうちリポジトリに既に公開されたものを適用対象とし、加盟国に研究データの利用可能性を支援するオープンアクセスポリシーの採択義務を課す。オープン・バイ・デフォルト原則、FAIR原則、as open as possible, as closed as necessary 原則を導入する。"
+  },
+  {
+   "id": "eu-dga-ch4",
+   "inst": "eu-dga",
+   "cite": "第4章",
+   "title": "Data altruism（データ利他主義）",
+   "axes": [
+    "infra",
+    "consent"
+   ],
+   "status": "explicit",
+   "verified": false,
+   "src": "https://eur-lex.europa.eu/eli/reg/2022/868/oj",
+   "text": "企業・個人による公益目的の自発的なデータ提供（データ利他主義）に基づくサービスの登録制度を設け、欧州委員会が「欧州データ利他主義同意フォーム」を採択する。"
+  },
+  {
+   "id": "eu-omnibus-gdpr",
+   "inst": "eu-omnibus",
+   "cite": "（GDPR改正部分）",
+   "title": "デジタル・オムニバスによるGDPR改正提案",
+   "axes": [
+    "stat",
+    "academic",
+    "auto"
+   ],
+   "status": "partial",
+   "verified": false,
+   "src": "https://eur-lex.europa.eu/",
+   "text": "6条1項(f)の正当な利益を根拠とするAI学習への適用を明確化する条項（88c条）の新設、特別カテゴリデータのAI学習に対応する9条の改正、匿名加工情報に類似する制度の創設（41a条）、データ侵害通知の一本化、ePrivacy指令5条3項のクッキー規制のGDPRへの統合（88a条）が提案されている。"
+  },
+  {
+   "id": "eu-dataact-21",
+   "inst": "eu-dataact",
+   "cite": "21条",
+   "title": "研究組織・統計機関へのB2G受領データの共有",
+   "axes": [
+    "academic",
+    "infra"
+   ],
+   "status": "explicit",
+   "verified": false,
+   "src": "https://eur-lex.europa.eu/eli/reg/2023/2854/oj",
+   "text": "公的機関がB2Gの枠組みで受領したデータを、研究・統計目的で研究組織又は統計機関と共有することを認める。"
   },
   {
    "id": "eu-ehds-53",
