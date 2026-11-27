@@ -86,7 +86,22 @@ if (problems.length) {
 /* ---- 4. 書き出す --------------------------------------------------- */
 fs.mkdirSync(OUT, { recursive: true });
 fs.writeFileSync(path.join(OUT, 'data.js'), out);
-fs.copyFileSync(srcHtml, path.join(OUT, 'index.html'));
+
+// data.js の内容から版を作り、index.html の読み込みに付ける。
+// これをしないと、index.html だけが新しくなってデータが古いままという
+// 食い違いがブラウザのキャッシュで起きる。
+// フル版の index.html には付けない（file:// で開けなくなるため）。
+const crypto = require('crypto');
+const ver = crypto.createHash('sha1').update(out).digest('hex').slice(0, 10);
+let outHtml = fs.readFileSync(srcHtml, 'utf8');
+const beforeHtml = outHtml;
+outHtml = outHtml.replace(/<script src="data\.js(?:\?v=[0-9a-f]+)?"><\/script>/,
+                          '<script src="data.js?v=' + ver + '"></script>');
+if (outHtml === beforeHtml) {
+  console.error('公開版を書き出しませんでした: index.html の data.js の読み込みが見つかりません。');
+  process.exit(1);
+}
+fs.writeFileSync(path.join(OUT, 'index.html'), outHtml);
 
 const unver = DB.provisions.filter(p => p.verified === false).length;
 console.log('公開版を書き出しました: ' + OUT);

@@ -432,7 +432,7 @@ footer{
   <div id="foot"></div>
 </footer>
 
-<script src="data.js"></script>
+<script src="data.js?v=1551f2a674"></script>
 <script>
 (function(){
 'use strict';
@@ -632,7 +632,14 @@ var CATLAB = { jp:'日本法', eu:'EU法', uk:'英国法', us:'米国法', kr:'�
 var CATORD = ['jp','eu','uk','us','kr','gen'];
 
 function renderTermView(){
-  var gl = DB.glossary || [];
+  var gl = DB.glossary;
+  if(!gl || !gl.length){
+    // データが古いまま読み込まれている場合に、検索結果ゼロと取り違えないようにする
+    return '<section class="termhead"><h2>用語集</h2></section>'
+         + '<div class="mxbox"><p class="empty">用語集のデータが読み込めていません。'
+         + 'ブラウザが古いデータを保持している可能性があります。'
+         + '再読み込み（Windows は Ctrl＋Shift＋R、Mac は Command＋Shift＋R）をお試しください。</p></div>';
+  }
   var hits = [];
   for(var i=0;i<gl.length;i++){
     var g = gl[i];
