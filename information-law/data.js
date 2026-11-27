@@ -203,7 +203,7 @@ window.DB = {
    "jur": "eu",
    "kind": "規則",
    "name": "EU AI法",
-   "full": "人工知能に関する整合的な規則を定める規則（規則(EU)2024/1689）。Regulation (EU) 2026/1744（Digital Omnibus on AI、2026年7月8日）により改正され、附属書IIIの高リスクAIに対する第III章第1節から第3節の適用は2027年12月2日からとされた",
+   "full": "人工知能に関する整合的な規則を定める規則（規則(EU)2024/1689）。Regulation (EU) 2026/1744（Digital Omnibus on AI、2026年7月8日）により改正され、附属書IIIの高リスクAIに対する第III章第1節から第3節の適用は113条(c)(i)により2027年12月2日からとされた",
    "src": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj"
   },
   {
@@ -251,7 +251,7 @@ window.DB = {
    "jur": "eu",
    "kind": "法案",
    "name": "デジタル・オムニバス",
-   "full": "デジタル・オムニバスは二本立てである。AIに関する部分は Regulation (EU) 2026/1744（Digital Omnibus on AI、2026年7月8日）として成立し、規則(EU)2024/1689等を改正した。データ・個人情報に関する部分（COM(2025) 837 final、手続番号2025/0360(COD)）は第一読会に係属中",
+   "full": "デジタル・オムニバスは二本立てである。AIに関する部分は Regulation (EU) 2026/1744（Digital Omnibus on AI、2026年7月8日）として成立し、規則(EU)2024/1689等を改正した。データ・個人情報に関する部分は提案のままで、正式題名は「Proposal for a Regulation amending Regulations (EU) 2016/679, (EU) 2018/1724, (EU) 2018/1725, (EU) 2023/2854 and Directives 2002/58/EC, (EU) 2022/2555 and (EU) 2022/2557 as regards the simplification of the digital legislative framework, and repealing Regulations (EU) 2018/1807, (EU) 2019/1150, (EU) 2022/868, and Directive (EU) 2019/1024 (Digital Omnibus)」（COM(2025) 837 final、手続番号2025/0360(COD)）。第一読会に係属中で、ECB意見2026年3月10日、EESC意見2026年3月18日、欧州地域委員会意見2026年5月7日",
    "src": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52025PC0837"
   },
   {
@@ -376,7 +376,7 @@ window.DB = {
    "id": "minor",
    "label": "未成年・在学関係",
    "q": "未成年の学習者や在学関係に固有の規律があるか。",
-   "compare": "子どもの同意年齢を法律で定めるのはEU（16歳、加盟国は13歳まで引下げ可）、英国（13歳）、米国COPPA（13歳未満）、韓国（14歳未満）である。日本だけが法律に年齢の定めを持たず、ガイドラインが法定代理人の同意に言及するにとどまる。米国FERPAは18歳に達し又は高等教育機関に在学することで権利が学生本人に移る点が特徴で、高等教育を扱う場合はこの移転規定が起点になる。"
+   "compare": "子どもの同意年齢を法律で定めるのはEU（16歳、加盟国は13歳まで引下げ可）、英国（13歳）、米国COPPA（13歳未満）、韓国（14歳未満）である。日本は現行法に年齢の定めを持たずガイドラインが法定代理人の同意に言及するにとどまるが、令和8年改正（未施行）は40条の2に「十六歳未満の者の個人情報等の取扱いに関する読替規定」を、35条9項に十六歳未満の本人による請求権を置き、58条の3に未成年者の最善の利益を優先して考慮する責務を定める。米国FERPAは18歳に達し又は高等教育機関に在学することで権利が学生本人に移る点が特徴で（§1232g(d)）、高等教育を扱う場合はこの移転規定が起点になる。"
   },
   {
    "id": "vendor",
@@ -469,7 +469,7 @@ window.DB = {
     "jp-appi-30-2",
     "jp-appi-31-3"
    ],
-   "summary": "令和8年改正が2条13項に「統計作成等」を定義し、同意なしの取得・提供を可能にした。要件は委員会規則に委ねられている。"
+   "summary": "令和8年改正が2条13項に「統計作成等」を定義し、同意なしの取得・提供を可能にした。もっとも委員会規則に委ねられているのは「個人の権利利益を害するおそれが少ないもの」の部分であり、大量の情報であること、解析を行うこと、成果物が個人に関する情報でないことは法律自身が定める。30条の2は、取り扱う目的の全部が統計作成等目的であることを要求する。"
   },
   {
    "axis": "stat",
@@ -669,7 +669,7 @@ window.DB = {
     "jp-appi-2-3",
     "jp-datautil-edu"
    ],
-   "summary": "個情法に教育データの定義はない。文部科学省「教育データ標準」5.0版は行政文書であり法的定義ではない。"
+   "summary": "個情法に教育データの定義はない。文部科学省「教育データ標準」5.1（2025年度）は行政文書であり法的定義ではない。"
   },
   {
    "axis": "eddata",
@@ -909,7 +909,7 @@ window.DB = {
    "refs": [
     "jp-appi-35"
    ],
-   "summary": "現行法に未成年に固有の規定はなく、ガイドラインが法定代理人の同意に言及するにとどまる。もっとも令和8年改正（未施行）は35条9項に、十六歳未満の本人が、事業者の違反を要件とせずに利用停止等又は第三者提供の停止を請求できる権利を新設し、10項に事業者の対応義務を置く。"
+   "summary": "現行法に未成年に固有の規定はなく、ガイドラインが法定代理人の同意に言及するにとどまる。令和8年改正（未施行）は、40条の2に十六歳未満の者の個人情報等の取扱いに関する読替規定を置き、35条9項・10項に十六歳未満の本人による違反を要件としない利用停止等又は第三者提供停止の請求権とこれに対応する事業者の義務を新設し、58条の3に未成年者についてその年齢及び発達の程度に応じ最善の利益を優先して考慮する責務を定める。"
   },
   {
    "axis": "minor",
@@ -937,7 +937,7 @@ window.DB = {
    "status": "explicit",
    "refs": [
     "us-coppa-consent",
-    "us-ferpa-def"
+    "us-ferpa-eligible"
    ],
    "summary": "COPPAが13歳未満について検証可能な親の同意を要求。FERPAでは権利が18歳又は高等教育機関在学で学生本人に移る。"
   },
@@ -988,6 +988,7 @@ window.DB = {
    "jur": "us",
    "status": "partial",
    "refs": [
+    "us-ferpa-official",
     "us-ferpa-studies"
    ],
    "summary": "FERPAに「委託」概念はない。外部事業者は34 C.F.R. §99.31(a)(1)の school official に含める運用（outsourcing）で処理される。",
@@ -1009,7 +1010,7 @@ window.DB = {
    "refs": [
     "jp-appi-28"
    ],
-   "summary": "28条が外国にある第三者への提供を制限し、本人の同意、基準適合体制の整備、又は規則で定める国のいずれかを要求する。"
+   "summary": "28条1項が外国にある第三者への提供を制限し、我が国と同等の水準にあると認められる外国として規則で定めるものにある第三者への提供、又は基準適合体制を整備している者への提供を除き、本人の同意を要求する。したがって規則で定める外国にある第三者への提供では、基準適合体制の整備は前提とならない。"
   },
   {
    "axis": "transfer",
@@ -1018,7 +1019,7 @@ window.DB = {
    "refs": [
     "eu-gdpr-44"
    ],
-   "summary": "44条〜49条が十分性認定、適切な保護措置（標準契約条項等）、個別の適用除外という三層で規律する。日本は十分性認定国。"
+   "summary": "44条〜49条が十分性認定、適切な保護措置（標準契約条項等）、個別の適用除外という三層で規律する。日本は十分性認定国。 日本については2019年1月23日の十分性認定があるが、原決定の対象は個人情報取扱事業者（民間部門）である。"
   },
   {
    "axis": "transfer",
@@ -1134,7 +1135,8 @@ window.DB = {
    "jur": "us",
    "status": "partial",
    "refs": [
-    "us-ferpa-studies"
+    "us-ferpa-studies",
+    "us-ferpa-official"
    ],
    "summary": "20 U.S.C. §1232g(b)(1)(F)と34 C.F.R. §99.31(a)(6)の studies exception のみ。教育機関のため又はその代わりに行う研究に限られ、研究者の自由な研究は対象外。",
    "verified": false
@@ -1239,7 +1241,7 @@ window.DB = {
    "verified": true,
    "full": "（第二条に次の一項を加える改正。令和8年法律第56号第一条）\n13　この法律において「統計作成等」とは、統計の作成その他の大量の情報から当該情報を構成する要素に係る情報を抽出して分類、比較その他の解析を行うことにより、当該大量の情報の傾向又は性質に係る情報（個人に関する情報であるものを除く。）を作成する行為のうち、個人の権利利益を害するおそれが少ないものとして個人情報保護委員会規則で定めるものをいう。",
    "src": "https://www.shugiin.go.jp/internet/itdb_housei.nsf/html/housei/22120260717056.htm",
-   "text": "統計の作成その他の大量の情報から当該情報を構成する要素に係る情報を抽出して分類、比較その他の解析を行うことにより、大量の情報の傾向又は性質に係る情報（個人に関する情報であるものを除く。）を得ることであって、個人の権利利益を害するおそれが少ないものとして個人情報保護委員会規則で定めるものをいう。"
+   "text": "統計の作成その他の大量の情報から当該情報を構成する要素に係る情報を抽出して分類、比較その他の解析を行うことにより、大量の情報の傾向又は性質に係る情報（個人に関する情報であるものを除く。）を作成する行為のうち、個人の権利利益を害するおそれが少ないものとして個人情報保護委員会規則で定めるものをいう。"
   },
   {
    "id": "jp-appi-30-2",
@@ -1254,7 +1256,7 @@ window.DB = {
    "verified": true,
    "full": "（第三十条の次に次の二条を加える改正。令和8年法律第56号第一条）\n　　（個人情報に係る統計作成等の特例）\n第三十条の二　個人情報取扱事業者は、統計作成等を行う目的（以下この項及び第五項並びに第三十一条の三第一項において「統計作成等目的」という。）又は第五項本文の規定による提供を行う目的で現に公開されている要配慮個人情報を取り扱う必要がある場合（当該要配慮個人情報を取り扱う目的の全部が統計作成等目的又は当該提供を行う目的である場合に限る。）であって、インターネットの利用その他の個人情報保護委員会規則で定める方法により当該個人情報取扱事業者の氏名又は名称、取得した要配慮個人情報を用いて行おうとする統計作成等の内容又は同項本文の規定による提供を行う目的で当該要配慮個人情報を取り扱う旨その他個人情報保護委員会規則で定める事項を公表しているときは、第二十条第二項の規定にかかわらず、当該現に公開されている要配慮個人情報を本人の同意を得ないで取得することができる。\n２　前項の規定により要配慮個人情報を取得した個人情報取扱事業者（次項及び第四項並びに第七十二条の三第一項において「特例要配慮個人情報取得者」という。）は、前項の個人情報保護委員会規則で定める方法により、当該要配慮個人情報又はその全部若しくは一部を複製し、若しくは加工した生存する個人に関する情報を取り扱っている期間、同項に規定する事項（当該事項を次項本文の規定により変更した場合又は同項ただし書の場合にあっては、変更後の当該事項）を継続して公表しなければならない。\n３　特例要配慮個人情報取得者は、前項の規定により公表している事項を変更するときは、あらかじめ、第一項の個人情報保護委員会規則で定める方法により、その旨及び当該変更の内容を公表しなければならない。ただし、当該特例要配慮個人情報取得者の氏名又は名称その他個人情報保護委員会規則で定める事項を変更するときは、当該変更をした後、速やかに、同項の個人情報保護委員会規則で定める方法によりその旨及び当該変更の内容を公表すれば足りる。\n４　第一項の規定により取得された要配慮個人情報又はその全部若しくは一部を複製し、若しくは加工した生存する個人に関する情報（第六項に規定する提供統計作成等用個人情報等であるものを除く。以下「統計作成等用要配慮個人情報等」という。）を取り扱う個人情報取扱事業者は、第十八条の規定にかかわらず、法令に基づく場合及び人命の救助、災害の救援その他非常の事態への対応のため緊急の必要がある場合（以下この章において「法令に基づく場合等」という。）を除くほか、当該統計作成等用要配慮個人情報等を、次の各号に掲げる場合の区分に応じて、当該各号に定める行為を行うために必要な範囲を超えて取り扱ってはならない。\n　一　当該統計作成等用要配慮個人情報等に係る特例要配慮個人情報取得者が第二項の規定により当該統計作成等用要配慮個人情報等に係る要配慮個人情報を用いて行おうとする統計作成等の内容を公表している場合（第三号に掲げる場合を除く。）　当該公表されている内容の統計作成等\n　二　当該統計作成等用要配慮個人情報等に係る特例要配慮個人情報取得者が第二項の規定により次項本文の規定による提供を行う目的で当該統計作成等用要配慮個人情報等に係る要配慮個人情報を取り扱う旨を公表している場合（次号に掲げる場合を除く。）　当該提供\n　三　当該統計作成等用要配慮個人情報等に係る特例要配慮個人情報取得者が第二項の規定により当該統計作成等用要配慮個人情報等に係る要配慮個人情報を用いて行おうとする統計作成等の内容及び次項本文の規定による提供を行う目的で当該要配慮個人情報を取り扱う旨を公表している場合　当該公表されている内容の統計作成等及び当該提供\n５　個人情報取扱事業者は、第三者（個人情報取扱事業者又は行政機関の長等（第六十三条に規定する行政機関の長等をいう。第九項第二号、第十二項並びに第三十一条の三第五項第二号及び第八項において同じ。）（これらの者が外国にある者である場合にあっては、個人情報、仮名加工情報、匿名加工情報及び個人関連情報（以下「個人情報等」という。）の取扱いについてこの章の規定により個人情報取扱事業者、仮名加工情報取扱事業者、匿名加工情報取扱事業者及び個人関連情報取扱事業者（以下「個人情報取扱事業者等」という。）が講ずべきこととされている措置に相当する措置（第十三項及び第三十一条の三第九項において「相当措置」という。）を継続的に講ずるために必要なものとして個人情報保護委員会規則で定める基準に適合する体制（第十三項及び第三十一条の三第九項において「基準適合体制」という。）を整備している者に限る。第十二項及び第三十一条の三第八項において同じ。）である者に限る。以下この項、次項並びに第三十一条の三第一項及び第二項において同じ。）が個人情報（統計作成等用要配慮個人情報等を含む。以下この項から第七項まで及び第十三項並びに第七十二条の三第二項及び第三項において同じ。）を統計作成等目的で取り扱う必要がある場合（当該個人情報を取り扱う目的の全部が統計作成等目的である場合に限る。）であって、次の各号のいずれにも該当するときは、第十八条及び第二十七条第一項の規定にかかわらず、当該個人情報を本人の同意を得ないで当該第三者に提供することができる。ただし、当該個人情報が他の個人情報取扱事業者又は個人関連情報取扱事業者からこの項本文又は第三十一条の三第一項本文の規定により提供されたもの（その全部又は一部を複製し、又は加工したものを含む。）である場合は、この限りでない。\n　一　当該個人情報取扱事業者及び当該第三者が、インターネットの利用その他の個人情報保護委員会規則で定める方法により、当該個人情報取扱事業者及び当該第三者の氏名又は名称、行おうとする統計作成等の内容その他個人情報保護委員会規則で定める事項を公表していること。\n　二　当該第三者との間の書面（電磁的記録を含む。）による合意により、当該提供がこの項本文の規定によるものである旨が明確に定められていること。\n６　前項本文の規定により個人情報の提供を受けた第三者（個人情報取扱事業者である者に限る。以下この条及び第七十二条の三第五項第一号において「特例個人情報受領者」という。）は、前項第一号の個人情報保護委員会規則で定める方法により、当該個人情報又はその全部若しくは一部を複製し、若しくは加工した生存する個人に関する情報（以下「提供統計作成等用個人情報等」という。）を取り扱っている期間、同号に規定する事項（当該事項を次項本文の規定により変更した場合又は第八項の場合にあっては、変更後の当該事項）を継続して公表しなければならない。\n７　特例個人情報受領者は、第五項第一号の個人情報保護委員会規則で定める方法により当該特例個人情報受領者及び同項本文の規定により当該特例個人情報受領者に対する個人情報の提供を行った個人情報取扱事業者の双方が前項の規定により公表されている事項を変更する旨及び当該変更の内容をあらかじめ公表する場合に限り、当該事項を変更することができる。ただし、当該特例個人情報受領者の氏名又は名称その他個人情報保護委員会規則で定める事項を変更するときは、この限りでない。\n８　前項ただし書の場合においては、特例個人情報受領者は、当該変更をした後、速やかに、第五項第一号の個人情報保護委員会規則で定める方法により当該変更をした旨及び当該変更の内容を公表しなければならない。\n９　提供統計作成等用個人情報等を取り扱う個人情報取扱事業者は、第十八条の規定にかかわらず、法令に基づく場合等を除くほか、当該提供統計作成等用個人情報等を、次の各号に掲げる場合の区分に応じて、当該各号に定める統計作成等を行うために必要な範囲を超えて取り扱ってはならない。\n　一　当該提供統計作成等用個人情報等に係る第五項本文の規定による提供が特例個人情報受領者に対して行われたものである場合　当該特例個人情報受領者が第六項の規定により公表している内容の統計作成等\n　二　当該提供統計作成等用個人情報等に係る第五項本文の規定による提供が行政機関の長等に対して行われたものである場合　当該行政機関の長等が第七十二条の三第二項の規定により公表している内容の統計作成等\n10　統計作成等用要配慮個人情報等又は提供統計作成等用個人情報等を取り扱う個人情報取扱事業者は、第二十七条第一項及び第二項並びに第二十八条第一項の規定にかかわらず、次に掲げる場合を除くほか、当該統計作成等用要配慮個人情報等又は提供統計作成等用個人情報等である個人データを第三者に提供してはならない。この場合において、第二十七条第五項中「は、前各項」とあるのは「（個人情報取扱事業者又は第六十三条に規定する行政機関の長等（これらの者が次条第一項に規定する外国にある者である場合にあっては、第三十条の二第五項に規定する基準適合体制を整備している者に限る。）である者に限る。）は、第三十条の二第十項」と、同項第三号中「、本人に通知し、又は本人が容易に知り得る状態に置いて」とあるのは「公表して」と、同条第六項中「、本人に通知し、又は本人が容易に知り得る状態に置かなければ」とあるのは「公表しなければ」と、第二十九条第一項ただし書中「同条第一項各号又は第五項各号のいずれか（前条第一項の規定による個人データの提供にあっては、第二十七条第一項各号のいずれか）」とあるのは「第三十条の二第四項に規定する法令に基づく場合等又は第二十七条第五項各号のいずれか」と、前条第一項ただし書中「第二十七条第一項各号又は第五項各号のいずれか」とあるのは「次条第四項に規定する法令に基づく場合等又は第二十七条第五項各号のいずれか」とする。\n　一　法令に基づく場合等\n　二　当該個人情報取扱事業者が、第一項の規定により要配慮個人情報を取得し、かつ、第二項の規定により第五項本文の規定による提供を行う目的で当該要配慮個人情報を取り扱う旨を公表している場合であって、当該個人情報取扱事業者が当該要配慮個人情報に係る統計作成等用要配慮個人情報等を同項本文の規定により提供するとき。\n11　統計作成等用要配慮個人情報等又は提供統計作成等用個人情報等を取り扱う個人情報取扱事業者は、第三十一条第一項の規定にかかわらず、前項各号に掲げる場合を除くほか、当該統計作成等用要配慮個人情報等又は提供統計作成等用個人情報等（これらのうち個人データであるものを除く。次項において同じ。）を第三者に提供してはならない。\n12　第二十七条第五項及び第六項の規定は、統計作成等用要配慮個人情報等又は提供統計作成等用個人情報等の提供を受ける者（個人情報取扱事業者又は行政機関の長等である者に限る。）について準用する。この場合において、同条第五項中「前各項」とあるのは「第三十条の二第十一項」と、同項第三号中「、本人に通知し、又は本人が容易に知り得る状態に置いて」とあるのは「公表して」と、同条第六項中「、本人に通知し、又は本人が容易に知り得る状態に置かなければ」とあるのは「公表しなければ」と読み替えるものとする。\n13　第五項本文の規定により個人情報を基準適合体制を整備している外国にある第三者に提供し、又は統計作成等用要配慮個人情報等若しくは提供統計作成等用個人情報等を当該第三者に提供した個人情報取扱事業者は、個人情報保護委員会規則で定めるところにより、当該第三者による相当措置の継続的な実施を確保するために必要な措置を講ずるとともに、当該必要な措置に関する情報を公表しなければならない。この場合においては、第二十八条第三項の規定は、適用しない。\n14　第二十三条から第二十五条までの規定は個人情報取扱事業者による統計作成等用要配慮個人情報等又は提供統計作成等用個人情報等（これらのうち個人データであるものを除く。）の取扱いについて、第二十九条第一項本文及び第二項の規定は第五項本文の規定により個人情報取扱事業者が統計作成等用要配慮個人情報等（第三十一条第一項に規定する個人関連情報であるものに限る。）を特例個人情報受領者に提供する場合（当該特例個人情報受領者が当該統計作成等用要配慮個人情報等を個人データとして取得することが想定される場合に限る。）について、それぞれ準用する。この場合において、第二十三条中「漏えい、滅失又は毀損」とあるのは、「漏えい」と読み替えるものとする。",
    "src": "https://www.shugiin.go.jp/internet/itdb_housei.nsf/html/housei/22120260717056.htm",
-   "text": "1項 統計作成等目的等のために、現に公開されている要配慮個人情報を取り扱う必要があり、①氏名又は名称、②統計作成等の内容又は提供目的、③規則で定める事項を公表している場合。／5項 提供先が統計作成等目的で取り扱う必要があり、提供元・提供先の双方が所定事項を公表し、両者間で書面（電磁的記録を含む）により合意している場合。本特例による二段階以上の提供は禁止。"
+   "text": "1項 統計作成等目的等のために、現に公開されている要配慮個人情報を取り扱う必要があり（当該要配慮個人情報を取り扱う目的の全部が統計作成等目的又は当該提供を行う目的である場合に限る）、①氏名又は名称、②統計作成等の内容又は提供目的、③規則で定める事項を公表している場合。／5項 提供先が統計作成等目的で取り扱う必要があり（同じく目的の全部であることを要する）、提供元・提供先の双方が所定事項を公表し、両者間で書面（電磁的記録を含む）により合意している場合。本特例による二段階以上の提供は禁止。"
   },
   {
    "id": "jp-appi-31-3",
@@ -1879,7 +1881,7 @@ window.DB = {
    "verified": true,
    "full": "ANNEX III\nHigh-risk AI systems referred to in Article 6(2)\nHigh-risk AI systems pursuant to Article 6(2) are the AI systems listed in any of the following areas:\n[...]\n3.\nEducation and vocational training:\n(a) AI systems intended to be used to determine access or admission or to assign natural persons to educational and vocational training institutions at all levels;\n(b) AI systems intended to be used to evaluate learning outcomes, including when those outcomes are used to steer the learning process of natural persons in educational and vocational training institutions at all levels;\n(c) AI systems intended to be used for the purpose of assessing the appropriate level of education that an individual will receive or will be able to access, in the context of or within educational and vocational training institutions at all levels;\n(d) AI systems intended to be used for monitoring and detecting prohibited behaviour of students during tests in the context of or within educational and vocational training institutions at all levels.",
    "src": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/annex-3",
-   "text": "あらゆる段階（at all levels）の教育・職業訓練機関において用いられる次のAIシステム。(a) 入学・受験の決定又は機関への振り分け、(b) 学習成果の評価（当該成果が学習過程の誘導に用いられる場合を含む）、(c) 個人が受け又は受けられる教育水準の適切さの評価、(d) 試験中の学生の禁止された行動の監視・検知。 なお113条(c)はRegulation (EU) 2026/1744 1条40号(b)により差し替えられ、6条2項及び附属書IIIにより高リスクに分類されるAIシステムについては2027年12月2日からの適用とされた。同規則は附属書III第3項の内容を改めていない。"
+   "text": "あらゆる段階（at all levels）の教育・職業訓練機関において用いられる次のAIシステム。(a) 入学・受験の決定又は機関への振り分け、(b) 学習成果の評価（当該成果が学習過程の誘導に用いられる場合を含む）、(c) 個人が受け又は受けられる教育水準の適切さの評価、(d) 試験中の学生の禁止された行動の監視・検知。 なお113条(c)はRegulation (EU) 2026/1744 1条40号(b)により差し替えられたが、(i)(ii)の細分は維持されており、(i)が6条2項及び附属書IIIにより高リスクに分類されるAIシステムについて2027年12月2日から、(ii)が6条1項及び附属書Iによるものについて2028年8月2日からの適用とする。同規則は附属書III第3項の内容を改めていない。"
   },
   {
    "id": "eu-aiact-5-1f",
@@ -1969,7 +1971,7 @@ window.DB = {
    "verified": true,
    "full": "STATUS (checked 27 November 2026)\nEUR-Lex procedure 2025/0360(COD) — \"Ongoing\". European Parliament Legislative Observatory status: \"Awaiting committee decision\". Key events recorded: 19/11/2025 legislative proposal published (COM(2025)0837); 19/01/2026 committee referral announced in Parliament, 1st reading. Joint committees responsible ITRE (rapporteur SALLA Aura, EPP) and LIBE (rapporteur KALJURAND Marina, S&D), both appointed 25/02/2026; committees for opinion IMCO and JURI. No committee report, no Parliament first-reading position and no Council general approach are recorded. EESC opinion adopted 18/03/2026. The proposal has therefore not been adopted, amended by the co-legislators or withdrawn; it remains a pending first-reading proposal. The separate \"Digital Omnibus on AI\" proposal is COM(2025) 836.\n\nFULL TITLE AS PUBLISHED\nEUROPEAN COMMISSION\nBrussels, 19.11.2025\nCOM(2025) 837 final\n2025/0360(COD)\nProposal for a\nREGULATION OF THE EUROPEAN PARLIAMENT AND OF THE COUNCIL\namending Regulations (EU) 2016/679, (EU) 2018/1724, (EU) 2018/1725, (EU) 2023/2854 and Directives 2002/58/EC, (EU) 2022/2555 and (EU) 2022/2557 as regards the simplification of the digital legislative framework, and repealing Regulations (EU) 2018/1807, (EU) 2019/1150, (EU) 2022/868, and Directive (EU) 2019/1024 (Digital Omnibus)\n\nStructure of the proposal's amending articles: Article 1 Amendments to Regulation (EU) 2023/2854 (Data Act); Article 2 Amendments to Regulation (EU) 2018/1724; Article 3 Amendments to Regulation (EU) 2016/679 (GDPR); Article 4 Amendments to Regulation (EU) 2018/1725 (EUDPR); Article 5 Amendments to Directive 2002/58/EC (ePrivacy Directive); Articles 6-9 NIS2, Regulation 910/2014, DORA, CER Directive.\n\n--- GDPR AMENDMENTS (Article 3 of the proposal), verbatim extracts ---\n\n1. Article 4 is amended as follows:\n(a) in point 1, the following sentences are added:\n'Information relating to a natural person is not necessarily personal data for every other person or entity, merely because another entity can identify that natural person. Information shall not be personal for a given entity where that entity cannot identify the natural person to whom the information relates, taking into account the means reasonably likely to be used by that entity. Such information does not become personal for that entity merely because a potential subsequent recipient has means reasonably likely to be used to identify the natural person to whom the information relates.'\n(b) the following points are added:\n'(32) 'terminal equipment' means terminal equipment as set out in Article 1(1) of Directive 2008/63/EC;\n(33) for 'electronic communications networks' the definition of Article 2(1) of Directive (EU) 2018/1972 shall apply;\n(34) 'web browser' means web browser as defined in Article 2(11) of Regulation (EU) 2022/1925;\n(35) 'media service' means a media service as defined in Article 2(1) of Regulation (EU) 2024/1083;\n(36) 'media service provider' means a media service provider as defined in Article 2(2) of Regulation (EU) 2024/1083;'\n(37) 'online interface' means an online interface as defined in Article 3(m) of Regulation (EU) 2022/2065.'\n(38) \"scientific research\" means any research which can also support innovation, such as technological development and demonstration. These actions shall contribute to existing scientific knowledge or apply existing knowledge in novel ways, be carried out with the aim of contributing to the growth of society's general knowledge and wellbeing and adhere to ethical standards in the relevant research area. This does not exclude that the research may also aim to further a commercial interest.'\n\n2. Article 5 (1)(b) is replaced by the following:\n'collected for specified, explicit and legitimate purposes and not further processed in a manner that is incompatible with those purposes; further processing for archiving purposes in the public interest, scientific or historical research purposes or statistical purposes shall, in accordance with Article 89(1), be considered to be compatible with the initial purposes, independent of the conditions of Article 6(4) of this Regulation, ('purpose limitation');'\n\n3. Article 9 is amended as follows:\n(a) in paragraph 2, the following points are added:\n'(k) processing in the context of the development and operation of an AI system as defined in Article 3, point (1), of Regulation (EU) 2024/1689 or an AI model, subject to the conditions referred to in paragraph 5.\n(l) processing of biometric data is necessary for the purpose of confirming the identity of a data subject (verification), where the biometric data or the means needed for the verification is under the sole control of the data subject.'\n(b) the following paragraph is added:\n'5. For processing referred to in point (k) of paragraph 2, appropriate organisational and technical measures shall be implemented to avoid v the collection and otherwise processing of special categories of personal data. Where, despite the implementation of such measures, the controller identifies special categories of personal data in the datasets used for training, testing or validation or in the AI system or AI model, the controller shall remove such data. If removal of those data requires disproportionate effort, the controller shall in any event effectively protect without undue delay such data from being used to produce outputs, from being disclosed or otherwise made available to third parties.'\n\n7. In Article 22, paragraphs 1 and 2 are replaced by the following:\n'1. A decision which produces legal effects for a data subject or similarly significantly affects him or her may be based solely on automated processing, including profiling, only where that decision:\n(a) is necessary for entering into, or performance of, a contract between the data subject and a data controller regardless of whether the decision could be taken otherwise than by solely automated means;\n(b) is authorised by Union or Member State law to which the controller is subject and which also lays down suitable measures to safeguard the data subject's rights and freedoms and legitimate interests; or\n(c) is based on the data subject's explicit consent.'\n\n8. Article 33 is amended as follows:\n(a) paragraph 1 is replaced by the following:\n'1. In the case of a personal data breach that is likely to result in a high risk to the rights and freedoms of natural persons, the controller shall without undue delay and, where feasible, not later than 96 hours after having become aware of it, notify the personal data breach via the single-entry point established pursuant to Article 23a of Directive (EU) 2022/2555 to the supervisory authority competent in accordance with Article 55 and Article 56. Where the notification to the supervisory authority is not made within 96 hours, it shall be accompanied by reasons for the delay.'\n(b) the following paragraph is added:\n'1a. Until the establishment of the single-entry point pursuant to Article 23a of Directive (EU) 2022/2555, controllers shall continue to notify personal data breaches directly to the competent supervisory authority in accordance with Article 55 and Article 56.'\n(c) the following paragraphs are added:\n'6. The Board shall prepare and transmit to the Commission a proposal for a common template for notifying a personal data breach to the competent supervisory authority referred to in paragraph 1 as well as for a list of the circumstances in which a personal data breach is likely to result in a high risk to the rights and freedoms of a natural person. [...]'\n\n10. The following article is added:\n'Article 41a\n(1) The Commission may adopt implementing acts to specify means and criteria to determine whether data resulting from pseudonymisation no longer constitutes personal data for certain entities.\n(2) For the purpose of paragraph 1 the Commission shall:\n(a) assess the state of the art of available techniques;\n(b) develop criteria and or categories for controllers and recipients to assess the risk of re-identification in relation to typical recipients of data.\n(3) The implementation of the means and criteria outlined in an implementing act may be used as an element to demonstrate that data cannot lead to reidentification of the data subjects.\n(4) The Commission shall closely involve the EDPB in the preparations of the implementing acts. The EPDB shall issue an opinion on the draft implementing acts within a deadline of 8 weeks as of the receipt of the draft from the Commission.\n(5) The Implementing Acts shall be adopted in accordance with the examination procedure referred to in Article 93(3).'\n\n15. After Article 88, the following articles are added:\n'Article 88a\nProcessing of personal data in the terminal equipment of natural persons\n(1) Storing of personal data, or gaining of access to personal data already stored, in the terminal equipment of a natural person is only allowed when that person has given his or her consent, in accordance with this Regulation.\n(2) Paragraph 1 does not preclude storing of personal data, or gaining of access to personal data already stored, in the terminal equipment of a natural person, based on Union or Member State law within the meaning of, and subject to the conditions of Article 6, to safeguard the objectives referred to in Article 23(1).\n(3) Storing of personal data, or gaining of access to personal data already stored, in the terminal equipment of a natural person without consent, and subsequent processing, shall be lawful to the extent it is necessary for any of the following:\n(a) carrying out the transmission of an electronic communication over an electronic communications network;\n(b) providing a service explicitly requested by the data subject;\n(c) creating aggregated information about the usage of an online service to measure the audience of such a service, where it is carried out by the controller of that online service solely for its own use;\n(d) maintaining or restoring the security of a service provided by the controller and requested by the data subject or the terminal equipment used for the provision of such service.\n(4) Where storing of personal data, or gaining of access to personal data already stored, in the terminal equipment of a natural person is based on consent, the following shall apply:\n(a) the data subject shall be able to refuse requests for consent in an easy and intelligible manner with a single-click button or equivalent means;\n(b) if the data subject gives consent, the controller shall not make a new request for consent for the same purpose for the period during which the controller can lawfully rely on the consent of the data subject;\n(c) if the data subject declines a request for consent, the controller shall not make a new request for consent for the same purpose for a period of at least six months.\nThis paragraph also applies to the subsequent processing of personal data based on consent.\n(5) This Article shall apply from [OP: please insert the date = 6 months following the date of entry into force of this Regulation]\n\nArticle 88b\nAutomated and machine-readable indications of data subject's choices with respect to processing of personal data in the terminal equipment of natural persons\n(1) Controllers shall ensure that their online interfaces allow data subjects to:\n(a) Give consent through automated and machine-readable means, provided that the conditions for consent laid down in this Regulation are fulfilled;\n(b) decline a request for consent and exercise the right to object pursuant to Article 21(2) through automated and machine-readable means. [...]\n\nArticle 88c\nProcessing in the context of the development and operation of AI\nWhere the processing of personal data is necessary for the interests of the controller in the context of the development and operation of an AI system as defined in Article 3, point (1), of Regulation (EU) 2024/1689 or an AI model, such processing may be pursued for legitimate interests within the meaning of Article 6(1)(f) of Regulation (EU) 2016/679, where appropriate, except where other Union or national laws explicitly require consent, and where such interests are overridden by the interests, or fundamental rights and freedoms of the data subject which require protection of personal data, in particular where the data subject is a child.\nAny such processing shall be subject to appropriate organisational, technical measures and safeguards for the rights and freedoms of the data subject, such as to ensure respect of data minimisation during the stage of selection of sources and the training and testing of AI an system or AI model, to protect against non-disclosure of residually retained data in the AI system or AI model to ensure enhanced transparency to data subjects and providing data subjects with an unconditional right to object to the processing of their personal data.'\n\n--- ePRIVACY DIRECTIVE (Article 5 of the proposal), verbatim ---\nArticle 5\nAmendments to and Directive 2002/58/EC (ePrivacy Directive)\nDirective 2002/58/EC is amended as follows:\n1. Article 4 is deleted;\n2. After Article 5(3), the following subparagraph is added:\n'This paragraph shall not apply if the subscriber or user is a natural person, and the information stored or accessed constitutes or leads to the processing of personal data.'\n\n--- DATA GOVERNANCE ACT REPEAL AND FOLD-IN ---\nThe proposal's title repeals Regulation (EU) 2022/868 (Data Governance Act); the Legislative Observatory procedure file records \"Repealing Regulation 2022/868 2020/0340(COD)\". Article 1 of the proposal amends the Data Act to absorb its substance, including (per the proposal's own explanatory table) \"Amendments to Article 32a-32e of the Data Act to introduce Chapter VIIa on the regulatory framework for a European label for data intermediation services including notification, creation of a public register, conditions for service provision, designation of competent authorities, and monitoring of compliance\" and \"Amendments to Articles 41a, 42, 45, 46, 48a, 49, 49a of the Data Act to introduce Chapter IXa establishing the European Data Innovation Board (EDIB)\". The same proposal also repeals Regulation (EU) 2018/1807, Regulation (EU) 2019/1150 and Directive (EU) 2019/1024 (the Open Data Directive).",
    "src": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52025PC0837",
-   "text": "2025年11月19日提案。2026年11月時点で第一読会に係属中（委員会報告・議会の立場・理事会の一般的アプローチのいずれも未了。ITRE・LIBE合同付託）。データガバナンス法を廃止してデータ法に統合し（新第7a章32a〜32e条＝データ仲介、新第9a章41a条以下＝欧州データイノベーション委員会）、データ仲介サービスの登録を義務から任意に改める。GDPR側では、5条1項(b)を差し替えて研究・統計目的の追加処理を「相容れるものとみなす」とし（6条4項の条件によらない）、4条(38)に商業的利益を排除しない「科学的研究」の定義を置き、4条(1)に識別可能性の相対性に関する一文を加え、22条1項・2項を差し替えて「服しない権利」を許容規律に改め、88c条でAI開発における6条1項(f)の適用を明確化し、9条を改正し、41a条で仮名化されたデータが一定の者との関係で個人データでなくなる場合を実施法令で定める権限を置く。漏えい通知の期限は72時間から96時間に改められる。eプライバシー指令は4条が削除され、5条3項には個人データが関わる場合に自然人への適用を外す一段が加えられる。"
+   "text": "2025年11月19日提案。2026年11月時点で第一読会に係属中（委員会報告・議会の立場・理事会の一般的アプローチのいずれも未了。ITRE・LIBE合同付託）。データガバナンス法（規則(EU)2022/868）、非個人データ自由流通規則（規則(EU)2018/1807）、P2B規則（規則(EU)2019/1150）及びオープンデータ指令（指令(EU)2019/1024）を廃止してデータ法に統合し（新第7a章32a〜32e条＝データ仲介、新第9a章41a条以下＝欧州データイノベーション委員会）、データ仲介サービスの登録を義務から任意に改める。GDPR側では、5条1項(b)を差し替えて研究・統計目的の追加処理を「相容れるものとみなす」とし（6条4項の条件によらない）、4条(38)に商業的利益を排除しない「科学的研究」の定義を置き、4条(1)に識別可能性の相対性に関する一文を加え、22条1項・2項を差し替えて「服しない権利」を許容規律に改め、88c条でAI開発における6条1項(f)の適用を明確化し、9条を改正し、41a条で仮名化されたデータが一定の者との関係で個人データでなくなる場合を実施法令で定める権限を置く。漏えい通知の期限は72時間から96時間に改められる。eプライバシー指令は4条が削除され、5条3項には個人データが関わる場合に自然人への適用を外す一段が加えられる。"
   },
   {
    "id": "eu-dataact-21",
@@ -2461,6 +2463,37 @@ window.DB = {
    "verified": false,
    "src": "https://www.law.go.kr/lsRvsDocListP.do?lsId=011357",
    "text": "法律第21910号（2026年9月8日公布・2027年3月9日施行）により、第3章に第5節として28条の12から28条の15までが新設される。28条の12第1項は、個人情報処理者が、適法に収集した個人情報を人工知能技術の開発（性能の改善を含む）のために当初の収集目的の範囲を超えて利用することを認める。ただし、①情報の特性と技術開発との関連性に照らし、匿名又は仮名で処理しては技術の開発が困難であること、②大統領令で定める基準による安全装置を設けること、③開発の目的が公共の利益の増進、情報主体若しくは第三者の利益の保護又は社会的利益の増進のいずれかを含み、情報主体又は第三者の利益を不当に侵害するおそれが著しく低いことの三要件をすべて満たし、かつ2項により個人情報保護委員会の審議・議決を経なければならない。"
+  },
+  {
+   "id": "us-ferpa-official",
+   "inst": "us-ferpa",
+   "cite": "34 C.F.R. §99.31(a)(1)",
+   "title": "school official exception（学校職員の例外）",
+   "axes": [
+    "vendor",
+    "academic",
+    "infra"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "src": "https://www.ecfr.gov/current/title-34/subtitle-A/part-99/subpart-D/section-99.31",
+   "text": "正当な教育上の利益を有すると教育機関が判断した学校職員への開示を同意なしに認める。(i)(B)は、教育機関がその役務又は機能を外部委託した相手方について、①本来は職員を用いて行う役務又は機能を遂行し、②教育記録の利用及び保管について当該機関の直接の統制の下にあり、③§99.33(a)の利用及び再開示の制限に服することを条件に、学校職員とみなしうるとする。(ii)は、学校職員が正当な教育上の利益を有する教育記録にのみアクセスできるよう合理的な方法を用いることを機関に義務づける。",
+   "full": "(a)(1)(i)(A) The disclosure is to other school officials, including teachers, within the agency or institution whom the agency or institution has determined to have legitimate educational interests.\n(B) A contractor, consultant, volunteer, or other party to whom an agency or institution has outsourced institutional services or functions may be considered a school official under this paragraph provided that the outside party—\n(1) Performs an institutional service or function for which the agency or institution would otherwise use employees;\n(2) Is under the direct control of the agency or institution with respect to the use and maintenance of education records; and\n(3) Is subject to the requirements of § 99.33(a) governing the use and redisclosure of personally identifiable information from education records.\n(ii) An educational agency or institution must use reasonable methods to ensure that school officials obtain access to only those education records in which they have legitimate educational interests. An educational agency or institution that does not use physical or technological access controls must ensure that its administrative policy for controlling access to education records is effective and that it remains in compliance with the legitimate educational interest requirement in paragraph (a)(1)(i)(A) of this section."
+  },
+  {
+   "id": "us-ferpa-eligible",
+   "inst": "us-ferpa",
+   "cite": "20 U.S.C. §1232g(d)",
+   "title": "Students' rather than parents' permission or consent（親に代わる学生本人の同意）",
+   "axes": [
+    "minor",
+    "consent"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "src": "https://www.govinfo.gov/content/pkg/USCODE-2024-title20/html/USCODE-2024-title20-chap31-subchapIII-part4.htm",
+   "text": "学生が18歳に達したとき、又は高等教育機関に在学しているときは、親について要求される同意及び親に認められる権利は、以後、学生本人についてのみ要求され、本人にのみ認められる。高等教育を対象とする場合、FERPAの権利行使の主体は学生本人となる。",
+   "full": "For the purposes of this section, whenever a student has attained eighteen years of age, or is attending an institution of postsecondary education, the permission or consent required of and the rights accorded to the parents of the student shall thereafter only be required of and accorded to the student."
   }
  ]
 };
