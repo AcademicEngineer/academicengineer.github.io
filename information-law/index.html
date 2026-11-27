@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>教育データ情報法データベース</title>
+<meta name="description" content="大学の教育データのAI利活用に関する日本・EU・英国・米国・韓国の条文比較データベース">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<style>
+:root{
+  --navy:#16233F; --navy-2:#243659; --gold:#C9A227; --gold-d:#7A5F0A;
+  --cream:#FAF9F5; --paper:#FFFFFF; --line:#E2DED1; --line-2:#EFEDE6;
+  --ink:#1F2733; --body:#3C4555; --muted:#6E7585;
+  --warn-bg:#FDF0E7; --warn-fg:#8F3310; --warn-line:#D97757;
+  --part-bg:#F8E8B8; --part-fg:#56400A;
+  --radius:6px;
+  --maxw:1340px;
+  --on-navy:#FAF9F5;   /* 濃紺の上に乗る文字色 */
+  --text-bg:#FAF9F5;   /* 条文ブロックの背景 */
+  --header-bg:#243659;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --navy:#AEC2E8; --navy-2:#1B2742; --gold:#D8B64A; --gold-d:#D8B64A;
+    --cream:#11151D; --paper:#171C26; --line:#2B3342; --line-2:#1E242F;
+    --ink:#E8EAEE; --body:#C3C9D4; --muted:#8A93A3;
+    --warn-bg:#2E1A12; --warn-fg:#F0A37F; --warn-line:#B0553A;
+    --part-bg:#3A2F10; --part-fg:#E8CE86;
+    --on-navy:#11151D; --text-bg:#10141C; --header-bg:#1B2742;
+  }
+}
+:root[data-theme="dark"]{
+  --navy:#AEC2E8; --navy-2:#1B2742; --gold:#D8B64A; --gold-d:#D8B64A;
+  --cream:#11151D; --paper:#171C26; --line:#2B3342; --line-2:#1E242F;
+  --ink:#E8EAEE; --body:#C3C9D4; --muted:#8A93A3;
+  --warn-bg:#2E1A12; --warn-fg:#F0A37F; --warn-line:#B0553A;
+  --part-bg:#3A2F10; --part-fg:#E8CE86;
+  --on-navy:#11151D; --text-bg:#10141C; --header-bg:#1B2742;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--cream); color:var(--body);
+  font-family:'Noto Sans JP',-apple-system,BlinkMacSystemFont,'Hiragino Sans',sans-serif;
+  font-size:15px; line-height:1.75; letter-spacing:.01em;
+}
+h1,h2,h3,h4{font-family:'Noto Serif JP',Georgia,serif;color:var(--ink);margin:0;line-height:1.3}
+a{color:var(--gold-d)}
+button{font-family:inherit;font-size:inherit;cursor:pointer}
+
+/* ---------- header ---------- */
+header{
+  position:sticky; top:0; z-index:40;
+  background:var(--header-bg); color:#F3F1EA;
+  border-bottom:3px solid var(--gold);
+}
+.hwrap{max-width:var(--maxw);margin:0 auto;padding:14px 16px 12px}
+.brand{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.brand h1{font-size:21px;color:#FAF9F5;font-weight:600;letter-spacing:.02em}
+.brand .sub{font-size:12px;color:#A9B6CE;line-height:1.5}
+.toolbar{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center}
+.tabs{display:flex;gap:4px;background:rgba(255,255,255,.08);padding:3px;border-radius:999px}
+.tab{
+  border:0;background:transparent;color:#C6D1E4;padding:7px 15px;border-radius:999px;
+  font-size:13px;font-weight:500;white-space:nowrap;
+}
+.tab[aria-selected="true"]{background:var(--gold);color:#1B1403;font-weight:700}
+.search{
+  flex:1 1 180px;min-width:150px;display:flex;align-items:center;gap:7px;
+  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);
+  border-radius:999px;padding:6px 13px;
+}
+.search input{
+  flex:1;border:0;background:transparent;color:#FAF9F5;font-size:13px;outline:none;min-width:0;
+  font-family:inherit;
+}
+.search input::placeholder{color:#8E9CB6}
+.search svg{flex:none;opacity:.6}
+.iconbtn{
+  border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#D7E0EF;
+  border-radius:999px;padding:6px 12px;font-size:12px;white-space:nowrap;
+}
+.iconbtn[aria-pressed="true"]{background:var(--gold);color:#1B1403;border-color:var(--gold);font-weight:700}
+
+/* ---------- layout ---------- */
+main{max-width:var(--maxw);margin:0 auto;padding:20px 16px 72px}
+.hint{font-size:12.5px;color:var(--muted);margin:0 0 16px}
+
+/* ---------- legend ---------- */
+.legend{
+  display:flex;gap:8px;flex-wrap:wrap;align-items:center;
+  padding:11px 13px;background:var(--paper);border:1px solid var(--line);
+  border-radius:var(--radius);margin-bottom:18px;
+}
+.legend .lab{font-size:12px;font-weight:700;color:var(--ink);margin-right:2px}
+
+/* ---------- status badge ---------- */
+.st{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:11.5px;font-weight:700;line-height:1;
+  padding:5px 9px;border-radius:4px;white-space:nowrap;border:1px solid transparent;
+}
+.st-explicit{background:var(--navy);color:var(--on-navy);border-color:var(--navy)}
+.st-partial{background:var(--part-bg);color:var(--part-fg);border-color:var(--gold)}
+.st-absent{background:var(--warn-bg);color:var(--warn-fg);border:1.5px dashed var(--warn-line)}
+.st-na{background:var(--line-2);color:var(--muted);border-color:var(--line)}
+.st-todo{background:transparent;color:var(--muted);border:1.5px dotted var(--line)}
+
+.vflag{
+  display:inline-flex;align-items:center;font-size:10.5px;font-weight:700;
+  padding:4px 7px;border-radius:4px;white-space:nowrap;
+  background:var(--warn-bg);color:var(--warn-fg);border:1px solid var(--warn-line);
+}
+
+/* ---------- matrix ---------- */
+.mxbox{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  overflow:auto;margin-bottom:26px;-webkit-overflow-scrolling:touch;
+}
+table.mx{border-collapse:separate;border-spacing:0;width:100%;min-width:620px;font-size:13px}
+table.mx th,table.mx td{padding:0;border-bottom:1px solid var(--line-2)}
+table.mx thead th{
+  position:sticky;top:0;z-index:3;background:var(--paper);
+  border-bottom:2px solid var(--line);
+  font-size:12px;font-weight:700;color:var(--ink);padding:10px 8px;text-align:center;
+  font-family:'Noto Sans JP',sans-serif;
+}
+table.mx thead th:first-child{text-align:left;left:0;z-index:4;padding-left:14px}
+table.mx tbody th{
+  position:sticky;left:0;z-index:2;background:var(--paper);
+  text-align:left;font-weight:500;font-size:12.5px;color:var(--ink);
+  padding:9px 12px 9px 14px;border-right:1px solid var(--line);
+  min-width:190px;max-width:230px;font-family:'Noto Sans JP',sans-serif;
+  line-height:1.45;
+}
+table.mx tbody tr:hover th,table.mx tbody tr:hover td{background:var(--line-2)}
+.mxcell{width:100%;border:0;background:transparent;padding:8px 5px;display:block;text-align:center}
+.mxcell:hover .st{outline:2px solid var(--gold);outline-offset:1px}
+table.mx tbody th button{
+  border:0;background:transparent;text-align:left;padding:0;color:inherit;
+  font:inherit;text-decoration:underline;text-decoration-color:var(--line);
+  text-underline-offset:3px;
+}
+table.mx tbody th button:hover{text-decoration-color:var(--gold)}
+
+/* ---------- axis detail ---------- */
+.axhead{
+  background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--gold);
+  border-radius:var(--radius);padding:18px 20px;margin-bottom:16px;
+}
+.axhead h2{font-size:23px;margin-bottom:9px}
+.axhead .q{font-size:14px;color:var(--body);margin:0 0 10px}
+.thesis{
+  font-size:13px;color:var(--ink);background:var(--line-2);
+  border-radius:4px;padding:10px 13px;margin:0;
+}
+.thesis b{color:var(--gold-d)}
+
+.grid5{display:grid;gap:14px;grid-template-columns:1fr;margin-bottom:28px}
+@media(min-width:760px){.grid5{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1120px){.grid5{grid-template-columns:repeat(3,1fr)}}
+
+.jcard{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:16px;display:flex;flex-direction:column;gap:10px;
+}
+.jcard.hl{border-color:var(--gold);box-shadow:0 0 0 2px rgba(201,162,39,.25)}
+.jcard .top{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.jcard h3{font-size:18px}
+.jcard .sum{font-size:13.5px;margin:0;color:var(--body)}
+.memo{
+  font-size:12.5px;color:var(--ink);background:var(--line-2);
+  border-left:3px solid var(--gold);border-radius:0 4px 4px 0;padding:9px 11px;margin:0;
+}
+.memo::before{content:'本稿メモ　';font-weight:700;color:var(--gold-d)}
+.refs{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+
+/* ---------- provision ---------- */
+.prov{
+  border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);
+  padding:13px 14px;display:flex;flex-direction:column;gap:9px;
+}
+.prov .ptop{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.prov .inst{font-size:11.5px;font-weight:700;color:var(--gold-d);letter-spacing:.03em}
+.prov .cite{font-size:14.5px;font-weight:700;color:var(--ink);font-family:'Noto Serif JP',serif}
+.prov .ptitle{font-size:12.5px;color:var(--muted)}
+.prov .text{
+  font-family:'Noto Serif JP',Georgia,serif;font-size:14px;line-height:1.95;
+  color:var(--ink);margin:0;padding:11px 13px;background:var(--text-bg);
+  border:1px solid var(--line-2);border-radius:4px;
+}
+.chips{display:flex;gap:5px;flex-wrap:wrap}
+.chip{
+  border:1px solid var(--line);background:transparent;color:var(--muted);
+  font-size:11px;padding:3px 8px;border-radius:999px;
+}
+.chip:hover{border-color:var(--gold);color:var(--gold-d)}
+.srcl{font-size:11.5px}
+
+/* ---------- instrument picker ---------- */
+.ipick{display:grid;gap:14px;grid-template-columns:1fr;margin-bottom:22px}
+@media(min-width:860px){.ipick{grid-template-columns:repeat(5,1fr)}}
+.jgroup{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:12px}
+.jgroup h4{font-size:13px;color:var(--gold-d);margin-bottom:9px;letter-spacing:.06em}
+.ibtn{
+  display:block;width:100%;text-align:left;border:1px solid var(--line);
+  background:transparent;color:var(--ink);border-radius:4px;
+  padding:7px 10px;font-size:12.5px;margin-bottom:6px;line-height:1.4;
+}
+.ibtn:hover{border-color:var(--gold)}
+.ibtn[aria-pressed="true"]{background:var(--navy);color:var(--on-navy);border-color:var(--navy);font-weight:700}
+.ibtn .k{font-size:10px;opacity:.65;display:block}
+
+.sectionhead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0 0 14px}
+.sectionhead h2{font-size:20px}
+.sectionhead .n{font-size:12px;color:var(--muted)}
+.fullname{font-size:12px;color:var(--muted);margin:0 0 16px}
+
+.plist{display:grid;gap:12px;grid-template-columns:1fr}
+@media(min-width:900px){.plist{grid-template-columns:repeat(2,1fr)}}
+
+/* mini comparison strip inside a provision */
+.strip{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+.strip .sl{font-size:10.5px;color:var(--muted);margin-right:3px}
+.dot{
+  width:30px;height:20px;border-radius:3px;display:inline-flex;align-items:center;
+  justify-content:center;font-size:9.5px;font-weight:700;border:1px solid transparent;
+}
+
+/* 狭い画面ではマトリクスを詰めて、一度に見える法域を増やす */
+@media(max-width:560px){
+  .hwrap{padding:11px 14px 10px}
+  .brand h1{font-size:18px}
+  .brand .sub{font-size:11px}
+  .toolbar{margin-top:10px;gap:6px}
+  table.mx{min-width:512px}
+  table.mx thead th{font-size:11px;padding:8px 3px}
+  table.mx thead th:first-child{padding-left:10px}
+  table.mx tbody th{
+    min-width:134px;max-width:134px;font-size:11.5px;
+    padding:8px 7px 8px 10px;line-height:1.4;
+  }
+  .mxcell{padding:7px 2px}
+  .st{font-size:10.5px;padding:4px 6px}
+  .axhead{padding:15px 16px}
+  .axhead h2{font-size:20px}
+  .jcard{padding:14px}
+}
+
+.empty{padding:30px 16px;text-align:center;color:var(--muted);font-size:13.5px}
+footer{
+  max-width:var(--maxw);margin:0 auto;padding:22px 16px 40px;
+  border-top:1px solid var(--line);font-size:11.5px;color:var(--muted);line-height:1.8;
+}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:8px;top:8px;background:var(--gold);color:#1B1403;padding:8px 12px;z-index:99;border-radius:4px}
+</style>
+</head>
+<body>
+<a class="skip" href="#content">本文へ</a>
+
+<header>
+  <div class="hwrap">
+    <div class="brand">
+      <h1>教育データ情報法データベース</h1>
+      <span class="sub" id="subtitle"></span>
+    </div>
+    <div class="toolbar">
+      <div class="tabs" role="tablist" aria-label="表示モード">
+        <button class="tab" role="tab" id="tab-axis"  aria-selected="true"  onclick="App.setMode('axis')">論点で比較</button>
+        <button class="tab" role="tab" id="tab-inst"  aria-selected="false" onclick="App.setMode('inst')">法令別で読む</button>
+      </div>
+      <label class="search">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></svg>
+        <input id="q" type="search" placeholder="条文・論点・メモを検索" autocomplete="off" aria-label="検索">
+      </label>
+      <button class="iconbtn" id="vonly" aria-pressed="false" onclick="App.toggleVerified()">要検証のみ</button>
+      <button class="iconbtn" id="themebtn" onclick="App.toggleTheme()">配色</button>
+    </div>
+  </div>
+</header>
+
+<main id="content">
+  <p class="hint" id="hint"></p>
+
+  <div class="legend">
+    <span class="lab">凡例</span>
+    <span class="st st-explicit">明文の規定</span>
+    <span class="st st-partial">部分的・解釈</span>
+    <span class="st st-absent">規定なし</span>
+    <span class="st st-na">対象外</span>
+    <span class="st st-todo">未記入</span>
+    <span class="vflag">要検証</span>
+  </div>
+
+  <div id="view"></div>
+</main>
+
+<footer>
+  <div id="foot"></div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+(function(){
+'use strict';
+
+var DB = window.DB;
+var ST = {
+  explicit:{label:'明文の規定', short:'明文'},
+  partial: {label:'部分的・解釈', short:'部分'},
+  absent:  {label:'規定なし',    short:'なし'},
+  na:      {label:'対象外',      short:'対象外'},
+  todo:    {label:'未記入',      short:'未記入'}
+};
+
+/* ---------- helpers ---------- */
+function esc(s){
+  return String(s==null?'':s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+function byId(arr,id){ for(var i=0;i<arr.length;i++){ if(arr[i].id===id) return arr[i]; } return null; }
+function inst(id){ return byId(DB.instruments,id); }
+function axis(id){ return byId(DB.axes,id); }
+function jur(id){ return byId(DB.jurisdictions,id); }
+function prov(id){ return byId(DB.provisions,id); }
+function cell(axisId,jurId){
+  for(var i=0;i<DB.cells.length;i++){
+    if(DB.cells[i].axis===axisId && DB.cells[i].jur===jurId) return DB.cells[i];
+  }
+  return {axis:axisId,jur:jurId,status:'todo',summary:'',memo:'',refs:[]};
+}
+function stClass(s){ return 'st st-'+(ST[s]?s:'todo'); }
+function isVerified(o){ return o.verified !== false; }
+
+/* ---------- state ---------- */
+var S = { mode:'axis', axis:DB.axes[0].id, inst:DB.instruments[0].id, q:'', vonly:false };
+
+function matchText(o, parts){
+  var hay = parts.join(' ').toLowerCase();
+  var terms = S.q.toLowerCase().split(/\s+/).filter(Boolean);
+  for(var i=0;i<terms.length;i++){ if(hay.indexOf(terms[i])<0) return false; }
+  return true;
+}
+
+/* ---------- renderers ---------- */
+function badge(status){
+  var m = ST[status]||ST.todo;
+  return '<span class="'+stClass(status)+'">'+esc(m.label)+'</span>';
+}
+function vbadge(o){
+  return isVerified(o) ? '' : '<span class="vflag">要検証</span>';
+}
+
+function renderProvision(p, opts){
+  opts = opts||{};
+  var it = inst(p.inst) || {name:'?',jur:'',full:''};
+  var h = '<article class="prov">';
+  h += '<div class="ptop">';
+  h += '<span class="inst">'+esc(it.name)+'</span>';
+  h += '<span class="cite">'+esc(p.cite)+'</span>';
+  if(p.title) h += '<span class="ptitle">'+esc(p.title)+'</span>';
+  h += badge(p.status)+vbadge(p);
+  h += '</div>';
+  if(p.text) h += '<p class="text">'+esc(p.text)+'</p>';
+  if(p.memo) h += '<p class="memo">'+esc(p.memo)+'</p>';
+
+  if(opts.strip && p.axes && p.axes.length){
+    var a0 = p.axes[0];
+    h += '<div class="strip"><span class="sl">'+esc(axis(a0)?axis(a0).label:a0)+'：</span>';
+    for(var j=0;j<DB.jurisdictions.length;j++){
+      var jj = DB.jurisdictions[j], c = cell(a0, jj.id);
+      var m = ST[c.status]||ST.todo;
+      h += '<span class="dot '+stClass(c.status)+'" title="'+esc(jj.label+'：'+m.label)+'">'+esc(jj.short)+'</span>';
+    }
+    h += '</div>';
+  }
+
+  if(p.axes && p.axes.length){
+    h += '<div class="chips">';
+    for(var k=0;k<p.axes.length;k++){
+      var ax = axis(p.axes[k]);
+      if(!ax) continue;
+      h += '<button class="chip" onclick="App.goAxis(\''+esc(ax.id)+'\')">'+esc(ax.label)+'</button>';
+    }
+    h += '</div>';
+  }
+  if(p.src) h += '<a class="srcl" href="'+esc(p.src)+'" target="_blank" rel="noopener">出典を開く</a>';
+  h += '</article>';
+  return h;
+}
+
+function renderMatrix(){
+  var h = '<div class="mxbox"><table class="mx"><thead><tr><th scope="col">論点</th>';
+  for(var j=0;j<DB.jurisdictions.length;j++){
+    h += '<th scope="col">'+esc(DB.jurisdictions[j].label)+'</th>';
+  }
+  h += '</tr></thead><tbody>';
+
+  var shown = 0;
+  for(var a=0;a<DB.axes.length;a++){
+    var ax = DB.axes[a];
+    // search filter: keep the row if the axis or any of its cells match
+    var parts = [ax.label, ax.q||'', ax.thesis||''];
+    for(var jj=0;jj<DB.jurisdictions.length;jj++){
+      var c0 = cell(ax.id, DB.jurisdictions[jj].id);
+      parts.push(c0.summary||'', c0.memo||'');
+    }
+    if(S.q && !matchText(ax, parts)) continue;
+    shown++;
+
+    h += '<tr><th scope="row"><button onclick="App.goAxis(\''+esc(ax.id)+'\')">'+esc(ax.label)+'</button></th>';
+    for(var j2=0;j2<DB.jurisdictions.length;j2++){
+      var jd = DB.jurisdictions[j2], c = cell(ax.id, jd.id);
+      var m = ST[c.status]||ST.todo;
+      h += '<td><button class="mxcell" title="'+esc(jd.label+'：'+m.label)+'" '+
+           'onclick="App.goAxis(\''+esc(ax.id)+'\',\''+esc(jd.id)+'\')">'+
+           '<span class="'+stClass(c.status)+'">'+esc(m.short)+'</span></button></td>';
+    }
+    h += '</tr>';
+  }
+  h += '</tbody></table></div>';
+  if(!shown) h = '<div class="mxbox"><p class="empty">一致する論点がありません。</p></div>';
+  return h;
+}
+
+function renderAxisView(hlJur){
+  var ax = axis(S.axis) || DB.axes[0];
+  var h = renderMatrix();
+
+  h += '<section class="axhead">';
+  h += '<h2>'+esc(ax.label)+'</h2>';
+  if(ax.q) h += '<p class="q">'+esc(ax.q)+'</p>';
+  if(ax.thesis) h += '<p class="thesis"><b>本稿との接続　</b>'+esc(ax.thesis)+'</p>';
+  h += '</section>';
+
+  h += '<div class="grid5">';
+  for(var j=0;j<DB.jurisdictions.length;j++){
+    var jd = DB.jurisdictions[j], c = cell(ax.id, jd.id);
+    h += '<section class="jcard'+(hlJur===jd.id?' hl':'')+'">';
+    h += '<div class="top"><h3>'+esc(jd.label)+'</h3>'+badge(c.status)+vbadge(c)+'</div>';
+    h += '<p class="sum">'+(c.summary ? esc(c.summary) : '<em>未記入</em>')+'</p>';
+    if(c.memo) h += '<p class="memo">'+esc(c.memo)+'</p>';
+
+    var refs = (c.refs||[]);
+    if(refs.length){
+      h += '<ul class="refs">';
+      for(var r=0;r<refs.length;r++){
+        var p = prov(refs[r]);
+        if(!p) continue;
+        if(S.vonly && isVerified(p)) continue;
+        h += '<li>'+renderProvision(p)+'</li>';
+      }
+      h += '</ul>';
+    }
+    h += '</section>';
+  }
+  h += '</div>';
+  return h;
+}
+
+function renderInstView(){
+  var h = '<div class="ipick">';
+  for(var j=0;j<DB.jurisdictions.length;j++){
+    var jd = DB.jurisdictions[j];
+    h += '<div class="jgroup"><h4>'+esc(jd.label)+'</h4>';
+    for(var i=0;i<DB.instruments.length;i++){
+      var it = DB.instruments[i];
+      if(it.jur!==jd.id) continue;
+      var n = 0;
+      for(var p=0;p<DB.provisions.length;p++){ if(DB.provisions[p].inst===it.id) n++; }
+      h += '<button class="ibtn" aria-pressed="'+(S.inst===it.id)+'" onclick="App.goInst(\''+esc(it.id)+'\')">'+
+           esc(it.name)+'<span class="k">'+esc(it.kind)+'・'+n+'件</span></button>';
+    }
+    h += '</div>';
+  }
+  h += '</div>';
+
+  var cur = inst(S.inst) || DB.instruments[0];
+  // 検索語か「要検証のみ」が有効なときは全法令を横断する。
+  var across = !!(S.q || S.vonly);
+  var list = [];
+  for(var q=0;q<DB.provisions.length;q++){
+    var pr = DB.provisions[q];
+    var it2 = inst(pr.inst) || {name:'',full:''};
+    if(!across && pr.inst!==cur.id) continue;
+    if(S.vonly && isVerified(pr)) continue;
+    if(S.q && !matchText(pr,[pr.cite,pr.title||'',pr.text||'',pr.memo||'',it2.name,it2.full||''])) continue;
+    list.push(pr);
+  }
+
+  if(across){
+    var label = S.q ? ('「'+S.q+'」の検索結果') : '要検証の条文';
+    h += '<div class="sectionhead"><h2>'+esc(label)+'</h2><span class="n">'+list.length+' 件・全法令から</span></div>';
+    h += '<p class="fullname">検索語を消し、「要検証のみ」を解除すると、選択した法令の条文一覧に戻ります。</p>';
+  } else {
+    h += '<div class="sectionhead"><h2>'+esc(cur.name)+'</h2><span class="n">'+list.length+' 件</span></div>';
+    if(cur.full) h += '<p class="fullname">'+esc(cur.full)+'</p>';
+  }
+
+  if(!list.length){
+    h += '<p class="empty">該当する条文がありません。検索語や「要検証のみ」を外してみてください。</p>';
+  } else {
+    h += '<div class="plist">';
+    for(var m=0;m<list.length;m++) h += renderProvision(list[m],{strip:true});
+    h += '</div>';
+  }
+  return h;
+}
+
+/* ---------- app ---------- */
+var hlJur = null;
+
+function render(){
+  document.getElementById('tab-axis').setAttribute('aria-selected', S.mode==='axis');
+  document.getElementById('tab-inst').setAttribute('aria-selected', S.mode==='inst');
+  document.getElementById('view').innerHTML =
+    S.mode==='axis' ? renderAxisView(hlJur) : renderInstView();
+  hlJur = null;
+}
+
+function writeHash(){
+  var h = S.mode==='axis' ? ('#axis='+S.axis) : ('#inst='+S.inst);
+  if(location.hash !== h) history.replaceState(null,'',h);
+}
+function readHash(){
+  var m = /^#(axis|inst)=(.+)$/.exec(location.hash||'');
+  if(!m) return;
+  if(m[1]==='axis' && axis(m[2])){ S.mode='axis'; S.axis=m[2]; }
+  if(m[1]==='inst' && inst(m[2])){ S.mode='inst'; S.inst=m[2]; }
+}
+
+var App = {
+  setMode:function(m){ S.mode=m; writeHash(); render(); window.scrollTo(0,0); },
+  goAxis:function(id,j){
+    S.mode='axis'; S.axis=id; hlJur=j||null; writeHash(); render();
+    var el=document.querySelector('.axhead');
+    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+  },
+  goInst:function(id){ S.mode='inst'; S.inst=id; writeHash(); render(); },
+  toggleVerified:function(){
+    S.vonly=!S.vonly;
+    document.getElementById('vonly').setAttribute('aria-pressed',S.vonly);
+    render();
+  },
+  toggleTheme:function(){
+    var r=document.documentElement;
+    var cur=r.getAttribute('data-theme');
+    var dark = cur ? cur==='dark'
+      : (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    r.setAttribute('data-theme', dark ? 'light' : 'dark');
+  }
+};
+window.App = App;
+
+/* init */
+document.getElementById('subtitle').textContent = DB.meta.subtitle;
+document.getElementById('hint').textContent =
+  '論点を選ぶと5法域の規律を横に並べて比べられます。色は規律の強さ（明文／部分的／規定なし）を表します。'+
+  '法令別の表示では、条文ごとに他法域の状況を小さな帯で示します。';
+document.getElementById('foot').innerHTML =
+  esc(DB.meta.owner)+'　／　最終更新 '+esc(DB.meta.updated)+
+  '<br>'+esc(DB.meta.note)+
+  '<br>論点 '+DB.axes.length+' ・ 法令等 '+DB.instruments.length+' ・ 条文 '+DB.provisions.length+' 件';
+
+var qi = document.getElementById('q');
+var t=null;
+qi.addEventListener('input', function(){
+  clearTimeout(t);
+  t=setTimeout(function(){ S.q=qi.value.trim(); render(); }, 140);
+});
+window.addEventListener('hashchange', function(){ readHash(); render(); });
+
+readHash();
+render();
+})();
+</script>
+</body>
+</html>
