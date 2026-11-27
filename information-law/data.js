@@ -358,7 +358,9 @@ window.DB = {
    "axis": "purpose",
    "jur": "uk",
    "status": "explicit",
-   "refs": [],
+   "refs": [
+    "uk-gdpr-retained"
+   ],
    "summary": "UK GDPR 1条はEU GDPRを継承。DUAA 2025は「成長」を前面に出す方向で改正を加えた。",
    "verified": false
   },
@@ -388,7 +390,9 @@ window.DB = {
    "refs": [
     "jp-appi-2-13",
     "jp-appi-18-3",
-    "jp-mirai-57"
+    "jp-mirai-57",
+    "jp-appi-30-2",
+    "jp-appi-31-3"
    ],
    "summary": "令和8年改正が2条13項に「統計作成等」を定義し、同意なしの取得・提供を可能にした。要件は委員会規則に委ねられている。"
   },
@@ -540,7 +544,9 @@ window.DB = {
    "axis": "deleg",
    "jur": "eu",
    "status": "explicit",
-   "refs": [],
+   "refs": [
+    "eu-gdpr-92"
+   ],
    "summary": "委任法令・実施法令の制度が条約上整備され、委任の範囲・期間・撤回が各規則に明記される。",
    "verified": false
   },
@@ -549,7 +555,8 @@ window.DB = {
    "jur": "uk",
    "status": "explicit",
    "refs": [
-    "uk-duaa-86"
+    "uk-duaa-86",
+    "uk-gdpr-retained"
    ],
    "summary": "DUAA 2025は国務大臣への規則制定権を広く置きつつ、84C条のように実質要件を本文に書き込む形をとる。",
    "verified": false
@@ -580,7 +587,8 @@ window.DB = {
    "status": "absent",
    "refs": [
     "jp-std",
-    "jp-policy-1"
+    "jp-policy-1",
+    "jp-appi-2-3"
    ],
    "summary": "個情法に教育データの定義はない。文部科学省「教育データ標準」5.0版は行政文書であり法的定義ではない。"
   },
@@ -615,8 +623,7 @@ window.DB = {
    "jur": "kr",
    "status": "absent",
    "refs": [],
-   "summary": "PIPAに教育データの定義はない。",
-   "verified": false
+   "summary": "PIPAに教育データの定義はない。"
   },
   {
    "axis": "reident",
@@ -689,7 +696,9 @@ window.DB = {
    "axis": "erase",
    "jur": "uk",
    "status": "partial",
-   "refs": [],
+   "refs": [
+    "uk-gdpr-retained"
+   ],
    "summary": "UK GDPR 17条を継承。モデルへの反映の扱いは同様に未確立。",
    "verified": false
   },
@@ -717,9 +726,10 @@ window.DB = {
    "refs": [
     "jp-appi-146",
     "jp-appi-148",
-    "jp-appi-149"
+    "jp-appi-149",
+    "jp-appi-148-3"
    ],
-   "summary": "146〜148条が報告徴収・立入検査・指導助言・勧告・命令を置き、149条1項が学問の自由等への配慮を要求する。課徴金は非営利の教育機関に働きにくい。"
+   "summary": "146〜148条が報告徴収・立入検査・指導助言・勧告・命令を置き、149条1項が表現・学問・信教・政治活動の自由を妨げてはならないとする。令和8年改正で148条の3〜148条の17の課徴金が新設された。"
   },
   {
    "axis": "enforce",
@@ -734,9 +744,10 @@ window.DB = {
    "axis": "enforce",
    "jur": "uk",
    "status": "explicit",
-   "refs": [],
-   "summary": "DPA 2018 Part 6に基づきICOが執行する。制裁金の上限はUK GDPRが定める。",
-   "verified": false
+   "refs": [
+    "uk-dpa-part6"
+   ],
+   "summary": "DPA 2018 Part 6に基づきICOが執行する。制裁金の上限はUK GDPRが定める。"
   },
   {
    "axis": "enforce",
@@ -826,7 +837,9 @@ window.DB = {
    "axis": "minor",
    "jur": "uk",
    "status": "explicit",
-   "refs": [],
+   "refs": [
+    "uk-gdpr-retained"
+   ],
    "summary": "UK GDPR 8条で13歳。年齢適切設計規範（Age Appropriate Design Code）がある。",
    "verified": false
   },
@@ -854,23 +867,29 @@ window.DB = {
    "axis": "vendor",
    "jur": "jp",
    "status": "explicit",
-   "refs": [],
-   "summary": "27条が第三者提供に本人同意を原則とし、27条5項1号により委託に伴う提供は第三者提供にあたらないとされる。25条が委託先の監督を求める。",
-   "verified": false
+   "refs": [
+    "jp-appi-25",
+    "jp-appi-27",
+    "jp-appi-30-2"
+   ],
+   "summary": "27条が第三者提供に本人同意を原則とし、27条5項1号により委託に伴う提供は第三者提供にあたらないとされる。25条が委託先の監督を求める。"
   },
   {
    "axis": "vendor",
    "jur": "eu",
    "status": "explicit",
-   "refs": [],
-   "summary": "28条が処理者（processor）との契約に必須記載事項を定め、26条が共同管理者を規律する。委託という独立の概念はなく、管理者／処理者の区別で処理される。",
-   "verified": false
+   "refs": [
+    "eu-gdpr-28"
+   ],
+   "summary": "28条が処理者（processor）との契約に必須記載事項を定め、26条が共同管理者を規律する。委託という独立の概念はなく、管理者／処理者の区別で処理される。"
   },
   {
    "axis": "vendor",
    "jur": "uk",
    "status": "explicit",
-   "refs": [],
+   "refs": [
+    "uk-gdpr-retained"
+   ],
    "summary": "UK GDPR 28条を継承する。",
    "verified": false
   },
@@ -888,31 +907,36 @@ window.DB = {
    "axis": "vendor",
    "jur": "kr",
    "status": "explicit",
-   "refs": [],
-   "summary": "PIPA 26条が業務委託を規律し、委託者の管理・監督義務と委託事実の公開を求める。",
-   "verified": false
+   "refs": [
+    "kr-pipa-26"
+   ],
+   "summary": "PIPA 26条が業務委託を規律し、委託者の管理・監督義務と委託事実の公開を求める。"
   },
   {
    "axis": "transfer",
    "jur": "jp",
    "status": "explicit",
-   "refs": [],
-   "summary": "28条が外国にある第三者への提供を制限し、本人の同意、基準適合体制の整備、又は規則で定める国のいずれかを要求する。",
-   "verified": false
+   "refs": [
+    "jp-appi-28"
+   ],
+   "summary": "28条が外国にある第三者への提供を制限し、本人の同意、基準適合体制の整備、又は規則で定める国のいずれかを要求する。"
   },
   {
    "axis": "transfer",
    "jur": "eu",
    "status": "explicit",
-   "refs": [],
-   "summary": "44条〜49条が十分性認定、適切な保護措置（標準契約条項等）、個別の適用除外という三層で規律する。日本は十分性認定国。",
-   "verified": false
+   "refs": [
+    "eu-gdpr-44"
+   ],
+   "summary": "44条〜49条が十分性認定、適切な保護措置（標準契約条項等）、個別の適用除外という三層で規律する。日本は十分性認定国。"
   },
   {
    "axis": "transfer",
    "jur": "uk",
    "status": "explicit",
-   "refs": [],
+   "refs": [
+    "uk-transfer"
+   ],
    "summary": "UK GDPR 44条以下を継承し、英国独自の adequacy regulations と国際データ移転協定（IDTA）による。",
    "verified": false
   },
@@ -928,9 +952,10 @@ window.DB = {
    "axis": "transfer",
    "jur": "kr",
    "status": "explicit",
-   "refs": [],
-   "summary": "PIPA 28条の8以下が国外移転を規律し、同意・法律の定め・認証等の根拠を要求する。移転の中止命令の制度もある。",
-   "verified": false
+   "refs": [
+    "kr-pipa-28-8"
+   ],
+   "summary": "PIPA 28条の8以下が国外移転を規律し、同意・法律の定め・認証等の根拠を要求する。移転の中止命令の制度もある。"
   },
   {
    "axis": "consent",
@@ -944,15 +969,19 @@ window.DB = {
    "axis": "consent",
    "jur": "eu",
    "status": "explicit",
-   "refs": [],
-   "summary": "4条(11)が同意を「自由に与えられた」ものと定義し、7条4項が条件性を戒める。前文43は公的機関との関係など明らかな不均衡がある場合、同意は有効な法的根拠にならないとする。",
-   "verified": false
+   "refs": [
+    "eu-gdpr-4-11",
+    "eu-gdpr-7-4"
+   ],
+   "summary": "4条(11)が同意を「自由に与えられた」ものと定義し、7条4項が条件性を戒める。前文43は公的機関との関係など明らかな不均衡がある場合、同意は有効な法的根拠にならないとする。"
   },
   {
    "axis": "consent",
    "jur": "uk",
    "status": "explicit",
-   "refs": [],
+   "refs": [
+    "uk-gdpr-retained"
+   ],
    "summary": "UK GDPR 4条(11)・7条を継承する。",
    "verified": false
   },
@@ -989,10 +1018,10 @@ window.DB = {
    "status": "explicit",
    "refs": [
     "eu-gdpr-5-1b",
-    "eu-gdpr-89"
+    "eu-gdpr-89",
+    "eu-gdpr-9"
    ],
-   "summary": "5条1項(b)が研究目的の追加処理を目的外としないとし、89条が保障措置を要求、9条2項(j)が特別カテゴリの例外を置く。",
-   "verified": false
+   "summary": "5条1項(b)が研究目的の追加処理を目的外としないとし、89条が保障措置を要求、9条2項(j)が特別カテゴリの例外を置く。"
   },
   {
    "axis": "academic",
@@ -1028,25 +1057,29 @@ window.DB = {
    "axis": "proctor",
    "jur": "jp",
    "status": "partial",
-   "refs": [],
-   "summary": "試験監視に固有の規律はない。生体データは要配慮個人情報（2条3項）ではなく個人識別符号（2条2項）として扱われる。",
-   "verified": false
+   "refs": [
+    "jp-appi-2-2",
+    "jp-appi-2-3"
+   ],
+   "summary": "試験監視に固有の規律はない。生体データは要配慮個人情報（2条3項）ではなく個人識別符号（2条2項）として扱われる。"
   },
   {
    "axis": "proctor",
    "jur": "eu",
    "status": "explicit",
    "refs": [
-    "eu-aiact-annex3"
+    "eu-aiact-annex3",
+    "eu-gdpr-9"
    ],
-   "summary": "GDPR 9条が生体データを特別カテゴリとし、AI法附属書III 3(d)が試験中の禁止行為の監視・検知を高リスクに、同1が生体認証を高リスクに分類する。",
-   "verified": false
+   "summary": "GDPR 9条が生体データを特別カテゴリとし、AI法附属書III 3(d)が試験中の禁止行為の監視・検知を高リスクに、同1が生体認証を高リスクに分類する。"
   },
   {
    "axis": "proctor",
    "jur": "uk",
    "status": "explicit",
-   "refs": [],
+   "refs": [
+    "uk-gdpr-retained"
+   ],
    "summary": "UK GDPR 9条とDPA 2018 Schedule 1が特別カテゴリを規律する。AI法に相当する横断法はない。",
    "verified": false
   },
@@ -1062,9 +1095,10 @@ window.DB = {
    "axis": "proctor",
    "jur": "kr",
    "status": "explicit",
-   "refs": [],
-   "summary": "PIPA 23条の민감정보（センシティブ情報）に生体認識情報が含まれる。",
-   "verified": false
+   "refs": [
+    "kr-pipa-23"
+   ],
+   "summary": "23条が민감정보（センシティブ情報）の処理を原則禁止し、別個の同意等を要求する。ただし範囲は大統領令に委任されており、条文に生体認識情報の語はない。"
   }
  ],
  "provisions": [
@@ -1096,15 +1130,56 @@ window.DB = {
    "id": "jp-appi-2-13",
    "inst": "jp-appi",
    "cite": "2条13項",
-   "title": "統計作成等（令和8年改正による新設）",
+   "title": "統計作成等（令和8年法律第56号による新設）",
    "axes": [
     "stat",
     "deleg"
    ],
    "status": "explicit",
-   "verified": false,
-   "src": "https://laws.e-gov.go.jp/law/415AC0000000057",
-   "text": "（令和8年改正により新設）…個人の権利利益を害するおそれが少ないものとして個人情報保護委員会規則で定めるもの"
+   "verified": true,
+   "src": "https://www.shugiin.go.jp/internet/itdb_housei.nsf/html/housei/22120260717056.htm",
+   "text": "統計の作成その他の大量の情報から当該情報を構成する要素に係る情報を抽出して分類、比較その他の解析を行うことにより、大量の情報の傾向又は性質に係る情報（個人に関する情報であるものを除く。）を得ることであって、個人の権利利益を害するおそれが少ないものとして個人情報保護委員会規則で定めるものをいう。"
+  },
+  {
+   "id": "jp-appi-30-2",
+   "inst": "jp-appi",
+   "cite": "30条の2",
+   "title": "統計作成等の特例（要配慮個人情報の取得・個人データの提供）",
+   "axes": [
+    "stat",
+    "vendor"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "src": "https://www.shugiin.go.jp/internet/itdb_housei.nsf/html/housei/22120260717056.htm",
+   "text": "1項 統計作成等目的等のために、現に公開されている要配慮個人情報を取り扱う必要があり、①氏名又は名称、②統計作成等の内容又は提供目的、③規則で定める事項を公表している場合。／5項 提供先が統計作成等目的で取り扱う必要があり、提供元・提供先の双方が所定事項を公表し、両者間で書面（電磁的記録を含む）により合意している場合。本特例による二段階以上の提供は禁止。"
+  },
+  {
+   "id": "jp-appi-31-3",
+   "inst": "jp-appi",
+   "cite": "31条の3第1項",
+   "title": "統計作成等の特例（個人関連情報の第三者提供）",
+   "axes": [
+    "stat",
+    "vendor"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "src": "https://www.shugiin.go.jp/internet/itdb_housei.nsf/html/housei/22120260717056.htm",
+   "text": "30条の2第5項とほぼ同じ構成で、提供元が本人同意の確認を行わずに個人関連情報を提供できる要件（統計作成等目的、双方の公表、書面合意、二段階提供の禁止）を定める。"
+  },
+  {
+   "id": "jp-appi-148-3",
+   "inst": "jp-appi",
+   "cite": "148条の3〜148条の17",
+   "title": "課徴金（令和8年法律第56号による新設）",
+   "axes": [
+    "enforce"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "src": "https://www.ppc.go.jp/files/pdf/260407_kisyahaifusiryou.pdf",
+   "text": "重大な違反行為により個人の権利利益が侵害された場合等に、違反行為によって得られた財産的利益等に相当する額の納付を命じる。対象は19条（不適正利用）、20条1項（適正取得）、27条1項（第三者提供制限）の違反および統計作成等の特例違反。大規模事案は対象行為に係る本人の数1,000人が基準とされる。"
   },
   {
    "id": "jp-appi-18-3",
@@ -1119,6 +1194,73 @@ window.DB = {
    "verified": true,
    "src": "https://www.japaneselawtranslation.go.jp/en/laws/view/4241/ja",
    "text": "5号 学術研究機関等である個人情報取扱事業者が、学術研究目的で個人情報を取り扱う必要があるとき（個人の権利利益を不当に侵害するおそれがある場合を除く）。／6号 個人データを学術研究機関等に提供する場合で、提供先が学術研究目的で取り扱う必要があるとき（同じ除外あり）。"
+  },
+  {
+   "id": "jp-appi-2-2",
+   "inst": "jp-appi",
+   "cite": "2条2項",
+   "title": "個人識別符号",
+   "axes": [
+    "proctor",
+    "eddata"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "src": "https://www.japaneselawtranslation.go.jp/en/laws/view/4241/ja",
+   "text": "1号 特定の個人の身体の一部の特徴を電子計算機の用に供するために変換した文字、番号、記号その他の符号であって、当該特定の個人を識別することができるもの。／2号 個人に割り当てられ、又はカード等に記載された、利用者ごとに異なる符号。いずれも政令で定めるもの。"
+  },
+  {
+   "id": "jp-appi-2-3",
+   "inst": "jp-appi",
+   "cite": "2条3項",
+   "title": "要配慮個人情報",
+   "axes": [
+    "proctor",
+    "eddata"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "src": "https://www.japaneselawtranslation.go.jp/en/laws/view/4241/ja",
+   "text": "本人の人種、信条、社会的身分、病歴、犯罪の経歴、犯罪により害を被った事実その他本人に対する不当な差別、偏見その他の不利益が生じないようにその取扱いに特に配慮を要するものとして政令で定める記述等が含まれる個人情報をいう。"
+  },
+  {
+   "id": "jp-appi-25",
+   "inst": "jp-appi",
+   "cite": "25条",
+   "title": "委託先の監督",
+   "axes": [
+    "vendor"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "src": "https://www.japaneselawtranslation.go.jp/en/laws/view/4241/ja",
+   "text": "個人情報取扱事業者は、個人データの取扱いの全部又は一部を委託する場合は、その取扱いを委託された個人データの安全管理が図られるよう、委託を受けた者に対する必要かつ適切な監督を行わなければならない。"
+  },
+  {
+   "id": "jp-appi-27",
+   "inst": "jp-appi",
+   "cite": "27条1項・5項1号",
+   "title": "第三者提供の制限",
+   "axes": [
+    "vendor"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "src": "https://www.japaneselawtranslation.go.jp/en/laws/view/4241/ja",
+   "text": "1項柱書 個人情報取扱事業者は、法令に基づく場合等を除くほか、あらかじめ本人の同意を得ないで、個人データを第三者に提供してはならない。／5項1号 利用目的の達成に必要な範囲内において個人データの取扱いの全部又は一部を委託することに伴って当該個人データが提供される場合、その提供先は第三者に当たらない。"
+  },
+  {
+   "id": "jp-appi-28",
+   "inst": "jp-appi",
+   "cite": "28条1項",
+   "title": "外国にある第三者への提供の制限",
+   "axes": [
+    "transfer"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "src": "https://www.japaneselawtranslation.go.jp/en/laws/view/4241/ja",
+   "text": "個人情報取扱事業者は、外国にある第三者に個人データを提供する場合には、あらかじめ外国にある第三者への提供を認める旨の本人の同意を得なければならない。委員会規則で定める水準にある国にある第三者、及び基準に適合する体制を整備している者は除く。"
   },
   {
    "id": "jp-appi-19",
@@ -1288,14 +1430,15 @@ window.DB = {
   {
    "id": "jp-mirai-57",
    "inst": "jp-mirai",
-   "cite": "57条1項",
-   "title": "認定事業者への提供（オプトアウト）",
+   "cite": "52条1項・57条1項",
+   "title": "医療情報取扱事業者による医療情報の提供",
    "axes": [
     "stat"
    ],
    "status": "explicit",
-   "verified": false,
-   "text": "医療情報取扱事業者は、本人又は遺族の求めがない場合、あらかじめ本人の同意を得ずに認定事業者へ医療情報を提供できる。"
+   "verified": true,
+   "src": "https://www.japaneselawtranslation.go.jp/ja/laws/view/4845/ja",
+   "text": "52条1項が認定匿名加工医療情報作成事業者への、57条1項が認定仮名加工医療情報作成事業者への提供を定める。いずれも、本人又は遺族の求めに応じて提供を停止する仕組みを前提に、所定事項をあらかじめ本人に通知し主務大臣に届け出た場合に、本人の同意なく提供できる。停止の仕組みは52条1項6号。"
   },
   {
    "id": "jp-policy-1",
@@ -1348,6 +1491,72 @@ window.DB = {
    "verified": true,
    "src": "https://www.legislation.gov.uk/eur/2016/679/article/1/adopted",
    "text": "2項 本規則は、自然人の基本的な権利及び自由、特に個人データの保護についての権利を保護する。／3項 個人データの自由な流通は、制限されてはならない。"
+  },
+  {
+   "id": "eu-gdpr-4-11",
+   "inst": "eu-gdpr",
+   "cite": "4条(11)",
+   "title": "Definitions ──「consent」の定義",
+   "axes": [
+    "consent"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "src": "https://www.legislation.gov.uk/eur/2016/679/article/4/adopted",
+   "text": "本人の「同意」とは、自由に与えられ、特定され、情報提供を受けた上での、曖昧さのない意思表示であって、言明又は明確な積極的行為により、自己に関する個人データの取扱いへの同意を示すものをいう。"
+  },
+  {
+   "id": "eu-gdpr-7-4",
+   "inst": "eu-gdpr",
+   "cite": "7条4項",
+   "title": "Conditions for consent（同意の条件）",
+   "axes": [
+    "consent"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "src": "https://www.legislation.gov.uk/eur/2016/679/article/7/adopted",
+   "text": "同意が自由に与えられたかを評価するに当たっては、とりわけ、契約（サービスの提供を含む）の履行が、その契約の履行に必要でない個人データの取扱いへの同意に条件付けられているか否かを、最大限考慮しなければならない。"
+  },
+  {
+   "id": "eu-gdpr-9",
+   "inst": "eu-gdpr",
+   "cite": "9条1項・2項(j)",
+   "title": "Processing of special categories of personal data",
+   "axes": [
+    "proctor",
+    "academic"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "src": "https://www.legislation.gov.uk/eur/2016/679/article/9/adopted",
+   "text": "1項 人種的又は民族的出自、政治的意見、宗教的又は思想的信条、労働組合への加入、遺伝データ、自然人を一意に識別する目的の生体データ、健康に関するデータ、性生活又は性的指向に関するデータの取扱いは禁止される。／2項(j) 89条1項に基づく措置を伴う、公共の利益におけるアーカイブ目的、科学的・歴史的研究目的又は統計目的の取扱いは例外となる。"
+  },
+  {
+   "id": "eu-gdpr-28",
+   "inst": "eu-gdpr",
+   "cite": "28条1項・3項",
+   "title": "Processor（処理者）",
+   "axes": [
+    "vendor"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "src": "https://www.legislation.gov.uk/eur/2016/679/article/28/adopted",
+   "text": "1項 管理者は、本規則の要件を満たしデータ主体の権利を保護する適切な技術的・組織的措置を実施できる十分な保証を提供する処理者のみを利用しなければならない。／3項柱書 処理者による取扱いは、取扱いの対象事項・期間・性質・目的、個人データの種類とデータ主体の類型、管理者の義務と権利を定める契約その他の法的行為によって規律されなければならない。"
+  },
+  {
+   "id": "eu-gdpr-44",
+   "inst": "eu-gdpr",
+   "cite": "44条〜46条",
+   "title": "Transfers of personal data to third countries（第三国への移転）",
+   "axes": [
+    "transfer"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "src": "https://www.legislation.gov.uk/eur/2016/679/article/44/adopted",
+   "text": "44条（移転に関する一般原則）第三国又は国際機関への移転は、本章の条件を管理者と処理者が満たす場合にのみ行うことができ、自然人に保障される保護水準が損なわれないよう適用しなければならない。／45条 十分性認定に基づく移転。／46条 適切な保護措置を条件とする移転。"
   },
   {
    "id": "eu-gdpr-5-1b",
@@ -1539,6 +1748,64 @@ window.DB = {
    "text": "3項 承認された医学研究を除き、特定のデータ主体に関する措置又は決定を目的とする処理は、本条の保障措置に適合しない。"
   },
   {
+   "id": "uk-gdpr-retained",
+   "inst": "uk-gdpr",
+   "cite": "（全体）",
+   "title": "UK GDPR ── EU GDPRの承継",
+   "axes": [
+    "purpose",
+    "consent",
+    "vendor",
+    "proctor",
+    "minor",
+    "erase",
+    "deleg"
+   ],
+   "status": "explicit",
+   "verified": false,
+   "src": "https://www.legislation.gov.uk/eur/2016/679/contents",
+   "text": "UK GDPRはEU GDPRを国内法化して承継したもので、1条（目的）、4条(11)・7条（同意）、8条（子どもの同意。英国は13歳）、9条（特別カテゴリ）、17条（消去権）、28条（処理者）などの条文構成をそのまま引き継ぐ。legislation.gov.uk は同じ条番号で現行の英国版と採択時のEU原文の双方を提供する。"
+  },
+  {
+   "id": "uk-transfer",
+   "inst": "uk-gdpr",
+   "cite": "44条以下",
+   "title": "国際移転（英国版）",
+   "axes": [
+    "transfer"
+   ],
+   "status": "explicit",
+   "verified": false,
+   "src": "https://www.legislation.gov.uk/eur/2016/679/contents",
+   "text": "UK GDPR 44条以下を承継しつつ、十分性の判断は英国独自の adequacy regulations により、適切な保護措置の標準文書として国際データ移転協定（IDTA）及び英国付加文書が用いられる。"
+  },
+  {
+   "id": "uk-dpa-part6",
+   "inst": "uk-dpa",
+   "cite": "Part 6",
+   "title": "Enforcement（執行）",
+   "axes": [
+    "enforce"
+   ],
+   "status": "explicit",
+   "verified": false,
+   "src": "https://www.legislation.gov.uk/ukpga/2018/12",
+   "text": "DPA 2018 第6部が情報コミッショナー（ICO）による執行を定め、情報通知・評価通知・執行通知・制裁金通知の権限を置く。制裁金の上限はUK GDPRが定める。"
+  },
+  {
+   "id": "eu-gdpr-92",
+   "inst": "eu-gdpr",
+   "cite": "92条",
+   "title": "Exercise of the delegation（委任の行使）",
+   "axes": [
+    "deleg"
+   ],
+   "status": "explicit",
+   "verified": false,
+   "src": "https://www.legislation.gov.uk/eur/2016/679/article/92/adopted",
+   "text": "委任法令を採択する権限の行使条件を定め、委任の期間、理事会・議会による撤回、異議申立ての手続を置く。"
+  },
+  {
    "id": "uk-dpa-171",
    "inst": "uk-dpa",
    "cite": "s.171",
@@ -1676,6 +1943,45 @@ window.DB = {
    "text": "この法律は、個人情報の処理及び保護に関する事項を定めることにより、個人の自由と権利を保護し、さらに個人の尊厳と価値を具現することを目的とする。"
   },
   {
+   "id": "kr-pipa-23",
+   "inst": "kr-pipa",
+   "cite": "23条",
+   "title": "민감정보의 처리 제한（センシティブ情報の処理制限）",
+   "axes": [
+    "proctor"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "src": "https://elaw.klri.re.kr/eng_service/lawViewContent.do?hseq=62389",
+   "text": "1項 思想・信条、労働組合や政党への加入・脱退、政治的見解、健康、性生活等に関する情報その他情報主体の私生活を著しく侵害するおそれのある個人情報であって大統領令で定めるものの処理を原則として禁止する。例外は、他の個人情報の処理への同意とは別個に同意を得た場合、及び他の法令が要求又は許容する場合。"
+  },
+  {
+   "id": "kr-pipa-26",
+   "inst": "kr-pipa",
+   "cite": "26条",
+   "title": "Restriction on Personal Information Processing Subsequent to Entrustment of Work（業務委託）",
+   "axes": [
+    "vendor"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "src": "https://elaw.klri.re.kr/eng_service/lawViewContent.do?hseq=62389",
+   "text": "1項 委託は文書により行い、他目的での処理の防止、技術的・管理的保護措置等を記載する。／2項 委託業務の内容と受託者を、情報主体がいつでも容易に確認できる方法で公開する。／4項 受託者を教育し、処理状況の点検等により監督する。／5項・6項 受託者は委託範囲外の利用・第三者提供を禁じられ、再委託には委託者の同意を要する。／7項 受託者が法に違反して生じた損害については、受託者を委託者の被用者とみなす。"
+  },
+  {
+   "id": "kr-pipa-28-8",
+   "inst": "kr-pipa",
+   "cite": "28条の8",
+   "title": "Cross-Border Transfer of Personal Information（国外移転）",
+   "axes": [
+    "transfer"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "src": "https://elaw.klri.re.kr/eng_service/lawViewContent.do?hseq=62389",
+   "text": "1項 国外への提供（照会を含む）、業務委託処理、保管を原則として禁止し、次の場合に認める。1号 情報主体から別途の同意を得た場合、2号 法律又は条約に特別の規定がある場合、3号 情報主体との契約の締結・履行に必要な場合（プライバシーポリシーでの開示又は通知が条件）、4号 保護委員会が認定した認証を受け必要な保護措置を講じた場合、5号 委員会が移転先の保護水準を実質的に同等と認めた場合。"
+  },
+  {
    "id": "kr-pipa-28-2",
    "inst": "kr-pipa",
    "cite": "28条の2",
@@ -1755,25 +2061,27 @@ window.DB = {
    "id": "kr-pipa-fine",
    "inst": "kr-pipa",
    "cite": "64条の2",
-   "title": "課徴金の賦課",
+   "title": "Imposition of Penalty Surcharges（課徴金の賦課）",
    "axes": [
     "enforce"
    ],
    "status": "explicit",
-   "verified": false,
-   "text": "全体売上高の100分の3を超えない範囲で課徴金を賦課できる。売上高がない又は算定が困難な場合は20億ウォンを超えない範囲。2023年3月14日新設。"
+   "verified": true,
+   "src": "https://elaw.klri.re.kr/eng_service/lawViewContent.do?hseq=62389",
+   "text": "1項 保護委員会は、各号のいずれかに該当する場合、全体売上高の100分の3を超えない範囲で課徴金を賦課することができる。売上高がない場合又は売上高の算定が困難な場合として大統領令で定める場合は、20億ウォンを超えない課徴金を賦課することができる。対象となる違反類型は1項1号〜9号。"
   },
   {
    "id": "kr-pipa-child",
    "inst": "kr-pipa",
-   "cite": "22条の2第1項",
-   "title": "児童の個人情報",
+   "cite": "22条の2",
+   "title": "아동의 개인정보 보호（児童の個人情報の保護）",
    "axes": [
     "minor"
    ],
    "status": "explicit",
-   "verified": false,
-   "text": "満14歳未満の児童の個人情報を処理するには、法定代理人の同意を得なければならない。"
+   "verified": true,
+   "src": "https://elaw.klri.re.kr/eng_service/lawViewContent.do?hseq=62389",
+   "text": "1項 満14歳未満の児童の個人情報の処理に同意が必要な場合は、法定代理人の同意を得て、その同意の有無を確認しなければならない。／2項 法定代理人の同意を得るために必要な最小限の情報は、法定代理人の同意なく児童から直接収集できる。／3項 満14歳未満の児童に処理に関する事項を知らせるときは、児童が容易に理解できる形式と言語を用いなければならない。"
   },
   {
    "id": "kr-ai-high",
