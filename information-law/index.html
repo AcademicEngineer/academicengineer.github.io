@@ -159,6 +159,21 @@ table.mx tbody th button:hover{text-decoration-color:var(--gold)}
 }
 .thesis b{color:var(--gold-d)}
 
+/* 論点ごとの「日本と海外の比較」要約 */
+.cmp{
+  background:var(--text-bg);border:1px solid var(--line);
+  border-left:4px solid var(--gold);border-radius:0 4px 4px 0;
+  padding:13px 15px;margin:0 0 11px;
+}
+.cmp h3{
+  font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--gold-d);
+  margin:0 0 6px;
+}
+.cmp p{
+  font-size:14px;line-height:1.95;color:var(--ink);margin:0;
+  font-family:'Noto Serif JP',Georgia,serif;
+}
+
 .grid5{display:grid;gap:14px;grid-template-columns:1fr;margin-bottom:28px}
 @media(min-width:760px){.grid5{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1120px){.grid5{grid-template-columns:repeat(3,1fr)}}
@@ -191,6 +206,29 @@ table.mx tbody th button:hover{text-decoration-color:var(--gold)}
   font-family:'Noto Serif JP',Georgia,serif;font-size:14px;line-height:1.95;
   color:var(--ink);margin:0;padding:11px 13px;background:var(--text-bg);
   border:1px solid var(--line-2);border-radius:4px;
+}
+/* 条文全文（原文） */
+.fullwrap{margin:0}
+.fullwrap > summary{
+  cursor:pointer;font-size:11.5px;font-weight:700;letter-spacing:.06em;
+  color:var(--gold-d);list-style:none;padding:3px 0;
+}
+.fullwrap > summary::-webkit-details-marker{display:none}
+.fullwrap > summary::before{content:'▸ ';font-weight:400}
+.fullwrap[open] > summary::before{content:'▾ '}
+.prov .full{
+  font-family:'Noto Serif JP',Georgia,serif;font-size:13.5px;line-height:2.0;
+  color:var(--ink);margin:6px 0 0;padding:12px 14px;background:var(--text-bg);
+  border:1px solid var(--line);border-radius:4px;
+  white-space:pre-wrap;overflow-wrap:break-word;
+}
+.prov .full.en{font-family:Georgia,'Times New Roman',serif;line-height:1.85}
+.prov .flab{
+  font-size:10.5px;font-weight:700;letter-spacing:.08em;color:var(--muted);
+  display:block;margin:9px 0 0;
+}
+.prov .nofull{
+  font-size:11.5px;color:var(--gold-d);margin:0;
 }
 .chips{display:flex;gap:5px;flex-wrap:wrap}
 .chip{
@@ -385,6 +423,27 @@ function vbadge(o){
   return isVerified(o) ? '' : '<span class="vflag">要検証</span>';
 }
 
+// 条文の全文。原文（日本法は日本語、EU・英米は英語、韓国は韓国語）と、あれば公式英訳。
+function renderFull(p){
+  var hasJa = !!p.full, hasEn = !!p.fullEn;
+  if(!hasJa && !hasEn){
+    // overview は単一の条文ではない項目（標準・規則全体の概要など）
+    if(p.overview) return '';
+    return '<p class="nofull">条文全文は未取得です。出典のリンクから原典をご確認ください。</p>';
+  }
+  var body = '';
+  if(hasJa){
+    var lat = /^[\x00-\x7F\s]*$/.test(p.full.slice(0, 80));
+    if(hasEn) body += '<span class="flab">原文</span>';
+    body += '<p class="full'+(lat?' en':'')+'">'+esc(p.full)+'</p>';
+  }
+  if(hasEn){
+    body += '<span class="flab">公式英訳</span>';
+    body += '<p class="full en">'+esc(p.fullEn)+'</p>';
+  }
+  return '<details class="fullwrap" open><summary>条文全文</summary>'+body+'</details>';
+}
+
 function renderProvision(p, opts){
   opts = opts||{};
   var it = inst(p.inst) || {name:'?',jur:'',full:'',src:''};
@@ -396,6 +455,7 @@ function renderProvision(p, opts){
   h += badge(p.status)+vbadge(p);
   h += '</div>';
   if(p.text) h += '<p class="text">'+esc(p.text)+'</p>';
+  h += renderFull(p);
   if(p.memo) h += '<p class="memo">'+esc(p.memo)+'</p>';
 
   if(opts.strip && p.axes && p.axes.length){
@@ -439,7 +499,7 @@ function renderMatrix(){
   for(var a=0;a<DB.axes.length;a++){
     var ax = DB.axes[a];
     // search filter: keep the row if the axis or any of its cells match
-    var parts = [ax.label, ax.q||'', ax.thesis||''];
+    var parts = [ax.label, ax.q||'', ax.compare||'', ax.thesis||''];
     for(var jj=0;jj<DB.jurisdictions.length;jj++){
       var c0 = cell(ax.id, DB.jurisdictions[jj].id);
       parts.push(c0.summary||'', c0.memo||'');
@@ -469,6 +529,7 @@ function renderAxisView(hlJur){
   h += '<section class="axhead">';
   h += '<h2>'+esc(ax.label)+'</h2>';
   if(ax.q) h += '<p class="q">'+esc(ax.q)+'</p>';
+  if(ax.compare) h += '<div class="cmp"><h3>日本と海外の比較</h3><p>'+esc(ax.compare)+'</p></div>';
   if(ax.thesis) h += '<p class="thesis"><b>本稿との接続　</b>'+esc(ax.thesis)+'</p>';
   h += '</section>';
 
@@ -523,7 +584,7 @@ function renderInstView(){
     var it2 = inst(pr.inst) || {name:'',full:''};
     if(!across && pr.inst!==cur.id) continue;
     if(S.vonly && isVerified(pr)) continue;
-    if(S.q && !matchText(pr,[pr.cite,pr.title||'',pr.text||'',pr.memo||'',it2.name,it2.full||''])) continue;
+    if(S.q && !matchText(pr,[pr.cite,pr.title||'',pr.text||'',pr.full||'',pr.fullEn||'',pr.memo||'',it2.name,it2.full||''])) continue;
     list.push(pr);
   }
 
