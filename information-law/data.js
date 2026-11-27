@@ -307,7 +307,7 @@ window.DB = {
    "jur": "kr",
    "kind": "法律",
    "name": "韓国AI基本法",
-   "full": "인공지능 발전과 신뢰 기반 조성 등에 관한 기본법（AI基本法・法律第20676号／2025年1月21日公布・2026年1月22日施行）",
+   "full": "인공지능 발전과 신뢰 기반 조성 등에 관한 기본법（AI基本法・原法は法律第20676号／2025年1月21日公布・2026年1月22日施行。法律第22076号による一部改正が2026年10月20日公布・2027年4月21日施行予定）",
    "src": "https://www.law.go.kr/lsInfoP.do?lsiSeq=291229"
   }
  ],
@@ -570,7 +570,7 @@ window.DB = {
    "jur": "uk",
    "status": "partial",
    "refs": [],
-   "summary": "DPA 2018が自動化決定の規律を置くが、DUAA 2025が要件を緩和する方向で改正した。",
+   "summary": "UK GDPRには英国独自の22A条〜22D条が置かれ、EU GDPR 22条をそのまま継承していない。DUAA 2025がこの領域を改正した。",
    "verified": false
   },
   {
@@ -1083,8 +1083,7 @@ window.DB = {
     "jp-appi-59",
     "jp-appi-57"
    ],
-   "summary": "18条3項5号6号・20条2項5号6号・27条1項5〜7号が学術研究目的の例外を置き、57条が一定の主体を適用除外とし、59条が責務を定める。いずれも「学術研究目的」に限られる。",
-   "verified": false
+   "summary": "18条3項5号6号・20条2項5号6号・27条1項5〜7号が学術研究目的の個別例外を置き、59条が学術研究機関等の責務を定める。いずれも「学術研究目的」に限られる。57条の適用除外は報道・著述・宗教・政治の4類型であり、学術研究機関等は含まれない。"
   },
   {
    "axis": "academic",
@@ -1576,16 +1575,16 @@ window.DB = {
   {
    "id": "jp-dpf-cert",
    "inst": "jp-dpf",
-   "cite": "（認定制度）",
+   "cite": "（情報処理促進法施行規則）",
    "title": "公益デジタルプラットフォーム運営事業者認定制度",
    "axes": [
     "infra",
     "vendor"
    ],
    "status": "partial",
-   "verified": false,
+   "verified": true,
    "src": "https://www.ipa.go.jp/digital/dx/dpf-nintei.html",
-   "text": "経済産業省・IPAによる認定制度。2024年9月に一般社団法人自動車・蓄電池トレーサビリティ推進センターが初の認定を受けた。"
+   "text": "経済産業大臣による認定制度。認定基準は情報処理の促進に関する法律施行規則（平成28年経済産業省令第102号）が定め、IPAが申請受付と認定審査事務を担う。DX認定の基準に加え、データ連携システムの運用・管理（IPAガイドライン準拠）、安全性・信頼性（データ管理規定と取引条件の開示、サイバーセキュリティ、接続アプリの認証）、相互運用性（準拠基準の公表と遵守）、事業安定性への適合を求める。"
   },
   {
    "id": "jp-appi-57",
@@ -1595,10 +1594,10 @@ window.DB = {
    "axes": [
     "academic"
    ],
-   "status": "explicit",
-   "verified": false,
+   "status": "na",
+   "verified": true,
    "src": "https://www.japaneselawtranslation.go.jp/en/laws/view/4241/ja",
-   "text": "学術研究機関等が学術研究目的で個人情報等を取り扱う場合等について、第4章第2節から第4節までの規定を適用しないことを定める。"
+   "text": "1項 個人情報取扱事業者等及び個人関連情報取扱事業者のうち、1号 報道機関（報道を業とする個人を含む）が報道の用に供する目的、2号 著述を業とする者が著述の用に供する目的、3号 宗教団体が宗教活動の用に供する目的、4号 政治団体が政治活動の用に供する目的で個人情報等を取り扱う場合には、第4章の規定を適用しない。／3項 これらの者は、安全管理措置や苦情処理等の必要な措置を自ら講じ、その内容を公表するよう努めなければならない。"
   },
   {
    "id": "jp-std",
@@ -1831,16 +1830,16 @@ window.DB = {
   {
    "id": "eu-aiact-50",
    "inst": "eu-aiact",
-   "cite": "50条",
-   "title": "Transparency obligations（透明性義務）",
+   "cite": "50条3項",
+   "title": "Transparency obligations for providers and deployers of certain AI systems",
    "axes": [
     "auto",
     "proctor"
    ],
    "status": "explicit",
-   "verified": false,
+   "verified": true,
    "src": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/",
-   "text": "自然人と直接対話するAIシステムの提供者に開示義務を課し、感情識別・生体識別システムの配備者に本人への通知義務を課す。ディープフェイクの開示義務、生成物の機械可読なマーキング義務も置く。"
+   "text": "3項 感情認識システム又は生体分類システムの配備者は、当該システムに晒される自然人に対し、システムの作動について知らせなければならない。個人データの処理はGDPR等に従う。／1項 自然人と直接対話するAIシステムの設計上の告知義務。／2項 合成生成コンテンツの機械可読なマーキング義務。／4項 ディープフェイクの開示義務。／5項 情報は遅くとも最初の対話又は接触の時点までに提供する。"
   },
   {
    "id": "eu-dsa-28",
@@ -1851,23 +1850,23 @@ window.DB = {
     "minor"
    ],
    "status": "explicit",
-   "verified": false,
+   "verified": true,
    "src": "https://eur-lex.europa.eu/eli/reg/2022/2065/oj",
-   "text": "1項 未成年者がアクセスできるオンラインプラットフォームは、未成年者のプライバシー・安全・セキュリティの高い水準を確保する措置を講じなければならない。／2項 未成年者であると相当の確実性をもって認識できる場合、プロファイリングに基づくターゲティング広告を表示してはならない。"
+   "text": "1項 未成年者がアクセスできるオンラインプラットフォームの提供者は、未成年者のプライバシー・安全・保護の高い水準のため、適切かつ比例的な措置を講じなければならない。／2項 当該利用者が未成年者であると相当の確実性をもって知る場合、プロファイリングに基づき個人データを用いた広告をそのインターフェース上に表示してはならない。／3項 本条の遵守のために、利用者の年齢を確定する目的で追加の個人データを処理する義務を負うものではない。／4項 欧州委員会は、理事会との協議を経て、1項の実施を支援するガイドラインを公表することができる。"
   },
   {
    "id": "eu-opendata-research",
    "inst": "eu-opendata",
-   "cite": "（研究データ）",
-   "title": "公的支援を受けた研究データのオープンアクセス",
+   "cite": "10条",
+   "title": "Research data（研究データ）",
    "axes": [
     "academic",
     "infra"
    ],
    "status": "explicit",
-   "verified": false,
+   "verified": true,
    "src": "https://eur-lex.europa.eu/eli/dir/2019/1024/oj",
-   "text": "公的支援を受けた研究データのうちリポジトリに既に公開されたものを適用対象とし、加盟国に研究データの利用可能性を支援するオープンアクセスポリシーの採択義務を課す。オープン・バイ・デフォルト原則、FAIR原則、as open as possible, as closed as necessary 原則を導入する。"
+   "text": "1項 加盟国は、公的資金による研究データを公開するための国内政策と措置（オープンアクセス・ポリシー）を採ることで、研究データの利用可能性を支援する。原則はオープン・バイ・デフォルトであり、FAIR原則との整合が求められる。知的財産権、個人データ保護、機密性、安全保障、正当な商業的利益に配慮し、as open as possible, as closed as necessary の考え方に従う。対象は研究を実施する機関と研究資金の提供機関。／2項 公的資金による研究データは、機関リポジトリ又は分野別リポジトリを通じて既に公開されている場合に限り、商用・非商用を問わず再利用できる。"
   },
   {
    "id": "eu-dga-ch4",
@@ -1879,9 +1878,9 @@ window.DB = {
     "consent"
    ],
    "status": "explicit",
-   "verified": false,
+   "verified": true,
    "src": "https://eur-lex.europa.eu/eli/reg/2022/868/oj",
-   "text": "企業・個人による公益目的の自発的なデータ提供（データ利他主義）に基づくサービスの登録制度を設け、欧州委員会が「欧州データ利他主義同意フォーム」を採択する。"
+   "text": "データ利他主義組織の登録制度を設ける。登録には、非営利の性格、透明性の要件の充足、データを共有する個人や企業の権利利益を守る保護措置の提供、欧州委員会が関係者と策定するルールブック（情報要件、技術・セキュリティ要件、相互運用性標準に関する推奨事項を含む）の遵守が求められる。加盟国は組織を登録した時点で欧州委員会に通知する。データは一般的利益の目的に用いられ、提供は報酬なしの自発的なものとされる。"
   },
   {
    "id": "eu-omnibus-gdpr",
@@ -1902,15 +1901,15 @@ window.DB = {
    "id": "eu-dataact-21",
    "inst": "eu-dataact",
    "cite": "21条",
-   "title": "研究組織・統計機関へのB2G受領データの共有",
+   "title": "Sharing of data obtained in the context of an exceptional need with research organisations or statistical bodies",
    "axes": [
     "academic",
     "infra"
    ],
    "status": "explicit",
-   "verified": false,
+   "verified": true,
    "src": "https://eur-lex.europa.eu/eli/reg/2023/2854/oj",
-   "text": "公的機関がB2Gの枠組みで受領したデータを、研究・統計目的で研究組織又は統計機関と共有することを認める。"
+   "text": "1項 公的部門の機関等は、本章に基づき受領したデータを、(a) データ要求時の目的と両立する科学研究・分析を行う者、(b) 公式統計の作成のための各国統計機関及びEurostat と共有できる。／2項 受領者は非営利で行動するか、法令上認められた公益的任務の範囲で行動しなければならず、商業企業が大きな影響力をもち研究結果への優先的アクセスにつながるおそれのある組織は除外される。／4項 受領者は、公的機関によるデータ消去後も最長6か月間データを保持できる。／5項 公的機関は共有前にデータ保有者へ通知しなければならず、データ保有者は所管当局に苦情を申し立てることができる。"
   },
   {
    "id": "eu-ehds-53",
@@ -1982,8 +1981,8 @@ window.DB = {
   {
    "id": "uk-gdpr-retained",
    "inst": "uk-gdpr",
-   "cite": "（全体）",
-   "title": "UK GDPR ── EU GDPRの承継",
+   "cite": "（全体構成）",
+   "title": "UK GDPR ── EU GDPRの継承と英国独自条文",
    "axes": [
     "purpose",
     "consent",
@@ -1994,35 +1993,35 @@ window.DB = {
     "deleg"
    ],
    "status": "explicit",
-   "verified": false,
+   "verified": true,
    "src": "https://www.legislation.gov.uk/eur/2016/679/contents",
-   "text": "UK GDPRはEU GDPRを国内法化して承継したもので、1条（目的）、4条(11)・7条（同意）、8条（子どもの同意。英国は13歳）、9条（特別カテゴリ）、17条（消去権）、28条（処理者）などの条文構成をそのまま引き継ぐ。legislation.gov.uk は同じ条番号で現行の英国版と採択時のEU原文の双方を提供する。"
+   "text": "legislation.gov.uk はEU由来法令として、IP completion day（2020年12月31日23時）までの内容に英国による後の改正を反映して提供する。目次は第1条から第99条までを備えるほか、英国独自に 4A条、8ZA条、22A条〜22D条（自動化された意思決定）、44A条、45A条〜45C条、47A条、49A条（国際移転）が加えられている。"
   },
   {
    "id": "uk-transfer",
    "inst": "uk-gdpr",
-   "cite": "44条以下",
-   "title": "国際移転（英国版）",
+   "cite": "44A条・45A〜45C条・47A条・49A条",
+   "title": "国際移転（英国独自条文）",
    "axes": [
     "transfer"
    ],
    "status": "explicit",
-   "verified": false,
+   "verified": true,
    "src": "https://www.legislation.gov.uk/eur/2016/679/contents",
-   "text": "UK GDPR 44条以下を承継しつつ、十分性の判断は英国独自の adequacy regulations により、適切な保護措置の標準文書として国際データ移転協定（IDTA）及び英国付加文書が用いられる。"
+   "text": "EU GDPR第5章の構成を維持しつつ、44A条（移転の一般原則）、45A条（regulations による移転の承認）、45B条（データ保護テスト）、45C条（モニタリング）、47A条、49A条（公益による制限）が英国独自に加えられている。"
   },
   {
    "id": "uk-dpa-part6",
    "inst": "uk-dpa",
-   "cite": "Part 6",
+   "cite": "第6部（142条〜159条）",
    "title": "Enforcement（執行）",
    "axes": [
     "enforce"
    ],
    "status": "explicit",
-   "verified": false,
+   "verified": true,
    "src": "https://www.legislation.gov.uk/ukpga/2018/12",
-   "text": "DPA 2018 第6部が情報コミッショナー（ICO）による執行を定め、情報通知・評価通知・執行通知・制裁金通知の権限を置く。制裁金の上限はUK GDPRが定める。"
+   "text": "第6部が情報コミッショナー（ICO）による執行を定める。142条〜145条 情報通知、146条〜148条 評価通知、149条〜153条 執行通知、154条 立入検査の権限、155条〜159条 制裁金（157条が制裁金の上限額を定める）。"
   },
   {
    "id": "eu-gdpr-92",
