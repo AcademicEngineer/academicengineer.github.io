@@ -309,6 +309,22 @@ window.DB = {
    "name": "韓国AI基本法",
    "full": "인공지능 발전과 신뢰 기반 조성 등에 관한 기본법（AI基本法・原法は法律第20676号／2025年1月21日公布・2026年1月22日施行。法律第22076号による一部改正が2026年10月20日公布・2027年4月21日施行予定）",
    "src": "https://elaw.klri.re.kr/kor_service/lawViewMultiContent.do?hseq=71019"
+  },
+  {
+   "id": "eu-cjeu",
+   "jur": "eu",
+   "kind": "判例",
+   "name": "EU司法裁判所判例",
+   "full": "欧州連合司法裁判所（CJEU）の判決。自動化された決定に関するもの",
+   "src": "https://curia.europa.eu/"
+  },
+  {
+   "id": "jp-copyright",
+   "jur": "jp",
+   "kind": "法律",
+   "name": "著作権法",
+   "full": "著作権法（昭和45年法律第48号）",
+   "src": "https://laws.e-gov.go.jp/law/345AC0000000048"
   }
  ],
  "axes": [
@@ -322,7 +338,7 @@ window.DB = {
    "id": "stat",
    "label": "統計・研究目的の例外",
    "q": "統計作成や学術研究のために、本人同意なしでデータを扱える仕組みがあるか。",
-   "compare": "同意によらない研究・統計利用の仕組みは五法域すべてにあるが、何で切るかが違う。EUと英国は目的（科学的研究・統計）に保障措置の実施を条件として付す（GDPR89条1項、UK GDPR84B条）。日本の令和8年改正は「統計作成等」という行為類型で切り、要件を委員会規則に委ねた。韓国は仮名情報という加工類型で切り、米国は教育機関のための研究に限定する。"
+   "compare": "同意によらない研究・統計利用の仕組みは五法域すべてにあるが、何で切るかが違う。EUと英国は目的（科学的研究・統計）に保障措置の実施を条件として付す（GDPR89条1項、UK GDPR84B条）。日本の令和8年改正は「統計作成等」という行為類型で切り、要件を委員会規則に委ねた。韓国は仮名情報という加工類型で切り、米国は教育機関のための研究に限定する。 なお改正個情法2条13項の行為記述は、著作権法30条の4第2号の「情報解析」の定義とほぼ同一の定式であり、同一の行為に対して著作権法は享受目的とただし書の多要素判断で、個情法は成果物要件と規則要件で絞り込む。"
   },
   {
    "id": "exit",
@@ -334,7 +350,7 @@ window.DB = {
    "id": "auto",
    "label": "自動化された決定",
    "q": "人の関与なく下される決定に対し、本人の権利や事業者の義務が定められているか。",
-   "compare": "GDPR22条型の一般規定を持つのはEUと韓国（4条6号・37条の2）である。英国はEU GDPR22条を継承せず22A条から22D条という独自条文に置き換えた。日本と米国には一般規定がない。高リスク分類の射程も分かれ、EU AI法附属書III第3項は教育機関を段階を問わず対象とするのに対し、韓国AI基本法2条4号の高影響人工知能は幼児・初等・中等の学生評価に限られ、高等教育を含まない。"
+   "compare": "GDPR22条型の一般規定を持つのはEUと韓国（4条6号・37条の2）である。英国はEU GDPR22条を継承せず22A条から22D条という独自条文に置き換えた。日本と米国には一般規定がない。EUでは判例が22条の射程を広げており、信用情報機関による確率値の算出も、これを伝達された第三者が当該値に強く依拠して決定を行う場合には22条1項の「決定」に当たるとされた（C-634/21）。また15条1項(h)の説明は、現に適用された手続及び原則の説明を求める権利であり、営業秘密を理由とする全面的拒否は許されない（C-203/22）。高リスク分類の射程も分かれ、EU AI法附属書III第3項は教育機関を段階を問わず対象とするのに対し、韓国AI基本法2条4号の高影響人工知能のうち学生評価に係る차목は幼児・初等・中等に限られる。ただし同号の사목・자목・카목は高等教育にも及び得るため、韓国法が高等教育を一律に除外しているわけではない。"
   },
   {
    "id": "deleg",
@@ -400,7 +416,7 @@ window.DB = {
    "id": "academic",
    "label": "学術研究目的の例外",
    "q": "学術研究目的の例外はどう作られているか。教育改善目的はそこに入るか。",
-   "compare": "日本は個別例外方式をとり、18条3項5号6号・20条2項5号6号・27条1項5号から7号が学術研究目的の例外を置き、59条が学術研究機関等の責務を定める。57条の適用除外は報道・著述・宗教・政治の4類型であって学術研究機関等を含まない。EU・英国は目的に保障措置を組み合わせる構造をとる。米国のstudies exceptionは教育機関のため又はその代わりに行う研究に限られ、研究者の自由な研究を含まない。教育改善目的がどこに入るかは、いずれの法域でも明確でない。"
+   "compare": "日本は個別例外方式をとり、18条3項5号6号・20条2項5号6号・27条1項5号から7号が学術研究目的の例外を置き、59条が学術研究機関等の責務を定める。57条の適用除外は報道・著述・宗教・政治の4類型であって学術研究機関等を含まない。EU・英国は目的に保障措置を組み合わせる構造をとる。米国のstudies exceptionは教育機関のため又はその代わりに行う研究に限られ、研究者の自由な研究を含まない。教育改善目的がどこに入るかは、いずれの法域でも明確でない。 立法形式の差異も大きい。GDPRは85条（学術上・芸術上・文学上の表現。加盟国の立法義務）と89条2項・3項（保存・研究・統計の目的。加盟国の立法裁量）という章単位・権利群単位の開放条項によって例外の範囲設定それ自体を加盟国法に開く。これに対し日本法は、57条1項の適用除外を報道・著述・宗教・政治の四号にとどめ、学術研究に係る例外を18条3項5号・6号、20条2項5号・6号、27条1項5号から7号までという各義務規定の内部に「個人の権利利益を不当に侵害するおそれがある場合を除く」という留保付きの個別除外事由として置き、残余を59条の努力義務に委ねる閉じた列挙型の構造をとる。"
   },
   {
    "id": "proctor",
@@ -2494,6 +2510,68 @@ window.DB = {
    "src": "https://www.govinfo.gov/content/pkg/USCODE-2024-title20/html/USCODE-2024-title20-chap31-subchapIII-part4.htm",
    "text": "学生が18歳に達したとき、又は高等教育機関に在学しているときは、親について要求される同意及び親に認められる権利は、以後、学生本人についてのみ要求され、本人にのみ認められる。高等教育を対象とする場合、FERPAの権利行使の主体は学生本人となる。",
    "full": "For the purposes of this section, whenever a student has attained eighteen years of age, or is attending an institution of postsecondary education, the permission or consent required of and the rights accorded to the parents of the student shall thereafter only be required of and accorded to the student."
+  },
+  {
+   "id": "eu-gdpr-85",
+   "inst": "eu-gdpr",
+   "cite": "85条",
+   "title": "Processing and freedom of expression and information",
+   "axes": [
+    "academic",
+    "purpose"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "full": "Article 85\nProcessing and freedom of expression and information\n1.   Member States shall by law reconcile the right to the protection of personal data pursuant to this Regulation with the right to freedom of expression and information, including processing for journalistic purposes and the purposes of academic, artistic or literary expression.\n2.   For processing carried out for journalistic purposes or the purpose of academic artistic or literary expression, Member States shall provide for exemptions or derogations from Chapter II (principles), Chapter III (rights of the data subject), Chapter IV (controller and processor), Chapter V (transfer of personal data to third countries or international organisations), Chapter VI (independent supervisory authorities), Chapter VII (cooperation and consistency) and Chapter IX (specific data processing situations) if they are necessary to reconcile the right to the protection of personal data with the freedom of expression and information.\n3.   Each Member State shall notify to the Commission the provisions of its law which it has adopted pursuant to paragraph 2 and, without delay, any subsequent amendment law or amendment to them.",
+   "src": "https://www.legislation.gov.uk/eur/2016/679/chapter/IX/adopted/data.htm",
+   "text": "加盟国は、本規則による個人データ保護の権利と、報道の目的及び学術上、芸術上又は文学上の表現の目的のための取扱いを含む表現及び情報伝達の自由の権利との調和を法律によって図らなければならない（1項）。報道又は学術上・芸術上・文学上の表現の目的のための取扱いについて、加盟国は、第2章（基本原則）、第3章（データ主体の権利）、第4章（管理者及び処理者）、第5章（第三国等への移転）、第6章（独立監督機関）、第7章（協力と一貫性）及び第9章（特別のデータ取扱いの状況）の例外又は特例を定めなければならない（2項）。"
+  },
+  {
+   "id": "eu-cjeu-c634-21",
+   "inst": "eu-cjeu",
+   "cite": "C-634/21（SCHUFA Holding, Scoring）",
+   "title": "Judgment of 7 December 2023, SCHUFA Holding and Others (Scoring), C-634/21, EU:C:2023:957",
+   "axes": [
+    "auto",
+    "exit"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "overview": true,
+   "full": "［主文第1点］…the automated establishment, by a credit information agency, of a probability value based on personal data relating to a person and concerning his or her ability to meet payment commitments in the future constitutes ‘automated individual decision-making’ within the meaning of that provision, where a third party, to which that probability value is transmitted, draws strongly on that probability value to establish, implement or terminate a contractual relationship with that person.\n\n［理由50項］It follows that, in circumstances such as those at issue in the main proceedings, in which the probability value established by a credit information agency and communicated to a bank plays a determining role in the granting of credit, the establishment of that value must be qualified in itself as a decision producing vis-à-vis a data subject ‘legal effects concerning him or her or similarly significantly [affecting] him or her’ within the meaning of Article 22(1) of the GDPR.\n\n［理由61項］there would be a risk of circumventing Article 22 of the GDPR and, consequently, a lacuna in legal protection",
+   "src": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=ecli:ECLI:EU:C:2023:957",
+   "text": "信用情報機関が個人の将来の返済能力に関する確率値を自動的に算出し、これを伝達された第三者（銀行）が当該値に強く依拠して契約の締結・履行・終了を決定する場合には、当該確率値の算出それ自体がGDPR22条1項の「自動化された個人に対する決定」に当たる。理由において、確率値が与信の判断において決定的な役割（determining role）を果たす場合には、その算出を決定それ自体として性質付けなければならないとする（50項）。算出した機関は決定を行っていないとされ、決定した第三者は算出の論理を有しないとされれば、いずれも15条1項(h)の説明を提供できず、22条の潜脱と保護の欠缺が生じる（61〜63項）。"
+  },
+  {
+   "id": "eu-cjeu-c203-22",
+   "inst": "eu-cjeu",
+   "cite": "C-203/22（Dun & Bradstreet Austria）",
+   "title": "Judgment of 27 February 2025, Dun & Bradstreet Austria, C-203/22",
+   "axes": [
+    "auto",
+    "erase"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "overview": true,
+   "full": "［主文第1点］Article 15(1)(h) of Regulation (EU) 2016/679 … must be interpreted as meaning that, in the case of automated decision-making, including profiling, within the meaning of Article 22(1) of that regulation, the data subject may require the controller, as ‘meaningful information about the logic involved’, to explain, by means of relevant information and in a concise, transparent, intelligible and easily accessible form, the procedure and principles actually applied in order to use, by automated means, the personal data concerning that person with a view to obtaining a specific result, such as a credit profile.\n\n［主文第2点］…where the controller takes the view that the information to be provided to the data subject in accordance with that provision contains data of third parties protected by that regulation or trade secrets, within the meaning of point 1 of Article 2 of Directive (EU) 2016/943 …, that controller is required to provide the allegedly protected information to the competent supervisory authority or court, which must balance the rights and interests at issue with a view to determining the extent of the data subject’s right of access provided for in Article 15 of that regulation.\n\n［理由59項］Those requirements cannot be satisfied either by the mere communication of a complex mathematical formula, such as an algorithm, or by the detailed description of all the steps in automated decision-making",
+   "src": "https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:62022CJ0203",
+   "text": "GDPR15条1項(h)の「決定に至った論理についての意味のある情報」を得る権利は、当該決定において現に適用された手続及び原則を、簡潔・透明・理解可能かつ容易にアクセスできる形で説明することを求める権利である。複雑な数式（アルゴリズム）を示すだけでも、全ての手順を詳細に記述するだけでも足りない（59項）。完全なアルゴリズムの開示は必要でない（60項）。十分な説明の一例として、考慮された個人データが異なっていれば結果がどの程度変わったかを示すことが挙げられる（62項）。情報が第三者の個人データ又は営業秘密を含む場合でも全面的拒否は許されず、監督機関又は裁判所に開示して個別の衡量に委ねなければならず、営業秘密を理由に原則としてアクセス権を排除する国内法の規定は許されない（74〜75項）。"
+  },
+  {
+   "id": "jp-copyright-30-4",
+   "inst": "jp-copyright",
+   "cite": "30条の4",
+   "title": "著作物に表現された思想又は感情の享受を目的としない利用",
+   "axes": [
+    "stat",
+    "eddata"
+   ],
+   "status": "explicit",
+   "verified": true,
+   "full": "（著作物に表現された思想又は感情の享受を目的としない利用）\n第三十条の四　著作物は、次に掲げる場合その他の当該著作物に表現された思想又は感情を自ら享受し又は他人に享受させることを目的としない場合には、その必要と認められる限度において、いずれの方法によるかを問わず、利用することができる。ただし、当該著作物の種類及び用途並びに当該利用の態様に照らし著作権者の利益を不当に害することとなる場合は、この限りでない。\n一　著作物の録音、録画その他の利用に係る技術の開発又は実用化のための試験の用に供する場合\n二　情報解析（多数の著作物その他の大量の情報から、当該情報を構成する言語、音、影像その他の要素に係る情報を抽出し、比較、分類その他の解析を行うことをいう。第四十七条の五第一項第二号において同じ。）の用に供する場合\n三　前二号に掲げる場合のほか、著作物の表現についての人の知覚による認識を伴うことなく当該著作物を電子計算機による情報処理の過程における利用その他の利用（プログラムの著作物にあつては、当該著作物の電子計算機における実行を除く。）に供する場合",
+   "src": "https://www.shugiin.go.jp/Internet/itdb_housei.nsf/html/housei/19620180525030.htm",
+   "text": "享受を目的としない利用についての権利制限規定。第2号の「情報解析」は、多数の著作物その他の大量の情報から、当該情報を構成する要素に係る情報を抽出し、比較、分類その他の解析を行うことと定義される。平成30年改正により導入され、AI開発のための学習用データとしての収集・利用が含まれることが立法時から想定されていた。"
   }
  ],
  "glossary": [
