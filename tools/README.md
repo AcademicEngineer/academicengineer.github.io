@@ -28,7 +28,9 @@ node tools/build-public.js ~/Documents/edu-infolaw-db
 
 フル版フォルダの `index.html` と `data.js` を読み、
 
-- `data.js` から `memo`（比較セル・条文）と `thesis`（論点）と `meta.owner` を除去
+- `data.js` から `memo`（比較セル・条文・判例・先行研究）と `thesis`（論点・判例・先行研究・参考文献）と
+  `at`（節番号）と `meta.owner` を除去
+- 参考文献の表記に含まれる「本稿の基準日現在」だけを「2026年11月現在」に言い換え
 - `index.html` はそのままコピー
 
 して `information-law/` に書き出す。

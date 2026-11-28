@@ -39,10 +39,31 @@ const DB = global.window.DB;
 if (!DB || !DB.provisions) { console.error('data.js の形式が想定と違います'); process.exit(1); }
 
 /* ---- 2. メモを落とす ---------------------------------------------- */
-const removed = { thesis: 0, cellMemo: 0, provMemo: 0 };
+const removed = { thesis: 0, cellMemo: 0, provMemo: 0, locator: 0 };
 DB.axes.forEach(a => { if (a.thesis !== undefined) { delete a.thesis; removed.thesis++; } });
 DB.cells.forEach(c => { if (c.memo) removed.cellMemo++; delete c.memo; });
 DB.provisions.forEach(p => { if (p.memo) removed.provMemo++; delete p.memo; });
+
+// 判例・先行研究・参考文献。memo と thesis（本稿との接続）に加えて、
+// 節番号 at も落とす。公開版では登場順（order）だけを残す。
+['cases', 'studies', 'biblio'].forEach(k => {
+  (DB[k] || []).forEach(o => {
+    if (o.thesis !== undefined) { delete o.thesis; removed.thesis++; }
+    if (o.memo !== undefined) { delete o.memo; removed.provMemo++; }
+    if (o.at !== undefined) { delete o.at; removed.locator++; }
+  });
+});
+
+// 参考文献の表記そのものに「本稿」と書かれている箇所だけ言い換える。
+// （対象は決め打ちで、他の語を含む漏れはこの後の検査で止まる。）
+let reworded = 0;
+(DB.biblio || []).forEach(b => {
+  if (b.text && b.text.includes('本稿の基準日現在')) {
+    b.text = b.text.split('本稿の基準日現在').join('2026年11月現在');
+    reworded++;
+  }
+});
+
 delete DB.meta.owner;   // 氏名・所属は公開版に載せない
 
 DB.meta.note = '条文は一次資料から全文を収録している（取得できなかったものは「条文全文は未取得」と表示する）。'
@@ -105,9 +126,13 @@ fs.writeFileSync(path.join(OUT, 'index.html'), outHtml);
 
 const unver = DB.provisions.filter(p => p.verified === false).length;
 console.log('公開版を書き出しました: ' + OUT);
+console.log('  言い換え … 参考文献の表記 ' + reworded + ' 件');
 console.log('  除去 … thesis ' + removed.thesis + ' / セルのメモ ' + removed.cellMemo
-          + ' / 条文のメモ ' + removed.provMemo);
+          + ' / メモ ' + removed.provMemo + ' / 節番号 ' + removed.locator);
 console.log('  収録 … 論点 ' + DB.axes.length + ' / 法令等 ' + DB.instruments.length
-          + ' / 条文 ' + DB.provisions.length + '（うち要検証 ' + unver + '）');
+          + ' / 条文 ' + DB.provisions.length + '（うち要検証 ' + unver + '）'
+          + ' / 判例 ' + (DB.cases || []).length
+          + ' / 先行研究 ' + (DB.studies || []).length
+          + ' / 参考文献 ' + (DB.biblio || []).filter(b => b.kind !== 'sub').length);
 console.log('  検査 … 漏れなし');
 console.log('\n次: git add information-law && git commit && git push');

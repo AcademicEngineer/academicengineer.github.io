@@ -282,8 +282,97 @@ table.mx tbody th button:hover{text-decoration-color:var(--gold)}
 .tlink:hover{border-color:var(--navy);color:var(--navy)}
 .tlink.ax{background:transparent;border-style:dashed;color:var(--gold-d);border-color:var(--gold)}
 .tlink.ax:hover{background:var(--part-bg);color:var(--part-fg)}
+/* ---------- 判例 ---------- */
+.caselist{display:grid;gap:13px;grid-template-columns:1fr}
+@media(min-width:1040px){.caselist{grid-template-columns:repeat(2,1fr)}}
+.case{
+  background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--gold);
+  border-radius:var(--radius);padding:15px 17px;
+}
+.case .ctop{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;margin:0 0 8px}
+.case .ord{
+  font-size:11px;font-weight:700;color:var(--on-gold);background:var(--gold);
+  border-radius:999px;min-width:21px;text-align:center;padding:2px 7px;letter-spacing:0;
+}
+.case .court{font-size:11.5px;font-weight:700;color:var(--gold-d)}
+.case .cdate{font-size:11.5px;color:var(--muted)}
+.case h3{font-size:16px;font-weight:700;color:var(--ink);margin:0 0 5px;line-height:1.6}
+.case .cmeta{font-size:11.5px;color:var(--muted);margin:0 0 9px;line-height:1.8}
+.case .hold{
+  font-family:'Noto Serif JP',Georgia,serif;font-size:13.5px;line-height:1.95;
+  color:var(--body);margin:0;
+}
+.case .hlab{
+  display:block;font-family:inherit;font-size:10.5px;font-weight:700;letter-spacing:.09em;
+  color:var(--gold-d);margin:0 0 4px;
+}
+.case ul.pts{margin:10px 0 0;padding:0 0 0 1.05em;list-style:disc}
+.case ul.pts li{font-size:13px;line-height:1.9;color:var(--body);margin:0 0 4px}
+.case .csrc{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+.nolink{
+  font-size:11px;color:var(--muted);border:1px dashed var(--line);
+  border-radius:999px;padding:4px 9px;
+}
+
+/* ---------- 文献 ---------- */
+.rnav{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 20px}
+.rnav button{
+  font-size:11.5px;font-weight:700;padding:5px 11px;border-radius:999px;cursor:pointer;
+  border:1px solid var(--line);background:var(--line-2);color:var(--body);
+}
+.rnav button[aria-pressed="true"]{background:var(--navy);color:var(--on-navy);border-color:var(--navy)}
+.slist{display:grid;gap:12px;grid-template-columns:1fr}
+@media(min-width:1040px){.slist{grid-template-columns:repeat(2,1fr)}}
+.study{
+  background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+  padding:14px 16px;
+}
+.study .stop{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin:0 0 6px}
+.study .kind{
+  font-size:10.5px;font-weight:700;letter-spacing:.06em;color:var(--gold-d);
+  border:1px solid var(--gold);border-radius:999px;padding:2px 8px;
+}
+.study h3{font-size:15px;font-weight:700;color:var(--ink);margin:0 0 4px;line-height:1.6}
+.study .au{font-size:12.5px;color:var(--ink);margin:0 0 3px}
+.study .vn{font-size:11.5px;color:var(--muted);margin:0 0 8px;line-height:1.8}
+.study .note{
+  font-family:'Noto Serif JP',Georgia,serif;font-size:13px;line-height:1.95;
+  color:var(--body);margin:0;
+}
+.doi{
+  font-size:11px;font-weight:700;padding:4px 9px;border-radius:999px;text-decoration:none;
+  border:1px solid var(--gold);background:transparent;color:var(--gold-d);
+}
+.doi:hover{background:var(--part-bg);color:var(--part-fg)}
+.btab{
+  font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--gold-d);
+  margin:26px 0 10px;display:flex;align-items:center;gap:9px;
+}
+.btab span{
+  font-size:11px;font-weight:700;color:var(--muted);background:var(--line-2);
+  border-radius:999px;padding:2px 8px;letter-spacing:0;
+}
+.blist{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:2px}
+.blist li{
+  font-size:13px;line-height:1.95;color:var(--body);
+  padding:7px 10px;border-bottom:1px solid var(--line-2);
+  display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;
+}
+.blist li.bsub{
+  border-bottom:0;font-weight:700;color:var(--gold-d);font-size:12px;
+  padding:14px 10px 2px;letter-spacing:.06em;
+}
+.blist li .bn{font-size:10.5px;color:var(--muted);min-width:2.2em;flex:none}
+.blist li .bt{flex:1 1 20em;min-width:0}
+.blist .bl{
+  font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:999px;text-decoration:none;
+  border:1px solid var(--line);background:var(--line-2);color:var(--body);flex:none;
+}
+.blist .bl:hover{border-color:var(--navy);color:var(--navy)}
+.blist .bfn{font-size:10.5px;color:var(--gold-d);flex:none}
+
 @keyframes flashbg{0%{background:var(--part-bg)}100%{background:var(--paper)}}
-.prov.flash{animation:flashbg 1.6s ease-out}
+.prov.flash,.case.flash,.study.flash{animation:flashbg 1.6s ease-out}
 @media(max-width:560px){ .tlist{grid-template-columns:1fr} }
 
 /* 論点が未選択のときの案内 */
@@ -395,11 +484,13 @@ footer{
       <div class="tabs" role="tablist" aria-label="表示モード">
         <button class="tab" role="tab" id="tab-axis"  aria-selected="true"  onclick="App.setMode('axis')">論点で比較</button>
         <button class="tab" role="tab" id="tab-inst"  aria-selected="false" onclick="App.setMode('inst')">法令別で読む</button>
+        <button class="tab" role="tab" id="tab-case" aria-selected="false" onclick="App.setMode('case')">判例</button>
+        <button class="tab" role="tab" id="tab-ref"  aria-selected="false" onclick="App.setMode('ref')">文献</button>
         <button class="tab" role="tab" id="tab-term" aria-selected="false" onclick="App.setMode('term')">用語集</button>
       </div>
       <label class="search">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.3-4.3"/></svg>
-        <input id="q" type="search" placeholder="条文・論点・メモを検索" autocomplete="off" aria-label="検索">
+        <input id="q" type="search" placeholder="条文・論点・判例・文献を検索" autocomplete="off" aria-label="検索">
       </label>
       <button class="iconbtn" id="vonly" aria-pressed="false" onclick="App.toggleVerified()">要検証のみ</button>
       <button class="iconbtn" id="themebtn" onclick="App.toggleTheme()">配色</button>
@@ -432,7 +523,7 @@ footer{
   <div id="foot"></div>
 </footer>
 
-<script src="data.js?v=0910fe3082"></script>
+<script src="data.js?v=13a5b123bf"></script>
 <script>
 (function(){
 'use strict';
@@ -468,7 +559,7 @@ function isVerified(o){ return o.verified !== false; }
 
 /* ---------- state ---------- */
 // axis は初期状態では未選択。表の論点をクリックするまで下に何も出さない。
-var S = { mode:'axis', axis:null, inst:DB.instruments[0].id, q:'', vonly:false };
+var S = { mode:'axis', axis:null, inst:DB.instruments[0].id, q:'', vonly:false, ref:'studies' };
 
 function matchText(o, parts){
   var hay = parts.join(' ').toLowerCase();
@@ -693,6 +784,180 @@ function renderTerm(g){
   return h + '</article>';
 }
 
+// ───────── 判例（登場順）
+function renderCaseView(){
+  var cs = (DB.cases||[]).slice().sort(function(a,b){ return (a.order||0)-(b.order||0); });
+  if(!cs.length){
+    return '<section class="termhead"><h2>判例</h2></section>'
+         + '<div class="mxbox"><p class="empty">判例のデータが読み込めていません。'
+         + '再読み込み（Windows は Ctrl＋Shift＋R、Mac は Command＋Shift＋R）をお試しください。</p></div>';
+  }
+  var hits = cs.filter(function(c){
+    if(!S.q) return true;
+    return matchText(c,[c.name||'',c.court||'',c.dateJa||'',c.docket||'',c.reporters||'',
+                        c.holding||'',(c.points||[]).join(' '),c.refLaws||'',c.thesis||'']);
+  });
+  var h = '<section class="termhead"><h2>判例</h2>';
+  h += '<p class="q">本文及び脚注で引用した裁判例を，出てくる順に並べている。'
+     + '裁判要旨は「公式」と付したものは裁判所の裁判例検索に掲載された要旨であり，'
+     + 'それ以外は作成者による要約である。</p>';
+  h += '<p class="tcount">'+hits.length+' 件'+(S.q?('／全 '+cs.length+' 件中'):'')+'</p>';
+  h += '</section>';
+  if(!hits.length) return h+'<div class="mxbox"><p class="empty">一致する判例がありません。</p></div>';
+  h += '<div class="caselist">';
+  for(var i=0;i<hits.length;i++) h += renderCase(hits[i]);
+  return h + '</div>';
+}
+
+function renderCase(c){
+  var h = '<article class="case" id="c-'+esc(c.id)+'">';
+  h += '<div class="ctop"><span class="ord">'+esc(c.order)+'</span>'
+     + '<span class="court">'+esc(c.court)+'</span>'
+     + '<span class="cdate">'+esc(c.dateJa||c.date)+'</span>'
+     + (c.at?'<span class="cdate">'+esc(c.at)+'</span>':'')+'</div>';
+  h += '<h3>'+esc(c.name)+'</h3>';
+  var meta = [];
+  if(c.docket) meta.push(c.docket);
+  if(c.reporters) meta.push(c.reporters);
+  if(c.below) meta.push(c.below);
+  if(c.refLaws) meta.push('参照法条：'+c.refLaws);
+  if(meta.length) h += '<p class="cmeta">'+esc(meta.join('／'))+'</p>';
+  if(c.holding){
+    h += '<p class="hold"><span class="hlab">裁判要旨'
+       + (c.holdingSrc==='official'?'（公式）':'（要約）')+'</span>'+esc(c.holding)+'</p>';
+  }
+  if(c.points && c.points.length){
+    h += '<ul class="pts">';
+    for(var i=0;i<c.points.length;i++) h += '<li>'+esc(c.points[i])+'</li>';
+    h += '</ul>';
+  }
+  if(c.thesis) h += '<p class="thesis" style="margin-top:11px"><b>本稿との接続　</b>'+esc(c.thesis)+'</p>';
+
+  var bits = '';
+  for(var r=0;r<(c.refs||[]).length;r++){
+    var pr = prov(c.refs[r]);
+    if(!pr) continue;
+    var it = inst(pr.inst) || {name:'?'};
+    bits += '<button class="tlink" onclick="App.goProv(\''+esc(pr.id)+'\')">'
+          + esc(it.name)+' '+esc(pr.cite)+'</button>';
+  }
+  for(var a=0;a<(c.axes||[]).length;a++){
+    var ax = axis(c.axes[a]);
+    if(!ax) continue;
+    bits += '<button class="tlink ax" onclick="App.goAxis(\''+esc(ax.id)+'\')">'+esc(ax.label)+'</button>';
+  }
+  if(bits) h += '<div class="tlinks">'+bits+'</div>';
+
+  var sl = '';
+  for(var k=0;k<(c.srcs||[]).length;k++){
+    var sv = c.srcs[k];
+    if(sv.url) sl += '<a class="bl" href="'+esc(sv.url)+'" target="_blank" rel="noopener">'+esc(sv.label)+'</a>';
+    else sl += '<span class="nolink">'+esc(sv.label)+'</span>';
+  }
+  if(sl) h += '<div class="csrc">'+sl+'</div>';
+  return h + '</article>';
+}
+
+// ───────── 文献（先行研究と参考文献）
+function renderRefView(){
+  var st = (DB.studies||[]).slice().sort(function(a,b){ return (a.order||0)-(b.order||0); });
+  var bb = (DB.biblio||[]);
+  if(!st.length && !bb.length){
+    return '<section class="termhead"><h2>文献</h2></section>'
+         + '<div class="mxbox"><p class="empty">文献のデータが読み込めていません。'
+         + '再読み込み（Windows は Ctrl＋Shift＋R、Mac は Command＋Shift＋R）をお試しください。</p></div>';
+  }
+  var hs = st.filter(function(x){
+    if(!S.q) return true;
+    return matchText(x,[x.authors||'',x.title||'',x.venue||'',x.note||'',x.doi||'',x.thesis||'',x.kind||'']);
+  });
+  var hb = bb.filter(function(x){
+    if(x.kind==='sub') return !S.q;
+    if(!S.q) return true;
+    return matchText(x,[x.text||'',x.sec||'',x.url||'']);
+  });
+
+  var h = '<section class="termhead"><h2>文献</h2>';
+  h += '<p class="q">前半は先行研究を，本文で最初に引く順に並べたもの。'
+     + '後半は参考文献の全件を，区分ごとに並べたもの。'
+     + 'DOIのあるものはDOIへ，それ以外は原典のページへ繋いである。</p>';
+  h += '<div class="rnav">'
+     + '<button aria-pressed="'+(S.ref!=='biblio')+'" onclick="App.setRef(\'studies\')">先行研究 '+hs.length+'</button>'
+     + '<button aria-pressed="'+(S.ref==='biblio')+'" onclick="App.setRef(\'biblio\')">参考文献 '
+     +   hb.filter(function(x){return x.kind!=='sub';}).length+'</button>'
+     + '</div></section>';
+
+  if(S.ref!=='biblio'){
+    if(!hs.length) return h+'<div class="mxbox"><p class="empty">一致する先行研究がありません。</p></div>';
+    h += '<div class="slist">';
+    for(var i=0;i<hs.length;i++) h += renderStudy(hs[i]);
+    h += '</div>';
+    return h;
+  }
+
+  var refs = hb.filter(function(x){ return x.kind!=='sub'; });
+  if(!refs.length) return h+'<div class="mxbox"><p class="empty">一致する参考文献がありません。</p></div>';
+  var secs = [];
+  for(var j=0;j<hb.length;j++){ if(secs.indexOf(hb[j].sec)<0) secs.push(hb[j].sec); }
+  for(var sx=0;sx<secs.length;sx++){
+    var rows = hb.filter(function(x){ return x.sec===secs[sx]; });
+    var n = rows.filter(function(x){ return x.kind!=='sub'; }).length;
+    if(!n) continue;
+    h += '<h3 class="btab">'+esc(secs[sx])+'<span>'+n+'</span></h3><ul class="blist">';
+    for(var rx=0;rx<rows.length;rx++) h += renderBib(rows[rx]);
+    h += '</ul>';
+  }
+  return h;
+}
+
+function renderStudy(x){
+  var h = '<article class="study" id="s-'+esc(x.id)+'">';
+  h += '<div class="stop"><span class="ord">'+esc(x.order)+'</span>'
+     + '<span class="kind">'+esc(x.kind||'')+'</span>'
+     + (x.at?'<span class="cdate">'+esc(x.at)+'</span>':'')+'</div>';
+  h += '<h3>'+esc(x.title)+'</h3>';
+  h += '<p class="au">'+esc(x.authors)+'</p>';
+  var vn = [];
+  if(x.venue) vn.push(x.venue);
+  if(x.volume) vn.push(x.volume);
+  if(x.year) vn.push(x.date||x.year);
+  if(x.pages) vn.push(x.pages);
+  if(vn.length) h += '<p class="vn">'+esc(vn.join('／'))+'</p>';
+  if(x.note) h += '<p class="note">'+esc(x.note)+'</p>';
+  if(x.thesis) h += '<p class="thesis" style="margin-top:11px"><b>本稿との接続　</b>'+esc(x.thesis)+'</p>';
+
+  var bits = '';
+  for(var r=0;r<(x.refs||[]).length;r++){
+    var pr = prov(x.refs[r]);
+    if(!pr) continue;
+    var it = inst(pr.inst) || {name:'?'};
+    bits += '<button class="tlink" onclick="App.goProv(\''+esc(pr.id)+'\')">'
+          + esc(it.name)+' '+esc(pr.cite)+'</button>';
+  }
+  for(var a=0;a<(x.axes||[]).length;a++){
+    var ax = axis(x.axes[a]);
+    if(!ax) continue;
+    bits += '<button class="tlink ax" onclick="App.goAxis(\''+esc(ax.id)+'\')">'+esc(ax.label)+'</button>';
+  }
+  if(bits) h += '<div class="tlinks">'+bits+'</div>';
+  if(x.url){
+    var lab = x.doi ? ('DOI '+x.doi) : '原典を開く';
+    h += '<div class="csrc"><a class="doi" href="'+esc(x.url)+'" target="_blank" rel="noopener">'+esc(lab)+'</a></div>';
+  }
+  return h + '</article>';
+}
+
+function renderBib(x){
+  if(x.kind==='sub') return '<li class="bsub">'+esc(x.text)+'</li>';
+  var h = '<li><span class="bn">'+esc(x.order)+'</span><span class="bt">'+esc(x.text)+'</span>';
+  if(x.thesis) h += '<span class="bfn">'+esc(x.thesis)+'</span>';
+  if(x.study) h += '<button class="bl" onclick="App.goStudy(\''+esc(x.study)+'\')">先行研究</button>';
+  if(x.case)  h += '<button class="bl" onclick="App.goCase(\''+esc(x.case)+'\')">判例</button>';
+  if(x.url)   h += '<a class="bl" href="'+esc(x.url)+'" target="_blank" rel="noopener">'
+                 + (x.doi?'DOI':'原典')+'</a>';
+  return h + '</li>';
+}
+
 function renderInstView(){
   var h = '<div class="ipick">';
   for(var j=0;j<DB.jurisdictions.length;j++){
@@ -746,16 +1011,21 @@ function renderInstView(){
 var hlJur = null;
 
 function render(){
-  document.getElementById('tab-axis').setAttribute('aria-selected', S.mode==='axis');
-  document.getElementById('tab-inst').setAttribute('aria-selected', S.mode==='inst');
-  document.getElementById('tab-term').setAttribute('aria-selected', S.mode==='term');
-  // 凡例と案内は行列の説明なので、用語集では隠す
+  var modes = ['axis','inst','case','ref','term'];
+  for(var mi=0; mi<modes.length; mi++){
+    var tb = document.getElementById('tab-'+modes[mi]);
+    if(tb) tb.setAttribute('aria-selected', S.mode===modes[mi]);
+  }
+  // 凡例と案内は行列の説明なので、条文を並べない画面では隠す
+  var flat = (S.mode==='term' || S.mode==='case' || S.mode==='ref');
   var lg = document.querySelector('.legend'), hn = document.getElementById('hint');
-  if(lg) lg.style.display = S.mode==='term' ? 'none' : '';
-  if(hn) hn.style.display = S.mode==='term' ? 'none' : '';
+  if(lg) lg.style.display = flat ? 'none' : '';
+  if(hn) hn.style.display = flat ? 'none' : '';
   document.getElementById('view').innerHTML =
     S.mode==='axis' ? renderAxisView(hlJur)
     : S.mode==='term' ? renderTermView()
+    : S.mode==='case' ? renderCaseView()
+    : S.mode==='ref'  ? renderRefView()
     : renderInstView();
   hlJur = null;
 }
@@ -766,11 +1036,16 @@ function writeHash(){
     return;
   }
   var h = S.mode==='term' ? '#terms'
+        : S.mode==='case' ? '#cases'
+        : S.mode==='ref'  ? ('#refs='+(S.ref||'studies'))
         : S.mode==='axis' ? ('#axis='+S.axis) : ('#inst='+S.inst);
   if(location.hash !== h) history.replaceState(null,'',h);
 }
 function readHash(){
   if((location.hash||'')==='#terms'){ S.mode='term'; return; }
+  if((location.hash||'')==='#cases'){ S.mode='case'; return; }
+  var mr = /^#refs=(studies|biblio)$/.exec(location.hash||'');
+  if(mr){ S.mode='ref'; S.ref=mr[1]; return; }
   var m = /^#(axis|inst)=(.+)$/.exec(location.hash||'');
   if(!m) return;
   if(m[1]==='axis' && axis(m[2])){ S.mode='axis'; S.axis=m[2]; }
@@ -792,6 +1067,24 @@ var App = {
     if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
   },
   goInst:function(id){ S.mode='inst'; S.inst=id; writeHash(); render(); },
+  setRef:function(k){ S.ref=k; writeHash(); render(); window.scrollTo(0,0); },
+  // 参考文献から、対応する先行研究・判例のカードへ送る
+  goStudy:function(id){
+    S.mode='ref'; S.ref='studies'; S.q='';
+    var q=document.getElementById('q'); if(q) q.value='';
+    writeHash(); render();
+    var el=document.getElementById('s-'+id);
+    if(el){ el.scrollIntoView({behavior:'smooth',block:'center'}); el.classList.add('flash'); }
+    else window.scrollTo(0,0);
+  },
+  goCase:function(id){
+    S.mode='case'; S.q='';
+    var q=document.getElementById('q'); if(q) q.value='';
+    writeHash(); render();
+    var el=document.getElementById('c-'+id);
+    if(el){ el.scrollIntoView({behavior:'smooth',block:'center'}); el.classList.add('flash'); }
+    else window.scrollTo(0,0);
+  },
   // 用語集から条文へ。その条文を含む法令を開き、該当カードまで送る。
   goProv:function(pid){
     var p = DB.provisions.filter(function(x){ return x.id===pid; })[0];
@@ -848,7 +1141,10 @@ document.getElementById('foot').innerHTML =
   '最終更新 '+esc(DB.meta.updated)+
   '<br>'+esc(DB.meta.note)+
   '<br>論点 '+DB.axes.length+' ・ 法令等 '+DB.instruments.length+
-  ' ・ 条文 '+DB.provisions.length+' 件（うち要検証 '+nUnver+' 件）';
+  ' ・ 条文 '+DB.provisions.length+' 件（うち要検証 '+nUnver+' 件）'+
+  ' ・ 用語 '+((DB.glossary||[]).length)+
+  '<br>判例 '+((DB.cases||[]).length)+' 件 ・ 先行研究 '+((DB.studies||[]).length)+' 件 ・ 参考文献 '+
+  ((DB.biblio||[]).filter(function(b){return b.kind!=='sub';}).length)+' 件';
 
 var qi = document.getElementById('q');
 var t=null;
