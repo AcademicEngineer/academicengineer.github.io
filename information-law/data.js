@@ -3633,8 +3633,82 @@ window.DB = {
    ]
   },
   {
+   "id": "c-eu-ot",
+   "jur": "eu",
+   "court": "EU司法裁判所（大法廷）",
+   "date": "2022-08-01",
+   "dateJa": "2022年8月1日",
+   "docket": "C‑184/20",
+   "name": "OT v Vyriausioji tarnybinės etikos komisija",
+   "reporters": "ECLI:EU:C:2022:601",
+   "refLaws": "GDPR 9条1項，6条1項(c)・3項，指令95/46 7条(c)・8条1項",
+   "holding": "私的利益申告の内容を収集し検査する公的機関のウェブサイトにおいて，自然人の性的指向を間接的に明らかにし得る個人データを公表することは，指令95/46第8条1項及びGDPR9条1項にいう特別の種類の個人データの取扱いに当たる（主文2）。",
+   "holdingSrc": "official",
+   "points": [
+    "それ自体は機微でない記述（配偶者等の氏名など）であっても，公表によって間接的に機微な事項が明らかになる場合を，特別類型の定義の側で捉える。",
+    "主文1は，公的資金の交付を受ける機関の長に課される私的利益申告のオンライン公表について，配偶者等の氏名に係るデータや一定額を超える取引に関する部分を，必要性の観点から許されないとした。"
+   ],
+   "srcs": [
+    {
+     "label": "EUR-Lex（CELEX:62020CJ0184）",
+     "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62020CJ0184"
+    },
+    {
+     "label": "CURIA 事件一覧",
+     "url": "https://curia.europa.eu/juris/liste.jsf?num=C-184/20"
+    }
+   ],
+   "axes": [
+    "proctor",
+    "reident",
+    "eddata"
+   ],
+   "refs": [
+    "eu-gdpr-9"
+   ],
+   "order": 9
+  },
+  {
+   "id": "c-eu-meta",
+   "jur": "eu",
+   "court": "EU司法裁判所（大法廷）",
+   "date": "2023-07-04",
+   "dateJa": "2023年7月4日",
+   "docket": "C‑252/21",
+   "name": "Meta Platforms Inc. and Others v Bundeskartellamt",
+   "reporters": "ECLI:EU:C:2023:537",
+   "refLaws": "GDPR 4条11号，6条1項(a)，9条1項・2項(a)(e)，51条以下",
+   "holding": "オンライン社会ネットワークの運営者が当該市場において支配的地位を有することは，それ自体によって利用者が有効に同意し得ないことを意味しない。もっとも，これは同意が現に，かつとりわけ自由に与えられたかどうかを判断する上での重要な要素であり，その立証は運営者がしなければならない（主文8）。また，利用者が訪れたサイト及びアプリに関するデータを統合インタフェース，クッキー等により収集し，これらを利用者の社会ネットワーク口座と結び付けて利用する処理は，9条1項の特別の種類の個人データの取扱いに当たる（主文2）。",
+   "holdingSrc": "official",
+   "points": [
+    "力の不均衡は同意を当然に無効とするのではなく，自由に与えられたかの判断要素として働き，立証責任は管理者が負う。",
+    "個々には機微でない閲覧記録の収集と口座への結び付けが，全体として特別類型の取扱いとなり得る。"
+   ],
+   "srcs": [
+    {
+     "label": "EUR-Lex（CELEX:62021CJ0252）",
+     "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62021CJ0252"
+    },
+    {
+     "label": "CURIA 事件一覧",
+     "url": "https://curia.europa.eu/juris/liste.jsf?num=C-252/21"
+    }
+   ],
+   "axes": [
+    "consent",
+    "minor",
+    "proctor"
+   ],
+   "refs": [
+    "eu-gdpr-4-11",
+    "eu-gdpr-7-4",
+    "eu-gdpr-9"
+   ],
+   "order": 10
+  },
+  {
    "id": "c-jp-waseda",
-   "order": 9,
+   "order": 11,
    "jur": "jp",
    "court": "最高裁判所第二小法廷",
    "date": "2003-09-12",
@@ -3666,8 +3740,80 @@ window.DB = {
    ]
   },
   {
+   "id": "c-eu-breyer",
+   "jur": "eu",
+   "court": "EU司法裁判所（第二法廷）",
+   "date": "2016-10-19",
+   "dateJa": "2016年10月19日",
+   "docket": "C‑582/14",
+   "name": "Patrick Breyer v Bundesrepublik Deutschland",
+   "reporters": "ECLI:EU:C:2016:779",
+   "refLaws": "指令95/46 2条(a)・7条(f)",
+   "holding": "オンラインメディアサービス提供者が公衆に提供するウェブサイトへのアクセスの際に登録した動的IPアドレスは，当該提供者が，インターネットサービス提供者が当該者について有する追加のデータによりデータ主体を識別することを可能にする法的手段を有する場合には，当該提供者との関係で指令95/46第2条(a)にいう個人データに当たる（主文1）。",
+   "holdingSrc": "official",
+   "points": [
+    "識別可能性は，情報それ自体の性質ではなく，保有者が追加情報に到達し得るかによって決まる。",
+    "誰にとって個人データかという問いを，保有者ごとに相対的に立てる枠組みを示した。"
+   ],
+   "srcs": [
+    {
+     "label": "EUR-Lex（CELEX:62014CJ0582）",
+     "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62014CJ0582"
+    },
+    {
+     "label": "CURIA 事件一覧",
+     "url": "https://curia.europa.eu/juris/liste.jsf?num=C-582/14"
+    }
+   ],
+   "axes": [
+    "reident",
+    "eddata"
+   ],
+   "refs": [
+    "eu-gdpr-4-11"
+   ],
+   "order": 12
+  },
+  {
+   "id": "c-eu-srb",
+   "jur": "eu",
+   "court": "EU司法裁判所（第一法廷）",
+   "date": "2025-09-04",
+   "dateJa": "2025年9月4日",
+   "docket": "C‑413/23 P",
+   "name": "European Data Protection Supervisor (EDPS) v Single Resolution Board (SRB)",
+   "reporters": "ECLI:EU:C:2025:645",
+   "refLaws": "規則(EU)2018/1725 3条1号・6号，15条1項(d)",
+   "holding": "主文は原審（General Court, T‑557/20, EU:T:2023:219）を破棄し，同事件を一般裁判所に差し戻すものであって，本案の結論を確定していない。理由において，識別を可能にする追加情報が存在することそれ自体によって，仮名化されたデータが「すべての場合に，かつすべての者にとって」個人データとなるわけではないとされ（82項），規則(EU)2018/1725第15条1項(d)の情報提供義務の適用上，識別可能性は収集の時点において管理者の視点から判断されるとされた（111項）。",
+   "holdingSrc": "summary",
+   "points": [
+    "仮名化されたデータの個人データ該当性を、保有者・受領者ごとに相対的に捉える方向を示した。",
+    "82項・83項はBreyer（C‑582/14）44項・47項・48項及びIAB Europe（C‑604/22）43項・48項を引く。",
+    "主文は破棄差戻しであり，本案の判断は一般裁判所に戻された。断定的な引用は避けるべきである。"
+   ],
+   "srcs": [
+    {
+     "label": "EUR-Lex（CELEX:62023CJ0413）",
+     "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62023CJ0413"
+    },
+    {
+     "label": "CURIA 事件一覧",
+     "url": "https://curia.europa.eu/juris/liste.jsf?num=C-413/23"
+    }
+   ],
+   "axes": [
+    "reident",
+    "stat",
+    "eddata"
+   ],
+   "refs": [
+    "eu-gdpr-4-11"
+   ],
+   "order": 13
+  },
+  {
    "id": "c-eu-schufa",
-   "order": 10,
+   "order": 14,
    "jur": "eu",
    "court": "EU司法裁判所（第一法廷）",
    "date": "2023-12-07",
@@ -3702,8 +3848,120 @@ window.DB = {
    ]
   },
   {
+   "id": "c-eu-nowak",
+   "jur": "eu",
+   "court": "EU司法裁判所（第二法廷）",
+   "date": "2017-12-20",
+   "dateJa": "2017年12月20日",
+   "docket": "C‑434/16",
+   "name": "Peter Nowak v Data Protection Commissioner",
+   "reporters": "ECLI:EU:C:2017:994",
+   "refLaws": "指令95/46 2条(a)",
+   "holding": "職業資格試験において受験者が提出した筆記の答案，及び当該答案について採点者が付したいかなる所見も，指令95/46第2条(a)にいう個人データに当たる（主文）。",
+   "holdingSrc": "official",
+   "points": [
+    "34項・35項は，情報が「個人に関する」といえるのは，その内容，目的又は効果によって識別され又は識別され得る個人と結び付けられる場合であるとし，意見及び評価という主観的な情報もこれに含まれるとする。",
+    "この基準はその後 Österreichische Datenschutzbehörde and CRIF（C‑487/21，2023年5月4日，EU:C:2023:369）23項・24項に引き継がれている。",
+    "評価情報であることは個人データ該当性を否定する理由にならず，むしろ評価であるがゆえに個人に関する情報とされる。"
+   ],
+   "srcs": [
+    {
+     "label": "EUR-Lex（CELEX:62016CJ0434）",
+     "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62016CJ0434"
+    },
+    {
+     "label": "CURIA 事件一覧",
+     "url": "https://curia.europa.eu/juris/liste.jsf?num=C-434/16"
+    },
+    {
+     "label": "C‑487/21 CRIF（EUR-Lex）",
+     "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62021CJ0487"
+    }
+   ],
+   "axes": [
+    "eddata",
+    "purpose",
+    "reident"
+   ],
+   "refs": [
+    "eu-gdpr-4-11"
+   ],
+   "order": 15
+  },
+  {
+   "id": "c-us-gonzaga",
+   "jur": "us",
+   "court": "合衆国最高裁判所",
+   "date": "2002-06-20",
+   "dateJa": "2002年6月20日",
+   "docket": "No. 01‑679",
+   "name": "Gonzaga University et al. v. Doe",
+   "reporters": "536 U.S. 273 (2002)",
+   "refLaws": "FERPA（20 U.S.C. §1232g(b)），42 U.S.C. §1983",
+   "holding": "FERPAの非開示に関する規定は，個人ではなく長官に向けられ，かつ個別の開示ではなく教育機関の方針又は慣行に着目するものであって，42 U.S.C. §1983により執行可能な個人の権利を創設しない。",
+   "holdingSrc": "summary",
+   "points": [
+    "連邦資金の交付条件と，所管部局による行政的な苦情処理の仕組みが置かれていることを，結論を支える事情として挙げる。",
+    "権利の実現を私訴ではなく行政的経路に集中させる構成であり，日本法が開示・訂正・利用停止等を本人の法律上の請求権として与えるのと対照的である。"
+   ],
+   "srcs": [
+    {
+     "label": "Cornell LII（判決要旨）",
+     "url": "https://www.law.cornell.edu/supct/html/01-679.ZS.html"
+    },
+    {
+     "label": "Cornell LII（536 U.S. 273）",
+     "url": "https://www.law.cornell.edu/supremecourt/text/536/273"
+    }
+   ],
+   "axes": [
+    "enforce",
+    "eddata"
+   ],
+   "refs": [
+    "us-ferpa-enf",
+    "us-ferpa-def"
+   ],
+   "order": 16
+  },
+  {
+   "id": "c-us-owasso",
+   "jur": "us",
+   "court": "合衆国最高裁判所",
+   "date": "2002-02-19",
+   "dateJa": "2002年2月19日",
+   "docket": "No. 00‑1073",
+   "name": "Owasso Independent School District No. I‑011 v. Falvo",
+   "reporters": "534 U.S. 426 (2002)",
+   "refLaws": "FERPA（20 U.S.C. §1232g(a)(4)(A)）",
+   "holding": "生徒が相互に採点した答案は，教師が成績簿に記録するまではFERPAの「教育記録」に当たらない。法文の「maintained」の通常の意味は保存し又は保持することであり，採点の間だけ答案を扱う生徒は教育記録の保持者に当たらない。",
+   "holdingSrc": "summary",
+   "points": [
+    "教育記録の範囲が，情報の内容ではなく記録の保持形態によって画されることを示す。",
+    "裁判所は，教師の成績簿が教育記録に当たると仮定した上で，答案の成績が記録されるまでは同法の対象外であるという限定的な点のみを判断し，提出後の個々の課題の成績が保護されるかは判断していない。"
+   ],
+   "srcs": [
+    {
+     "label": "Cornell LII（判決要旨）",
+     "url": "https://www.law.cornell.edu/supct/html/00-1073.ZS.html"
+    },
+    {
+     "label": "Cornell LII（534 U.S. 426）",
+     "url": "https://www.law.cornell.edu/supremecourt/text/534/426"
+    }
+   ],
+   "axes": [
+    "eddata",
+    "enforce"
+   ],
+   "refs": [
+    "us-ferpa-def"
+   ],
+   "order": 17
+  },
+  {
    "id": "c-eu-dun",
-   "order": 11,
+   "order": 18,
    "jur": "eu",
    "court": "EU司法裁判所（第一法廷）",
    "date": "2025-02-27",
@@ -3928,36 +4186,19 @@ window.DB = {
    "refs": []
   },
   {
-   "id": "s-tonomura",
+   "id": "s-ishikawa",
    "order": 11,
    "kind": "実務解説",
-   "authors": "殿村桂司・関口朋宏",
-   "title": "速報 令和8年個人情報保護法改正法案 第2回 AI特例（統計作成等の特例）",
-   "venue": "個人情報保護・データプライバシーニュースレター71号／テクノロジー法ニュースレター74号（長島・大野・常松法律事務所）",
+   "authors": "石川智也・河合優子・服部啓・佐々木将也",
+   "title": "令和8年個人情報保護法改正法の解説⑧（最終回）――統計作成等の特例",
+   "venue": "西村あさひ法律事務所データ保護ニューズレター",
    "year": "2026",
-   "date": "2026-04-22",
-   "pages": "1―6頁",
-   "url": "https://www.nagashima.com/wp-content/uploads/2026/04/dataprotection_no71.pdf",
-   "note": "改正法案の段階で特例の要件を条文に即して整理した速報。",
-   "axes": [
-    "stat"
-   ],
-   "refs": [
-    "jp-appi-2-13"
-   ]
-  },
-  {
-   "id": "s-sekihara",
-   "order": 12,
-   "kind": "書籍",
-   "authors": "関原秀行編著",
-   "title": "Q&A 令和8年改正個人情報保護法 最新解説",
-   "venue": "BUSINESS LAWYERS",
-   "year": "2026",
-   "note": "改正法の各論点をQ&Aの形で解説する。",
+   "date": "2026-08-25",
+   "url": "https://www.nishimura.com/ja/knowledge/newsletters/data_protection_260825",
+   "note": "改正法の解説連載の最終回として，特例の要件と実務上の留意点を整理する。",
    "axes": [
     "stat",
-    "enforce"
+    "vendor"
    ],
    "refs": [
     "jp-appi-2-13"
@@ -3965,7 +4206,7 @@ window.DB = {
   },
   {
    "id": "s-mizumachi",
-   "order": 13,
+   "order": 12,
    "kind": "実務解説",
    "authors": "水町雅子",
    "title": "個人情報保護法2026年改正とAI統計特例解説 Part1―Part3",
@@ -3976,6 +4217,23 @@ window.DB = {
    "note": "改正の全体像と統計特例を三回に分けて解説する。",
    "axes": [
     "stat"
+   ],
+   "refs": [
+    "jp-appi-2-13"
+   ]
+  },
+  {
+   "id": "s-sekihara",
+   "order": 13,
+   "kind": "書籍",
+   "authors": "関原秀行編著",
+   "title": "Q&A 令和8年改正個人情報保護法 最新解説",
+   "venue": "BUSINESS LAWYERS",
+   "year": "2026",
+   "note": "改正法の各論点をQ&Aの形で解説する。",
+   "axes": [
+    "stat",
+    "enforce"
    ],
    "refs": [
     "jp-appi-2-13"
@@ -4001,19 +4259,19 @@ window.DB = {
    ]
   },
   {
-   "id": "s-ishikawa",
+   "id": "s-tonomura",
    "order": 15,
    "kind": "実務解説",
-   "authors": "石川智也・河合優子・服部啓・佐々木将也",
-   "title": "令和8年個人情報保護法改正法の解説⑧（最終回）――統計作成等の特例",
-   "venue": "西村あさひ法律事務所データ保護ニューズレター",
+   "authors": "殿村桂司・関口朋宏",
+   "title": "速報 令和8年個人情報保護法改正法案 第2回 AI特例（統計作成等の特例）",
+   "venue": "個人情報保護・データプライバシーニュースレター71号／テクノロジー法ニュースレター74号（長島・大野・常松法律事務所）",
    "year": "2026",
-   "date": "2026-08-25",
-   "url": "https://www.nishimura.com/ja/knowledge/newsletters/data_protection_260825",
-   "note": "改正法の解説連載の最終回として，特例の要件と実務上の留意点を整理する。",
+   "date": "2026-04-22",
+   "pages": "1―6頁",
+   "url": "https://www.nagashima.com/wp-content/uploads/2026/04/dataprotection_no71.pdf",
+   "note": "改正法案の段階で特例の要件を条文に即して整理した速報。",
    "axes": [
-    "stat",
-    "vendor"
+    "stat"
    ],
    "refs": [
     "jp-appi-2-13"
@@ -4138,26 +4396,50 @@ window.DB = {
    ]
   },
   {
-   "id": "s-jisc",
-   "order": 23,
-   "kind": "指針",
-   "authors": "Jisc（Niall Sclater and Paul Bailey）",
-   "title": "Code of practice for learning analytics",
-   "venue": "Jisc",
-   "year": "2015",
-   "date": "2015-06-04初版公表／2026-09-09更新",
-   "url": "https://www.jisc.ac.uk/guides/code-of-practice-for-learning-analytics",
-   "note": "ラーニング・アナリティクスを行う高等教育機関が守るべき事項を，透明性，同意，妥当性などの項目に分けて示す。",
+   "id": "s-finck",
+   "kind": "学術論文",
+   "authors": "Michèle Finck and Frank Pallas",
+   "title": "They who must not be identified—distinguishing personal from non-personal data under the GDPR",
+   "venue": "International Data Privacy Law",
+   "volume": "Vol.10, Issue 1",
+   "year": "2020",
+   "pages": "11―36",
+   "doi": "10.1093/idpl/ipz026",
+   "url": "https://doi.org/10.1093/idpl/ipz026",
+   "note": "個人データと非個人データの区別が文脈に依存し，一度非個人的とされた情報も状況によって個人データとなり得ることを，識別可能性の相対性から整理する。",
    "axes": [
-    "eddata",
-    "consent",
-    "academic"
+    "reident",
+    "stat"
    ],
-   "refs": []
+   "refs": [
+    "eu-gdpr-4-11"
+   ],
+   "order": 23
+  },
+  {
+   "id": "s-purtova",
+   "kind": "学術論文",
+   "authors": "Nadezhda Purtova",
+   "title": "The law of everything. Broad concept of personal data and future of EU data protection law",
+   "venue": "Law, Innovation and Technology",
+   "volume": "Vol.10, Issue 1",
+   "year": "2018",
+   "pages": "40―81",
+   "doi": "10.1080/17579961.2018.1452176",
+   "url": "https://doi.org/10.1080/17579961.2018.1452176",
+   "note": "個人データ概念が広がり続けた結果，データ保護法がほとんどすべての情報処理に及び得ることを論じ，概念の限界づけの必要を説く。",
+   "axes": [
+    "purpose",
+    "reident"
+   ],
+   "refs": [
+    "eu-gdpr-4-11"
+   ],
+   "order": 24
   },
   {
    "id": "s-delicate",
-   "order": 24,
+   "order": 25,
    "kind": "学術論文",
    "authors": "Hendrik Drachsler and Wolfgang Greller",
    "title": "Privacy and Analytics – it’s a DELICATE issue. A Checklist to establish trusted Learning Analytics",
@@ -4174,8 +4456,26 @@ window.DB = {
    "refs": []
   },
   {
+   "id": "s-jisc",
+   "order": 26,
+   "kind": "指針",
+   "authors": "Jisc（Niall Sclater and Paul Bailey）",
+   "title": "Code of practice for learning analytics",
+   "venue": "Jisc",
+   "year": "2015",
+   "date": "2015-06-04初版公表／2026-09-09更新",
+   "url": "https://www.jisc.ac.uk/guides/code-of-practice-for-learning-analytics",
+   "note": "ラーニング・アナリティクスを行う高等教育機関が守るべき事項を，透明性，同意，妥当性などの項目に分けて示す。",
+   "axes": [
+    "eddata",
+    "consent",
+    "academic"
+   ],
+   "refs": []
+  },
+  {
    "id": "s-ogata",
-   "order": 25,
+   "order": 27,
    "kind": "学術論文",
    "authors": "緒方広明",
    "title": "大学教育におけるラーニング・アナリティクスの導入と研究",
@@ -4191,6 +4491,107 @@ window.DB = {
     "infra"
    ],
    "refs": []
+  },
+  {
+   "id": "s-pardo",
+   "kind": "学術論文",
+   "authors": "Abelardo Pardo and George Siemens",
+   "title": "Ethical and privacy principles for learning analytics",
+   "venue": "British Journal of Educational Technology",
+   "volume": "Vol.45, Issue 3",
+   "year": "2014",
+   "pages": "438―450",
+   "doi": "10.1111/bjet.12152",
+   "url": "https://doi.org/10.1111/bjet.12152",
+   "note": "学修分析における透明性，自己決定，危害の最小化及び説明責任という原則を提示し，制度設計に落とす際の論点を整理する。",
+   "axes": [
+    "eddata",
+    "consent",
+    "academic"
+   ],
+   "refs": [],
+   "order": 28
+  },
+  {
+   "id": "s-prinsloo",
+   "kind": "学術論文",
+   "authors": "Paul Prinsloo and Sharon Slade",
+   "title": "Student privacy self-management: implications for learning analytics",
+   "venue": "Proceedings of the Fifth International Conference on Learning Analytics and Knowledge (LAK ’15)",
+   "year": "2015",
+   "pages": "83―92",
+   "doi": "10.1145/2723576.2723585",
+   "url": "https://doi.org/10.1145/2723576.2723585",
+   "note": "学生自身による選択の管理に依拠する構成が実際には機能しにくいことを示し，規範の設計を機関の側の責任として構成すべきことを論じる。",
+   "axes": [
+    "eddata",
+    "consent"
+   ],
+   "refs": [],
+   "order": 29
+  },
+  {
+   "id": "s-counterfactual",
+   "kind": "学術論文",
+   "authors": "Sandra Wachter, Brent Mittelstadt and Chris Russell",
+   "title": "Counterfactual Explanations Without Opening the Black Box: Automated Decisions and the GDPR",
+   "venue": "Harvard Journal of Law & Technology",
+   "volume": "Vol.31, No.2",
+   "year": "2018",
+   "pages": "841―887",
+   "doi": "10.2139/ssrn.3063289",
+   "url": "https://doi.org/10.2139/ssrn.3063289",
+   "note": "考慮されたデータが異なっていれば結果がどう変わったかを示す「反事実的説明」を提案し，モデルの内部構造を開示せずに本人が決定を争う手がかりを与え得るとする。",
+   "axes": [
+    "auto",
+    "exit"
+   ],
+   "refs": [
+    "eu-gdpr-22"
+   ],
+   "order": 30
+  },
+  {
+   "id": "s-selbst",
+   "kind": "学術論文",
+   "authors": "Andrew D. Selbst and Julia Powles",
+   "title": "Meaningful information and the right to explanation",
+   "venue": "International Data Privacy Law",
+   "volume": "Vol.7, Issue 4",
+   "year": "2017",
+   "pages": "233―242",
+   "doi": "10.1093/idpl/ipx022",
+   "url": "https://doi.org/10.1093/idpl/ipx022",
+   "note": "「意味のある情報」という文言は，本人が決定を理解し争うために必要な情報を含むと読むべきであり，個別の決定についての説明を排除しないとする。",
+   "axes": [
+    "auto",
+    "exit"
+   ],
+   "refs": [
+    "eu-gdpr-22"
+   ],
+   "order": 31
+  },
+  {
+   "id": "s-wachter-noright",
+   "kind": "学術論文",
+   "authors": "Sandra Wachter, Brent Mittelstadt and Luciano Floridi",
+   "title": "Why a Right to Explanation of Automated Decision-Making Does Not Exist in the General Data Protection Regulation",
+   "venue": "International Data Privacy Law",
+   "volume": "Vol.7, Issue 2",
+   "year": "2017",
+   "pages": "76―99",
+   "doi": "10.1093/idpl/ipx005",
+   "url": "https://doi.org/10.1093/idpl/ipx005",
+   "note": "GDPRが求めるのは決定に先立って提示される仕組みに関する情報にとどまり，個別の決定の理由を事後に説明させる権利は条文上存在しないとする。",
+   "axes": [
+    "auto",
+    "exit"
+   ],
+   "refs": [
+    "eu-gdpr-22"
+   ],
+   "order": 32
   }
  ],
  "biblio": [
@@ -4391,112 +4792,189 @@ window.DB = {
    "sec": "Ⅱ　文献（欧文）",
    "text": "Drachsler, Hendrik and Wolfgang Greller, “Privacy and Analytics – it’s a DELICATE issue. A Checklist to establish trusted Learning Analytics,” in Proceedings of the 6th International Conference on Learning Analytics and Knowledge (LAK ’16), 2016, pp.89–98. DOI: 10.1145/2883851.2883893.",
    "kind": "ref",
-   "study": "s-delicate",
    "url": "https://doi.org/10.1145/2883851.2883893",
-   "doi": "10.1145/2883851.2883893"
+   "study": "s-delicate"
   },
   {
    "id": "b-023",
    "order": 23,
    "sec": "Ⅱ　文献（欧文）",
-   "text": "Jisc, Code of practice for learning analytics (Niall Sclater and Paul Bailey, 4 June 2015, updated 9 September 2026).",
+   "text": "Finck, Michèle and Frank Pallas, “They who must not be identified—distinguishing personal from non-personal data under the GDPR,” International Data Privacy Law, Vol.10, Issue 1 (2020) 11―36．",
    "kind": "ref",
-   "study": "s-jisc",
-   "url": "https://www.jisc.ac.uk/guides/code-of-practice-for-learning-analytics"
+   "url": "https://doi.org/10.1093/idpl/ipz026",
+   "study": "s-finck"
   },
   {
    "id": "b-024",
    "order": 24,
    "sec": "Ⅱ　文献（欧文）",
-   "text": "Mourby, Miranda et al., “Governance of academic research data under the GDPR—lessons from the UK,” International Data Privacy Law, Vol.9, Issue 3 (2019) 192.",
+   "text": "Jisc, Code of practice for learning analytics (Niall Sclater and Paul Bailey, 4 June 2015, updated 9 September 2026).",
    "kind": "ref",
-   "study": "s-mourby",
-   "url": "https://doi.org/10.1093/idpl/ipz010",
-   "doi": "10.1093/idpl/ipz010"
+   "url": "https://www.jisc.ac.uk/guides/code-of-practice-for-learning-analytics",
+   "study": "s-jisc"
   },
   {
    "id": "b-025",
    "order": 25,
+   "sec": "Ⅱ　文献（欧文）",
+   "text": "Mourby, Miranda et al., “Governance of academic research data under the GDPR—lessons from the UK,” International Data Privacy Law, Vol.9, Issue 3 (2019) 192.",
+   "kind": "ref",
+   "url": "https://doi.org/10.1093/idpl/ipz010",
+   "study": "s-mourby"
+  },
+  {
+   "id": "b-026",
+   "order": 26,
    "sec": "Ⅱ　文献（欧文）",
    "text": "Ofcom, Identifying Appropriate Regulatory Solutions: Principles for Analysing Self- and Co-regulation (2008).",
    "kind": "ref",
    "study": "s-ofcom"
   },
   {
-   "id": "b-026",
-   "order": 26,
+   "id": "b-027",
+   "order": 27,
+   "sec": "Ⅱ　文献（欧文）",
+   "text": "Pardo, Abelardo and George Siemens, “Ethical and privacy principles for learning analytics,” British Journal of Educational Technology, Vol.45, Issue 3 (2014) 438―450．",
+   "kind": "ref",
+   "url": "https://doi.org/10.1111/bjet.12152",
+   "study": "s-pardo"
+  },
+  {
+   "id": "b-028",
+   "order": 28,
+   "sec": "Ⅱ　文献（欧文）",
+   "text": "Prinsloo, Paul and Sharon Slade, “Student privacy self-management: implications for learning analytics,” in Proceedings of the Fifth International Conference on Learning Analytics and Knowledge (LAK ’15) 83―92．",
+   "kind": "ref",
+   "url": "https://doi.org/10.1145/2723576.2723585",
+   "study": "s-prinsloo"
+  },
+  {
+   "id": "b-029",
+   "order": 29,
+   "sec": "Ⅱ　文献（欧文）",
+   "text": "Purtova, Nadezhda, “The law of everything. Broad concept of personal data and future of EU data protection law,” Law, Innovation and Technology, Vol.10, Issue 1 (2018) 40―81．",
+   "kind": "ref",
+   "url": "https://doi.org/10.1080/17579961.2018.1452176",
+   "study": "s-purtova"
+  },
+  {
+   "id": "b-030",
+   "order": 30,
+   "sec": "Ⅱ　文献（欧文）",
+   "text": "Selbst, Andrew D. and Julia Powles, “Meaningful information and the right to explanation,” International Data Privacy Law, Vol.7, Issue 4 (2017) 233―242．",
+   "kind": "ref",
+   "url": "https://doi.org/10.1093/idpl/ipx022",
+   "study": "s-selbst"
+  },
+  {
+   "id": "b-031",
+   "order": 31,
+   "sec": "Ⅱ　文献（欧文）",
+   "text": "Wachter, Sandra, Brent Mittelstadt and Luciano Floridi, “Why a Right to Explanation of Automated Decision-Making Does Not Exist in the General Data Protection Regulation,” International Data Privacy Law, Vol.7, Issue 2 (2017) 76―99．",
+   "kind": "ref",
+   "url": "https://doi.org/10.1093/idpl/ipx005",
+   "study": "s-wachter-noright"
+  },
+  {
+   "id": "b-032",
+   "order": 32,
+   "sec": "Ⅱ　文献（欧文）",
+   "text": "Wachter, Sandra, Brent Mittelstadt and Chris Russell, “Counterfactual Explanations Without Opening the Black Box: Automated Decisions and the GDPR,” Harvard Journal of Law & Technology, Vol.31, No.2 (2018) 841―887．",
+   "kind": "ref",
+   "url": "https://doi.org/10.2139/ssrn.3063289",
+   "study": "s-counterfactual"
+  },
+  {
+   "id": "b-033",
+   "order": 33,
    "sec": "Ⅲ　法令（日本・制定順）",
    "text": "学校教育法（昭和22年法律第26号）．",
    "kind": "ref",
    "url": "https://laws.e-gov.go.jp/law/322AC0000000026"
   },
   {
-   "id": "b-027",
-   "order": 27,
+   "id": "b-034",
+   "order": 34,
    "sec": "Ⅲ　法令（日本・制定順）",
    "text": "個人情報の保護に関する法律（平成15年法律第57号）．",
    "kind": "ref",
    "url": "https://laws.e-gov.go.jp/law/415AC0000000057"
   },
   {
-   "id": "b-028",
-   "order": 28,
+   "id": "b-035",
+   "order": 35,
    "sec": "Ⅲ　法令（日本・制定順）",
    "text": "地方独立行政法人法（平成15年法律第118号）．",
    "kind": "ref",
    "url": "https://laws.e-gov.go.jp/law/415AC0000000118"
   },
   {
-   "id": "b-029",
-   "order": 29,
+   "id": "b-036",
+   "order": 36,
    "sec": "Ⅲ　法令（日本・制定順）",
    "text": "官民データ活用推進基本法（平成28年法律第103号）．",
    "kind": "ref",
    "url": "https://laws.e-gov.go.jp/law/428AC1000000103"
   },
   {
-   "id": "b-030",
-   "order": 30,
+   "id": "b-037",
+   "order": 37,
    "sec": "Ⅲ　法令（日本・制定順）",
    "text": "個人情報の保護に関する法律施行規則（平成28年個人情報保護委員会規則第3号）．",
    "kind": "ref",
    "url": "https://laws.e-gov.go.jp/law/428M60020000003"
   },
   {
-   "id": "b-031",
-   "order": 31,
+   "id": "b-038",
+   "order": 38,
    "sec": "Ⅲ　法令（日本・制定順）",
    "text": "医療分野の研究開発に資するための匿名加工医療情報及び仮名加工医療情報に関する法律（平成29年法律第28号。題名は令和5年法律第35号による改正後のもの）．",
    "kind": "ref",
    "url": "https://laws.e-gov.go.jp/law/429AC0000000028"
   },
   {
-   "id": "b-032",
-   "order": 32,
+   "id": "b-039",
+   "order": 39,
    "sec": "Ⅲ　法令（日本・制定順）",
    "text": "デジタル社会形成基本法（令和3年法律第35号）．",
    "kind": "ref",
    "url": "https://laws.e-gov.go.jp/law/503AC0000000035"
   },
   {
-   "id": "b-033",
-   "order": 33,
+   "id": "b-040",
+   "order": 40,
    "sec": "Ⅲ　法令（日本・制定順）",
    "text": "人工知能関連技術の研究開発及び活用の推進に関する法律（令和7年法律第53号）．",
    "kind": "ref",
    "url": "https://laws.e-gov.go.jp/law/507AC0000000053"
   },
   {
-   "id": "b-034",
-   "order": 34,
+   "id": "b-041",
+   "order": 41,
    "sec": "Ⅲ　法令（日本・制定順）",
    "text": "個人情報の保護に関する法律等の一部を改正する法律（令和8年法律第56号）．",
    "kind": "ref",
    "url": "https://www.ppc.go.jp/files/pdf/260717_houritsu.pdf"
   },
   {
-   "id": "b-035",
-   "order": 35,
+   "id": "b-042",
+   "order": 42,
+   "sec": "Ⅳ　判例",
+   "text": "【日本】",
+   "kind": "sub"
+  },
+  {
+   "id": "b-043",
+   "order": 43,
+   "sec": "Ⅳ　判例",
+   "text": "最二小判昭和63年7月15日（昭和57年(オ)第915号）判時1287号65頁，判タ675号59頁（麹町中学校内申書事件）．",
+   "kind": "ref",
+   "url": "https://www.courts.go.jp/assets/hanrei/hanrei-pdf-20384.pdf",
+   "case": "c-jp-kojimachi"
+  },
+  {
+   "id": "b-044",
+   "order": 44,
    "sec": "Ⅳ　判例",
    "text": "最三小判平成3年7月9日民集45巻6号1049頁．",
    "kind": "ref",
@@ -4504,8 +4982,35 @@ window.DB = {
    "case": "c-jp-kangoku"
   },
   {
-   "id": "b-036",
-   "order": 36,
+   "id": "b-045",
+   "order": 45,
+   "sec": "Ⅳ　判例",
+   "text": "大阪高判平成11年11月25日（平成10年(行コ)第18号）．",
+   "kind": "ref",
+   "url": "https://www.courts.go.jp/hanrei/15969/detail5/index.html",
+   "case": "c-jp-nishinomiya"
+  },
+  {
+   "id": "b-046",
+   "order": 46,
+   "sec": "Ⅳ　判例",
+   "text": "最二小判平成15年9月12日民集57巻8号973頁．",
+   "kind": "ref",
+   "url": "https://www.courts.go.jp/hanrei/52357/detail2/index.html",
+   "case": "c-jp-waseda"
+  },
+  {
+   "id": "b-047",
+   "order": 47,
+   "sec": "Ⅳ　判例",
+   "text": "最三小判平成15年11月11日（平成11年(行ヒ)第12号）集民211号451頁，判時1846号3頁，判タ1143号214頁．",
+   "kind": "ref",
+   "url": "https://www.courts.go.jp/hanrei/62448/detail2/index.html",
+   "case": "c-jp-shidoyoroku"
+  },
+  {
+   "id": "b-048",
+   "order": 48,
    "sec": "Ⅳ　判例",
    "text": "最三小決平成15年12月25日民集57巻11号2562頁．",
    "kind": "ref",
@@ -4513,8 +5018,8 @@ window.DB = {
    "case": "c-jp-koseki"
   },
   {
-   "id": "b-037",
-   "order": 37,
+   "id": "b-049",
+   "order": 49,
    "sec": "Ⅳ　判例",
    "text": "最二小判平成18年1月13日民集60巻1号1頁．",
    "kind": "ref",
@@ -4522,8 +5027,8 @@ window.DB = {
    "case": "c-jp-kashikin"
   },
   {
-   "id": "b-038",
-   "order": 38,
+   "id": "b-050",
+   "order": 50,
    "sec": "Ⅳ　判例",
    "text": "最二小判平成25年1月11日民集67巻1号1頁．",
    "kind": "ref",
@@ -4531,542 +5036,647 @@ window.DB = {
    "case": "c-jp-iyakuhin"
   },
   {
-   "id": "b-039",
-   "order": 39,
+   "id": "b-051",
+   "order": 51,
    "sec": "Ⅳ　判例",
-   "text": "最三小判令和2年6月30日（令和2年（行ヒ）第68号）．",
+   "text": "最三小判令和2年6月30日（令和2年(行ヒ)第68号）民集74巻4号800頁．",
    "kind": "ref",
    "url": "https://www.courts.go.jp/hanrei/89537/detail2/index.html",
    "case": "c-jp-furusato"
   },
   {
-   "id": "b-040",
-   "order": 40,
+   "id": "b-052",
+   "order": 52,
+   "sec": "Ⅳ　判例",
+   "text": "【欧州連合】",
+   "kind": "sub"
+  },
+  {
+   "id": "b-053",
+   "order": 53,
+   "sec": "Ⅳ　判例",
+   "text": "Case C-582/14, Breyer v Bundesrepublik Deutschland, judgment of 19 October 2016, EU:C:2016:779．",
+   "kind": "ref",
+   "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62014CJ0582",
+   "case": "c-eu-breyer"
+  },
+  {
+   "id": "b-054",
+   "order": 54,
+   "sec": "Ⅳ　判例",
+   "text": "Case C-434/16, Nowak v Data Protection Commissioner, judgment of 20 December 2017, EU:C:2017:994．",
+   "kind": "ref",
+   "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62016CJ0434",
+   "case": "c-eu-nowak"
+  },
+  {
+   "id": "b-055",
+   "order": 55,
+   "sec": "Ⅳ　判例",
+   "text": "Case C-184/20, OT v Vyriausioji tarnybinės etikos komisija, judgment of 1 August 2022, EU:C:2022:601．",
+   "kind": "ref",
+   "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62020CJ0184",
+   "case": "c-eu-ot"
+  },
+  {
+   "id": "b-056",
+   "order": 56,
+   "sec": "Ⅳ　判例",
+   "text": "Case C-487/21, Österreichische Datenschutzbehörde and CRIF, judgment of 4 May 2023, EU:C:2023:369．",
+   "kind": "ref",
+   "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62021CJ0487"
+  },
+  {
+   "id": "b-057",
+   "order": 57,
+   "sec": "Ⅳ　判例",
+   "text": "Case C-252/21, Meta Platforms Inc. and Others v Bundeskartellamt, judgment of 4 July 2023, EU:C:2023:537．",
+   "kind": "ref",
+   "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62021CJ0252",
+   "case": "c-eu-meta"
+  },
+  {
+   "id": "b-058",
+   "order": 58,
+   "sec": "Ⅳ　判例",
+   "text": "Case C-634/21, SCHUFA Holding and Others (Scoring), judgment of 7 December 2023, EU:C:2023:957．",
+   "kind": "ref",
+   "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62021CJ0634",
+   "case": "c-eu-schufa"
+  },
+  {
+   "id": "b-059",
+   "order": 59,
+   "sec": "Ⅳ　判例",
+   "text": "Case C-203/22, Dun & Bradstreet Austria, judgment of 27 February 2025, EU:C:2025:117．",
+   "kind": "ref",
+   "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62022CJ0203",
+   "case": "c-eu-dun"
+  },
+  {
+   "id": "b-060",
+   "order": 60,
+   "sec": "Ⅳ　判例",
+   "text": "Case C-413/23 P, EDPS v SRB, judgment of 4 September 2025, EU:C:2025:645．",
+   "kind": "ref",
+   "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:62023CJ0413",
+   "case": "c-eu-srb"
+  },
+  {
+   "id": "b-061",
+   "order": 61,
+   "sec": "Ⅳ　判例",
+   "text": "【米国】",
+   "kind": "sub"
+  },
+  {
+   "id": "b-062",
+   "order": 62,
+   "sec": "Ⅳ　判例",
+   "text": "Owasso Independent School District No. I-011 v. Falvo, 534 U.S. 426 (2002)．",
+   "kind": "ref",
+   "url": "https://www.law.cornell.edu/supremecourt/text/534/426",
+   "case": "c-us-owasso"
+  },
+  {
+   "id": "b-063",
+   "order": 63,
+   "sec": "Ⅳ　判例",
+   "text": "Gonzaga University et al. v. Doe, 536 U.S. 273 (2002)．",
+   "kind": "ref",
+   "url": "https://www.law.cornell.edu/supremecourt/text/536/273",
+   "case": "c-us-gonzaga"
+  },
+  {
+   "id": "b-064",
+   "order": 64,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "個人情報保護委員会「個人情報の保護に関する法律についてのガイドライン（通則編）」．",
    "kind": "ref",
    "url": "https://www.ppc.go.jp/personalinfo/legal/guidelines_administrative/"
   },
   {
-   "id": "b-041",
-   "order": 41,
+   "id": "b-065",
+   "order": 65,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "個人情報保護委員会「個人情報の保護に関する法律についてのガイドライン（行政機関等編）」．",
    "kind": "ref",
    "url": "https://www.ppc.go.jp/personalinfo/legal/guidelines_administrative/"
   },
   {
-   "id": "b-042",
-   "order": 42,
+   "id": "b-066",
+   "order": 66,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "個人情報保護委員会「個人情報の保護に関する法律についてのガイドライン（仮名加工情報・匿名加工情報編）」平成28年11月制定，令和8年4月一部改正．",
    "kind": "ref",
    "url": "https://www.ppc.go.jp/personalinfo/legal/guidelines_administrative/"
   },
   {
-   "id": "b-043",
-   "order": 43,
+   "id": "b-067",
+   "order": 67,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "個人情報保護委員会「個人情報の保護に関する法律についてのガイドライン（認定個人情報保護団体編）」．",
    "kind": "ref",
    "url": "https://www.ppc.go.jp/personalinfo/legal/guidelines_administrative/"
   },
   {
-   "id": "b-044",
-   "order": 44,
+   "id": "b-068",
+   "order": 68,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "個人情報保護委員会「個人情報の保護に関する法律についてのQ&A（行政機関等編）」．",
    "kind": "ref",
    "url": "https://www.ppc.go.jp/personalinfo/legal/guidelines_administrative/"
   },
   {
-   "id": "b-045",
-   "order": 45,
+   "id": "b-069",
+   "order": 69,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "個人情報保護委員会「認定個人情報保護団体に関する手続」．",
    "kind": "ref",
    "url": "https://www.ppc.go.jp/personalinfo/nintei/procedure/"
   },
   {
-   "id": "b-046",
-   "order": 46,
+   "id": "b-070",
+   "order": 70,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "個人情報保護委員会「匿名加工情報に関する委員会規則等の方向性について」資料2．",
    "kind": "ref",
    "url": "https://www.ppc.go.jp/files/pdf/280603_siryou2.pdf（規則は一般的な加工手法その他最低限の規律を定め"
   },
   {
-   "id": "b-047",
-   "order": 47,
+   "id": "b-071",
+   "order": 71,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "個人情報保護委員会「生成AIサービスの利用に関する注意喚起等について」2023年6月2日．",
    "kind": "ref",
    "url": "https://www.ppc.go.jp/news/press/2023/230602kouhou/（2026年9月30日最終確認"
   },
   {
-   "id": "b-048",
-   "order": 48,
+   "id": "b-072",
+   "order": 72,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "個人情報保護委員会「個人情報保護法の制度的課題に対する考え方について」2025年3月5日．",
    "kind": "ref"
   },
   {
-   "id": "b-049",
-   "order": 49,
+   "id": "b-073",
+   "order": 73,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "個人情報保護委員会「個人情報保護法 いわゆる3年ごと見直しの制度改正方針」2026年1月9日．",
    "kind": "ref"
   },
   {
-   "id": "b-050",
-   "order": 50,
+   "id": "b-074",
+   "order": 74,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "個人情報保護委員会「令和7年度第4四半期における監視・監督権限の行使状況の概要」2026年6月10日．",
    "kind": "ref",
    "url": "https://www.ppc.go.jp/files/pdf/260610quarter-report_kengenkoushi.pdf"
   },
   {
-   "id": "b-051",
-   "order": 51,
+   "id": "b-075",
+   "order": 75,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "個人情報保護委員会「「個人情報の保護に関する法律等の一部を改正する法律」の公布について」令和8年7月17日．",
    "kind": "ref",
-   "url": "https://www.ppc.go.jp/news/press/2026/260717/"
+   "url": "https://www.ppc.go.jp/files/pdf/260717_houritsu.pdf"
   },
   {
-   "id": "b-052",
-   "order": 52,
+   "id": "b-076",
+   "order": 76,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "個人情報保護委員会「個人情報の保護に関する法律等の一部を改正する法律 政令・規則・ガイドライン等の整備に関する今後の進め方について」第368回個人情報保護委員会，2026年9月9日．",
    "kind": "ref",
    "url": "https://www.ppc.go.jp/files/pdf/260717_houritsu.pdf"
   },
   {
-   "id": "b-053",
-   "order": 53,
+   "id": "b-077",
+   "order": 77,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "個人情報保護委員会事務局「匿名加工情報の加工基準について」平成29年1月31日．",
    "kind": "ref",
    "url": "https://www.soumu.go.jp/main_content/000462276.pdf"
   },
   {
-   "id": "b-054",
-   "order": 54,
+   "id": "b-078",
+   "order": 78,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "個人情報保護委員会事務局「個人情報保護法における規律について」資料2，2025年5月16日．",
    "kind": "ref"
   },
   {
-   "id": "b-055",
-   "order": 55,
+   "id": "b-079",
+   "order": 79,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "個人情報保護委員会事務局「「個人情報の保護に関する法律等の一部を改正する法律」の成立を受けた個人情報保護委員会の今後の取組（案）について」資料1，2026年7月31日．",
    "kind": "ref",
-   "url": "https://www.ppc.go.jp/news/press/2026/260717/"
+   "url": "https://www.ppc.go.jp/files/pdf/260717_houritsu.pdf"
   },
   {
-   "id": "b-056",
-   "order": 56,
+   "id": "b-080",
+   "order": 80,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "個人情報保護委員会事務局「個人情報の保護に関する法律等の一部を改正する法律 政令・規則等で定める事項の全体像（案）について」第366回個人情報保護委員会 資料1，2026年8月26日．",
    "kind": "ref",
    "url": "https://www.ppc.go.jp/files/pdf/260717_houritsu.pdf"
   },
   {
-   "id": "b-057",
-   "order": 57,
+   "id": "b-081",
+   "order": 81,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "個人情報保護委員会事務局「個人情報の保護に関する法律等の一部を改正する法律 政令・規則の整備に向けた基本的な考え方について①（適正なデータ利活用の推進，リスクに適切に対応した規律①）」第369回個人情報保護委員会，2026年9月16日．",
    "kind": "ref",
    "url": "https://www.ppc.go.jp/files/pdf/260717_houritsu.pdf"
   },
   {
-   "id": "b-058",
-   "order": 58,
+   "id": "b-082",
+   "order": 82,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "個人情報保護委員会事務局「個人情報の保護に関する法律等の一部を改正する法律 政令・規則の整備に向けた基本的な考え方（案）について②（適正なデータ利活用の推進，リスクに適切に対応した規律②）」第370回個人情報保護委員会 資料1，2026年10月1日．",
    "kind": "ref",
    "url": "https://www.ppc.go.jp/files/pdf/260717_houritsu.pdf"
   },
   {
-   "id": "b-059",
-   "order": 59,
+   "id": "b-083",
+   "order": 83,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "文部科学省「初等中等教育段階における生成AIの利活用に関するガイドライン Ver.2.0」2024年12月26日．",
    "kind": "ref"
   },
   {
-   "id": "b-060",
-   "order": 60,
+   "id": "b-084",
+   "order": 84,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "文部科学省「教育データの利活用に係る留意事項 第4版」2026年4月．",
    "kind": "ref",
    "url": "https://www.mext.go.jp/a_menu/other/data_00007.htm"
   },
   {
-   "id": "b-061",
-   "order": 61,
+   "id": "b-085",
+   "order": 85,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "文部科学省先導的大学改革推進委託事業「大学におけるIR（インスティテューショナル・リサーチ）の現状と在り方に関する調査研究」報告書，2014年．",
    "kind": "ref"
   },
   {
-   "id": "b-062",
-   "order": 62,
+   "id": "b-086",
+   "order": 86,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "デジタル庁・総務省・文部科学省・経済産業省「教育データ利活用ロードマップ」2022年1月7日．",
    "kind": "ref"
   },
   {
-   "id": "b-063",
-   "order": 63,
+   "id": "b-087",
+   "order": 87,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "デジタル庁・総務省・文部科学省・経済産業省「教育DXロードマップ」2025年6月13日．",
    "kind": "ref"
   },
   {
-   "id": "b-064",
-   "order": 64,
+   "id": "b-088",
+   "order": 88,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "デジタル行財政改革会議「データ利活用制度の在り方に関する基本方針」2025年6月13日（同日，「デジタル社会の実現に向けた重点計画」の一部として閣議決定）．",
    "kind": "ref"
   },
   {
-   "id": "b-065",
-   "order": 65,
+   "id": "b-089",
+   "order": 89,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "総務省・経済産業省「AI事業者ガイドライン（第1.2版）」令和8年3月31日．",
    "kind": "ref",
    "url": "https://www.meti.go.jp/shingikai/mono_info_service/ai_shakai_jisso/pdf/20260331_1.pdf"
   },
   {
-   "id": "b-066",
-   "order": 66,
+   "id": "b-090",
+   "order": 90,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "総務省政策統括官（統計基準担当）「匿名データの作成・提供に関するガイドライン」平成21年2月17日決定，令和6年11月21日最終改正．",
    "kind": "ref",
    "url": "https://www.soumu.go.jp/main_content/000806227.pdf（識別情報の削除"
   },
   {
-   "id": "b-067",
-   "order": 67,
+   "id": "b-091",
+   "order": 91,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "「人工知能基本計画〜日本ＡＸ，より強く，より豊かに〜」令和8年7月14日閣議決定（第Ⅱ期）．",
    "kind": "ref",
    "url": "https://www8.cao.go.jp/cstp/ai/ai_plan/ai_plan.html（2026年10月2日最終確認"
   },
   {
-   "id": "b-068",
-   "order": 68,
+   "id": "b-092",
+   "order": 92,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "中央教育審議会「我が国の「知の総和」向上の未来像〜高等教育システムの再構築〜（答申）」中教審第255号，令和7年2月21日．",
    "kind": "ref",
    "url": "https://www.mext.go.jp/b_menu/shingi/chukyo/chukyo0/toushin/1420275_00014.htm（2026年10月2日最終確認"
   },
   {
-   "id": "b-069",
-   "order": 69,
+   "id": "b-093",
+   "order": 93,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "日本学術会議 心理学・教育学委員会・情報学委員会合同 教育データ利活用分科会「教育のデジタル化を踏まえた学習データの利活用に関する提言――エビデンスに基づく教育に向けて」令和2年9月30日．",
    "kind": "ref",
    "url": "https://www.scj.go.jp/ja/info/kohyo/pdf/kohyo-24-t299-1.pdf（2026年10月2日最終確認"
   },
   {
-   "id": "b-070",
-   "order": 70,
+   "id": "b-094",
+   "order": 94,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "日本学術会議 心理学・教育学委員会・情報学委員会合同 教育データ利活用分科会「教育データの利活用のさらなる促進に向けて」（見解）令和8年7月30日．",
    "kind": "ref",
    "url": "https://www.scj.go.jp/ja/info/kohyo/pdf/kohyo-24-t299-1.pdf（2026年10月2日最終確認"
   },
   {
-   "id": "b-071",
-   "order": 71,
+   "id": "b-095",
+   "order": 95,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "国立情報学研究所 匿名加工情報に関する技術検討ワーキンググループ「匿名加工情報の適正な加工の方法に関する報告書」2017年2月21日．",
    "kind": "ref",
    "url": "https://www.nii.ac.jp/research/reports/pd/report-kihon-20170221.pdf（参照情報の入手容易性と照合容易性による多要素のリスク評価"
   },
   {
-   "id": "b-072",
-   "order": 72,
+   "id": "b-096",
+   "order": 96,
    "sec": "Ⅴ　政府・行政機関等の資料（日本）",
    "text": "独立行政法人大学改革支援・学位授与機構「高等教育に関する質保証関係用語集」．",
    "kind": "ref"
   },
   {
-   "id": "b-073",
-   "order": 73,
+   "id": "b-097",
+   "order": 97,
    "sec": "Ⅵ　国会関係資料",
    "text": "第221回国会衆議院本会議第14号（2026年4月21日），同第20号（同年5月26日）．",
    "kind": "ref"
   },
   {
-   "id": "b-074",
-   "order": 74,
+   "id": "b-098",
+   "order": 98,
    "sec": "Ⅵ　国会関係資料",
    "text": "第221回国会衆議院 地域活性化・こども政策・デジタル社会形成に関する特別委員会第6号（2026年5月12日），同第7号（同月14日），同第8号（同月21日）．",
    "kind": "ref"
   },
   {
-   "id": "b-075",
-   "order": 75,
+   "id": "b-099",
+   "order": 99,
    "sec": "Ⅵ　国会関係資料",
    "text": "第221回国会参議院 デジタル社会の形成及び人工知能の活用等に関する特別委員会第5号（2026年6月17日），同（同年7月8日）．",
    "kind": "ref"
   },
   {
-   "id": "b-076",
-   "order": 76,
+   "id": "b-100",
+   "order": 100,
    "sec": "Ⅵ　国会関係資料",
    "text": "衆議院 地域活性化・こども政策・デジタル社会形成に関する特別委員会「個人情報の保護に関する法律等の一部を改正する法律案に対する附帯決議」2026年5月21日．",
-   "kind": "ref"
+   "kind": "ref",
+   "url": "https://www.ppc.go.jp/files/pdf/260717_houritsu.pdf"
   },
   {
-   "id": "b-077",
-   "order": 77,
+   "id": "b-101",
+   "order": 101,
    "sec": "Ⅵ　国会関係資料",
    "text": "参議院 デジタル社会の形成及び人工知能の活用等に関する特別委員会「個人情報の保護に関する法律等の一部を改正する法律案に対する附帯決議」2026年7月8日．",
-   "kind": "ref"
+   "kind": "ref",
+   "url": "https://www.ppc.go.jp/files/pdf/260717_houritsu.pdf"
   },
   {
-   "id": "b-078",
-   "order": 78,
+   "id": "b-102",
+   "order": 102,
    "sec": "Ⅶ　団体・学会等の資料",
    "text": "大学ICT推進協議会 学術・教育コンテンツ共有流通部会「『教育・学習データ利活用ポリシー』のひな型の策定について」2023年1月26日．",
    "kind": "ref"
   },
   {
-   "id": "b-079",
-   "order": 79,
+   "id": "b-103",
+   "order": 103,
    "sec": "Ⅶ　団体・学会等の資料",
    "text": "一般社団法人大学IRコンソーシアム「IRシステム（IRiS）」．",
    "kind": "ref",
    "url": "https://irnw.jp/ir-system/"
   },
   {
-   "id": "b-080",
-   "order": 80,
+   "id": "b-104",
+   "order": 104,
    "sec": "Ⅶ　団体・学会等の資料",
    "text": "一般社団法人日本医療情報学会「2026年 個人情報保護法改正案『統計・AI例外（第30条の2第5項）』を懸念する意見書」2026年6月19日．",
    "kind": "ref",
    "url": "https://www.jami.jp/wp-content/uploads/2026/06/ikensyo.pdf"
   },
   {
-   "id": "b-081",
-   "order": 81,
+   "id": "b-105",
+   "order": 105,
    "sec": "Ⅶ　団体・学会等の資料",
    "text": "自由民主党デジタル社会推進本部 AI・web3小委員会「AIホワイトペーパー2.0――AI駆動型国家への構造転換――」2026年5月19日．",
    "kind": "ref",
    "url": "https://www.jimin.jp/policy/policy-related/strategic-investment-growth/ai-web3.html"
   },
   {
-   "id": "b-082",
-   "order": 82,
+   "id": "b-106",
+   "order": 106,
    "sec": "Ⅶ　団体・学会等の資料",
    "text": "麻布大学「インスティテューショナル・リサーチに関する規程」．",
    "kind": "ref"
   },
   {
-   "id": "b-083",
-   "order": 83,
+   "id": "b-107",
+   "order": 107,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "【欧州連合】",
    "kind": "sub"
   },
   {
-   "id": "b-084",
-   "order": 84,
+   "id": "b-108",
+   "order": 108,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "Regulation (EU) 2016/679 (General Data Protection Regulation).",
    "kind": "ref",
    "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
   },
   {
-   "id": "b-085",
-   "order": 85,
+   "id": "b-109",
+   "order": 109,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "Regulation (EU) 2022/868 on European data governance (Data Governance Act).",
    "kind": "ref",
    "url": "https://eur-lex.europa.eu/eli/reg/2022/868/oj"
   },
   {
-   "id": "b-086",
-   "order": 86,
+   "id": "b-110",
+   "order": 110,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "Regulation (EU) 2023/2854 on harmonised rules on fair access to and use of data (Data Act).",
    "kind": "ref",
    "url": "https://eur-lex.europa.eu/eli/reg/2023/2854/oj"
   },
   {
-   "id": "b-087",
-   "order": 87,
+   "id": "b-111",
+   "order": 111,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "Regulation (EU) 2024/1689 (Artificial Intelligence Act). 2026年7月27日統合版を参照した．",
    "kind": "ref",
    "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX%3A02024R1689-20260727"
   },
   {
-   "id": "b-088",
-   "order": 88,
+   "id": "b-112",
+   "order": 112,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "Regulation (EU) 2025/327 on the European Health Data Space.",
    "kind": "ref",
    "url": "https://eur-lex.europa.eu/eli/reg/2025/327/oj"
   },
   {
-   "id": "b-089",
-   "order": 89,
+   "id": "b-113",
+   "order": 113,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "Regulation (EU) 2026/1744 of 8 July 2026 amending Regulations (EU) 2024/1689, (EU) 2018/1139 and (EU) 2023/1230 as regards the simplification of the implementation of harmonised rules on artificial intelligence (Digital Omnibus on AI).",
    "kind": "ref",
    "url": "https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng"
   },
   {
-   "id": "b-090",
-   "order": 90,
+   "id": "b-114",
+   "order": 114,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "European Commission, Proposal for a Regulation … as regards the simplification of the digital legislative framework, and repealing Regulations (EU) 2018/1807, (EU) 2019/1150, (EU) 2022/868, and Directive (EU) 2019/1024 (Digital Omnibus), COM(2025) 837 final, 19 November 2025（手続番号 2025/0360(COD)．2026年11月現在，第一読会に係属中）．",
    "kind": "ref",
    "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52025PC0837"
   },
   {
-   "id": "b-091",
-   "order": 91,
+   "id": "b-115",
+   "order": 115,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "European Data Protection Board, Opinion 28/2024 on Certain Data Protection Aspects Related to the Processing of Personal Data in the Context of AI Models, 17 December 2024.",
    "kind": "ref",
    "url": "https://www.edpb.europa.eu/system/files/2024-12/edpb_opinion_202428_ai-models_en.pdf"
   },
   {
-   "id": "b-092",
-   "order": 92,
+   "id": "b-116",
+   "order": 116,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "European Commission, AI Act Service Desk, “Annex III” 及び “How are AI agents addressed within the AI Act?”.",
    "kind": "ref",
    "url": "https://ai-act-service-desk.ec.europa.eu/en/ai-act/faq/how-are-ai-agents-addressed-within-ai-act-0（2026年9月30日最終確認"
   },
   {
-   "id": "b-093",
-   "order": 93,
+   "id": "b-117",
+   "order": 117,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "【英国】",
    "kind": "sub"
   },
   {
-   "id": "b-094",
-   "order": 94,
+   "id": "b-118",
+   "order": 118,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "Data (Use and Access) Act 2025 (UK), s.86.",
    "kind": "ref",
    "url": "https://www.legislation.gov.uk/ukpga/2025/18/section/86"
   },
   {
-   "id": "b-095",
-   "order": 95,
+   "id": "b-119",
+   "order": 119,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "UK GDPR, Articles 84A–84D（2026年2月5日施行後の現行規律）．",
    "kind": "ref",
    "url": "https://www.legislation.gov.uk/eur/2016/679/chapter/8A"
   },
   {
-   "id": "b-096",
-   "order": 96,
+   "id": "b-120",
+   "order": 120,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "The Data (Use and Access) Act 2025 (Commencement No. 6 and Transitional and Saving Provisions) Regulations 2026 (S.I. 2026/82).",
    "kind": "ref"
   },
   {
-   "id": "b-097",
-   "order": 97,
+   "id": "b-121",
+   "order": 121,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "【米国】",
    "kind": "sub"
   },
   {
-   "id": "b-098",
-   "order": 98,
+   "id": "b-122",
+   "order": 122,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "Family Educational Rights and Privacy Act, 20 U.S.C. §1232g; 34 C.F.R. Part 99.",
    "kind": "ref",
    "url": "https://www.ecfr.gov/current/title-34/subtitle-A/part-99"
   },
   {
-   "id": "b-099",
-   "order": 99,
+   "id": "b-123",
+   "order": 123,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "Protection of Pupil Rights Amendment, 20 U.S.C. §1232h; 34 C.F.R. Part 98.",
    "kind": "ref"
   },
   {
-   "id": "b-100",
-   "order": 100,
+   "id": "b-124",
+   "order": 124,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "Individuals with Disabilities Education Act, 20 U.S.C. §1412(a)(8); 34 C.F.R. §§300.610–300.627.",
    "kind": "ref"
   },
   {
-   "id": "b-101",
-   "order": 101,
+   "id": "b-125",
+   "order": 125,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "Children’s Online Privacy Protection Act, 15 U.S.C. §§6501–6506; 16 C.F.R. Part 312.",
    "kind": "ref"
   },
   {
-   "id": "b-102",
-   "order": 102,
+   "id": "b-126",
+   "order": 126,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "California Business and Professions Code §22584 (Student Online Personal Information Protection Act, SOPIPA).",
    "kind": "ref"
   },
   {
-   "id": "b-103",
-   "order": 103,
+   "id": "b-127",
+   "order": 127,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "U.S. Department of Education, “Family Educational Rights and Privacy Act (FERPA)” 及び同省の関連FAQ，“PPRA Model Notice and Consent/Opt-Out for Specific Activities”.",
    "kind": "ref",
-   "url": "https://studentprivacy.ed.gov/ferpa"
+   "url": "https://www.ecfr.gov/current/title-34/subtitle-A/part-99"
   },
   {
-   "id": "b-104",
-   "order": 104,
+   "id": "b-128",
+   "order": 128,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "U.S. Department of Education, Privacy Technical Assistance Center, What Constitutes De-identified Records and Information.",
    "kind": "ref"
   },
   {
-   "id": "b-105",
-   "order": 105,
+   "id": "b-129",
+   "order": 129,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "Federal Trade Commission, “Children’s Online Privacy Protection Rule (COPPA)”.",
    "kind": "ref",
    "url": "https://www.ftc.gov/legal-library/browse/rules/childrens-online-privacy-protection-rule-coppa"
   },
   {
-   "id": "b-106",
-   "order": 106,
+   "id": "b-130",
+   "order": 130,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "【韓国】",
    "kind": "sub"
   },
   {
-   "id": "b-107",
-   "order": 107,
+   "id": "b-131",
+   "order": 131,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "개인정보 보호법（個人情報保護法）2020年2月4日改正，同年8月5日施行．",
    "kind": "ref"
   },
   {
-   "id": "b-108",
-   "order": 108,
+   "id": "b-132",
+   "order": 132,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "개인정보 보호법 법률 제21910호（2026年9月8日公布，2027年3月9日施行予定．28条の12から28条の15までを新設）．",
    "kind": "ref",
    "url": "https://www.law.go.kr/lsRvsDocListP.do?lsId=011357"
   },
   {
-   "id": "b-109",
-   "order": 109,
+   "id": "b-133",
+   "order": 133,
    "sec": "Ⅷ　外国法令・政策文書等",
    "text": "교육부・개인정보보호위원회「교육분야 가명·익명정보 처리 가이드라인」（教育部・個人情報保護委員会「教育分野 仮名・匿名情報処理ガイドライン」）2020年11月公表，2022年7月版及び2024年8月改訂版（掲載情報）．韓国個人情報保護法の法律第21910号による改正（2026年9月8日公布）は注(30)参照．",
    "kind": "ref",
